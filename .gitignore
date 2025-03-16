@@ -36,3 +36,32 @@
 
 # CMake build directory
 out/
+
+# CLion-specific ignores
+.idea/
+
+# CMake build artifacts
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+build/
+
+# Logs and backups
+*.log
+*.bak
+
+# Generated files
+*.generated
+
+# macOS-specific
+.DS_Store
+
+# Windows-specific
+Thumbs.db
+Desktop.ini
+
+# JetBrains CLion run configurations
+cmake-build-debug/
+cmake-build-release/
+*.iml
