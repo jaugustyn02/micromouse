@@ -30,7 +30,14 @@ FetchContent_Declare(
 set(TGUI_BACKEND "SFML_GRAPHICS" CACHE STRING "Backend for TGUI")
 FetchContent_MakeAvailable(TGUI)
 
-add_executable(main src/main.cpp)
+add_executable(main main.cpp
+        src/model/Maze.cpp
+        src/model/Sensor.cpp
+        src/gui/GUIManager.cpp
+        src/gui/MazeRenderer.cpp
+        src/gui/MouseRenderer.cpp
+        src/model/Micromouse.cpp
+        )
 
 # Link SFML and TGUI libraries
 target_link_libraries(main PRIVATE
