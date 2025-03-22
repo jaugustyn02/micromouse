@@ -7,10 +7,9 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_INCLUDE_DIRECTORIES_BEFORE ON) # needed for reloading app config
 
 include(FetchContent)
-
-# Fetch SFML
 FetchContent_Declare(
         SFML
         GIT_REPOSITORY https://github.com/SFML/SFML.git
@@ -21,7 +20,6 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(SFML)
 
-# Fetch TGUI
 FetchContent_Declare(
         TGUI
         GIT_REPOSITORY https://github.com/texus/TGUI.git
@@ -39,7 +37,6 @@ add_executable(main main.cpp
         src/model/Micromouse.cpp
         )
 
-# Link SFML and TGUI libraries
 target_link_libraries(main PRIVATE
         sfml-graphics
         sfml-window
@@ -49,7 +46,7 @@ target_link_libraries(main PRIVATE
         tgui
         )
 
-# Copy SFML and TGUI DLLs to the runtime directory (Windows-specific)
+# Copy SFML and TGUI DLLs to the runtime directory
 if (WIN32)
     add_custom_command(TARGET main POST_BUILD
             COMMAND ${CMAKE_COMMAND} -E copy_if_different
