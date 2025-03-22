@@ -8,7 +8,7 @@ namespace GLOBAL {
 namespace SCREEN {
 inline constexpr const char *TITLE = "Micromouse Simulator";
 inline constexpr int WIDTH = 800;
-inline constexpr int HEIGHT = 600;
+inline constexpr int HEIGHT = 800;
 inline constexpr int FPS = 60;
 inline constexpr std::chrono::microseconds FRAME_DURATION = std::chrono::microseconds(1000000 / FPS);
 }
@@ -20,11 +20,14 @@ inline constexpr int MAZE_HEIGHT = 20;
 }
 
 namespace RENDER {
-static constexpr const float CELL_SIZE = 20.0f;
+static constexpr const float CELL_SIZE = 30.0f;
 inline constexpr const float WALL_THICKNESS = 1.0f;
-inline constexpr const float MOUSE_SIZE = 10.0f;
-inline const sf::Color WALL_COLOR = sf::Color::White;
-inline const sf::Color MOUSE_COLOR = sf::Color::Blue;
+inline constexpr const float MOUSE_SIZE = 20.0f;
+inline constexpr const float OFFSET_X = 1.0f;
+inline constexpr const float OFFSET_Y = 1.0f;
+inline const sf::Color BACKGROUND_COLOR = tgui::Color{237, 225, 192, 255};
+inline const sf::Color WALL_COLOR = sf::Color::Black;
+inline const sf::Color MOUSE_COLOR = sf::Color::Red;
 }
 }
 

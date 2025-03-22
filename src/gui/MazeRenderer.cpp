@@ -9,12 +9,14 @@ MazeRenderer::MazeRenderer(Maze &maze) : maze(maze) {}
 void MazeRenderer::draw(sf::RenderWindow &window) {
   float cellSize = GLOBAL::RENDER::CELL_SIZE;
   sf::Color wallColor = GLOBAL::RENDER::WALL_COLOR;
+  float offsetX = GLOBAL::RENDER::OFFSET_X;
+  float offsetY = GLOBAL::RENDER::OFFSET_Y;
 
   for (int y = 0; y < maze.getHeight(); ++y) {
     for (int x = 0; x < maze.getWidth(); ++x) {
       Cell &cell = maze.getCell(x, y);
-      float posX = x * cellSize + 1;
-      float posY = y * cellSize + 1;
+      float posX = x * cellSize + offsetX;
+      float posY = y * cellSize + offsetY;
 
       sf::Vertex line[2];
 

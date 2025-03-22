@@ -7,7 +7,7 @@
 
 class MouseRenderer {
  public:
-  MouseRenderer(Micromouse &mouse);
+  explicit MouseRenderer(Micromouse &mouse);
   void draw(sf::RenderWindow &window);
 
  private:

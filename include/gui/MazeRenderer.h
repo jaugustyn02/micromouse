@@ -6,7 +6,7 @@
 
 class MazeRenderer {
  public:
-  MazeRenderer(Maze &maze);
+  explicit MazeRenderer(Maze &maze);
   void draw(sf::RenderWindow &window);
 
  private:

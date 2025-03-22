@@ -28,7 +28,7 @@ void GUIManager::handleEvents() {
 }
 
 void GUIManager::render() {
-  window.clear(sf::Color::Black);
+  window.clear(GLOBAL::RENDER::BACKGROUND_COLOR);
   mazeRenderer.draw(window);
   mouseRenderer.draw(window);
   gui.draw();
