@@ -1,5 +1,6 @@
 #include "../../include/model/Cell.h"
 #include "../../include/model/Maze.h"
+#include "../../include/utils/Randomizer.h"
 
 Maze::Maze(int width, int height) : width(width), height(height), grid(height, std::vector<Cell>(width)) {
   resetGrid();
@@ -22,10 +23,10 @@ void Maze::generate() {
   //remove random walls for testing
   for (int i = 0; i < width; ++i) {
     for (int j = 0; j < height; ++j) {
-      grid[j][i].topWall = rand() % 2;
-      grid[j][i].rightWall = rand() % 2;
-      grid[j][i].bottomWall = rand() % 2;
-      grid[j][i].leftWall = rand() % 2;
+      grid[j][i].topWall = Randomizer::GetRandomBool();
+      grid[j][i].rightWall = Randomizer::GetRandomBool();
+      grid[j][i].bottomWall = Randomizer::GetRandomBool();
+      grid[j][i].leftWall = Randomizer::GetRandomBool();
     }
   }
 }

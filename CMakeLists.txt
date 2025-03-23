@@ -35,6 +35,7 @@ add_executable(main main.cpp
         src/gui/MazeRenderer.cpp
         src/gui/MouseRenderer.cpp
         src/model/Micromouse.cpp
+        src/utils/Randomizer.cpp
         )
 
 target_link_libraries(main PRIVATE
