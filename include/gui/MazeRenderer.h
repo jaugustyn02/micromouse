@@ -14,6 +14,8 @@ class MazeRenderer {
   Maze &maze;
   sf::RectangleShape horizontalWallShape;
   sf::RectangleShape verticalWallShape;
+  sf::RectangleShape startAriaShape;
+  sf::RectangleShape goalAriaShape;
 };
 
 #endif //MICROMOUSE_INCLUDE_MODEL_MAZERENDERER_H_

@@ -26,9 +26,11 @@ inline constexpr const float WALL_THICKNESS = 10.0f;
 inline constexpr const float MOUSE_SIZE = 16.0f;
 inline constexpr const float OFFSET_X = CELL_SIZE;
 inline constexpr const float OFFSET_Y = 0.0f;
-inline const sf::Color BACKGROUND_COLOR = tgui::Color{255, 255, 255, 255};
-inline const sf::Color WALL_COLOR = sf::Color::Black;
+inline const sf::Color BACKGROUND_COLOR = tgui::Color::Black;
+inline const sf::Color WALL_COLOR = sf::Color::Red;
 inline const sf::Color MOUSE_COLOR = sf::Color::Blue;
+inline const sf::Color GOAL_COLOR = sf::Color::White;
+inline const sf::Color START_COLOR = sf::Color::Green;
 }
 
 namespace RANDOM {

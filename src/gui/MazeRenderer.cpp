@@ -12,13 +12,20 @@ MazeRenderer::MazeRenderer(Maze &maze) : maze(maze) {
   float offsetY = GLOBAL::RENDER::OFFSET_Y;
 
   horizontalWallShape.setSize(sf::Vector2f(cellSize, wallThickness));
-  verticalWallShape.setSize(sf::Vector2f(wallThickness, cellSize));
-
   horizontalWallShape.setFillColor(wallColor);
-  verticalWallShape.setFillColor(wallColor);
-
   horizontalWallShape.setOrigin(-offsetX, -offsetY);
+
+  verticalWallShape.setSize(sf::Vector2f(wallThickness, cellSize));
+  verticalWallShape.setFillColor(wallColor);
   verticalWallShape.setOrigin(-offsetX, -offsetY);
+
+  startAriaShape.setSize(sf::Vector2f(cellSize, cellSize));
+  startAriaShape.setFillColor(GLOBAL::RENDER::START_COLOR);
+  startAriaShape.setOrigin(-offsetX, -offsetY);
+
+  goalAriaShape.setSize(sf::Vector2f(cellSize, cellSize));
+  goalAriaShape.setFillColor(GLOBAL::RENDER::GOAL_COLOR);
+  goalAriaShape.setOrigin(-offsetX, -offsetY);
 }
 
 void MazeRenderer::draw(sf::RenderWindow &window) {
@@ -30,6 +37,16 @@ void MazeRenderer::draw(sf::RenderWindow &window) {
       Cell &cell = maze.getCell(x, y);
       float posX = (float) x * (cellSize - wallThickness);
       float posY = (float) y * (cellSize - wallThickness);
+
+      if (cell.isStart) {
+        startAriaShape.setPosition(posX, posY);
+        window.draw(startAriaShape);
+      }
+
+      if (cell.isGoal) {
+        goalAriaShape.setPosition(posX, posY);
+        window.draw(goalAriaShape);
+      }
 
       if (cell.topWall) {
         horizontalWallShape.setPosition(posX, posY);

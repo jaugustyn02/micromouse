@@ -8,7 +8,10 @@ struct Cell {
   bool rightWall = true;
   bool bottomWall = true;
   bool leftWall = true;
+
   bool visited = false;
+  bool isStart = false;
+  bool isGoal = false;
 
   const int x;
   const int y;
