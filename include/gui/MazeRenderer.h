@@ -3,6 +3,7 @@
 
 #include "../model/Maze.h"
 #include "SFML/Graphics/RenderWindow.hpp"
+#include "SFML/Graphics/RectangleShape.hpp"
 
 class MazeRenderer {
  public:
@@ -11,6 +12,8 @@ class MazeRenderer {
 
  private:
   Maze &maze;
+  sf::RectangleShape horizontalWallShape;
+  sf::RectangleShape verticalWallShape;
 };
 
 #endif //MICROMOUSE_INCLUDE_MODEL_MAZERENDERER_H_

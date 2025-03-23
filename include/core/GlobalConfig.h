@@ -15,19 +15,19 @@ inline constexpr std::chrono::microseconds FRAME_DURATION = std::chrono::microse
 
 namespace SIMULATION {
 inline constexpr int STEPS_PER_SECOND = 1;
-inline constexpr int MAZE_WIDTH = 20;
-inline constexpr int MAZE_HEIGHT = 20;
+inline constexpr int MAZE_WIDTH = 16;
+inline constexpr int MAZE_HEIGHT = 16;
 }
 
 namespace RENDER {
-static constexpr const float CELL_SIZE = 30.0f;
-inline constexpr const float WALL_THICKNESS = 1.0f;
-inline constexpr const float MOUSE_SIZE = 20.0f;
-inline constexpr const float OFFSET_X = 1.0f;
-inline constexpr const float OFFSET_Y = 1.0f;
-inline const sf::Color BACKGROUND_COLOR = tgui::Color{237, 225, 192, 255};
+static constexpr const float CELL_SIZE = 40.0f;
+inline constexpr const float WALL_THICKNESS = 10.0f;
+inline constexpr const float MOUSE_SIZE = 16.0f;
+inline constexpr const float OFFSET_X = CELL_SIZE;
+inline constexpr const float OFFSET_Y = 0.0f;
+inline const sf::Color BACKGROUND_COLOR = tgui::Color{255, 255, 255, 255};
 inline const sf::Color WALL_COLOR = sf::Color::Black;
-inline const sf::Color MOUSE_COLOR = sf::Color::Red;
+inline const sf::Color MOUSE_COLOR = sf::Color::Blue;
 }
 }
 
