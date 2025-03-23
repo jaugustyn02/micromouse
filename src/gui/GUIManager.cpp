@@ -3,14 +3,16 @@
 #include "../../include/gui/GUIManager.h"
 #include "../../include/core/GlobalConfig.h"
 
-GUIManager::GUIManager(Maze &maze, Micromouse &mouse)
+GUIManager::GUIManager(Maze &maze, Micromouse &mouse, SimulationController &simulationController)
     : window(sf::VideoMode(GLOBAL::SCREEN::WIDTH, GLOBAL::SCREEN::HEIGHT), GLOBAL::SCREEN::TITLE),
       gui(window),
-      mazeRenderer(maze),
-      mouseRenderer(mouse) {
+      simulationController(simulationController) {
+
+  drawables.push_back(std::make_unique<MazeRenderer>(maze));
+  drawables.push_back(std::make_unique<MouseRenderer>(mouse));
 }
 
-void GUIManager::run() {
+void GUIManager::mainLoop() {
   while (window.isOpen()) {
     handleEvents();
     render();
@@ -29,8 +31,11 @@ void GUIManager::handleEvents() {
 
 void GUIManager::render() {
   window.clear(GLOBAL::RENDER::BACKGROUND_COLOR);
-  mazeRenderer.draw(window);
-  mouseRenderer.draw(window);
+
+  for (auto &drawable : drawables) {
+    drawable->draw(window);
+  }
+
   gui.draw();
   window.display();
 }

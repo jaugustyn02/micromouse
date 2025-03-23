@@ -4,9 +4,8 @@
 #define MICROMOUSE_INCLUDE_CORE_APPLICATION_H_
 
 class Application {
- private:
-  Simulation simulation;
-  GUIManager guiManager;
+ public:
+  static void run();
 };
 
 #endif //MICROMOUSE_INCLUDE_CORE_APPLICATION_H_

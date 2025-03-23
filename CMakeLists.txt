@@ -29,11 +29,13 @@ set(TGUI_BACKEND "SFML_GRAPHICS" CACHE STRING "Backend for TGUI")
 FetchContent_MakeAvailable(TGUI)
 
 add_executable(main main.cpp
-        src/model/Maze.cpp
-        src/model/Sensor.cpp
+        src/core/Application.cpp
+        src/core/Simulation.cpp
         src/gui/GUIManager.cpp
         src/gui/MazeRenderer.cpp
         src/gui/MouseRenderer.cpp
+        src/model/Maze.cpp
+        src/model/MouseSensor.cpp
         src/model/Micromouse.cpp
         src/utils/Randomizer.cpp
         )

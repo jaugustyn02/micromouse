@@ -6,17 +6,18 @@
 #include "TGUI/Backend/SFML-Graphics.hpp"
 #include "MazeRenderer.h"
 #include "MouseRenderer.h"
+#include "../core/SimulationController.h"
 
 class GUIManager {
  public:
-  GUIManager(Maze &maze, Micromouse &mouse);
-  void run();
+  GUIManager(Maze &maze, Micromouse &mouse, SimulationController &simulationController);
+  void mainLoop();
 
  private:
   sf::RenderWindow window;
   tgui::Gui gui;
-  MazeRenderer mazeRenderer;
-  MouseRenderer mouseRenderer;
+  std::vector<std::unique_ptr<Drawable>> drawables;
+  SimulationController &simulationController;
   void handleEvents();
   void render();
 };

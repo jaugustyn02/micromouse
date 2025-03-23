@@ -4,11 +4,12 @@
 #include "../model/Maze.h"
 #include "SFML/Graphics/RenderWindow.hpp"
 #include "SFML/Graphics/RectangleShape.hpp"
+#include "Drawable.h"
 
-class MazeRenderer {
+class MazeRenderer : public Drawable {
  public:
   explicit MazeRenderer(Maze &maze);
-  void draw(sf::RenderWindow &window);
+  void draw(sf::RenderWindow &window) override;
 
  private:
   Maze &maze;

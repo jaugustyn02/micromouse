@@ -4,11 +4,12 @@
 #include "../model/Micromouse.h"
 #include "SFML/Graphics/RenderWindow.hpp"
 #include "SFML/Graphics/CircleShape.hpp"
+#include "Drawable.h"
 
-class MouseRenderer {
+class MouseRenderer : public Drawable {
  public:
   explicit MouseRenderer(Micromouse &mouse);
-  void draw(sf::RenderWindow &window);
+  void draw(sf::RenderWindow &window) override;
 
  private:
   Micromouse &mouse;
