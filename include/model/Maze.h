@@ -8,13 +8,14 @@ class Maze {
  public:
   Maze(int width, int height);
   void generate();
-  Cell &getCell(int x, int y) const;
-  int getWidth() const { return width; }
-  int getHeight() const { return height; }
+  [[nodiscard]] Cell &getCell(int x, int y) const;
+  [[nodiscard]] int getWidth() const { return width; }
+  [[nodiscard]] int getHeight() const { return height; }
 
  private:
   int width, height;
   std::vector<std::vector<Cell>> grid;
+  void initializeGrid();
   void resetGrid();
 };
 
