@@ -1,20 +1,30 @@
 #ifndef MICROMOUSE_INCLUDE_GUI_CELL_H_
 #define MICROMOUSE_INCLUDE_GUI_CELL_H_
 
-struct Cell {
-  Cell(int x, int y) : x(x), y(y) {}
+#include "Direction.h"
+#include "Position.h"
+#include "CellType.h"
+#include <map>
 
-  bool topWall = true;
-  bool rightWall = true;
-  bool bottomWall = true;
-  bool leftWall = true;
+class Cell {
+ public:
+  Cell(Position location, CellType type);
+  void addWall(Direction direction);
+  void removeWall(Direction direction);
+  bool hasWall(Direction direction) const;
+  Position getLocation() const;
+  CellType getType() const;
+  void setType(CellType type);
 
-  bool visited = false;
-  bool isStart = false;
-  bool isGoal = false;
-
-  const int x;
-  const int y;
+ private:
+  std::map<Direction, bool> walls{{
+                                      {Direction::NORTH, false},
+                                      {Direction::EAST, false},
+                                      {Direction::SOUTH, false},
+                                      {Direction::WEST, false}
+                                  }};
+  Position location;
+  CellType type;
 };
 
 #endif //MICROMOUSE_INCLUDE_GUI_CELL_H_

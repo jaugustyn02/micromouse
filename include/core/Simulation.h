@@ -3,8 +3,8 @@
 
 #include <utility>
 #include <vector>
-#include "../model/Maze.h"
-#include "../model/Micromouse.h"
+#include "Maze.h"
+#include "Micromouse.h"
 #include "SimulationController.h"
 
 class Simulation : public SimulationController {

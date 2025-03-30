@@ -6,13 +6,13 @@ class Application {
 
 Application --> GUIManager: use
 
-interface SimulationController {
+abstract class SimulationController {
     + start()
     + stop()
     + reset()
     + nextStep()
     + generateMaze()
-    + setMouseMode(mode: MouseMode)
+    + setMouseMode(MouseMode)
     + setMouseBrain(MouseBrain&)
 }
 
@@ -24,7 +24,7 @@ class Simulation {
     + reset()
     + nextStep()
     + generateMaze()
-    + setMouseMode(mode: MouseMode)
+    + setMouseMode(MouseMode)
     + setMouseBrain(MouseBrain&)
 }
 
@@ -39,14 +39,15 @@ class GUIManager {
     - SimulationController& simulationController
     - std::vector<Drawable*> drawables
     + mainLoop()
-    + switchMouseMode(mode: MouseMode)
+    + switchMouseMode(MouseMode)
 }
 
 class Drawable {
     + draw(window: sf::RenderWindow)
 }
 
-interface Drawable
+abstract class Drawable
+
 Drawable <|-- MazeRenderer
 Drawable <|-- MouseRenderer
 
@@ -74,16 +75,16 @@ class Maze {
     + getHeight(): int
 }
 
-class Cell {
-    + const int x
-    + const int y
-    + bool topWall
-    + bool rightWall
-    + bool bottomWall
-    + bool leftWall
-    + bool visited
-    + bool isStart
-    + bool isGoal
+enum CellType {
+    PATH
+    START
+    GOAL
+}
+
+struct Cell {
+    + std::map<Direction, bool> walls
+    + Position location
+    + CellType type
 }
 
 Maze --> Randomizer: use
@@ -100,7 +101,7 @@ enum Direction {
 ' ========== MOUSE ==========
 class Micromouse {
     - Position& position
-    - MouseSensor& sensor
+    - MouseSensors& sensor
     - MouseBrain& brain
     - Direction direction
     + makeMove()
@@ -109,10 +110,14 @@ class Micromouse {
     + setBrain(MouseBrain&)
 }
 
-class MouseSensor {
-    - Position& position
+class SensorsReading {
+    - std::map<Direction, bool> readings
+    + isWall(Direction): bool
+}
+
+class MouseSensors {
     - Maze& maze
-    + isWallInDirection(direction: Direction): bool
+    + getSensorsReading(Position): SensorsReading
 }
 
 class Position {
@@ -127,36 +132,32 @@ enum MouseMode {
     FASTEST_PATH
 }
 
-Micromouse --> MouseSensor
-Micromouse --> Position
+Micromouse --> MouseSensors
 Micromouse --> MouseBrain
-Micromouse --> Direction
 
-MouseSensor --> Maze
-MouseSensor --> Position
+MouseSensors --> Maze
 
 ' ========== MOUSE BRAIN ==========
 class MouseBrain {
-    - std::vector<std::vector<Cell>> map
+    - std::vector<std::vector<SensorsReading>> map
     - ExplorationStrategy& explorationStrategy
     - PathfindingStrategy& pathfindingStrategy
     - MouseMode mode
     - std::vector<Position> fastestPath
     + setMode(MouseMode)
-    + getNextMove(Position, MouseSensor): Direction
+    + getNextMove(SensorsReading): Direction
     + reset()
 }
 
 MouseBrain --> ExplorationStrategy
 MouseBrain --> PathfindingStrategy
-MouseBrain --> MouseMode
 
 ' ========== STRATEGIES ==========
-interface ExplorationStrategy {
+abstract class ExplorationStrategy {
     + decideMove(Position, std::vector<std::vector<Cell>>): Direction
 }
 
-interface PathfindingStrategy {
+abstract class PathfindingStrategy {
     + decideMove(Position, std::vector<std::vector<Cell>>): Direction
     + findFastestPath(Position start, Position goal, std::vector<std::vector<Cell>> map): std::vector<Position>
 }

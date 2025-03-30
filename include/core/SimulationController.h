@@ -9,6 +9,8 @@ class SimulationController {
   virtual void setMouseMode(int mode) = 0;
   virtual void generateMaze() = 0;
   virtual void setSpeed(int speed) = 0;
+
+  virtual ~SimulationController() = default;
 };
 
 #endif //MICROMOUSE_INCLUDE_CORE_SIMULATIONCONTROLLER_H_

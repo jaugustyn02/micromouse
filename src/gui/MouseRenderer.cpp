@@ -1,4 +1,4 @@
-#include "../../include/model/Micromouse.h"
+#include "../../include/core/Micromouse.h"
 #include "SFML/Graphics/RenderWindow.hpp"
 #include "../../include/gui/MouseRenderer.h"
 #include "../../include/core/GlobalConfig.h"
@@ -18,7 +18,7 @@ void MouseRenderer::draw(sf::RenderWindow &window) {
   float cellSize = GLOBAL::RENDER::CELL_SIZE;
   float positionX = (float) mouse.getX() * cellSize;
   float positionY = (float) mouse.getY() * cellSize;
-  
+
   mouseShape.setPosition(positionX, positionY);
   window.draw(mouseShape);
 }

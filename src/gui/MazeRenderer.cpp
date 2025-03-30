@@ -1,4 +1,4 @@
-#include "../../include/model/Maze.h"
+#include "../../include/core/Maze.h"
 #include "SFML/Graphics/RenderWindow.hpp"
 #include "../../include/gui/MazeRenderer.h"
 #include "SFML/Graphics/RectangleShape.hpp"
@@ -34,33 +34,32 @@ void MazeRenderer::draw(sf::RenderWindow &window) {
 
   for (int y = 0; y < maze.getHeight(); ++y) {
     for (int x = 0; x < maze.getWidth(); ++x) {
-      Cell &cell = maze.getCell(x, y);
+      Position position(x, y);
+      CellType cellType = maze.getCellType(position);
       float posX = (float) x * (cellSize - wallThickness);
       float posY = (float) y * (cellSize - wallThickness);
 
-      if (cell.isStart) {
+      if (cellType == CellType::START) {
         startAriaShape.setPosition(posX, posY);
         window.draw(startAriaShape);
-      }
-
-      if (cell.isGoal) {
+      } else if (cellType == CellType::GOAL) {
         goalAriaShape.setPosition(posX, posY);
         window.draw(goalAriaShape);
       }
 
-      if (cell.topWall) {
+      if (maze.isWall(position, Direction::NORTH)) {
         horizontalWallShape.setPosition(posX, posY);
         window.draw(horizontalWallShape);
       }
-      if (cell.rightWall) {
+      if (maze.isWall(position, Direction::EAST)) {
         verticalWallShape.setPosition(posX + cellSize - wallThickness, posY);
         window.draw(verticalWallShape);
       }
-      if (cell.bottomWall) {
+      if (maze.isWall(position, Direction::SOUTH)) {
         horizontalWallShape.setPosition(posX, posY + cellSize - wallThickness);
         window.draw(horizontalWallShape);
       }
-      if (cell.leftWall) {
+      if (maze.isWall(position, Direction::WEST)) {
         verticalWallShape.setPosition(posX, posY);
         window.draw(verticalWallShape);
       }

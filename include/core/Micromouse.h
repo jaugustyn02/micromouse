@@ -2,15 +2,16 @@
 #define MICROMOUSE_INCLUDE_GUI_MICROMOUSE_H_
 
 #include <map>
-#include "../model/Maze.h"
-#include "../model/MouseSensor.h"
-#include "Direction.h"
-#include "MouseMode.h"
-#include "Position.h"
+#include "Maze.h"
+#include "../logic/MouseSensor.h"
+#include "../model/Direction.h"
+#include "../model/MouseMode.h"
+#include "../model/Position.h"
+#include "../logic/MouseBrain.h"
 
 class Micromouse {
  public:
-  explicit Micromouse(Position &position, MouseSensor &sensor, Direction direction, MouseMode mode);
+  Micromouse(Position &position, MouseSensor &sensor, MouseBrain &brain, Direction direction);
   void makeMove();
   void setMode(MouseMode mode);
   [[nodiscard]] int getX() const;
@@ -19,8 +20,8 @@ class Micromouse {
  private:
   Position &position;
   MouseSensor &sensor;
+  MouseBrain &brain;
   Direction direction;
-  MouseMode mode;
 };
 
 #endif //MICROMOUSE_INCLUDE_GUI_MICROMOUSE_H_
