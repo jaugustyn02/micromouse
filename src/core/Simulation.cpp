@@ -18,12 +18,16 @@ void Simulation::reset() {
 void Simulation::setSpeed(int speed) {
 
 }
-void Simulation::generateMaze() {
 
+void Simulation::generateMaze() {
+  maze.generate();
+  std::cout << "[SIMULATION]: Generate maze" << std::endl;
 }
+
 void Simulation::setMouseMode(MouseMode mode) {
 
 }
+
 void Simulation::setMouseBrain(MouseBrain &brain) {
 }
 

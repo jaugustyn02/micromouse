@@ -16,10 +16,14 @@ void ControlPanelRenderer::draw() {
   std::function < void() > onResetButtonPress = [this]() {
     simulationController.reset();
   };
+  std::function < void() > onGenerateMazeButtonPress = [this]() {
+    simulationController.generateMaze();
+  };
 
   addButton(Position(560, 0), "Start", onStartButtonPress);
   addButton(Position(560, 50), "Stop", onStopButtonPress);
   addButton(Position(560, 100), "Reset", onResetButtonPress);
+  addButton(Position(560, 150), "Generate Maze", onGenerateMazeButtonPress);
   // render speed slider
   // render algorithm dropdown
   // render maze dropdown
@@ -35,7 +39,7 @@ void ControlPanelRenderer::addButton(Position position,
                                      const std::function<void()> &onPress) {
   auto button = tgui::Button::create(label);
   button->setPosition(position.getX(), position.getY());
-  button->setSize(100, 40);
+  button->setSize(120, 40);
   button->onClick(onPress);
   gui.add(button);
 }
