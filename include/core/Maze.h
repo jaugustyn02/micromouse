@@ -25,6 +25,8 @@ class Maze : public MazeReader {
   std::vector<Position> getCellNeighbors(const Position &position) const;
   std::vector<Position> getUnvisitedNeighbors(const Position &position, const std::set<Position> &visited) const;
   void removeWallsBetweenNeighbourCells(const Position &firstPosition, const Position &secondPosition);
+  void setGoal(std::set<Position> &visited);
+  void setStart();
 };
 
 #endif //MICROMOUSE_INCLUDE_GUI_MAZE_H_

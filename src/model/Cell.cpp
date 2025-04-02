@@ -22,7 +22,7 @@ CellType Cell::getType() const {
   return type;
 }
 
-void Cell::setType(CellType type) {
-  this->type = type;
+void Cell::setType(CellType cellType) {
+  this->type = cellType;
 }
 

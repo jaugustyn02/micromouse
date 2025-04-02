@@ -29,9 +29,9 @@ inline constexpr const float OFFSET_X = CELL_SIZE;
 inline constexpr const float OFFSET_Y = 0.0f;
 inline const sf::Color BACKGROUND_COLOR = tgui::Color::White;
 inline const sf::Color WALL_COLOR = sf::Color::Black;
-inline const sf::Color MOUSE_COLOR = sf::Color::Blue;
-inline const sf::Color GOAL_COLOR = sf::Color::Green;
-inline const sf::Color START_COLOR = sf::Color::Red;
+inline const sf::Color MOUSE_COLOR = sf::Color{247, 130, 84};
+inline const sf::Color GOAL_COLOR = sf::Color{163, 232, 160};
+inline const sf::Color START_COLOR = sf::Color::White;
 }
 
 namespace RANDOM {
