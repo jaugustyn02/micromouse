@@ -13,12 +13,15 @@ class Simulation : public SimulationController {
   void start() override;
   void stop() override;
   void reset() override;
-  void setMouseMode(int mode) override;
+  void nextStep() override;
+  void setMouseMode(MouseMode mode) override;
+  void setMouseBrain(MouseBrain &brain) override;
   void setSpeed(int speed) override;
   void generateMaze() override;
  private:
   Maze &maze;
   Micromouse &mouse;
+  bool isRunning{false};
 };
 
 #endif //MICROMOUSE_INCLUDE_CORE_SIMULATION_H_

@@ -37,6 +37,7 @@ add_executable(main main.cpp
         src/gui/GUIManager.cpp
         src/gui/MazeRenderer.cpp
         src/gui/MouseRenderer.cpp
+        src/gui/ControlPanelRenderer.cpp
         src/logic/MouseSensor.cpp
         src/logic/MouseBrain.cpp
         src/model/SensorReading.cpp

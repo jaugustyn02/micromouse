@@ -1,21 +1,37 @@
+#include <thread>
 #include "SFML/Graphics/RenderWindow.hpp"
 #include "TGUI/Backend/SFML-Graphics.hpp"
 #include "../../include/gui/GUIManager.h"
-#include "../../include/core/GlobalConfig.h"
 
 GUIManager::GUIManager(Maze &maze, Micromouse &mouse, SimulationController &simulationController)
     : window(sf::VideoMode(GLOBAL::SCREEN::WIDTH, GLOBAL::SCREEN::HEIGHT), GLOBAL::SCREEN::TITLE),
       gui(window),
-      simulationController(simulationController) {
+      simulationController(simulationController),
+      controlPanelRenderer(simulationController, gui) {
 
   drawables.push_back(std::make_unique<MazeRenderer>(maze));
   drawables.push_back(std::make_unique<MouseRenderer>(mouse));
 }
 
 void GUIManager::mainLoop() {
+  controlPanelRenderer.draw();
+
+  window.setFramerateLimit(GLOBAL::SCREEN::FPS);
+  auto lastSimUpdate = std::chrono::high_resolution_clock::now();
+
   while (window.isOpen()) {
     handleEvents();
+
+    auto now = std::chrono::high_resolution_clock::now();
+    auto elapsed = std::chrono::duration_cast<std::chrono::microseconds>(now - lastSimUpdate);
+
+    if (elapsed >= GLOBAL::SIMULATION::STEP_DURATION) {
+      simulationController.nextStep();
+      lastSimUpdate = now;
+    }
+
     render();
+    std::this_thread::sleep_for(GLOBAL::SCREEN::FRAME_DURATION);
   }
 }
 

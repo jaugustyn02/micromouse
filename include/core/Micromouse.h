@@ -11,16 +11,16 @@
 
 class Micromouse {
  public:
-  Micromouse(Position &position, MouseSensor &sensor, MouseBrain &brain, Direction direction);
+  Micromouse(MouseBrain &brain, MouseSensor sensor, Position position, Direction direction);
   void makeMove();
   void setMode(MouseMode mode);
   [[nodiscard]] int getX() const;
   [[nodiscard]] int getY() const;
 
  private:
-  Position &position;
-  MouseSensor &sensor;
-  MouseBrain &brain;
+  MouseBrain brain;
+  Position position;
+  MouseSensor sensor;
   Direction direction;
 };
 

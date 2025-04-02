@@ -5,6 +5,7 @@
 #include "SFML/Graphics/RenderWindow.hpp"
 #include "SFML/Graphics/CircleShape.hpp"
 #include "Drawable.h"
+#include "TGUI/Backend/SFML-Graphics.hpp"
 
 class MouseRenderer : public Drawable {
  public:

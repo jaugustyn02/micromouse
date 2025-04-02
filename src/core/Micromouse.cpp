@@ -1,7 +1,8 @@
 #include "../../include/core/Micromouse.h"
 
-Micromouse::Micromouse(Position &position, MouseSensor &sensor, MouseBrain &brain, Direction direction)
-    : position(position), sensor(sensor), direction(direction), brain(brain) {}
+Micromouse::Micromouse(MouseBrain &brain, MouseSensor sensor, Position position, Direction direction)
+    : brain(brain), sensor(sensor), direction(direction), position(position) {
+}
 
 void Micromouse::makeMove() {}
 

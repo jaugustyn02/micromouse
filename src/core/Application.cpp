@@ -11,7 +11,8 @@ void Application::run() {
   RandomExplorationStrategy explorationStrategy;
   RandomExplorationStrategy pathfindingStrategy;
   MouseBrain brain(explorationStrategy, pathfindingStrategy);
-  Micromouse mouse(position, sensor, brain, Direction::NORTH);
+
+  Micromouse mouse(brain, sensor, position, Direction::NORTH);
 
   Simulation simulation(maze, mouse);
   GUIManager guiManager(maze, mouse, simulation);

@@ -15,7 +15,8 @@ inline constexpr std::chrono::microseconds FRAME_DURATION = std::chrono::microse
 }
 
 namespace SIMULATION {
-inline constexpr int STEPS_PER_SECOND = 1;
+inline constexpr int STEP_DURATION_MS = 1000;
+inline constexpr std::chrono::microseconds STEP_DURATION = std::chrono::microseconds(STEP_DURATION_MS * 1000);
 inline constexpr int MAZE_WIDTH = 16;
 inline constexpr int MAZE_HEIGHT = 16;
 }

@@ -7,6 +7,7 @@
 #include "MazeRenderer.h"
 #include "MouseRenderer.h"
 #include "../core/SimulationController.h"
+#include "ControlPanelRenderer.h"
 
 class GUIManager {
  public:
@@ -18,6 +19,7 @@ class GUIManager {
   tgui::Gui gui;
   std::vector<std::unique_ptr<Drawable>> drawables;
   SimulationController &simulationController;
+  ControlPanelRenderer controlPanelRenderer;
   void handleEvents();
   void render();
 };

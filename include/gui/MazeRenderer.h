@@ -5,6 +5,7 @@
 #include "SFML/Graphics/RenderWindow.hpp"
 #include "SFML/Graphics/RectangleShape.hpp"
 #include "Drawable.h"
+#include "TGUI/Backend/SFML-Graphics.hpp"
 
 class MazeRenderer : public Drawable {
  public:
