@@ -18,6 +18,19 @@ class Position {
     return x == other.x && y == other.y;
   }
 
+  void translate(Direction direction) {
+    switch (direction) {
+      case NORTH: y--;
+        break;
+      case SOUTH: y++;
+        break;
+      case EAST: x++;
+        break;
+      case WEST :x--;
+        break;
+    }
+  }
+
  private:
   int x, y;
 };

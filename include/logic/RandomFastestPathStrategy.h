@@ -2,12 +2,15 @@
 #define MICROMOUSE_INCLUDE_MODEL_RANDOMFASTESTPATHSTRATEGY_H_
 
 #include "MouseDecisionStrategy.h"
-class FastestPathStrategy : public MouseDecisionStrategy {
+#include "../model/SensorReadings.h"
+
+class RandomFastestPathStrategy : public MouseDecisionStrategy {
  public:
-  Direction decideMove(Position position, const std::vector<std::vector<Cell>> &map) override;
+  Direction decideMove(Position position, SensorReadings readings) override;
+  void reset() override {};
+ private:
+  Direction lastMove{};
+  bool isFirstMove = true;
 };
-Direction FastestPathStrategy::decideMove(Position position, const std::vector<std::vector<Cell>> &map) {
-  return Direction::NORTH;
-}
 
 #endif //MICROMOUSE_INCLUDE_MODEL_RANDOMFASTESTPATHSTRATEGY_H_

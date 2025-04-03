@@ -8,9 +8,9 @@ void Application::run() {
 
   Position position(0, 0);
   MouseSensor sensor(maze);
-  RandomExplorationStrategy explorationStrategy;
-  RandomExplorationStrategy pathfindingStrategy;
-  MouseBrain brain(explorationStrategy, pathfindingStrategy);
+  RandomExplorationStrategy randomExploration;
+  RandomExplorationStrategy randomPathFinding;
+  MouseBrain brain(randomExploration, randomPathFinding);
 
   Micromouse mouse(brain, sensor, position, Direction::NORTH);
 

@@ -15,10 +15,11 @@ MouseRenderer::MouseRenderer(Micromouse &mouse) : mouse(mouse) {
 }
 
 void MouseRenderer::draw(sf::RenderWindow &window) {
+  float wallThickness = GLOBAL::RENDER::WALL_THICKNESS;
   float cellSize = GLOBAL::RENDER::CELL_SIZE;
-  float positionX = (float) mouse.getX() * cellSize;
-  float positionY = (float) mouse.getY() * cellSize;
+  float posX = (float) mouse.getX() * (cellSize - wallThickness);
+  float posY = (float) mouse.getY() * (cellSize - wallThickness);
 
-  mouseShape.setPosition(positionX, positionY);
+  mouseShape.setPosition(posX, posY);
   window.draw(mouseShape);
 }

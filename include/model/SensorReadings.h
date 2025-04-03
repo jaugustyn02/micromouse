@@ -1,14 +1,14 @@
-#ifndef MICROMOUSE_INCLUDE_MODEL_SENSORREADING_H_
-#define MICROMOUSE_INCLUDE_MODEL_SENSORREADING_H_
+#ifndef MICROMOUSE_INCLUDE_MODEL_SENSORREADINGS_H_
+#define MICROMOUSE_INCLUDE_MODEL_SENSORREADINGS_H_
 
 #include <array>
 #include <map>
 #include "Direction.h"
 #include "CellType.h"
 
-class SensorReading {
+class SensorReadings {
  public:
-  SensorReading(CellType cellType) : cellType(cellType) {};
+  SensorReadings(CellType cellType) : cellType(cellType) {};
   void setWall(Direction direction, bool isWall);
   bool isWall(Direction direction) const;
   CellType getCellType() const;
@@ -18,4 +18,4 @@ class SensorReading {
   CellType cellType{};
 };
 
-#endif //MICROMOUSE_INCLUDE_MODEL_SENSORREADING_H_
+#endif //MICROMOUSE_INCLUDE_MODEL_SENSORREADINGS_H_

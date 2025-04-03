@@ -6,10 +6,11 @@
 
 class RandomExplorationStrategy : public MouseDecisionStrategy {
  public:
-  Direction decideMove(Position position, const std::vector<std::vector<Cell>> &map) override;
+  Direction decideMove(Position position, SensorReadings readings) override;
+  void reset() override {};
+ private:
+  Direction lastMove{};
+  bool isFirstMove = true;
 };
-Direction RandomExplorationStrategy::decideMove(Position position, const std::vector<std::vector<Cell>> &map) {
-  return Direction::NORTH;
-}
 
 #endif //MICROMOUSE_INCLUDE_MODEL_RANDOMEXPLORATIONSTRATEGY_H_

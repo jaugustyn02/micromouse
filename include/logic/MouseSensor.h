@@ -4,12 +4,12 @@
 #include "../core/Maze.h"
 #include "../model/Position.h"
 #include "../model/Direction.h"
-#include "../model/SensorReading.h"
+#include "../model/SensorReadings.h"
 
 class MouseSensor {
  public:
   MouseSensor(MazeReader &mazeReader) : maze(mazeReader) {};
-  SensorReading getSensorReading(const Position &position) const;
+  SensorReadings getSensorReadings(const Position &position) const;
 
  private:
   MazeReader &maze;

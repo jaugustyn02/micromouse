@@ -34,6 +34,7 @@ void Simulation::setMouseBrain(MouseBrain &brain) {
 void Simulation::nextStep() {
   if (isRunning) {
     std::cout << "[SIMULATION]: Next step" << std::endl;
+    mouse.makeMove();
   }
 }
 

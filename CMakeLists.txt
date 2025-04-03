@@ -29,21 +29,15 @@ set(TGUI_BACKEND "SFML_GRAPHICS" CACHE STRING "Backend for TGUI")
 FetchContent_MakeAvailable(TGUI)
 
 
-add_executable(main main.cpp
-        src/core/Application.cpp
-        src/core/Simulation.cpp
-        src/core/Micromouse.cpp
-        src/core/Maze.cpp
-        src/gui/GUIManager.cpp
-        src/gui/MazeRenderer.cpp
-        src/gui/MouseRenderer.cpp
-        src/gui/ControlPanelRenderer.cpp
-        src/logic/MouseSensor.cpp
-        src/logic/MouseBrain.cpp
-        src/model/SensorReading.cpp
-        src/model/Cell.cpp
-        src/utils/Randomizer.cpp
+# source files
+file(GLOB_RECURSE SOURCES
+        src/core/*.cpp
+        src/gui/*.cpp
+        src/logic/*.cpp
+        src/model/*.cpp
+        src/utils/*.cpp
         )
+add_executable(main main.cpp ${SOURCES})
 
 target_link_libraries(main PRIVATE
         sfml-graphics
