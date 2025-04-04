@@ -3,17 +3,17 @@
 Simulation::Simulation(Maze &maze, Micromouse &mouse) : maze(maze), mouse(mouse) {}
 
 void Simulation::start() {
-  isRunning = true;
   std::cout << "[SIMULATION]: Simulation started" << std::endl;
+  isRunning = true;
 }
 void Simulation::stop() {
-  isRunning = false;
   std::cout << "[SIMULATION]: Simulation stopped" << std::endl;
+  isRunning = false;
 }
 void Simulation::reset() {
-  isRunning = false;
-  mouse.reset();
   std::cout << "[SIMULATION]: Simulation reset" << std::endl;
+  stop();
+  mouse.reset();
 }
 
 void Simulation::setSpeed(int speed) {
@@ -21,8 +21,9 @@ void Simulation::setSpeed(int speed) {
 }
 
 void Simulation::generateMaze() {
-  maze.generate();
   std::cout << "[SIMULATION]: Generate maze" << std::endl;
+  reset();
+  maze.generate();
 }
 
 void Simulation::setMouseMode(MouseMode mode) {
@@ -35,7 +36,16 @@ void Simulation::setMouseBrain(MouseBrain &brain) {
 void Simulation::nextStep() {
   if (isRunning) {
     std::cout << "[SIMULATION]: Next step" << std::endl;
-    mouse.makeMove();
+    moveMouse();
+  }
+}
+
+void Simulation::moveMouse() {
+  auto moveStatus = mouse.makeMove();
+  if (moveStatus == MoveStatus::FAILURE
+      || moveStatus == MoveStatus::GOAL_REACHED
+      || moveStatus == MoveStatus::START_REACHED) {
+    stop();
   }
 }
 

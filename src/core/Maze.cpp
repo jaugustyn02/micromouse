@@ -3,6 +3,7 @@
 #include <stack>
 #include "../../include/core/Maze.h"
 #include "../../include/utils/Randomizer.h"
+#include "../../include/core/GlobalConfig.h"
 
 Maze::Maze(int width, int height) : width(width), height(height) {
   initializeGrid();
@@ -55,7 +56,8 @@ void Maze::generate() {
   std::stack<Position> stack;
   std::set<Position> visited;
 
-  auto currentPosition = Position(0, 0);
+  auto currentPosition = Position(GLOBAL::SIMULATION::START_POSITION_X,
+                                  GLOBAL::SIMULATION::START_POSITION_Y);
   stack.push(currentPosition);
   visited.insert(currentPosition);
 

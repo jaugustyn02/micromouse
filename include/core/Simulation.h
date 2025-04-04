@@ -22,6 +22,7 @@ class Simulation : public SimulationController {
   Maze &maze;
   Micromouse &mouse;
   bool isRunning{false};
+  void moveMouse();
 };
 
 #endif //MICROMOUSE_INCLUDE_CORE_SIMULATION_H_

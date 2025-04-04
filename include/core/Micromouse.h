@@ -8,11 +8,12 @@
 #include "../model/MouseMode.h"
 #include "../model/Position.h"
 #include "../logic/MouseBrain.h"
+#include "../model/MoveStatus.h"
 
 class Micromouse {
  public:
   Micromouse(MouseBrain &brain, MouseSensor sensor, Position position, Direction direction);
-  void makeMove();
+  MoveStatus makeMove();
   void setMode(MouseMode mode);
   void reset();
   [[nodiscard]] int getX() const;
