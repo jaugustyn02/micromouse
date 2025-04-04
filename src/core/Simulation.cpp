@@ -12,6 +12,7 @@ void Simulation::stop() {
 }
 void Simulation::reset() {
   isRunning = false;
+  mouse.reset();
   std::cout << "[SIMULATION]: Simulation reset" << std::endl;
 }
 

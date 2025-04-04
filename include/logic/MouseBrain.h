@@ -10,22 +10,10 @@
 
 class MouseBrain {
  public:
-  MouseBrain(MouseDecisionStrategy &explorationStrategy, MouseDecisionStrategy &pathfindingStrategy)
-      : explorationStrategy(explorationStrategy),
-        pathfindingStrategy(pathfindingStrategy),
-        currentStrategy(&explorationStrategy),
-        mode(EXPLORATION) {
-  }
-
-  void setMode(MouseMode _mode) {
-    this->mode = _mode;
-    currentStrategy = (mode == EXPLORATION) ? &explorationStrategy : &pathfindingStrategy;
-    currentStrategy->reset();
-  }
-
-  Direction getNextMove(Position position, SensorReadings readings) {
-    return currentStrategy->decideMove(position, std::move(readings));
-  }
+  MouseBrain(MouseDecisionStrategy &explorationStrategy, MouseDecisionStrategy &pathfindingStrategy);
+  void setMode(MouseMode _mode);
+  Direction getNextMove(Position position, SensorReadings readings);
+  void reset();
 
  private:
   MouseDecisionStrategy &explorationStrategy;

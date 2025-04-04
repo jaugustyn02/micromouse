@@ -22,3 +22,10 @@ int Micromouse::getY() const {
 void Micromouse::setMode(MouseMode mode) {
   brain.setMode(mode);
 }
+
+void Micromouse::reset() {
+  position = Position(0, 0);
+  direction = Direction::EAST;
+  brain.reset();
+  std::cout << "[MICROMOUSE]: Reset" << std::endl;
+}

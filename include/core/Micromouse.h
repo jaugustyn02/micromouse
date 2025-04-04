@@ -14,6 +14,7 @@ class Micromouse {
   Micromouse(MouseBrain &brain, MouseSensor sensor, Position position, Direction direction);
   void makeMove();
   void setMode(MouseMode mode);
+  void reset();
   [[nodiscard]] int getX() const;
   [[nodiscard]] int getY() const;
 
