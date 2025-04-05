@@ -4,12 +4,12 @@
 #include "SFML/Graphics/RectangleShape.hpp"
 #include "../../include/core/GlobalConfig.h"
 
-MazeRenderer::MazeRenderer(Maze &maze) : maze(maze) {
-  sf::Color wallColor = GLOBAL::RENDER::WALL_COLOR;
-  float wallThickness = GLOBAL::RENDER::WALL_THICKNESS;
-  float cellSize = GLOBAL::RENDER::CELL_SIZE;
-  float offsetX = GLOBAL::RENDER::OFFSET_X;
-  float offsetY = GLOBAL::RENDER::OFFSET_Y;
+MazeRenderer::MazeRenderer(MazeReader &maze) : maze(maze) {
+  const sf::Color wallColor = GLOBAL::RENDER::WALL_COLOR;
+  const float wallThickness = GLOBAL::RENDER::WALL_THICKNESS;
+  const float cellSize = GLOBAL::RENDER::CELL_SIZE;
+  const float offsetX = GLOBAL::RENDER::OFFSET_X;
+  const float offsetY = GLOBAL::RENDER::OFFSET_Y;
 
   horizontalWallShape.setSize(sf::Vector2f(cellSize, wallThickness));
   horizontalWallShape.setFillColor(wallColor);

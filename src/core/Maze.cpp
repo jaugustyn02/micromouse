@@ -5,36 +5,12 @@
 #include "../../include/utils/Randomizer.h"
 #include "../../include/core/GlobalConfig.h"
 
+// Public
 Maze::Maze(int width, int height) : width(width), height(height) {
   initializeGrid();
 }
 
-void Maze::resetGrid() {
-  for (int i = 0; i < width; ++i) {
-    for (int j = 0; j < height; ++j) {
-      grid[j][i].addWall(Direction::NORTH);
-      grid[j][i].addWall(Direction::EAST);
-      grid[j][i].addWall(Direction::SOUTH);
-      grid[j][i].addWall(Direction::WEST);
-    }
-  }
-}
-
-void Maze::initializeGrid() {
-  grid.reserve(height);
-  CellType type = CellType::PATH;
-
-  for (int y = 0; y < height; ++y) {
-    std::vector<Cell> row;
-    row.reserve(width);
-    for (int x = 0; x < width; ++x) {
-      Position position(x, y);
-      row.emplace_back(position, type);
-    }
-    grid.push_back(std::move(row));
-  }
-}
-
+// MazeReader interface
 int Maze::getWidth() const {
   return width;
 }
@@ -49,6 +25,7 @@ bool Maze::isWall(Position position, Direction direction) const {
 CellType Maze::getCellType(Position position) const {
   return grid[position.getY()][position.getX()].getType();
 }
+// MazeReader interface end
 
 void Maze::generate() {
   resetGrid();
@@ -77,6 +54,33 @@ void Maze::generate() {
 
     stack.push(nextPosition);
     visited.insert(nextPosition);
+  }
+}
+
+// Private
+void Maze::resetGrid() {
+  for (int i = 0; i < width; ++i) {
+    for (int j = 0; j < height; ++j) {
+      grid[j][i].addWall(Direction::NORTH);
+      grid[j][i].addWall(Direction::EAST);
+      grid[j][i].addWall(Direction::SOUTH);
+      grid[j][i].addWall(Direction::WEST);
+    }
+  }
+}
+
+void Maze::initializeGrid() {
+  grid.reserve(height);
+  CellType type = CellType::PATH;
+
+  for (int y = 0; y < height; ++y) {
+    std::vector<Cell> row;
+    row.reserve(width);
+    for (int x = 0; x < width; ++x) {
+      Position position(x, y);
+      row.emplace_back(position, type);
+    }
+    grid.push_back(std::move(row));
   }
 }
 

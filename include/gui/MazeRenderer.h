@@ -9,11 +9,11 @@
 
 class MazeRenderer : public Drawable {
  public:
-  explicit MazeRenderer(Maze &maze);
+  explicit MazeRenderer(MazeReader &maze);
   void draw(sf::RenderWindow &window) override;
 
  private:
-  Maze &maze;
+  MazeReader &maze;
   sf::RectangleShape horizontalWallShape;
   sf::RectangleShape verticalWallShape;
   sf::RectangleShape startAriaShape;
