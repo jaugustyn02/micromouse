@@ -29,7 +29,6 @@ void Simulation::generateMaze() {
 }
 
 void Simulation::setMouseMode(MouseMode mode) {
-  std::cout << "[SIMULATION]: Set mouse mode to: " << toString(mode) << std::endl;
   mouse.setMode(mode);
   reset();
 }

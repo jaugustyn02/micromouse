@@ -1,5 +1,4 @@
 #include "../../include/core/Micromouse.h"
-#include "../../include/model/MoveStatus.h"
 
 Micromouse::Micromouse(MouseBrain &brain, MouseSensor sensor, Position position, Direction direction)
     : brain(brain), sensor(sensor), direction(direction), position(position) {
@@ -13,7 +12,6 @@ MoveStatus Micromouse::makeMove() {
   }
   direction = brain.getNextMove(position, sensorReadings);
   position.translate(direction);
-  std::cout << "[MICROMOUSE]: Move in direction: " << toString(direction) << std::endl;
   return MoveStatus::SUCCESS;
 }
 
@@ -26,13 +24,14 @@ int Micromouse::getY() const {
 }
 
 void Micromouse::setMode(MouseMode mode) {
+  std::cout << "[MICROMOUSE]: Mouse mode set to: " << toString(mode) << std::endl;
   brain.setMode(mode);
 }
 
 void Micromouse::reset() {
+  std::cout << "[MICROMOUSE]: Mouse reset" << std::endl;
   position = Position(GLOBAL::SIMULATION::START_POSITION_X,
                       GLOBAL::SIMULATION::START_POSITION_Y);
   direction = Direction::EAST;
   brain.reset();
-  std::cout << "[MICROMOUSE]: Reset" << std::endl;
 }
