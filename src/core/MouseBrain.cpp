@@ -1,5 +1,5 @@
 
-#include "../../include/logic/MouseBrain.h"
+#include "../../include/core/MouseBrain.h"
 
 MouseBrain::MouseBrain(MouseDecisionStrategy &explorationStrategy, MouseDecisionStrategy &pathfindingStrategy)
     : explorationStrategy(explorationStrategy),

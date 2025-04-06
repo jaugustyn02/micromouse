@@ -3,8 +3,8 @@
 
 #include <utility>
 
-#include "MouseDecisionStrategy.h"
-#include "../core/GlobalConfig.h"
+#include "../logic/MouseDecisionStrategy.h"
+#include "GlobalConfig.h"
 #include "../model/MouseMode.h"
 #include "MouseSensor.h"
 

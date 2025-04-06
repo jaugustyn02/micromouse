@@ -2,7 +2,7 @@
 #define MICROMOUSE_INCLUDE_CORE_SIMULATIONCONTROLLER_H_
 
 #include "../model/MouseMode.h"
-#include "../logic/MouseBrain.h"
+#include "MouseBrain.h"
 
 class SimulationController {
  public:

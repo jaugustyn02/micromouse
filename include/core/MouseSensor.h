@@ -1,7 +1,7 @@
 #ifndef MICROMOUSE_INCLUDE_GUI_SENSOR_H_
 #define MICROMOUSE_INCLUDE_GUI_SENSOR_H_
 
-#include "../core/Maze.h"
+#include "Maze.h"
 #include "../model/Position.h"
 #include "../model/Direction.h"
 #include "../model/SensorReadings.h"

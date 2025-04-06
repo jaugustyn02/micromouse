@@ -3,11 +3,11 @@
 
 #include <map>
 #include "Maze.h"
-#include "../logic/MouseSensor.h"
+#include "MouseSensor.h"
 #include "../model/Direction.h"
 #include "../model/MouseMode.h"
 #include "../model/Position.h"
-#include "../logic/MouseBrain.h"
+#include "MouseBrain.h"
 #include "../model/MoveStatus.h"
 
 class Micromouse {
