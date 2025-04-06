@@ -5,27 +5,9 @@
 #include "../../include/utils/Randomizer.h"
 #include "../../include/core/GlobalConfig.h"
 
-// Public
 Maze::Maze(int width, int height) : width(width), height(height) {
   initializeGrid();
 }
-
-// MazeReader interface
-int Maze::getWidth() const {
-  return width;
-}
-int Maze::getHeight() const {
-  return height;
-}
-
-bool Maze::isWall(Position position, Direction direction) const {
-  return grid[position.getY()][position.getX()].hasWall(direction);
-}
-
-CellType Maze::getCellType(Position position) const {
-  return grid[position.getY()][position.getX()].getType();
-}
-// MazeReader interface end
 
 void Maze::generate() {
   resetGrid();
@@ -57,7 +39,6 @@ void Maze::generate() {
   }
 }
 
-// Private
 void Maze::resetGrid() {
   for (int i = 0; i < width; ++i) {
     for (int j = 0; j < height; ++j) {

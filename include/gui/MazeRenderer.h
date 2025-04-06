@@ -16,8 +16,11 @@ class MazeRenderer : public Drawable {
   MazeReader &maze;
   sf::RectangleShape horizontalWallShape;
   sf::RectangleShape verticalWallShape;
-  sf::RectangleShape startAriaShape;
-  sf::RectangleShape goalAriaShape;
+  sf::RectangleShape cellShape;
+  void drawCellWalls(sf::RenderWindow &window, Position cellPosition);
+  void drawCellBackground(sf::RenderWindow &window, Position cellPosition, CellType cellType);
+  static float getTopLeftCornerPositionX(Position cellPosition);
+  static float getTopLeftCornerPositionY(Position cellPosition);
 };
 
 #endif //MICROMOUSE_INCLUDE_MODEL_MAZERENDERER_H_

@@ -19,50 +19,67 @@ MazeRenderer::MazeRenderer(MazeReader &maze) : maze(maze) {
   verticalWallShape.setFillColor(wallColor);
   verticalWallShape.setOrigin(-offsetX, -offsetY);
 
-  startAriaShape.setSize(sf::Vector2f(cellSize, cellSize));
-  startAriaShape.setFillColor(GLOBAL::RENDER::START_COLOR);
-  startAriaShape.setOrigin(-offsetX, -offsetY);
-
-  goalAriaShape.setSize(sf::Vector2f(cellSize, cellSize));
-  goalAriaShape.setFillColor(GLOBAL::RENDER::GOAL_COLOR);
-  goalAriaShape.setOrigin(-offsetX, -offsetY);
+  cellShape.setSize(sf::Vector2f(cellSize, cellSize));
+  cellShape.setFillColor(GLOBAL::RENDER::START_COLOR);
+  cellShape.setOrigin(-offsetX, -offsetY);
 }
 
 void MazeRenderer::draw(sf::RenderWindow &window) {
-  float wallThickness = GLOBAL::RENDER::WALL_THICKNESS;
-  float cellSize = GLOBAL::RENDER::CELL_SIZE;
-
   for (int y = 0; y < maze.getHeight(); ++y) {
     for (int x = 0; x < maze.getWidth(); ++x) {
-      Position position(x, y);
-      CellType cellType = maze.getCellType(position);
-      float posX = (float) x * (cellSize - wallThickness);
-      float posY = (float) y * (cellSize - wallThickness);
+      Position cellPosition(x, y);
+      CellType cellType = maze.getCellType(cellPosition);
 
-      if (cellType == CellType::START) {
-        startAriaShape.setPosition(posX, posY);
-        window.draw(startAriaShape);
-      } else if (cellType == CellType::GOAL) {
-        goalAriaShape.setPosition(posX, posY);
-        window.draw(goalAriaShape);
-      }
-
-      if (maze.isWall(position, Direction::NORTH)) {
-        horizontalWallShape.setPosition(posX, posY);
-        window.draw(horizontalWallShape);
-      }
-      if (maze.isWall(position, Direction::EAST)) {
-        verticalWallShape.setPosition(posX + cellSize - wallThickness, posY);
-        window.draw(verticalWallShape);
-      }
-      if (maze.isWall(position, Direction::SOUTH)) {
-        horizontalWallShape.setPosition(posX, posY + cellSize - wallThickness);
-        window.draw(horizontalWallShape);
-      }
-      if (maze.isWall(position, Direction::WEST)) {
-        verticalWallShape.setPosition(posX, posY);
-        window.draw(verticalWallShape);
-      }
+      drawCellBackground(window, cellPosition, cellType);
+      drawCellWalls(window, cellPosition);
     }
   }
+}
+
+void MazeRenderer::drawCellBackground(sf::RenderWindow &window, Position cellPosition, CellType cellType) {
+  auto topLeftCornerPosX = getTopLeftCornerPositionX(cellPosition);
+  auto topLeftCornerPosY = getTopLeftCornerPositionY(cellPosition);
+  cellShape.setPosition(topLeftCornerPosX, topLeftCornerPosY);
+
+  if (cellType == CellType::START) {
+    cellShape.setFillColor(GLOBAL::RENDER::START_COLOR);
+  } else if (cellType == CellType::GOAL) {
+    cellShape.setFillColor(GLOBAL::RENDER::GOAL_COLOR);
+  } else {
+    return;
+  }
+
+  window.draw(cellShape);
+}
+
+void MazeRenderer::drawCellWalls(sf::RenderWindow &window, Position cellPosition) {
+  auto wallThickness = GLOBAL::RENDER::WALL_THICKNESS;
+  auto cellSize = GLOBAL::RENDER::CELL_SIZE;
+
+  auto topLeftCornerPosX = getTopLeftCornerPositionX(cellPosition);
+  auto topLeftCornerPosY = getTopLeftCornerPositionY(cellPosition);
+
+  if (maze.isWall(cellPosition, Direction::NORTH)) {
+    horizontalWallShape.setPosition(topLeftCornerPosX, topLeftCornerPosY);
+    window.draw(horizontalWallShape);
+  }
+  if (maze.isWall(cellPosition, Direction::EAST)) {
+    verticalWallShape.setPosition(topLeftCornerPosX + cellSize - wallThickness, topLeftCornerPosY);
+    window.draw(verticalWallShape);
+  }
+  if (maze.isWall(cellPosition, Direction::SOUTH)) {
+    horizontalWallShape.setPosition(topLeftCornerPosX, topLeftCornerPosY + cellSize - wallThickness);
+    window.draw(horizontalWallShape);
+  }
+  if (maze.isWall(cellPosition, Direction::WEST)) {
+    verticalWallShape.setPosition(topLeftCornerPosX, topLeftCornerPosY);
+    window.draw(verticalWallShape);
+  }
+}
+
+float MazeRenderer::getTopLeftCornerPositionX(Position cellPosition) {
+  return (float) cellPosition.getX() * (GLOBAL::RENDER::CELL_SIZE - GLOBAL::RENDER::WALL_THICKNESS);
+}
+float MazeRenderer::getTopLeftCornerPositionY(Position cellPosition) {
+  return (float) cellPosition.getY() * (GLOBAL::RENDER::CELL_SIZE - GLOBAL::RENDER::WALL_THICKNESS);
 }

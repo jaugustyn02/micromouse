@@ -10,11 +10,14 @@ class Maze : public MazeReader {
   Maze(int width, int height);
   void generate();
 
-  bool isWall(Position position, Direction direction) const override;
-  CellType getCellType(Position position) const override;
-
-  int getWidth() const override;
-  int getHeight() const override;
+  bool isWall(Position position, Direction direction) const override {
+    return grid[position.getY()][position.getX()].hasWall(direction);
+  };
+  CellType getCellType(Position position) const override {
+    return grid[position.getY()][position.getX()].getType();
+  };
+  int getWidth() const override { return width; };
+  int getHeight() const override { return height; };
 
  private:
   int width;
