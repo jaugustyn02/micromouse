@@ -8,7 +8,7 @@ namespace GLOBAL {
 
 namespace SCREEN {
 inline constexpr const char *TITLE = "Micromouse Simulator";
-inline constexpr int WIDTH = 800;
+inline constexpr int WIDTH = 1000;
 inline constexpr int HEIGHT = 800;
 inline constexpr int FPS = 60;
 inline constexpr std::chrono::microseconds FRAME_DURATION = std::chrono::microseconds(1000000 / FPS);
@@ -23,17 +23,26 @@ inline constexpr int START_POSITION_X = 0;
 inline constexpr int START_POSITION_Y = 0;
 }
 
+namespace COLORS {
+inline const sf::Color BACKGROUND = sf::Color{237, 232, 245};
+inline const sf::Color SECONDARY = sf::Color{173, 187, 218};
+inline const sf::Color SECONDARY_DARK = sf::Color{134, 151, 196};
+inline const sf::Color PRIMARY = sf::Color{112, 145, 230};
+inline const sf::Color PRIMARY_DARK = sf::Color{61, 82, 160};
+inline const sf::Color DARK = sf::Color{24, 30, 41};
+}
+
 namespace RENDER {
 inline constexpr const float CELL_SIZE = 40.0f;
 inline constexpr const float WALL_THICKNESS = 10.0f;
 inline constexpr const float MOUSE_SIZE = 16.0f;
 inline constexpr const float OFFSET_X = CELL_SIZE;
 inline constexpr const float OFFSET_Y = 0.0f;
-inline const sf::Color BACKGROUND_COLOR = tgui::Color::White;
-inline const sf::Color WALL_COLOR = sf::Color::Black;
-inline const sf::Color MOUSE_COLOR = sf::Color{0, 76, 255};
-inline const sf::Color GOAL_COLOR = sf::Color{163, 232, 160};
-inline const sf::Color START_COLOR = sf::Color::White;
+inline const sf::Color BACKGROUND_COLOR = COLORS::BACKGROUND;
+inline const sf::Color WALL_COLOR = COLORS::DARK;
+inline const sf::Color MOUSE_COLOR = COLORS::PRIMARY_DARK;
+inline const sf::Color GOAL_COLOR = COLORS::PRIMARY;
+inline const sf::Color START_COLOR = COLORS::BACKGROUND;
 }
 
 namespace RANDOM {

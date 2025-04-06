@@ -13,7 +13,7 @@ MoveStatus Micromouse::makeMove() {
   }
   direction = brain.getNextMove(position, sensorReadings);
   position.translate(direction);
-  std::cout << "[MICROMOUSE]: Move in direction: " << to_string(direction) << std::endl;
+  std::cout << "[MICROMOUSE]: Move in direction: " << toString(direction) << std::endl;
   return MoveStatus::SUCCESS;
 }
 

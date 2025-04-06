@@ -10,7 +10,7 @@ enum Direction {
   WEST
 };
 
-inline std::string to_string(Direction direction) {
+inline std::string toString(Direction direction) {
   switch (direction) {
     case NORTH: return "NORTH";
     case EAST: return "EAST";

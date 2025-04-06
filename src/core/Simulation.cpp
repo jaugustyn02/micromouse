@@ -6,10 +6,12 @@ void Simulation::start() {
   std::cout << "[SIMULATION]: Simulation started" << std::endl;
   isRunning = true;
 }
+
 void Simulation::stop() {
   std::cout << "[SIMULATION]: Simulation stopped" << std::endl;
   isRunning = false;
 }
+
 void Simulation::reset() {
   std::cout << "[SIMULATION]: Simulation reset" << std::endl;
   stop();
@@ -27,7 +29,9 @@ void Simulation::generateMaze() {
 }
 
 void Simulation::setMouseMode(MouseMode mode) {
-
+  std::cout << "[SIMULATION]: Set mouse mode to: " << toString(mode) << std::endl;
+  mouse.setMode(mode);
+  reset();
 }
 
 void Simulation::setMouseBrain(MouseBrain &brain) {

@@ -6,4 +6,12 @@ enum MouseMode {
   FASTEST_PATH
 };
 
+inline const char *toString(MouseMode mode) {
+  switch (mode) {
+    case EXPLORATION: return "Exploration";
+    case FASTEST_PATH: return "Fastest Path";
+    default: return "Unknown";
+  }
+}
+
 #endif //MICROMOUSE_INCLUDE_MODEL_MOUSEMODE_H_
