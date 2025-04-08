@@ -12,7 +12,7 @@
 
 class Micromouse {
  public:
-  Micromouse(MouseBrain &brain, MouseSensor sensor, Position position, Direction direction);
+  Micromouse(MouseBrain &brain, MouseSensor sensor);
   MoveStatus makeMove();
   void setMode(MouseMode mode);
   void reset();
@@ -21,9 +21,10 @@ class Micromouse {
 
  private:
   MouseBrain brain;
-  Position position;
   MouseSensor sensor;
-  Direction direction;
+  Position position{GLOBAL::SIMULATION::START_POSITION_X,
+                    GLOBAL::SIMULATION::START_POSITION_Y};
+  void onGoalReached();
 };
 
 #endif //MICROMOUSE_INCLUDE_GUI_MICROMOUSE_H_

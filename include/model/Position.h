@@ -2,6 +2,7 @@
 #define MICROMOUSE_INCLUDE_MODEL_POSITION_H_
 
 #include <iostream>
+#include "Direction.h"
 
 class Position {
  public:
@@ -29,6 +30,10 @@ class Position {
       case WEST :x--;
         break;
     }
+  }
+
+  std::string toString() const {
+    return "(" + std::to_string(x) + ", " + std::to_string(y) + ")";
   }
 
  private:

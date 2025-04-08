@@ -1,16 +1,20 @@
 #include "../../include/core/Micromouse.h"
 
-Micromouse::Micromouse(MouseBrain &brain, MouseSensor sensor, Position position, Direction direction)
-    : brain(brain), sensor(sensor), direction(direction), position(position) {
+Micromouse::Micromouse(MouseBrain &brain, MouseSensor sensor)
+    : brain(brain), sensor(sensor) {
+  std::cout << "[MICROMOUSE]: Micromouse initialized at position: " << position.toString() << std::endl;
+  std::cout << "[MICROMOUSE]: Initial mode: " << toString(brain.getMode()) << std::endl;
 }
 
 MoveStatus Micromouse::makeMove() {
   auto sensorReadings = sensor.getSensorReadings(position);
+
   if (sensorReadings.getCellType() == CellType::GOAL) {
-    std::cout << "[MICROMOUSE]: Goal reached!" << std::endl;
+    onGoalReached();
     return MoveStatus::GOAL_REACHED;
   }
-  direction = brain.getNextMove(position, sensorReadings);
+
+  auto direction = brain.getNextMove(position, sensorReadings);
   position.translate(direction);
   return MoveStatus::SUCCESS;
 }
@@ -32,6 +36,9 @@ void Micromouse::reset() {
   std::cout << "[MICROMOUSE]: Mouse reset" << std::endl;
   position = Position(GLOBAL::SIMULATION::START_POSITION_X,
                       GLOBAL::SIMULATION::START_POSITION_Y);
-  direction = Direction::EAST;
   brain.reset();
+}
+
+void Micromouse::onGoalReached() {
+  std::cout << "[MICROMOUSE]: Goal reached!" << std::endl;
 }

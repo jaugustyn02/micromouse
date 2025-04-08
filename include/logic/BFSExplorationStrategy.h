@@ -2,12 +2,22 @@
 #define MICROMOUSE_INCLUDE_LOGIC_BFSEXPLORATIONSTRATEGY_H_
 
 #include <vector>
+#include <set>
+#include <queue>
 #include "../model/Position.h"
 #include "../model/Direction.h"
 #include "MouseDecisionStrategy.h"
 
-//class BFSExplorationStrategy : public MouseDecisionStrategy {
-//  Direction decideMove(Position position, const std::vector<std::vector<Cell>> &map) override;
-//};
+class BFSExplorationStrategy : public MouseDecisionStrategy {
+ public:
+  BFSExplorationStrategy()
+      : mazeMap(), visited(), queue() {}
+  Direction decideMove(Position position, SensorReadings readings) override;
+  void reset() override {};
+ private:
+  std::map<Position, SensorReadings> mazeMap;
+  std::set<Position> visited;
+  std::queue<Position> queue;
+};
 
 #endif //MICROMOUSE_INCLUDE_LOGIC_BFSEXPLORATIONSTRATEGY_H_

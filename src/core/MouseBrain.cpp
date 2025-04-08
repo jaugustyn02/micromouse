@@ -1,11 +1,15 @@
-
 #include "../../include/core/MouseBrain.h"
 
-MouseBrain::MouseBrain(MouseDecisionStrategy &explorationStrategy, MouseDecisionStrategy &pathfindingStrategy)
+MouseBrain::MouseBrain(MouseDecisionStrategy &explorationStrategy,
+                       MouseDecisionStrategy &pathfindingStrategy)
     : explorationStrategy(explorationStrategy),
       pathfindingStrategy(pathfindingStrategy),
-      currentStrategy(&explorationStrategy),
-      mode(EXPLORATION) {
+      currentStrategy(&explorationStrategy) {
+  auto goalReadings = SensorReadings(CellType::GOAL);
+  mazeMap.insert({goalTopLeftCorner, goalReadings});
+  mazeMap.insert({{goalTopLeftCorner.getX(), goalTopLeftCorner.getY() + 1}, goalReadings});
+  mazeMap.insert({{goalTopLeftCorner.getX() + 1, goalTopLeftCorner.getY()}, goalReadings});
+  mazeMap.insert({{goalTopLeftCorner.getX() + 1, goalTopLeftCorner.getY() + 1}, goalReadings});
 }
 
 void MouseBrain::setMode(MouseMode _mode) {
@@ -15,6 +19,7 @@ void MouseBrain::setMode(MouseMode _mode) {
 }
 
 Direction MouseBrain::getNextMove(Position position, SensorReadings readings) {
+  mazeMap.insert({position, readings});
   return currentStrategy->decideMove(position, std::move(readings));
 }
 

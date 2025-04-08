@@ -34,7 +34,7 @@ inline const sf::Color DARK = sf::Color{24, 30, 41};
 
 namespace RENDER {
 inline constexpr const float CELL_SIZE = 40.0f;
-inline constexpr const float WALL_THICKNESS = 10.0f;
+inline constexpr const float WALL_THICKNESS = 8.0f; // 10
 inline constexpr const float MOUSE_SIZE = 16.0f;
 inline constexpr const float OFFSET_X = CELL_SIZE;
 inline constexpr const float OFFSET_Y = 0.0f;
