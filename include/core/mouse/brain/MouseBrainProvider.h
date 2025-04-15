@@ -6,11 +6,7 @@
 #include "strategy/fastest_path/DijkstraFastestPathStrategy.h"
 #include "strategy/exploration/BFSExplorationStrategy.h"
 #include "strategy/fastest_path/RandomFastestPathStrategy.h"
-
-enum MouseBrainType {
-  RANDOM,
-  ADVANCED
-};
+#include "../../../model/MouseBrainType.h"
 
 class MouseBrainProvider {
  public:

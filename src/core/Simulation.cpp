@@ -33,7 +33,7 @@ void Simulation::generateMaze() {
 
 void Simulation::setMouseMode(MouseMode mode) {
   mouse.setMode(mode);
-  reset();
+  stop();
 }
 
 void Simulation::nextStep() {
@@ -52,7 +52,7 @@ void Simulation::moveMouse() {
 }
 
 void Simulation::setMouseBrain(MouseBrainType brainType) {
-  std::cout << "[SIMULATION]: Mouse brain set to " << brainType << std::endl;
+  std::cout << "[SIMULATION]: Setting mouse brain to " << toString(brainType) << std::endl;
   try {
     auto brain = std::make_unique<MouseBrain>(MouseBrainProvider::getMouseBrainInstance(brainType));
     mouse.setBrain(std::move(brain));
