@@ -1,9 +1,9 @@
 
 
 #include <stack>
-#include "../../include/core/Maze.h"
-#include "../../include/utils/Randomizer.h"
-#include "../../include/core/GlobalConfig.h"
+#include "../../../include/core/maze/Maze.h"
+#include "../../../include/utils/Randomizer.h"
+#include "../../../include/core/GlobalConfig.h"
 
 Maze::Maze(int width, int height) : width(width), height(height) {
   initializeGrid();

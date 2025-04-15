@@ -6,7 +6,7 @@ enum MouseMode {
   FASTEST_PATH
 };
 
-inline const char *toString(MouseMode mode) {
+inline const std::string toString(MouseMode mode) {
   switch (mode) {
     case EXPLORATION: return "Exploration";
     case FASTEST_PATH: return "Fastest Path";

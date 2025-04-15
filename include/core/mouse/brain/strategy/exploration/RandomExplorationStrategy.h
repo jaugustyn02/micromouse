@@ -1,8 +1,8 @@
 #ifndef MICROMOUSE_INCLUDE_MODEL_RANDOMEXPLORATIONSTRATEGY_H_
 #define MICROMOUSE_INCLUDE_MODEL_RANDOMEXPLORATIONSTRATEGY_H_
 
-#include "MouseDecisionStrategy.h"
-#include "../utils/Randomizer.h"
+#include "../MouseDecisionStrategy.h"
+#include "../../../../../utils/Randomizer.h"
 
 class RandomExplorationStrategy : public MouseDecisionStrategy {
  public:

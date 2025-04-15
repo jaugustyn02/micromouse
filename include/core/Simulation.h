@@ -3,24 +3,26 @@
 
 #include <utility>
 #include <vector>
-#include "Maze.h"
-#include "Micromouse.h"
+#include "maze/Maze.h"
+#include "mouse/Micromouse.h"
 #include "SimulationController.h"
 
 class Simulation : public SimulationController {
  public:
-  Simulation(Maze &maze, Micromouse &mouse);
+  Simulation();
   void start() override;
   void stop() override;
   void reset() override;
   void nextStep() override;
   void setMouseMode(MouseMode mode) override;
-  void setMouseBrain(MouseBrain &brain) override;
+  void setMouseBrain(MouseBrainType brainType) override;
   void setSpeed(int speed) override;
   void generateMaze() override;
+  Micromouse &getMouse() override { return mouse; }
+  Maze &getMaze() override { return maze; }
  private:
-  Maze &maze;
-  Micromouse &mouse;
+  Maze maze{GLOBAL::SIMULATION::MAZE_WIDTH, GLOBAL::SIMULATION::MAZE_HEIGHT};
+  Micromouse mouse;
   bool isRunning{false};
   void moveMouse();
 };

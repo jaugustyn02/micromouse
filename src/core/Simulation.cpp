@@ -1,6 +1,9 @@
 #include "../../include/core/Simulation.h"
 
-Simulation::Simulation(Maze &maze, Micromouse &mouse) : maze(maze), mouse(mouse) {}
+Simulation::Simulation() :
+    mouse(Micromouse(MouseSensor(maze))) {
+  maze.generate();
+}
 
 void Simulation::start() {
   std::cout << "[SIMULATION]: Simulation started" << std::endl;
@@ -33,9 +36,6 @@ void Simulation::setMouseMode(MouseMode mode) {
   reset();
 }
 
-void Simulation::setMouseBrain(MouseBrain &brain) {
-}
-
 void Simulation::nextStep() {
   if (isRunning) {
     moveMouse();
@@ -48,6 +48,17 @@ void Simulation::moveMouse() {
       || moveStatus == MoveStatus::GOAL_REACHED
       || moveStatus == MoveStatus::START_REACHED) {
     stop();
+  }
+}
+
+void Simulation::setMouseBrain(MouseBrainType brainType) {
+  std::cout << "[SIMULATION]: Mouse brain set to " << brainType << std::endl;
+  try {
+    auto brain = std::make_unique<MouseBrain>(MouseBrainProvider::getMouseBrainInstance(brainType));
+    mouse.setBrain(std::move(brain));
+  } catch (const std::exception &e) {
+    std::cerr << "[SIMULATION]: Error setting mouse brain: " << e.what() << std::endl;
+    return;
   }
 }
 

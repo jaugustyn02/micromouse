@@ -24,6 +24,7 @@ class ControlPanelRenderer {
                                 const std::function<void()> &onPress1,
                                 const std::function<void()> &onPress2);
   void addChangeMouseModeButtons();
+  void addChangeMouseBrainButtons();
   void createBaseButton();
   void createBaseToggleButton();
 };

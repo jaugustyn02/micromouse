@@ -2,10 +2,10 @@
 #define MICROMOUSE_INCLUDE_MODEL_MOUSEDECISIONSTRATEGY_H_
 
 #include <vector>
-#include "../model/Direction.h"
-#include "../model/Position.h"
-#include "../model/Cell.h"
-#include "../model/SensorReadings.h"
+#include "../../../../model/Direction.h"
+#include "../../../../model/Position.h"
+#include "../../../../model/Cell.h"
+#include "../../../../model/SensorReadings.h"
 
 class MouseDecisionStrategy {
  public:

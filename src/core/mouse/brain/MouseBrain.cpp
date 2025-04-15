@@ -1,10 +1,10 @@
-#include "../../include/core/MouseBrain.h"
+#include "../../../../include/core/mouse/brain/MouseBrain.h"
 
-MouseBrain::MouseBrain(MouseDecisionStrategy &explorationStrategy,
-                       MouseDecisionStrategy &pathfindingStrategy)
-    : explorationStrategy(explorationStrategy),
-      pathfindingStrategy(pathfindingStrategy),
-      currentStrategy(&explorationStrategy) {
+MouseBrain::MouseBrain(std::unique_ptr<MouseDecisionStrategy> explorationStrategy,
+                       std::unique_ptr<MouseDecisionStrategy> pathfindingStrategy) :
+    explorationStrategy(std::move(explorationStrategy)),
+    pathfindingStrategy(std::move(pathfindingStrategy)),
+    currentStrategy(this->explorationStrategy.get()) {
   auto goalReadings = SensorReadings(CellType::GOAL);
   mazeMap.insert({goalTopLeftCorner, goalReadings});
   mazeMap.insert({{goalTopLeftCorner.getX(), goalTopLeftCorner.getY() + 1}, goalReadings});
@@ -14,7 +14,7 @@ MouseBrain::MouseBrain(MouseDecisionStrategy &explorationStrategy,
 
 void MouseBrain::setMode(MouseMode _mode) {
   this->mode = _mode;
-  currentStrategy = (mode == EXPLORATION) ? &explorationStrategy : &pathfindingStrategy;
+  currentStrategy = (_mode == EXPLORATION) ? explorationStrategy.get() : pathfindingStrategy.get();
   currentStrategy->reset();
 }
 

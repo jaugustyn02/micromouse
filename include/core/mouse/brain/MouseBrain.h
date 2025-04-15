@@ -1,24 +1,23 @@
 #ifndef MICROMOUSE_INCLUDE_MODEL_MOUSEBRAIN_H_
 #define MICROMOUSE_INCLUDE_MODEL_MOUSEBRAIN_H_
 
+#include "strategy/MouseDecisionStrategy.h"
+#include "../../GlobalConfig.h"
+#include "../../../model/MouseMode.h"
+#include "../MouseSensor.h"
 #include <utility>
-
-#include "../logic/MouseDecisionStrategy.h"
-#include "GlobalConfig.h"
-#include "../model/MouseMode.h"
-#include "MouseSensor.h"
 
 class MouseBrain {
  public:
-  MouseBrain(MouseDecisionStrategy &explorationStrategy,
-             MouseDecisionStrategy &pathfindingStrategy);
+  MouseBrain(std::unique_ptr<MouseDecisionStrategy> explorationStrategy,
+             std::unique_ptr<MouseDecisionStrategy> pathfindingStrategy);
   void setMode(MouseMode _mode);
   MouseMode getMode() const { return mode; }
   Direction getNextMove(Position position, SensorReadings readings);
   void reset();
  private:
-  MouseDecisionStrategy &explorationStrategy;
-  MouseDecisionStrategy &pathfindingStrategy;
+  std::unique_ptr<MouseDecisionStrategy> explorationStrategy;
+  std::unique_ptr<MouseDecisionStrategy> pathfindingStrategy;
   MouseDecisionStrategy *currentStrategy;
   MouseMode mode{EXPLORATION};
   std::map<Position, SensorReadings> mazeMap;

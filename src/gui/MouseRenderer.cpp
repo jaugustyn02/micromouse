@@ -1,4 +1,4 @@
-#include "../../include/core/Micromouse.h"
+#include "../../include/core/mouse/Micromouse.h"
 #include "SFML/Graphics/RenderWindow.hpp"
 #include "../../include/gui/MouseRenderer.h"
 #include "../../include/core/GlobalConfig.h"

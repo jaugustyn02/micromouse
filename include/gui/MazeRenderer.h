@@ -1,7 +1,7 @@
 #ifndef MICROMOUSE_INCLUDE_MODEL_MAZERENDERER_H_
 #define MICROMOUSE_INCLUDE_MODEL_MAZERENDERER_H_
 
-#include "../core/Maze.h"
+#include "../core/maze/Maze.h"
 #include "SFML/Graphics/RenderWindow.hpp"
 #include "SFML/Graphics/RectangleShape.hpp"
 #include "Drawable.h"

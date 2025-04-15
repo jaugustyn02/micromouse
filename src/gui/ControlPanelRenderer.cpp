@@ -3,6 +3,7 @@
 #include "TGUI/Backend/SFML-Graphics.hpp"
 #include "TGUI/Widgets/RadioButton.hpp"
 #include "TGUI/Widgets/ToggleButton.hpp"
+#include "../../include/core/mouse/brain/MouseBrainProvider.h"
 
 ControlPanelRenderer::ControlPanelRenderer(SimulationController &simulationController, tgui::Gui &gui) :
     simulationController(simulationController),
@@ -12,7 +13,7 @@ ControlPanelRenderer::ControlPanelRenderer(SimulationController &simulationContr
 }
 
 void ControlPanelRenderer::createBaseButton() {
-  baseButton->setSize(150, 50);
+  baseButton->setSize(140, 40);
   auto renderer = baseButton->getRenderer();
   renderer->setBackgroundColor(GLOBAL::COLORS::PRIMARY);
   renderer->setBackgroundColorHover(GLOBAL::COLORS::PRIMARY_DARK);
@@ -20,14 +21,14 @@ void ControlPanelRenderer::createBaseButton() {
   renderer->setTextColor(sf::Color::White);
   renderer->setTextColorHover(sf::Color::White);
   renderer->setTextColorDown(sf::Color::White);
-  renderer->setBorderColor(GLOBAL::COLORS::PRIMARY);
+  renderer->setBorderColor(GLOBAL::COLORS::DARK);
   renderer->setBorders(0);
   renderer->setRoundedBorderRadius(100);
   renderer->setTextStyle(tgui::TextStyle::Bold);
 }
 
 void ControlPanelRenderer::createBaseToggleButton() {
-  baseToggleButton->setSize(150, 50);
+  baseToggleButton->setSize(140, 40);
   auto renderer = baseToggleButton->getRenderer();
   renderer->setBackgroundColor(GLOBAL::COLORS::PRIMARY);
   renderer->setBackgroundColorHover(GLOBAL::COLORS::PRIMARY_DARK);
@@ -57,19 +58,26 @@ void ControlPanelRenderer::draw() {
     simulationController.generateMaze();
   };
 
-  addButton(Position(560, 10), "Start", onStartButtonPress);
-  addButton(Position(560, 70), "Stop", onStopButtonPress);
-  addButton(Position(560, 130), "Reset", onResetButtonPress);
-  addButton(Position(560, 190), "Generate Maze", onGenerateMazeButtonPress);
+  addButton(Position(530, 10), "Start", onStartButtonPress);
+  addButton(Position(530, 60), "Stop", onStopButtonPress);
+  addButton(Position(530, 110), "Reset", onResetButtonPress);
+  addButton(Position(530, 160), "Generate Maze", onGenerateMazeButtonPress);
   // render speed slider
   // render algorithm dropdown
   // render maze dropdown
-  // render mouse mode (exploration/fastest path) toggle button
   addChangeMouseModeButtons();
-  // render mouse position
-  // render mouse direction
-  // render mouse speed
-  // render mouse distance
+  addChangeMouseBrainButtons();
+}
+
+void ControlPanelRenderer::addChangeMouseBrainButtons() {
+  std::function < void() > onRandomBrainButtonPress = [this]() {
+    simulationController.setMouseBrain(MouseBrainType::RANDOM);
+  };
+  std::function < void() > onAdvancedBrainButtonPress = [this]() {
+    simulationController.setMouseBrain(MouseBrainType::ADVANCED);
+  };
+  addTwoStateToggleButtons(Position(530, 250), "Random", "Advanced",
+                           onRandomBrainButtonPress, onAdvancedBrainButtonPress);
 }
 
 void ControlPanelRenderer::addChangeMouseModeButtons() {
@@ -79,7 +87,7 @@ void ControlPanelRenderer::addChangeMouseModeButtons() {
   std::function < void() > onFastestPathModeButtonPress = [this]() {
     simulationController.setMouseMode(MouseMode::FASTEST_PATH);
   };
-  addTwoStateToggleButtons(Position(560, 250), "Exploration", "Fastest Path",
+  addTwoStateToggleButtons(Position(530, 210), "Exploration", "Fastest Path",
                            onExplorationModeButtonPress, onFastestPathModeButtonPress);
 }
 
@@ -103,7 +111,7 @@ void ControlPanelRenderer::addTwoStateToggleButtons(Position position,
   button1->setText(label1);
   button2->setText(label2);
   button1->setPosition(position.getX(), position.getY());
-  button2->setPosition(position.getX() + 160, position.getY());
+  button2->setPosition(position.getX() + 145, position.getY());
 
   button1->setDown(true);
   button2->setDown(false);

@@ -1,4 +1,4 @@
-#include "../../include/core/Maze.h"
+#include "../../include/core/maze/Maze.h"
 #include "SFML/Graphics/RenderWindow.hpp"
 #include "../../include/gui/MazeRenderer.h"
 #include "SFML/Graphics/RectangleShape.hpp"

@@ -12,6 +12,7 @@ class SensorReadings {
   void setWall(Direction direction, bool isWall);
   bool isWall(Direction direction) const;
   CellType getCellType() const;
+  bool isCellAGoal() const;
 
  private:
   std::map<Direction, bool> readings{{NORTH, false}, {EAST, false}, {SOUTH, false}, {WEST, false}};

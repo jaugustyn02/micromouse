@@ -1,8 +1,7 @@
-#include "../../include/logic/RandomFastestPathStrategy.h"
-#include "../../include/utils/Randomizer.h"
-#include "../../include/core/GlobalConfig.h"
+#include "../../../../../../include/core/mouse/brain/strategy/exploration/RandomExplorationStrategy.h"
+#include "../../../../../../include/core/GlobalConfig.h"
 
-Direction RandomFastestPathStrategy::decideMove(Position _position, SensorReadings readings) {
+Direction RandomExplorationStrategy::decideMove(Position _position, SensorReadings readings) {
   std::vector<Direction> possibleMoves;
   auto backwardMove = opposite(lastMove);
   for (auto direction : GLOBAL::CONSTANTS::DIRECTIONS) {

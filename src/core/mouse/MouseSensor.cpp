@@ -1,4 +1,4 @@
-#include "../../include/core/MouseSensor.h"
+#include "../../../include/core/mouse/MouseSensor.h"
 
 SensorReadings MouseSensor::getSensorReadings(const Position &position) const {
   SensorReadings sensorReading(maze.getCellType(position));

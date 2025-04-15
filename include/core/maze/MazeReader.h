@@ -1,7 +1,7 @@
 #ifndef MICROMOUSE_INCLUDE_CORE_MAZEREADER_H_
 #define MICROMOUSE_INCLUDE_CORE_MAZEREADER_H_
 
-#include "../model/Cell.h"
+#include "../../model/Cell.h"
 
 class MazeReader {
  public:

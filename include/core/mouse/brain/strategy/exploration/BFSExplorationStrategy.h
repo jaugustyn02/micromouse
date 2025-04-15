@@ -4,9 +4,9 @@
 #include <vector>
 #include <set>
 #include <queue>
-#include "../model/Position.h"
-#include "../model/Direction.h"
-#include "MouseDecisionStrategy.h"
+#include "../../../../../model/Position.h"
+#include "../../../../../model/Direction.h"
+#include "../MouseDecisionStrategy.h"
 
 class BFSExplorationStrategy : public MouseDecisionStrategy {
  public:
