@@ -4,7 +4,6 @@
 enum MoveStatus {
   SUCCESS,
   GOAL_REACHED,
-  START_REACHED,
   FAILURE,
 };
 

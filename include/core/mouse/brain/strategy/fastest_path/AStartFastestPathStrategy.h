@@ -3,11 +3,9 @@
 
 #include "../MouseDecisionStrategy.h"
 
-class DijkstraFastestPathStrategy : public MouseDecisionStrategy {
+class AStartFastestPathStrategy : public MouseDecisionStrategy {
  public:
-  Direction decideMove(Position position, SensorReadings readings) override {
-    return Direction::NORTH;
-  };
+  Direction decideMove(Position position, SensorReadings readings) override;
   void reset() override {};
 };
 

@@ -3,8 +3,8 @@
 
 #include "MouseBrain.h"
 #include "strategy/exploration/RandomExplorationStrategy.h"
-#include "strategy/fastest_path/DijkstraFastestPathStrategy.h"
-#include "strategy/exploration/BFSExplorationStrategy.h"
+#include "strategy/fastest_path/AStartFastestPathStrategy.h"
+#include "strategy/exploration/FloodingExplorationStrategy.h"
 #include "strategy/fastest_path/RandomFastestPathStrategy.h"
 #include "../../../model/MouseBrainType.h"
 
@@ -26,8 +26,8 @@ class MouseBrainProvider {
     return {std::move(randomExplorationStrategy), std::move(randomFastestPathStrategy)};
   }
   static MouseBrain getAdvancedBrainInstance() {
-    auto bfsExplorationStrategy = std::make_unique<BFSExplorationStrategy>();
-    auto dijkstraFastestPathStrategy = std::make_unique<DijkstraFastestPathStrategy>();
+    auto bfsExplorationStrategy = std::make_unique<FloodingExplorationStrategy>();
+    auto dijkstraFastestPathStrategy = std::make_unique<AStartFastestPathStrategy>();
     return {std::move(bfsExplorationStrategy), std::move(dijkstraFastestPathStrategy)};
   }
 };

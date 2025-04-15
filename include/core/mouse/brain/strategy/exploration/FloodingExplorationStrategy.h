@@ -8,9 +8,9 @@
 #include "../../../../../model/Direction.h"
 #include "../MouseDecisionStrategy.h"
 
-class BFSExplorationStrategy : public MouseDecisionStrategy {
+class FloodingExplorationStrategy : public MouseDecisionStrategy {
  public:
-  BFSExplorationStrategy()
+  FloodingExplorationStrategy()
       : mazeMap(), visited(), queue() {}
   Direction decideMove(Position position, SensorReadings readings) override;
   void reset() override {};

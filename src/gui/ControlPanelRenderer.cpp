@@ -65,8 +65,8 @@ void ControlPanelRenderer::draw() {
   // render speed slider
   // render algorithm dropdown
   // render maze dropdown
-  addChangeMouseModeButtons();
   addChangeMouseBrainButtons();
+  addChangeMouseModeButtons();
 }
 
 void ControlPanelRenderer::addChangeMouseBrainButtons() {
@@ -76,7 +76,7 @@ void ControlPanelRenderer::addChangeMouseBrainButtons() {
   std::function < void() > onAdvancedBrainButtonPress = [this]() {
     simulationController.setMouseBrain(MouseBrainType::ADVANCED);
   };
-  addTwoStateToggleButtons(Position(530, 250), "Random", "Advanced",
+  addTwoStateToggleButtons(Position(530, 210), "Random", "Advanced",
                            onRandomBrainButtonPress, onAdvancedBrainButtonPress);
 }
 
@@ -87,7 +87,7 @@ void ControlPanelRenderer::addChangeMouseModeButtons() {
   std::function < void() > onFastestPathModeButtonPress = [this]() {
     simulationController.setMouseMode(MouseMode::FASTEST_PATH);
   };
-  addTwoStateToggleButtons(Position(530, 210), "Exploration", "Fastest Path",
+  addTwoStateToggleButtons(Position(530, 260), "Exploration", "Fastest Path",
                            onExplorationModeButtonPress, onFastestPathModeButtonPress);
 }
 

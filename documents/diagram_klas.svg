@@ -548,13 +548,13 @@
             </text>
         </g><!--class BFSExplorationStrategy-->
         <g id="elem_BFSExplorationStrategy">
-            <rect codeLine="173" fill="#F1F1F1" height="65.6094" id="BFSExplorationStrategy" rx="2.5" ry="2.5"
+            <rect codeLine="173" fill="#F1F1F1" height="65.6094" id="FloodingExplorationStrategy" rx="2.5" ry="2.5"
                   style="stroke:#181818;stroke-width:0.5;" width="422" x="756" y="1562"/>
             <ellipse cx="887.75" cy="1578" fill="#ADD1B2" rx="11" ry="11" style="stroke:#181818;stroke-width:1.0;"/>
             <path d="M889.75,1574.5 Q889.9531,1574 890.1875,1573.75 Q890.4219,1573.5 890.6875,1573.5 Q891.1563,1573.5 891.4531,1573.7813 Q891.75,1574.0625 891.75,1574.7188 L891.75,1576.2813 Q891.75,1576.9375 891.4688,1577.2188 Q891.1875,1577.5 890.75,1577.5 Q890.3594,1577.5 890.1094,1577.3281 Q889.8594,1577.1563 889.75,1576.7031 Q889.7031,1576.3906 889.5313,1576.2188 Q889.2188,1575.8906 888.6563,1575.7031 Q888.0938,1575.5 887.5313,1575.5 Q886.8281,1575.5 886.2344,1575.7813 Q885.6563,1576.0625 885.2031,1576.6875 Q884.75,1577.3125 884.75,1578.1719 L884.75,1579.0938 Q884.75,1580.125 885.5938,1580.8125 Q886.4375,1581.5 887.9375,1581.5 Q888.8281,1581.5 889.4531,1581.2969 Q889.8125,1581.1875 890.2188,1580.8281 Q890.4844,1580.625 890.625,1580.5625 Q890.7656,1580.5 890.9375,1580.5 Q891.2656,1580.5 891.5,1580.7656 Q891.75,1581.0156 891.75,1581.375 Q891.75,1581.7188 891.4063,1582.125 Q890.9063,1582.7188 890.1094,1583.0469 Q889.0625,1583.5 887.7813,1583.5 Q886.2813,1583.5 885.0781,1582.9063 Q884.1094,1582.4375 883.4219,1581.4219 Q882.75,1580.4063 882.75,1579.2031 L882.75,1578.1094 Q882.75,1576.8594 883.3438,1575.7656 Q883.9531,1574.6719 885,1574.0938 Q886.0625,1573.5 887.25,1573.5 Q887.9688,1573.5 888.5938,1573.75 Q889.2188,1574 889.75,1574.5 Z "
                   fill="#000000"/>
             <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="150"
-                  x="908.25" y="1583.7285">BFSExplorationStrategy
+                  x="908.25" y="1583.7285">FloodingExplorationStrategy
             </text>
             <line style="stroke:#181818;stroke-width:0.5;" x1="757" x2="1177" y1="1594" y2="1594"/>
             <line style="stroke:#181818;stroke-width:0.5;" x1="757" x2="1177" y1="1602" y2="1602"/>
@@ -756,7 +756,7 @@
         </g><!--reverse link ExplorationStrategy to BFSExplorationStrategy-->
         <g id="link_ExplorationStrategy_BFSExplorationStrategy">
             <path codeLine="164" d="M967,1398.83 C967,1448.2 967,1520.62 967,1561.95 " fill="none"
-                  id="ExplorationStrategy-backto-BFSExplorationStrategy" style="stroke:#181818;stroke-width:1.0;"/>
+                  id="ExplorationStrategy-backto-FloodingExplorationStrategy" style="stroke:#181818;stroke-width:1.0;"/>
             <polygon fill="none" points="960,1398.6,967,1378.6,974,1398.6,960,1398.6"
                      style="stroke:#181818;stroke-width:1.0;"/>
         </g><!--reverse link PathfindingStrategy to RandomFastestPathStrategy-->

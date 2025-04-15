@@ -13,7 +13,7 @@
 
 class Micromouse {
  public:
-  Micromouse(MouseSensor sensor);
+  Micromouse(MouseSensor sensor, Position startPosition);
   MoveStatus makeMove();
   void setMode(MouseMode mode);
   void setBrain(std::unique_ptr<MouseBrain> brain);
@@ -24,8 +24,8 @@ class Micromouse {
  private:
   MouseSensor sensor;
   std::unique_ptr<MouseBrain> brain;
-  Position position{GLOBAL::SIMULATION::START_POSITION_X,
-                    GLOBAL::SIMULATION::START_POSITION_Y};
+  Position startPosition;
+  Position position;
   void onGoalReached();
 };
 
