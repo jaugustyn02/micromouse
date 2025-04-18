@@ -58,10 +58,10 @@ void ControlPanelRenderer::draw() {
     simulationController.generateMaze();
   };
 
-  addButton(Position(530, 10), "Start", onStartButtonPress);
-  addButton(Position(530, 60), "Stop", onStopButtonPress);
-  addButton(Position(530, 110), "Reset", onResetButtonPress);
-  addButton(Position(530, 160), "Generate Maze", onGenerateMazeButtonPress);
+  addButton(Position(600, 10), "Start", onStartButtonPress);
+  addButton(Position(600, 60), "Stop", onStopButtonPress);
+  addButton(Position(600, 110), "Reset", onResetButtonPress);
+  addButton(Position(600, 160), "Generate Maze", onGenerateMazeButtonPress);
   // render speed slider
   // render algorithm dropdown
   // render maze dropdown
@@ -76,7 +76,7 @@ void ControlPanelRenderer::addChangeMouseBrainButtons() {
   std::function < void() > onAdvancedBrainButtonPress = [this]() {
     simulationController.setMouseBrain(MouseBrainType::ADVANCED);
   };
-  addTwoStateToggleButtons(Position(530, 210), "Random", "Advanced",
+  addTwoStateToggleButtons(Position(600, 210), "Random", "Advanced",
                            onRandomBrainButtonPress, onAdvancedBrainButtonPress);
 }
 
@@ -87,7 +87,7 @@ void ControlPanelRenderer::addChangeMouseModeButtons() {
   std::function < void() > onFastestPathModeButtonPress = [this]() {
     simulationController.setMouseMode(MouseMode::FASTEST_PATH);
   };
-  addTwoStateToggleButtons(Position(530, 260), "Exploration", "Fastest Path",
+  addTwoStateToggleButtons(Position(600, 260), "Exploration", "Fastest Path",
                            onExplorationModeButtonPress, onFastestPathModeButtonPress);
 }
 
