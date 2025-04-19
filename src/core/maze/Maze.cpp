@@ -120,8 +120,8 @@ void Maze::setGoal(std::set<Position> &visited) {
     Cell &southwestCell = grid[northwestCenter.getY() + 1][northwestCenter.getX()];
     Cell &northeastCell = grid[northwestCenter.getY()][northwestCenter.getX() + 1];
     Cell &southeastCell = grid[northwestCenter.getY() + 1][northwestCenter.getX() + 1];
+    std::vector goalCells({&northwestCell, &southwestCell, &northeastCell, &southeastCell});
 
-    const std::vector goalCells({&northwestCell, &southwestCell, &northeastCell, &southeastCell});
     for (const auto cell: goalCells) {
         cell->setType(CellType::GOAL);
         visited.insert(cell->getLocation());
@@ -139,8 +139,15 @@ void Maze::setGoal(std::set<Position> &visited) {
     southeastCell.removeWall(NORTH);
     southeastCell.removeWall(WEST);
 
-    southeastCell.removeWall(EAST);
-    grid[northwestCenter.getY() + 1][northwestCenter.getX() + 2].removeWall(WEST);
+    setRandomGoalEntrance(goalCells);
+}
+
+void Maze::setRandomGoalEntrance(std::vector<Cell *> goalCells) {
+    const auto entryCell = Randomizer::GetRandomElement(goalCells);
+    auto removableWalls = getCellRemovableWalls(*entryCell);
+    const auto removeWallInDirection = Randomizer::GetRandomElement(removableWalls);
+    const auto neighbourCellPosition = entryCell->getLocation().translated(removeWallInDirection);
+    removeWallsBetweenNeighbourCells(entryCell->getLocation(), neighbourCellPosition);
 }
 
 void Maze::removeWallsBetweenNeighbourCells(const Position &firstPosition, const Position &secondPosition) {

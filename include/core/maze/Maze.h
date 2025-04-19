@@ -55,6 +55,8 @@ private:
 
     void setGoal(std::set<Position> &visited);
 
+    void setRandomGoalEntrance(std::vector<Cell *> goalCells);
+
     void setStart();
 };
 
