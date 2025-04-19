@@ -13,16 +13,14 @@ void Maze::generate() {
     std::stack<Position> stack;
     std::set<Position> visited;
 
-    auto currentPosition = Position(GLOBAL::SIMULATION::START_POSITION_X,
-                                    GLOBAL::SIMULATION::START_POSITION_Y);
-    stack.push(currentPosition);
-    visited.insert(currentPosition);
+    stack.push(start);
+    visited.insert(start);
 
     setStart();
     setGoal(visited);
 
     while (!stack.empty()) {
-        currentPosition = stack.top();
+        auto currentPosition = stack.top();
         auto unvisitedNeighbors = getUnvisitedNeighbors(currentPosition, visited);
         if (unvisitedNeighbors.empty()) {
             stack.pop();
@@ -42,10 +40,9 @@ void Maze::generate() {
 void Maze::resetGrid() {
     for (int i = 0; i < width; ++i) {
         for (int j = 0; j < height; ++j) {
-            grid[j][i].addWall(NORTH);
-            grid[j][i].addWall(EAST);
-            grid[j][i].addWall(SOUTH);
-            grid[j][i].addWall(WEST);
+            for (const auto direction: GLOBAL::CONSTANTS::DIRECTIONS) {
+                grid[j][i].addWall(direction);
+            }
         }
     }
 }
@@ -115,37 +112,35 @@ Cell &Maze::getRandomCell() {
 }
 
 void Maze::setStart() {
-    grid[0][0].setType(CellType::START);
+    grid[start.getY()][start.getX()].setType(CellType::START);
 }
 
 void Maze::setGoal(std::set<Position> &visited) {
-    Cell &leftUpperCell = grid[northeastCenter.getY()][northeastCenter.getX()];
-    Cell &leftLowerCell = grid[northeastCenter.getY() + 1][northeastCenter.getX()];
-    Cell &rightUpperCell = grid[northeastCenter.getY()][northeastCenter.getX() + 1];
-    Cell &rightLowerCell = grid[northeastCenter.getY() + 1][northeastCenter.getX() + 1];
+    Cell &northwestCell = grid[northwestCenter.getY()][northwestCenter.getX()];
+    Cell &southwestCell = grid[northwestCenter.getY() + 1][northwestCenter.getX()];
+    Cell &northeastCell = grid[northwestCenter.getY()][northwestCenter.getX() + 1];
+    Cell &southeastCell = grid[northwestCenter.getY() + 1][northwestCenter.getX() + 1];
 
-    leftLowerCell.setType(CellType::GOAL);
-    leftUpperCell.setType(CellType::GOAL);
-    rightLowerCell.setType(CellType::GOAL);
-    rightUpperCell.setType(CellType::GOAL);
+    const std::vector goalCells({&northwestCell, &southwestCell, &northeastCell, &southeastCell});
+    for (const auto cell: goalCells) {
+        cell->setType(CellType::GOAL);
+        visited.insert(cell->getLocation());
+    }
 
-    leftLowerCell.removeWall(NORTH);
-    leftLowerCell.removeWall(EAST);
-    leftUpperCell.removeWall(SOUTH);
-    leftUpperCell.removeWall(EAST);
+    northwestCell.removeWall(SOUTH);
+    northwestCell.removeWall(EAST);
 
-    rightUpperCell.removeWall(SOUTH);
-    rightUpperCell.removeWall(WEST);
-    rightLowerCell.removeWall(NORTH);
-    rightLowerCell.removeWall(WEST);
-    rightLowerCell.removeWall(EAST);
+    southwestCell.removeWall(NORTH);
+    southwestCell.removeWall(EAST);
 
-    grid[northeastCenter.getY() + 1][northeastCenter.getX() + 2].removeWall(WEST);
+    northeastCell.removeWall(SOUTH);
+    northeastCell.removeWall(WEST);
 
-    visited.insert(leftLowerCell.getLocation());
-    visited.insert(leftUpperCell.getLocation());
-    visited.insert(rightLowerCell.getLocation());
-    visited.insert(rightUpperCell.getLocation());
+    southeastCell.removeWall(NORTH);
+    southeastCell.removeWall(WEST);
+
+    southeastCell.removeWall(EAST);
+    grid[northwestCenter.getY() + 1][northwestCenter.getX() + 2].removeWall(WEST);
 }
 
 void Maze::removeWallsBetweenNeighbourCells(const Position &firstPosition, const Position &secondPosition) {

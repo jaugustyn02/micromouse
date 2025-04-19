@@ -27,7 +27,7 @@ private:
     const int width;
     const int height;
     const Position start = Position(GLOBAL::SIMULATION::START_POSITION_X, GLOBAL::SIMULATION::START_POSITION_Y);
-    const Position northeastCenter = Position(GLOBAL::SIMULATION::MAZE_WIDTH / 2 - 1,
+    const Position northwestCenter = Position(GLOBAL::SIMULATION::MAZE_WIDTH / 2 - 1,
                                               GLOBAL::SIMULATION::MAZE_HEIGHT / 2 - 1);
     std::vector<std::vector<Cell> > grid;
 
