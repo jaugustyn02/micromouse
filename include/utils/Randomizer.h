@@ -2,20 +2,22 @@
 #define MICROMOUSE_INCLUDE_UTILS_RANDOMIZER_H_
 
 #include <random>
+#include <vector>
 #include "../model/Direction.h"
 
 class Randomizer {
- public:
+public:
   template<typename T>
   static T GetRandom(T min, T max);
 
-  template<typename T>
-  static T GetRandomElement(const std::vector<T> &elements);
+  template<class T>
+  static T &GetRandomElement(std::vector<T> &elements);
 
   static bool GetRandomBool();
+
   static Direction GetRandomDirection();
 
- private:
+private:
   static std::mt19937 &GetEngine();
 };
 
@@ -33,11 +35,11 @@ T Randomizer::GetRandom(T min, T max) {
 }
 
 template<typename T>
-T Randomizer::GetRandomElement(const std::vector<T> &elements) {
+T &Randomizer::GetRandomElement(std::vector<T> &elements) {
   if (elements.empty()) {
     throw std::invalid_argument("GetRandomElement: elements vector is empty.");
   }
-  return elements[GetRandom(0, (int) elements.size() - 1)];
+  return elements[GetRandom(0, static_cast<int>(elements.size()) - 1)];
 }
 
 #endif //MICROMOUSE_INCLUDE_UTILS_RANDOMIZER_H_
