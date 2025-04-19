@@ -8,7 +8,7 @@
 #include "../../../../../model/Direction.h"
 #include "../MouseDecisionStrategy.h"
 
-class FloodingExplorationStrategy : public MouseDecisionStrategy {
+class FloodingExplorationStrategy final : public MouseDecisionStrategy {
  public:
   FloodingExplorationStrategy()
       : mazeMap(), visited(), queue() {}
