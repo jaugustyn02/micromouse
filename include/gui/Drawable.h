@@ -6,7 +6,9 @@
 
 class Drawable {
  public:
-  virtual void draw(sf::RenderWindow &window) = 0;
+    virtual ~Drawable() = default;
+
+    virtual void draw(sf::RenderWindow &window) = 0;
 };
 
 #endif //MICROMOUSE_INCLUDE_GUI_DRAWABLE_H_

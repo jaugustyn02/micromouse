@@ -7,20 +7,29 @@
 #include "Drawable.h"
 #include "TGUI/Backend/SFML-Graphics.hpp"
 
-class MazeRenderer : public Drawable {
- public:
-  explicit MazeRenderer(MazeReader &maze);
-  void draw(sf::RenderWindow &window) override;
+class MazeRenderer final : public Drawable {
+public:
+ explicit MazeRenderer(MazeReader &maze);
 
- private:
-  MazeReader &maze;
-  sf::RectangleShape horizontalWallShape;
-  sf::RectangleShape verticalWallShape;
-  sf::RectangleShape cellShape;
-  void drawCellWalls(sf::RenderWindow &window, Position cellPosition);
-  void drawCellBackground(sf::RenderWindow &window, Position cellPosition, CellType cellType);
-  static float getTopLeftCornerPositionX(Position cellPosition);
-  static float getTopLeftCornerPositionY(Position cellPosition);
+ void draw(sf::RenderWindow &window) override;
+
+ void colorCells(sf::RenderWindow &window);
+
+ void drawWalls(sf::RenderWindow &window);
+
+private:
+ MazeReader &maze;
+ sf::RectangleShape horizontalWallShape;
+ sf::RectangleShape verticalWallShape;
+ sf::RectangleShape cellShape;
+
+ void drawCellWalls(sf::RenderWindow &window, Position cellPosition);
+
+ void drawCellBackground(sf::RenderWindow &window, Position cellPosition, CellType cellType);
+
+ static float getTopLeftCornerPositionX(Position cellPosition);
+
+ static float getTopLeftCornerPositionY(Position cellPosition);
 };
 
 #endif //MICROMOUSE_INCLUDE_MODEL_MAZERENDERER_H_
