@@ -67,6 +67,10 @@ public:
     return neighbors;
   }
 
+  bool isOutOfBounds(const int gridWidth, const int gridHeight) const {
+    return x < 0 || x >= gridWidth || y < 0 || y >= gridHeight;
+  }
+
   std::string toString() const {
     return "(" + std::to_string(x) + ", " + std::to_string(y) + ")";
   }

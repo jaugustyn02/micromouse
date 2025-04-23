@@ -11,15 +11,20 @@ class MouseBrain {
  public:
   MouseBrain(std::unique_ptr<MouseDecisionStrategy> explorationStrategy,
              std::unique_ptr<MouseDecisionStrategy> pathfindingStrategy);
-  void setMode(MouseMode _mode);
-  MouseMode getMode() const { return mode; }
+  void setMode(MouseMode mode);
+  MouseMode getMode() const { return activeMode; }
   Direction getNextMove(Position position, SensorReadings readings);
-  void reset();
+
+  void validateMove(Position position, Direction move);
+
+  bool isMoveLegal(Position position, Direction move);
+
+  void reset() const;
  private:
   std::unique_ptr<MouseDecisionStrategy> explorationStrategy;
   std::unique_ptr<MouseDecisionStrategy> pathfindingStrategy;
   MouseDecisionStrategy *currentStrategy;
-  MouseMode mode{EXPLORATION};
+  MouseMode activeMode{EXPLORATION};
   std::map<Position, SensorReadings> mazeMap;
   Position goalTopLeftCorner{GLOBAL::SIMULATION::MAZE_WIDTH / 2 - 1,
                              GLOBAL::SIMULATION::MAZE_HEIGHT / 2 - 1};

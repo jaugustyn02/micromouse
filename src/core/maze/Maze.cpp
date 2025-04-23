@@ -90,7 +90,7 @@ std::vector<Direction> Maze::getCellRemovableWalls(const Cell &cell) const {
 
 bool Maze::isGoalWall(const Position position, const Direction direction) const {
     const auto translatedPosition = position.translated(direction);
-    if (isOutOfBounds(translatedPosition)) {
+    if (translatedPosition.isOutOfBounds(width, height)) {
         return false;
     }
     const auto neighbourCell = grid[translatedPosition.getY()][translatedPosition.getX()];
@@ -99,11 +99,7 @@ bool Maze::isGoalWall(const Position position, const Direction direction) const 
 
 bool Maze::isEdgeWall(const Position position, const Direction direction) const {
     const auto translatedPosition = position.translated(direction);
-    return isOutOfBounds(translatedPosition);
-}
-
-bool Maze::isOutOfBounds(const Position position) const {
-    return position.getX() < 0 || (position.getX() >= width) || (position.getY() < 0) || (position.getY() >= height);
+    return translatedPosition.isOutOfBounds(width, height);
 }
 
 Cell &Maze::getRandomCell() {
