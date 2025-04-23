@@ -103,7 +103,7 @@ bool Maze::isEdgeWall(const Position position, const Direction direction) const 
 }
 
 bool Maze::isOutOfBounds(const Position position) const {
-    return (position.getX() < 0) || (position.getX() >= width) || (position.getY() < 0) || (position.getY() >= height);
+    return position.getX() < 0 || (position.getX() >= width) || (position.getY() < 0) || (position.getY() >= height);
 }
 
 Cell &Maze::getRandomCell() {
@@ -172,7 +172,7 @@ void Maze::removeWallsBetweenNeighbourCells(const Position &firstPosition, const
 }
 
 std::vector<Position> Maze::getUnvisitedNeighbors(const Position &position, const std::set<Position> &visited) const {
-    const std::vector<Position> neighbors = getCellNeighbors(position);
+    const auto neighbors = position.getNeighborCellPositions(width, height);
     std::vector<Position> unvisitedNeighbors;
     for (const auto &neighbor: neighbors) {
         if (visited.find(neighbor) == visited.end()) {
@@ -180,27 +180,4 @@ std::vector<Position> Maze::getUnvisitedNeighbors(const Position &position, cons
         }
     }
     return unvisitedNeighbors;
-}
-
-std::vector<Position> Maze::getCellNeighbors(const Position &position) const {
-    std::vector<Position> neighbors;
-    neighbors.reserve(4);
-
-    int x = position.getX();
-    int y = position.getY();
-
-    if (x > 0) {
-        neighbors.emplace_back(x - 1, y);
-    }
-    if (y > 0) {
-        neighbors.emplace_back(x, y - 1);
-    }
-    if (x < width - 1) {
-        neighbors.emplace_back(x + 1, y);
-    }
-    if (y < height - 1) {
-        neighbors.emplace_back(x, y + 1);
-    }
-
-    return neighbors;
 }

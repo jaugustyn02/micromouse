@@ -3,10 +3,11 @@
 
 #include <iostream>
 #include "Direction.h"
+#include <vector>
 
 class Position {
 public:
-  Position(int x, int y) : x(x), y(y) {
+  Position(const int x, const int y) : x(x), y(y) {
   }
 
   int getX() const { return x; }
@@ -45,6 +46,25 @@ public:
       case WEST:
         return {x - 1, y};
     }
+  }
+
+  std::vector<Position> Position::getNeighborCellPositions(const int gridWidth, const int gridHeight) const {
+    std::vector<Position> neighbors;
+
+    if (x > 0) {
+      neighbors.emplace_back(x - 1, y);
+    }
+    if (y > 0) {
+      neighbors.emplace_back(x, y - 1);
+    }
+    if (x < gridWidth - 1) {
+      neighbors.emplace_back(x + 1, y);
+    }
+    if (y < gridHeight - 1) {
+      neighbors.emplace_back(x, y + 1);
+    }
+
+    return neighbors;
   }
 
   std::string toString() const {

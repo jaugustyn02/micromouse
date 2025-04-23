@@ -47,8 +47,6 @@ private:
 
     void resetGrid();
 
-    std::vector<Position> getCellNeighbors(const Position &position) const;
-
     std::vector<Position> getUnvisitedNeighbors(const Position &position, const std::set<Position> &visited) const;
 
     void removeWallsBetweenNeighbourCells(const Position &firstPosition, const Position &secondPosition);
