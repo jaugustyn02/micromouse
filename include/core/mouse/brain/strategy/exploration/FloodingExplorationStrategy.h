@@ -40,16 +40,8 @@ public:
 
 private:
     const int empty = -1;
-    const int mazeWidth = GLOBAL::SIMULATION::MAZE_WIDTH;
-    const int mazeHeight = GLOBAL::SIMULATION::MAZE_HEIGHT;
     std::map<Position, SensorReadings> mazeMap;
     std::vector<std::vector<int> > cellDistance = std::vector(mazeHeight, std::vector(mazeWidth, empty));
-    std::array<Position, 4> goalPositions{
-        Position(mazeWidth / 2 - 1, mazeHeight / 2 - 1),
-        Position(mazeWidth / 2 - 1, mazeHeight / 2),
-        Position(mazeWidth / 2, mazeHeight / 2 - 1),
-        Position(mazeWidth / 2, mazeHeight / 2),
-    };
 };
 
 #endif //MICROMOUSE_FLOODINGEXPLORATIONSTRATEGY_H_

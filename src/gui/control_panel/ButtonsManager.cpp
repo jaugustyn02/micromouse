@@ -67,11 +67,12 @@ tgui::ToggleButton::Ptr ButtonsManager::addToggleButton(const Position position,
     return toggleButton;
 }
 
-void ButtonsManager::addTwoStateToggleButtons(const Position position,
-                                              const std::string &label1,
-                                              const std::string &label2,
-                                              const std::function<void()> &onPress1,
-                                              const std::function<void()> &onPress2) const {
+std::pair<tgui::ToggleButton::Ptr, tgui::ToggleButton::Ptr> ButtonsManager::addTwoStateToggleButtons(
+    const Position position,
+    const std::string &label1,
+    const std::string &label2,
+    const std::function<void()> &onPress1,
+    const std::function<void()> &onPress2) const {
     const auto button1 = tgui::ToggleButton::copy(baseToggleButton);
     const auto button2 = tgui::ToggleButton::copy(baseToggleButton);
     button1->setText(label1);
@@ -102,4 +103,5 @@ void ButtonsManager::addTwoStateToggleButtons(const Position position,
 
     gui.add(button1);
     gui.add(button2);
+    return {button1, button2};
 }

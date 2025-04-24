@@ -10,7 +10,20 @@ MouseBrain::MouseBrain(
 
 void MouseBrain::setMode(const MouseMode mode) {
   this->activeMode = mode;
-  currentStrategy = (mode == EXPLORATION) ? explorationStrategy.get() : pathfindingStrategy.get();
+  switch (mode) {
+    case EXPLORATION:
+      currentStrategy = explorationStrategy.get();
+      break;
+    case EXPLORATION_ON_RETURN:
+      currentStrategy = explorationStrategy.get();
+      break;
+    case FASTEST_PATH: {
+      currentStrategy = pathfindingStrategy.get();
+      break;
+    }
+    default:
+      throw std::invalid_argument("Invalid mouse mode: " + toString(mode));
+  }
   currentStrategy->reset();
 }
 
@@ -36,5 +49,5 @@ bool MouseBrain::isMoveLegal(const Position position, const Direction move) cons
 
 void MouseBrain::reset() {
   mazeMap.clear();
-  currentStrategy->reset();
+  setMode(EXPLORATION);
 }

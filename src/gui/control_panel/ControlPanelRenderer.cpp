@@ -44,30 +44,37 @@ void ControlPanelRenderer::addStartStopToggleButton() {
   startStopButton = buttonsManager.addToggleButton({600, 10}, GLOBAL::TEXT::START_BUTTON, onToggle);
 }
 
-void ControlPanelRenderer::addChangeMouseBrainButtons() const {
+void ControlPanelRenderer::addChangeMouseBrainButtons() {
   const std::function onRandomBrainButtonPress = [this]() {
     simulationController.setMouseBrain(RANDOM);
   };
   const std::function onAdvancedBrainButtonPress = [this]() {
     simulationController.setMouseBrain(ADVANCED);
   };
-  buttonsManager.addTwoStateToggleButtons({600, 210}, "Random", "Advanced",
-                                          onRandomBrainButtonPress, onAdvancedBrainButtonPress);
+  auto [randomBrainButton, advancedBrainButton] = buttonsManager.addTwoStateToggleButtons(
+    {600, 210}, "Random", "Advanced",
+    onRandomBrainButtonPress, onAdvancedBrainButtonPress);
+  mouseRandomBrainButton = randomBrainButton;
+  mouseAdvancedBrainModeButton = advancedBrainButton;
 }
 
-void ControlPanelRenderer::addChangeMouseModeButtons() const {
+void ControlPanelRenderer::addChangeMouseModeButtons() {
   const std::function onExplorationModeButtonPress = [this]() {
     simulationController.setMouseMode(EXPLORATION);
   };
   const std::function onFastestPathModeButtonPress = [this]() {
     simulationController.setMouseMode(FASTEST_PATH);
   };
-  buttonsManager.addTwoStateToggleButtons({600, 260}, "Exploration", "Fastest Path",
-                                          onExplorationModeButtonPress, onFastestPathModeButtonPress);
+  auto [explorationModeButton, fastestPathModeButton] = buttonsManager.addTwoStateToggleButtons(
+    {600, 260}, "Exploration", "Fastest Path",
+    onExplorationModeButtonPress, onFastestPathModeButtonPress);
+  mouseExplorationModeButton = explorationModeButton;
+  mouseFastestPathModeButton = fastestPathModeButton;
 }
 
 void ControlPanelRenderer::update() const {
   updateStartStopToggleButton();
+  updateChangeMouseModeButtons();
 }
 
 void ControlPanelRenderer::updateStartStopToggleButton() const {
@@ -75,5 +82,14 @@ void ControlPanelRenderer::updateStartStopToggleButton() const {
     startStopButton->setDown(true);
   } else {
     startStopButton->setDown(false);
+  }
+}
+
+void ControlPanelRenderer::updateChangeMouseModeButtons() const {
+  if (const auto mouseMode = simulationController.getMouse().getMode();
+    mouseMode == EXPLORATION || mouseMode == EXPLORATION_ON_RETURN) {
+    mouseExplorationModeButton->setDown(true);
+  } else if (mouseMode == FASTEST_PATH) {
+    mouseFastestPathModeButton->setDown(true);
   }
 }

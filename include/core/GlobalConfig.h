@@ -3,6 +3,7 @@
 
 #include <chrono>
 #include "TGUI/Color.hpp"
+#include "../model/Direction.h"
 
 namespace GLOBAL {
     namespace SCREEN {

@@ -31,7 +31,7 @@ void Simulation::generateMaze() {
   maze.generate();
 }
 
-void Simulation::setMouseMode(MouseMode mode) {
+void Simulation::setMouseMode(const MouseMode mode) {
   stop();
   mouse.setMode(mode);
 }
@@ -43,13 +43,12 @@ void Simulation::nextStep() {
 }
 
 void Simulation::moveMouse() {
-  auto moveStatus = mouse.makeMove();
-  if (moveStatus == MoveStatus::FAILURE || moveStatus == MoveStatus::GOAL_REACHED) {
+  if (const auto moveStatus = mouse.makeMove(); moveStatus == FAILURE || moveStatus == GOAL_REACHED) {
     stop();
   }
 }
 
-void Simulation::setMouseBrain(MouseBrainType brainType) {
+void Simulation::setMouseBrain(const MouseBrainType brainType) {
   std::cout << "[SIMULATION]: Setting mouse brain to " << toString(brainType) << std::endl;
   stop();
   try {

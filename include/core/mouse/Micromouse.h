@@ -19,6 +19,8 @@ public:
 
  void setMode(MouseMode mode);
 
+ MouseMode getMode() const { return brain->getMode(); };
+
  void setBrain(std::unique_ptr<MouseBrain> _brain);
 
  void reset();

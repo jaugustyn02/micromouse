@@ -19,16 +19,18 @@ public:
     tgui::Button::Ptr addButton(Position position, const std::string &label,
                                 const std::function<void()> &onPress) const;
 
-    tgui::ToggleButton::Ptr addToggleButton(Position position, const std::string &label,
-                                            const std::function<void(const tgui::ToggleButton::Ptr &button,
-                                                                     bool checked)> &onToggle)
-    const;
+    tgui::ToggleButton::Ptr addToggleButton(
+        Position position,
+        const std::string &label,
+        const std::function<void(
+            const tgui::ToggleButton::Ptr &button,
+            bool checked)> &onToggle) const;
 
-    void addTwoStateToggleButtons(Position position,
-                                  const std::string &label1,
-                                  const std::string &label2,
-                                  const std::function<void()> &onPress1,
-                                  const std::function<void()> &onPress2) const;
+    std::pair<tgui::ToggleButton::Ptr, tgui::ToggleButton::Ptr> addTwoStateToggleButtons(Position position,
+        const std::string &label1,
+        const std::string &label2,
+        const std::function<void()> &onPress1,
+        const std::function<void()> &onPress2) const;
 
 private:
     tgui::Gui &gui;

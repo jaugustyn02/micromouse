@@ -15,6 +15,8 @@ public:
 
     void updateStartStopToggleButton() const;
 
+    void updateChangeMouseModeButtons() const;
+
 private:
     SimulationController &simulationController;
     tgui::Gui &gui;
@@ -22,14 +24,16 @@ private:
     tgui::ToggleButton::Ptr startStopButton;
     tgui::Button::Ptr resetButton;
     tgui::Button::Ptr generateMazeButton;
-    std::pair<tgui::Button::Ptr, tgui::Button::Ptr> mouseModeToggle;
-    std::pair<tgui::Button::Ptr, tgui::Button::Ptr> mouseBrainToggle;
+    tgui::ToggleButton::Ptr mouseExplorationModeButton;
+    tgui::ToggleButton::Ptr mouseFastestPathModeButton;
+    tgui::ToggleButton::Ptr mouseRandomBrainButton;
+    tgui::ToggleButton::Ptr mouseAdvancedBrainModeButton;
 
     void addStartStopToggleButton();
 
-    void addChangeMouseModeButtons() const;
+    void addChangeMouseModeButtons();
 
-    void addChangeMouseBrainButtons() const;
+    void addChangeMouseBrainButtons();
 };
 
 #endif //MICROMOUSE_INCLUDE_GUI_CONTROLPANELRENDERER_H_
