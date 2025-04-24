@@ -7,7 +7,7 @@
 namespace GLOBAL {
     namespace SCREEN {
         inline constexpr const char *TITLE = "Micromouse Simulator";
-        inline constexpr int WIDTH = 860;
+        inline constexpr int WIDTH = 900;
         inline constexpr int HEIGHT = 600;
         inline constexpr int FPS = 60;
         inline constexpr std::chrono::microseconds FRAME_DURATION = std::chrono::microseconds(1000000 / FPS);
@@ -33,16 +33,23 @@ namespace GLOBAL {
     }
 
     namespace RENDER {
-        inline constexpr const float CELL_SIZE = 40.0f;
-        inline constexpr const float WALL_THICKNESS = 8.0f; // 10
-        inline constexpr const float MOUSE_SIZE = 16.0f;
-        inline constexpr const float OFFSET_X = 40.0f;
-        inline constexpr const float OFFSET_Y = 0.0f;
+        inline constexpr float CELL_SIZE = 40.0f;
+        inline constexpr float WALL_THICKNESS = 8.0f; // 10
+        inline constexpr float MOUSE_SIZE = 16.0f;
+        inline constexpr float OFFSET_X = 20.0f;
+        inline constexpr float OFFSET_Y = 0.0f;
         inline const sf::Color BACKGROUND_COLOR = COLORS::BACKGROUND;
         inline const sf::Color WALL_COLOR = COLORS::DARK;
         inline const sf::Color MOUSE_COLOR = COLORS::PRIMARY_DARK;
         inline const sf::Color GOAL_COLOR = COLORS::PRIMARY;
         inline const sf::Color START_COLOR = COLORS::BACKGROUND;
+    }
+
+    namespace TEXT {
+        inline const std::string START_BUTTON = "Start";
+        inline const std::string STOP_BUTTON = "Stop";
+        inline const std::string RESET_BUTTON = "Reset";
+        inline const std::string GENERATE_MAZE_BUTTON = "Generate Maze";
     }
 
     namespace RANDOM {

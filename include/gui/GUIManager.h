@@ -7,7 +7,7 @@
 #include "MazeRenderer.h"
 #include "MouseRenderer.h"
 #include "../core/SimulationController.h"
-#include "ControlPanelRenderer.h"
+#include "control_panel/ControlPanelRenderer.h"
 
 class GUIManager {
  public:

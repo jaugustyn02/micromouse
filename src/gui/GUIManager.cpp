@@ -4,11 +4,10 @@
 #include "../../include/gui/GUIManager.h"
 
 GUIManager::GUIManager(Maze &maze, Micromouse &mouse, SimulationController &simulationController)
-    : window(sf::VideoMode(GLOBAL::SCREEN::WIDTH, GLOBAL::SCREEN::HEIGHT), GLOBAL::SCREEN::TITLE),
-      gui(window),
-      simulationController(simulationController),
-      controlPanelRenderer(simulationController, gui) {
-
+  : window(sf::VideoMode(GLOBAL::SCREEN::WIDTH, GLOBAL::SCREEN::HEIGHT), GLOBAL::SCREEN::TITLE),
+    gui(window),
+    simulationController(simulationController),
+    controlPanelRenderer(simulationController, gui) {
   drawables.push_back(std::make_unique<MazeRenderer>(maze));
   drawables.push_back(std::make_unique<MouseRenderer>(mouse));
 }
@@ -22,11 +21,12 @@ void GUIManager::mainLoop() {
   while (window.isOpen()) {
     handleEvents();
 
-    auto now = std::chrono::high_resolution_clock::now();
-    auto elapsed = std::chrono::duration_cast<std::chrono::microseconds>(now - lastSimUpdate);
+    const auto now = std::chrono::high_resolution_clock::now();
+    const auto elapsed = std::chrono::duration_cast<std::chrono::microseconds>(now - lastSimUpdate);
 
     if (elapsed >= GLOBAL::SIMULATION::STEP_DURATION) {
       simulationController.nextStep();
+      controlPanelRenderer.update();
       lastSimUpdate = now;
     }
 
@@ -48,7 +48,7 @@ void GUIManager::handleEvents() {
 void GUIManager::render() {
   window.clear(GLOBAL::RENDER::BACKGROUND_COLOR);
 
-  for (auto &drawable : drawables) {
+  for (auto &drawable: drawables) {
     drawable->draw(window);
   }
 
