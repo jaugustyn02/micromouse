@@ -10,6 +10,8 @@ public:
   Position(const int x, const int y) : x(x), y(y) {
   }
 
+  Position(const Position &position) = default;
+
   int getX() const { return x; }
   int getY() const { return y; }
 
@@ -23,14 +25,16 @@ public:
 
   void translate(const Direction direction) {
     switch (direction) {
-      case NORTH: y--;
+      case NORTH: --y;
         break;
-      case SOUTH: y++;
+      case SOUTH: ++y;
         break;
-      case EAST: x++;
+      case EAST: ++x;
         break;
-      case WEST: x--;
+      case WEST: --x;
         break;
+      default:
+        throw std::invalid_argument("Invalid direction");
     }
   }
 
@@ -42,9 +46,10 @@ public:
         return {x, y + 1};
       case EAST:
         return {x + 1, y};
-      default:
       case WEST:
         return {x - 1, y};
+      default:
+        throw std::invalid_argument("Invalid direction");
     }
   }
 

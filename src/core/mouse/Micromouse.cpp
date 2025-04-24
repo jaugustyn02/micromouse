@@ -2,26 +2,25 @@
 
 #include <utility>
 
-Micromouse::Micromouse(MouseSensor sensor, Position startPosition) :
-    sensor(sensor),
-    startPosition(startPosition),
-    position(startPosition),
-    brain(std::make_unique<MouseBrain>(MouseBrainProvider::getMouseBrainInstance(MouseBrainType::RANDOM))) {
-  std::cout << "[MICROMOUSE]: Micromouse initialized at position: " << position.toString() << std::endl;
+Micromouse::Micromouse(const MouseSensor sensor, const Position startPosition) : sensor(sensor),
+  brain(std::make_unique<MouseBrain>(MouseBrainProvider::getMouseBrainInstance(MouseBrainType::RANDOM))),
+  startPosition(startPosition),
+  currentPosition(startPosition) {
+  std::cout << "[MICROMOUSE]: Micromouse initialized at position: " << currentPosition.toString() << std::endl;
   std::cout << "[MICROMOUSE]: Initial mode: " << toString(brain->getMode()) << std::endl;
 }
 
 MoveStatus Micromouse::makeMove() {
-  auto sensorReadings = sensor.getSensorReadings(position);
+  const auto sensorReadings = sensor.getSensorReadings(currentPosition);
 
   if (sensorReadings.isCellAGoal()) {
     onGoalReached();
-    return MoveStatus::GOAL_REACHED;
+    return GOAL_REACHED;
   }
 
-  auto direction = brain->getNextMove(position, sensorReadings);
-  position.translate(direction);
-  return MoveStatus::SUCCESS;
+  const auto direction = brain->getNextMove(currentPosition, sensorReadings);
+  currentPosition.translate(direction);
+  return SUCCESS;
 }
 
 void Micromouse::onGoalReached() {
@@ -30,14 +29,14 @@ void Micromouse::onGoalReached() {
 
 void Micromouse::reset() {
   std::cout << "[MICROMOUSE]: Mouse reset" << std::endl;
-  position = startPosition;
+  currentPosition = startPosition;
   brain->reset();
 }
 
-void Micromouse::setMode(MouseMode mode) {
+void Micromouse::setMode(const MouseMode mode) {
   std::cout << "[MICROMOUSE]: Mouse mode set to: " << toString(mode) << std::endl;
   brain->setMode(mode);
-  position = startPosition;
+  currentPosition = startPosition;
 }
 
 void Micromouse::setBrain(std::unique_ptr<MouseBrain> _brain) {
@@ -48,9 +47,9 @@ void Micromouse::setBrain(std::unique_ptr<MouseBrain> _brain) {
 }
 
 int Micromouse::getX() const {
-  return position.getX();
+  return currentPosition.getX();
 }
 
 int Micromouse::getY() const {
-  return position.getY();
+  return currentPosition.getY();
 }

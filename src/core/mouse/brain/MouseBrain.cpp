@@ -6,11 +6,6 @@ MouseBrain::MouseBrain(
 ) : explorationStrategy(std::move(explorationStrategy)),
     pathfindingStrategy(std::move(pathfindingStrategy)),
     currentStrategy(this->explorationStrategy.get()) {
-  auto goalReadings = SensorReadings(CellType::GOAL);
-  mazeMap.insert({goalTopLeftCorner, goalReadings});
-  mazeMap.insert({{goalTopLeftCorner.getX(), goalTopLeftCorner.getY() + 1}, goalReadings});
-  mazeMap.insert({{goalTopLeftCorner.getX() + 1, goalTopLeftCorner.getY()}, goalReadings});
-  mazeMap.insert({{goalTopLeftCorner.getX() + 1, goalTopLeftCorner.getY() + 1}, goalReadings});
 }
 
 void MouseBrain::setMode(const MouseMode mode) {
@@ -19,14 +14,14 @@ void MouseBrain::setMode(const MouseMode mode) {
   currentStrategy->reset();
 }
 
-Direction MouseBrain::getNextMove(Position position, SensorReadings readings) {
+Direction MouseBrain::getNextMove(const Position position, const SensorReadings &readings) {
   mazeMap.insert({position, readings});
-  const auto move = currentStrategy->decideMove(position, std::move(readings));
+  const auto move = currentStrategy->decideMove(position, readings);
   validateMove(position, move);
   return move;
 }
 
-void MouseBrain::validateMove(const Position position, const Direction move) {
+void MouseBrain::validateMove(const Position position, const Direction move) const {
   if (position.translated(move).isOutOfBounds(GLOBAL::SIMULATION::MAZE_WIDTH, GLOBAL::SIMULATION::MAZE_HEIGHT)) {
     throw std::runtime_error("Invalid move: out of bounds");
   }
@@ -35,10 +30,11 @@ void MouseBrain::validateMove(const Position position, const Direction move) {
   }
 }
 
-bool MouseBrain::isMoveLegal(const Position position, const Direction move) {
-  return !mazeMap[position].isWall(move);
+bool MouseBrain::isMoveLegal(const Position position, const Direction move) const {
+  return !mazeMap.at(position).isWall(move);
 }
 
-void MouseBrain::reset() const {
+void MouseBrain::reset() {
+  mazeMap.clear();
   currentStrategy->reset();
 }

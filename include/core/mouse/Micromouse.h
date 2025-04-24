@@ -12,21 +12,28 @@
 #include "brain/MouseBrainProvider.h"
 
 class Micromouse {
- public:
-  Micromouse(MouseSensor sensor, Position startPosition);
-  MoveStatus makeMove();
-  void setMode(MouseMode mode);
-  void setBrain(std::unique_ptr<MouseBrain> brain);
-  void reset();
-  [[nodiscard]] int getX() const;
-  [[nodiscard]] int getY() const;
+public:
+ Micromouse(MouseSensor sensor, Position startPosition);
 
- private:
-  MouseSensor sensor;
-  std::unique_ptr<MouseBrain> brain;
-  Position startPosition;
-  Position position;
-  void onGoalReached();
+ MoveStatus makeMove();
+
+ void setMode(MouseMode mode);
+
+ void setBrain(std::unique_ptr<MouseBrain> _brain);
+
+ void reset();
+
+ [[nodiscard]] int getX() const;
+
+ [[nodiscard]] int getY() const;
+
+private:
+ MouseSensor sensor;
+ std::unique_ptr<MouseBrain> brain;
+ Position startPosition;
+ Position currentPosition;
+
+ static void onGoalReached();
 };
 
 #endif //MICROMOUSE_INCLUDE_GUI_MICROMOUSE_H_
