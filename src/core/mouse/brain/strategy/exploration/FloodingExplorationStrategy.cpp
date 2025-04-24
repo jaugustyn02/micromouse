@@ -18,10 +18,10 @@ void FloodingExplorationStrategy::updateMazeMap(const Position position, const S
 }
 
 bool FloodingExplorationStrategy::isBestMoveLegal(const Position position) const {
-  const int desiredDistance = cellDistance[position.getY()][position.getX()] - 1;
+  const int desiredDistance = getDistance(position) - 1;
 
   for (const auto &neighbourCell: position.getNeighborCellPositions(mazeWidth, mazeHeight)) {
-    if (getDistance(neighbourCell) == desiredDistance) {
+    if (!isWallBetween(position, neighbourCell) && getDistance(neighbourCell) == desiredDistance) {
       return true;
     }
   }
@@ -29,10 +29,10 @@ bool FloodingExplorationStrategy::isBestMoveLegal(const Position position) const
 }
 
 Direction FloodingExplorationStrategy::getBestMove(const Position position) const {
-  const int desiredDistance = cellDistance[position.getY()][position.getX()] - 1;
+  const int desiredDistance = getDistance(position) - 1;
 
-  for (auto &neighbourCell: position.getNeighborCellPositions(mazeWidth, mazeHeight)) {
-    if (cellDistance[neighbourCell.getY()][neighbourCell.getX()] == desiredDistance) {
+  for (const auto &neighbourCell: position.getNeighborCellPositions(mazeWidth, mazeHeight)) {
+    if (!isWallBetween(position, neighbourCell) && getDistance(neighbourCell) == desiredDistance) {
       return getDirectionToNeighbourCell(position, neighbourCell);
     }
   }
@@ -40,6 +40,8 @@ Direction FloodingExplorationStrategy::getBestMove(const Position position) cons
 }
 
 void FloodingExplorationStrategy::calculateDistances() {
+  clearDistance();
+
   std::queue<Position> queue;
 
   for (auto &goalPosition: goalPositions) {
@@ -50,15 +52,10 @@ void FloodingExplorationStrategy::calculateDistances() {
   while (!queue.empty()) {
     const auto &currentPosition = queue.front();
     const auto currentDistance = getDistance(currentPosition);
-    std::cout << "Current position: " << currentPosition.getX() << ", " << currentPosition.getY() <<
-        " with distance: "
-        << currentDistance << std::endl;
     queue.pop();
 
     for (const auto &neighbourCell: currentPosition.getNeighborCellPositions(mazeWidth, mazeHeight)) {
       if (!isVisited(neighbourCell) && !isWallBetween(currentPosition, neighbourCell)) {
-        std::cout << "Add neighbour cell: " << neighbourCell.getX() << ", " << neighbourCell.getY() <<
-            " with distance: " << currentDistance + 1 << std::endl;
         setDistance(neighbourCell, currentDistance + 1);
         queue.emplace(neighbourCell);
       }
@@ -73,8 +70,11 @@ bool FloodingExplorationStrategy::isVisited(const Position position) const {
 bool FloodingExplorationStrategy::isWallBetween(const Position source, const Position destination) const {
   const auto direction = getDirectionToNeighbourCell(source, destination);
 
-  if (const auto readings = mazeMap.find(source); readings != mazeMap.end()) {
-    return readings->second.isWall(direction);
+  if (const auto pair = mazeMap.find(source); pair != mazeMap.end()) {
+    return pair->second.isWall(direction);
+  }
+  if (const auto pair = mazeMap.find(destination); pair != mazeMap.end()) {
+    return pair->second.isWall(opposite(direction));
   }
   return false;
 }
@@ -106,4 +106,12 @@ int FloodingExplorationStrategy::getDistance(const Position position) const {
 
 void FloodingExplorationStrategy::setDistance(const Position position, const int distance) {
   cellDistance[position.getY()][position.getX()] = distance;
+}
+
+void FloodingExplorationStrategy::clearDistance() {
+  for (auto &row: cellDistance) {
+    for (auto &x: row) {
+      x = empty;
+    }
+  }
 }

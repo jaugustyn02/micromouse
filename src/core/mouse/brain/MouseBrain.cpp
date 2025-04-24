@@ -20,7 +20,7 @@ void MouseBrain::setMode(const MouseMode mode) {
 }
 
 Direction MouseBrain::getNextMove(Position position, SensorReadings readings) {
-  mazeMap.emplace(position, readings);
+  mazeMap.insert({position, readings});
   const auto move = currentStrategy->decideMove(position, std::move(readings));
   validateMove(position, move);
   return move;
@@ -28,10 +28,10 @@ Direction MouseBrain::getNextMove(Position position, SensorReadings readings) {
 
 void MouseBrain::validateMove(const Position position, const Direction move) {
   if (position.translated(move).isOutOfBounds(GLOBAL::SIMULATION::MAZE_WIDTH, GLOBAL::SIMULATION::MAZE_HEIGHT)) {
-    throw std::out_of_range("Invalid move: out of bounds");
+    throw std::runtime_error("Invalid move: out of bounds");
   }
   if (!isMoveLegal(position, move)) {
-    throw std::out_of_range("Invalid move: move is not legal");
+    throw std::runtime_error("Invalid move: move is not legal");
   }
 }
 

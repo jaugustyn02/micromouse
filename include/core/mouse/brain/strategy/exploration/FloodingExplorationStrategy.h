@@ -33,12 +33,10 @@ public:
 
     void reset() override {
         mazeMap.clear();
-        for (auto &row: cellDistance) {
-            for (auto &x: row) {
-                x = empty;
-            }
-        }
+        clearDistance();
     }
+
+    void clearDistance();
 
 private:
     const int empty = -1;

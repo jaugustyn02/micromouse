@@ -7,16 +7,23 @@
 #include "CellType.h"
 
 class SensorReadings {
- public:
-  SensorReadings(CellType cellType) : cellType(cellType) {};
-  void setWall(Direction direction, bool isWall);
-  bool isWall(Direction direction) const;
-  CellType getCellType() const;
-  bool isCellAGoal() const;
+public:
+ SensorReadings() = default;
 
- private:
-  std::map<Direction, bool> readings{{NORTH, false}, {EAST, false}, {SOUTH, false}, {WEST, false}};
-  CellType cellType{};
+ SensorReadings(CellType cellType) : cellType(cellType) {
+ };
+
+ void setWall(Direction direction, bool isWall);
+
+ bool isWall(Direction direction) const;
+
+ CellType getCellType() const;
+
+ bool isCellAGoal() const;
+
+private:
+ std::map<Direction, bool> readings{{NORTH, false}, {EAST, false}, {SOUTH, false}, {WEST, false}};
+ CellType cellType{CellType::PATH};
 };
 
 #endif //MICROMOUSE_INCLUDE_MODEL_SENSORREADINGS_H_
