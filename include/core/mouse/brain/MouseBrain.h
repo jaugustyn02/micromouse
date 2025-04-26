@@ -18,6 +18,8 @@ public:
 
     Direction getNextMove(Position position, const SensorReadings &readings);
 
+    bool isDestinationReached(Position position) const;
+
     void reset();
 
 private:
@@ -26,10 +28,6 @@ private:
     MouseDecisionStrategy *currentStrategy;
     MouseMode activeMode{EXPLORATION};
     std::map<Position, SensorReadings> mazeMap;
-    Position startPosition{
-        GLOBAL::SIMULATION::START_POSITION_X,
-        GLOBAL::SIMULATION::START_POSITION_Y
-    };
 
     void validateMove(Position position, Direction move) const;
 

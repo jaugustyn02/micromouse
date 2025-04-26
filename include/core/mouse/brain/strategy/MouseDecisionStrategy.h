@@ -5,6 +5,7 @@
 #include "../../../../model/Direction.h"
 #include "../../../../model/Position.h"
 #include "../../../../model/SensorReadings.h"
+#include <utility>
 #include <vector>
 
 class MouseDecisionStrategy {
@@ -15,19 +16,18 @@ public:
 
     virtual void reset() = 0;
 
-    void setGoal(const std::vector<Position> &positions) {
+    void setDestination(const std::set<Position> &positions) {
         goalPositions = positions;
-    };
+    }
+
+    std::set<Position> getDestination() const {
+        return goalPositions;
+    }
 
 protected:
     const int mazeWidth = GLOBAL::SIMULATION::MAZE_WIDTH;
     const int mazeHeight = GLOBAL::SIMULATION::MAZE_HEIGHT;
-    std::vector<Position> goalPositions{
-        Position(mazeWidth / 2 - 1, mazeHeight / 2 - 1),
-        Position(mazeWidth / 2 - 1, mazeHeight / 2),
-        Position(mazeWidth / 2, mazeHeight / 2 - 1),
-        Position(mazeWidth / 2, mazeHeight / 2),
-    };
+    std::set<Position> goalPositions = GLOBAL::CONSTANTS::GOAL_POSITIONS;
 };
 
 #endif //MICROMOUSE_INCLUDE_MODEL_MOUSEDECISIONSTRATEGY_H_

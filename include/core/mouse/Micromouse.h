@@ -17,7 +17,7 @@ public:
 
  MoveStatus makeMove();
 
- void setMode(MouseMode mode);
+ void setMode(MouseMode mode) const;
 
  MouseMode getMode() const { return brain->getMode(); };
 
@@ -25,9 +25,9 @@ public:
 
  void reset();
 
- [[nodiscard]] int getX() const;
+ int getX() const;
 
- [[nodiscard]] int getY() const;
+ int getY() const;
 
 private:
  MouseSensor sensor;
@@ -35,7 +35,7 @@ private:
  Position startPosition;
  Position currentPosition;
 
- static void onGoalReached();
+ void onDestinationReached();
 };
 
 #endif //MICROMOUSE_INCLUDE_GUI_MICROMOUSE_H_

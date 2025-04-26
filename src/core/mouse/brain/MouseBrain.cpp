@@ -13,12 +13,15 @@ void MouseBrain::setMode(const MouseMode mode) {
   switch (mode) {
     case EXPLORATION:
       currentStrategy = explorationStrategy.get();
+      currentStrategy->setDestination(GLOBAL::CONSTANTS::GOAL_POSITIONS);
       break;
     case EXPLORATION_ON_RETURN:
       currentStrategy = explorationStrategy.get();
+      explorationStrategy->setDestination({GLOBAL::SIMULATION::START});
       break;
     case FASTEST_PATH: {
       currentStrategy = pathfindingStrategy.get();
+      currentStrategy->setDestination(GLOBAL::CONSTANTS::GOAL_POSITIONS);
       break;
     }
     default:
@@ -50,4 +53,9 @@ bool MouseBrain::isMoveLegal(const Position position, const Direction move) cons
 void MouseBrain::reset() {
   mazeMap.clear();
   setMode(EXPLORATION);
+}
+
+bool MouseBrain::isDestinationReached(const Position position) const {
+  const auto destination = currentStrategy->getDestination();
+  return destination.find(position) != destination.end();
 }

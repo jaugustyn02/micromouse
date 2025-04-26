@@ -112,10 +112,10 @@ void Maze::setStart() {
 }
 
 void Maze::setGoal(std::set<Position> &visited) {
-    Cell &northwestCell = grid[northwestCenter.getY()][northwestCenter.getX()];
-    Cell &southwestCell = grid[northwestCenter.getY() + 1][northwestCenter.getX()];
-    Cell &northeastCell = grid[northwestCenter.getY()][northwestCenter.getX() + 1];
-    Cell &southeastCell = grid[northwestCenter.getY() + 1][northwestCenter.getX() + 1];
+	Cell& northwestCell = getCell(GLOBAL::SIMULATION::NORTHWEST_GOAL);
+	Cell& southwestCell = getCell(GLOBAL::SIMULATION::SOUTHWEST_GOAL);
+	Cell& northeastCell = getCell(GLOBAL::SIMULATION::NORTHEAST_GOAL);
+	Cell& southeastCell = getCell(GLOBAL::SIMULATION::SOUTHEAST_GOAL);
     std::vector goalCells({&northwestCell, &southwestCell, &northeastCell, &southeastCell});
 
     for (const auto cell: goalCells) {
@@ -136,6 +136,10 @@ void Maze::setGoal(std::set<Position> &visited) {
     southeastCell.removeWall(WEST);
 
     setRandomGoalEntrance(goalCells);
+}
+
+Cell& Maze::getCell(Position position) {
+	return grid[position.getY()][position.getX()];
 }
 
 void Maze::setRandomGoalEntrance(std::vector<Cell *> goalCells) {

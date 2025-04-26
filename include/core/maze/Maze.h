@@ -26,9 +26,7 @@ public:
 private:
     const int width;
     const int height;
-    const Position start = Position(GLOBAL::SIMULATION::START_POSITION_X, GLOBAL::SIMULATION::START_POSITION_Y);
-    const Position northwestCenter = Position(GLOBAL::SIMULATION::MAZE_WIDTH / 2 - 1,
-                                              GLOBAL::SIMULATION::MAZE_HEIGHT / 2 - 1);
+	const Position start = GLOBAL::SIMULATION::START;
     std::vector<std::vector<Cell> > grid;
 
     void initializeGrid();
@@ -56,6 +54,8 @@ private:
     void setRandomGoalEntrance(std::vector<Cell *> goalCells);
 
     void setStart();
+
+    Cell& getCell(Position position);
 };
 
 #endif //MICROMOUSE_INCLUDE_GUI_MAZE_H_

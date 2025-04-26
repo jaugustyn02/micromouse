@@ -3,7 +3,7 @@
 #include <utility>
 
 Micromouse::Micromouse(const MouseSensor sensor, const Position startPosition) : sensor(sensor),
-  brain(std::make_unique<MouseBrain>(MouseBrainProvider::getMouseBrainInstance(MouseBrainType::RANDOM))),
+  brain(std::make_unique<MouseBrain>(MouseBrainProvider::getMouseBrainInstance(RANDOM))),
   startPosition(startPosition),
   currentPosition(startPosition) {
   std::cout << "[MICROMOUSE]: Micromouse initialized at position: " << currentPosition.toString() << std::endl;
@@ -13,8 +13,8 @@ Micromouse::Micromouse(const MouseSensor sensor, const Position startPosition) :
 MoveStatus Micromouse::makeMove() {
   const auto sensorReadings = sensor.getSensorReadings(currentPosition);
 
-  if (sensorReadings.isCellAGoal()) {
-    onGoalReached();
+  if (brain->isDestinationReached(currentPosition)) {
+    onDestinationReached();
     return GOAL_REACHED;
   }
 
@@ -23,8 +23,19 @@ MoveStatus Micromouse::makeMove() {
   return SUCCESS;
 }
 
-void Micromouse::onGoalReached() {
-  std::cout << "[MICROMOUSE]: Goal reached!" << std::endl;
+void Micromouse::onDestinationReached() {
+  std::cout << "[MICROMOUSE]: Destination reached!" << std::endl;
+  switch (brain->getMode()) {
+    case EXPLORATION:
+      setMode(EXPLORATION_ON_RETURN);
+      break;
+    case EXPLORATION_ON_RETURN:
+      setMode(FASTEST_PATH);
+      break;
+    case FASTEST_PATH:
+    default:
+      setMode(EXPLORATION);
+  }
 }
 
 void Micromouse::reset() {
@@ -33,10 +44,9 @@ void Micromouse::reset() {
   brain->reset();
 }
 
-void Micromouse::setMode(const MouseMode mode) {
+void Micromouse::setMode(const MouseMode mode) const {
   std::cout << "[MICROMOUSE]: Mouse mode set to: " << toString(mode) << std::endl;
   brain->setMode(mode);
-  currentPosition = startPosition;
 }
 
 void Micromouse::setBrain(std::unique_ptr<MouseBrain> _brain) {
