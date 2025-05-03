@@ -35,7 +35,7 @@ private:
  Position startPosition;
  Position currentPosition;
 
- void onDestinationReached();
+ void onDestinationReached() const;
 };
 
 #endif //MICROMOUSE_INCLUDE_GUI_MICROMOUSE_H_

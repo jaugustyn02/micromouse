@@ -36,7 +36,7 @@ Direction FloodingExplorationStrategy::getBestMove(const Position position) cons
       return getDirectionToNeighbourCell(position, neighbourCell);
     }
   }
-  throw std::invalid_argument("Best move is not legal!");
+  throw std::invalid_argument("[FloodingExplorationStrategy]: Best move is not legal!");
 }
 
 void FloodingExplorationStrategy::calculateDistances() {
@@ -44,9 +44,9 @@ void FloodingExplorationStrategy::calculateDistances() {
 
   std::queue<Position> queue;
 
-  for (auto goalPosition: goalPositions) {
-    setDistance(goalPosition, 0);
-    queue.emplace(goalPosition);
+  for (auto position: destination) {
+    setDistance(position, 0);
+    queue.emplace(position);
   }
 
   while (!queue.empty()) {
@@ -97,7 +97,7 @@ Direction FloodingExplorationStrategy::getDirectionToNeighbourCell(
   if (xDiff == 0 && yDiff == -1) {
     return NORTH;
   }
-  throw std::invalid_argument("Given positions are not neighbour!");
+  throw std::invalid_argument("[FloodingExplorationStrategy]: Given positions are not neighbour!");
 }
 
 int FloodingExplorationStrategy::getDistance(const Position position) const {

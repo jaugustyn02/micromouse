@@ -1,16 +1,19 @@
 #ifndef MICROMOUSE_INCLUDE_MODEL_MOUSEBRAIN_H_
 #define MICROMOUSE_INCLUDE_MODEL_MOUSEBRAIN_H_
 
-#include "strategy/MouseDecisionStrategy.h"
+#include "strategy/MouseMovementProvider.h"
 #include "../../GlobalConfig.h"
 #include "../../../model/MouseMode.h"
 #include "../MouseSensor.h"
 #include <utility>
 
+#include "strategy/exploration/ExplorationStrategy.h"
+#include "strategy/fastest_path/FastestPathStrategy.h"
+
 class MouseBrain {
 public:
-    MouseBrain(std::unique_ptr<MouseDecisionStrategy> explorationStrategy,
-               std::unique_ptr<MouseDecisionStrategy> pathfindingStrategy);
+    MouseBrain(std::unique_ptr<ExplorationStrategy> explorationStrategy,
+               std::unique_ptr<FastestPathStrategy> pathfindingStrategy);
 
     void setMode(MouseMode mode);
 
@@ -23,9 +26,9 @@ public:
     void reset();
 
 private:
-    std::unique_ptr<MouseDecisionStrategy> explorationStrategy;
-    std::unique_ptr<MouseDecisionStrategy> pathfindingStrategy;
-    MouseDecisionStrategy *currentStrategy;
+    std::unique_ptr<ExplorationStrategy> explorationStrategy;
+    std::unique_ptr<FastestPathStrategy> pathfindingStrategy;
+    MouseMovementProvider *currentStrategy;
     MouseMode activeMode{EXPLORATION};
     std::map<Position, SensorReadings> mazeMap;
 

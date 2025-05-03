@@ -2,24 +2,25 @@
 #include "../../../../../../include/utils/Randomizer.h"
 #include "../../../../../../include/core/GlobalConfig.h"
 
-Direction RandomFastestPathStrategy::decideMove(Position _position, SensorReadings readings) {
+Direction RandomFastestPathStrategy::decideMove(const Position currentPosition, const SensorReadings readings) {
   std::vector<Direction> possibleMoves;
-  auto backwardMove = opposite(lastMove);
-  for (auto direction : GLOBAL::CONSTANTS::DIRECTIONS) {
-    if (!readings.isWall(direction) && (isFirstMove || direction != backwardMove)) {
+  for (auto direction: GLOBAL::CONSTANTS::DIRECTIONS) {
+    if (!readings.isWall(direction) && !isBackwardMove(direction)) {
       possibleMoves.push_back(direction);
     }
   }
 
   if (possibleMoves.empty()) {
-    if (isFirstMove) {
+    if (!lastMove.has_value()) {
       throw std::runtime_error("[RandomExplorationStrategy]: No possible moves");
     }
-    lastMove = opposite(lastMove);
-    return lastMove;
+    possibleMoves.push_back(opposite(lastMove.value()));
   }
 
-  isFirstMove = false;
   lastMove = Randomizer::GetRandomElement(possibleMoves);
-  return lastMove;
+  return lastMove.value();
+}
+
+bool RandomFastestPathStrategy::isBackwardMove(const Direction direction) const {
+  return lastMove.has_value() && direction == opposite(lastMove.value());
 }

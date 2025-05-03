@@ -6,8 +6,8 @@ Micromouse::Micromouse(const MouseSensor sensor, const Position startPosition) :
   brain(std::make_unique<MouseBrain>(MouseBrainProvider::getMouseBrainInstance(RANDOM))),
   startPosition(startPosition),
   currentPosition(startPosition) {
-  std::cout << "[MICROMOUSE]: Micromouse initialized at position: " << currentPosition.toString() << std::endl;
-  std::cout << "[MICROMOUSE]: Initial mode: " << toString(brain->getMode()) << std::endl;
+  std::cout << "[Micromouse]: Initial position: " << currentPosition.toString() << std::endl;
+  std::cout << "[Micromouse]: Initial mode: " << toString(brain->getMode()) << std::endl;
 }
 
 MoveStatus Micromouse::makeMove() {
@@ -23,8 +23,8 @@ MoveStatus Micromouse::makeMove() {
   return SUCCESS;
 }
 
-void Micromouse::onDestinationReached() {
-  std::cout << "[MICROMOUSE]: Destination reached!" << std::endl;
+void Micromouse::onDestinationReached() const {
+  std::cout << "[Micromouse]: Destination reached!" << std::endl;
   switch (brain->getMode()) {
     case EXPLORATION:
       setMode(EXPLORATION_ON_RETURN);
@@ -39,21 +39,21 @@ void Micromouse::onDestinationReached() {
 }
 
 void Micromouse::reset() {
-  std::cout << "[MICROMOUSE]: Mouse reset" << std::endl;
+  std::cout << "[Micromouse]: Mouse reset" << std::endl;
   currentPosition = startPosition;
   brain->reset();
 }
 
 void Micromouse::setMode(const MouseMode mode) const {
-  std::cout << "[MICROMOUSE]: Mouse mode set to: " << toString(mode) << std::endl;
+  std::cout << "[Micromouse]: Mouse mode set to: " << toString(mode) << std::endl;
   brain->setMode(mode);
 }
 
 void Micromouse::setBrain(std::unique_ptr<MouseBrain> _brain) {
   reset();
-  std::cout << "[MICROMOUSE]: Mouse brain changed" << std::endl;
+  std::cout << "[Micromouse]: Mouse brain changed" << std::endl;
   this->brain = std::move(_brain);
-  std::cout << "[MICROMOUSE]: New brain mode: " << toString(brain->getMode()) << std::endl;
+  std::cout << "[Micromouse]:Brain mode changed to: " << toString(brain->getMode()) << std::endl;
 }
 
 int Micromouse::getX() const {
