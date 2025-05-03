@@ -24,7 +24,7 @@ namespace GLOBAL {
         inline constexpr auto STEP_DURATION = std::chrono::microseconds(STEP_DURATION_MS * 1000);
         inline constexpr int MAZE_WIDTH = 16;
         inline constexpr int MAZE_HEIGHT = 16;
-        const Position START{0, 0};
+        const Position START_POSITION{0, 0};
         const Position NORTHWEST_GOAL = {MAZE_WIDTH / 2 - 1, MAZE_HEIGHT / 2 - 1};
         const Position SOUTHWEST_GOAL = {MAZE_WIDTH / 2 - 1, MAZE_HEIGHT / 2};
         const Position NORTHEAST_GOAL = {MAZE_WIDTH / 2, MAZE_HEIGHT / 2 - 1};

@@ -31,9 +31,9 @@ bool FloodingExplorationStrategy::isBestMoveLegal(const Position position) const
 Direction FloodingExplorationStrategy::getBestMove(const Position position) const {
   const int desiredDistance = getDistance(position) - 1;
 
-  for (const auto &neighbourCell: position.getNeighborCellPositions(mazeWidth, mazeHeight)) {
-    if (!isWallBetween(position, neighbourCell) && getDistance(neighbourCell) == desiredDistance) {
-      return getDirectionToNeighbourCell(position, neighbourCell);
+  for (const auto &neighbour: position.getNeighborCellPositions(mazeWidth, mazeHeight)) {
+    if (!isWallBetween(position, neighbour) && getDistance(neighbour) == desiredDistance) {
+      return position.getDirectionToNeighbourPosition(neighbour);
     }
   }
   throw std::invalid_argument("[FloodingExplorationStrategy]: Best move is not legal!");
@@ -68,7 +68,7 @@ bool FloodingExplorationStrategy::isVisited(const Position position) const {
 }
 
 bool FloodingExplorationStrategy::isWallBetween(const Position source, const Position destination) const {
-  const auto direction = getDirectionToNeighbourCell(source, destination);
+  const auto direction = source.getDirectionToNeighbourPosition(destination);
 
   if (const auto pair = mazeMap.find(source); pair != mazeMap.end()) {
     return pair->second.isWall(direction);
@@ -77,27 +77,6 @@ bool FloodingExplorationStrategy::isWallBetween(const Position source, const Pos
     return pair->second.isWall(opposite(direction));
   }
   return false;
-}
-
-Direction FloodingExplorationStrategy::getDirectionToNeighbourCell(
-  const Position source,
-  const Position destination) {
-  const int xDiff = destination.getX() - source.getX();
-  const int yDiff = destination.getY() - source.getY();
-
-  if (xDiff == 1 && yDiff == 0) {
-    return EAST;
-  }
-  if (xDiff == -1 && yDiff == 0) {
-    return WEST;
-  }
-  if (xDiff == 0 && yDiff == 1) {
-    return SOUTH;
-  }
-  if (xDiff == 0 && yDiff == -1) {
-    return NORTH;
-  }
-  throw std::invalid_argument("[FloodingExplorationStrategy]: Given positions are not neighbour!");
 }
 
 int FloodingExplorationStrategy::getDistance(const Position position) const {

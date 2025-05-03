@@ -12,8 +12,8 @@ public:
 
   Position(const Position &position) = default;
 
-  int getX() const { return x; }
-  int getY() const { return y; }
+  [[nodiscard]] int getX() const { return x; }
+  [[nodiscard]] int getY() const { return y; }
 
   bool operator<(const Position &other) const {
     return (x == other.x) ? (y < other.y) : (x < other.x);
@@ -21,6 +21,10 @@ public:
 
   bool operator==(const Position &other) const {
     return x == other.x && y == other.y;
+  }
+
+  bool operator!=(const Position &start) const {
+    return !(*this == start);
   }
 
   void translate(const Direction direction) {
@@ -38,7 +42,7 @@ public:
     }
   }
 
-  Position translated(const Direction direction) const {
+  [[nodiscard]] Position translated(const Direction direction) const {
     switch (direction) {
       case NORTH:
         return {x, y - 1};
@@ -53,7 +57,8 @@ public:
     }
   }
 
-  std::vector<Position> Position::getNeighborCellPositions(const int gridWidth, const int gridHeight) const {
+  [[nodiscard]] std::vector<Position> Position::getNeighborCellPositions(
+    const int gridWidth, const int gridHeight) const {
     std::vector<Position> neighbors;
 
     if (x > 0) {
@@ -72,11 +77,30 @@ public:
     return neighbors;
   }
 
-  bool isOutOfBounds(const int gridWidth, const int gridHeight) const {
+  [[nodiscard]] Direction getDirectionToNeighbourPosition(const Position destination) const {
+    const int xDiff = destination.getX() - x;
+    const int yDiff = destination.getY() - y;
+
+    if (xDiff == 1 && yDiff == 0) {
+      return EAST;
+    }
+    if (xDiff == -1 && yDiff == 0) {
+      return WEST;
+    }
+    if (xDiff == 0 && yDiff == 1) {
+      return SOUTH;
+    }
+    if (xDiff == 0 && yDiff == -1) {
+      return NORTH;
+    }
+    throw std::invalid_argument("[Position]: Positions are not neighbour!");
+  }
+
+  [[nodiscard]] bool isOutOfBounds(const int gridWidth, const int gridHeight) const {
     return x < 0 || x >= gridWidth || y < 0 || y >= gridHeight;
   }
 
-  std::string toString() const {
+  [[nodiscard]] std::string toString() const {
     return "(" + std::to_string(x) + ", " + std::to_string(y) + ")";
   }
 

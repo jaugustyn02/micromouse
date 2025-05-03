@@ -25,15 +25,14 @@ public:
         return destination;
     }
 
-    void setStartPosition(const Position &_start) {
-        start = _start;
-    }
-
 protected:
     const int mazeWidth = GLOBAL::SIMULATION::MAZE_WIDTH;
     const int mazeHeight = GLOBAL::SIMULATION::MAZE_HEIGHT;
-    Position start{GLOBAL::SIMULATION::START};
     std::set<Position> destination = GLOBAL::CONSTANTS::GOAL_POSITIONS;
+
+    bool isDestination(const Position position) {
+        return destination.find(position) != destination.end();
+    }
 };
 
 #endif //MICROMOUSE_INCLUDE_MODEL_MOUSE_MOVEMENT_PROVIDER_H_

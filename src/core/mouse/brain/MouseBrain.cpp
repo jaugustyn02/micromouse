@@ -17,22 +17,24 @@ void MouseBrain::setMode(const MouseMode mode) {
       break;
     case EXPLORATION_ON_RETURN:
       currentStrategy = explorationStrategy.get();
-      currentStrategy->setDestination({GLOBAL::SIMULATION::START});
+      currentStrategy->setDestination({GLOBAL::SIMULATION::START_POSITION});
       break;
     case FASTEST_PATH: {
       currentStrategy = pathfindingStrategy.get();
+      currentStrategy->setDestination(GLOBAL::CONSTANTS::GOAL_POSITIONS);
+      pathfindingStrategy->setMazeMap(mazeMap);
       break;
     }
     default:
-      throw std::invalid_argument("[MouseBrain]: Invalid mouse mode: " + toString(mode));
+      throw std::invalid_argument("[MouseBrain]: Unsupported mouse mode: " + toString(mode));
   }
   currentStrategy->reset();
 }
 
-Direction MouseBrain::getNextMove(const Position position, const SensorReadings &readings) {
-  mazeMap.insert({position, readings});
-  const auto move = currentStrategy->decideMove(position, readings);
-  validateMove(position, move);
+Direction MouseBrain::getNextMove(const Position currentPosition, const SensorReadings &readings) {
+  mazeMap.insert({currentPosition, readings});
+  const auto move = currentStrategy->decideMove(currentPosition, readings);
+  validateMove(currentPosition, move);
   return move;
 }
 

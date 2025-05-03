@@ -33,8 +33,6 @@ private:
 
     bool isWallBetween(Position source, Position destination) const;
 
-    static Direction getDirectionToNeighbourCell(Position source, Position destination);
-
     int getDistance(Position position) const;
 
     void setDistance(Position position, int distance);

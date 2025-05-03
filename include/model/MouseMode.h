@@ -12,7 +12,7 @@ inline std::string toString(const MouseMode mode) {
     case EXPLORATION: return "Exploration";
     case EXPLORATION_ON_RETURN: return "Exploration on return";
     case FASTEST_PATH: return "Fastest Path";
-    default: return "Unknown";
+    default: return std::to_string(mode);
   }
 }
 

@@ -1,20 +1,35 @@
-#ifndef MICROMOUSE_INCLUDE_LOGIC_DFSFASTESTPATHSTRATEGY_H_
-#define MICROMOUSE_INCLUDE_LOGIC_DFSFASTESTPATHSTRATEGY_H_
+#ifndef MICROMOUSE_DFS_FASTEST_PATH_STRATEGY_H_
+#define MICROMOUSE_DFS_FASTEST_PATH_STRATEGY_H_
 
-#include <queue>
+#include <optional>
+#include <deque>
 
 #include "FastestPathStrategy.h"
 
-class BFSFastestPathStrategy : public FastestPathStrategy {
+class BFSFastestPathStrategy final : public FastestPathStrategy {
 public:
-    Direction decideMove(Position position, SensorReadings readings) override;
+    Direction decideMove(Position currentPosition, SensorReadings readings) override;
 
-    void reset() override;
+    void reset() override {
+        path.reset();
+    };
 
 private:
-    std::queue<Position> path;
+    std::optional<std::deque<Direction>> path;
 
-    void findFastestPath();
+    void findFastestPath(Position start);
+
+    Position getReachedDestination(const std::map<Position, int> &distance) const;
+
+    Direction getBestMove(std::map<Position, int> &distance, Position position) const;
+
+    std::map<Position, int> getDistanceMap(Position start) const;
+
+    static bool isVisited(std::map<Position, int> distance, Position position);
+
+    bool isWallBetween(Position source, Position destination) const;
+
+    Direction getDirectionToNeighbourCell(Position source, Position destination);
 };
 
-#endif //MICROMOUSE_INCLUDE_LOGIC_DFSFASTESTPATHSTRATEGY_H_
+#endif //MICROMOUSE_DFS_FASTEST_PATH_STRATEGY_H_

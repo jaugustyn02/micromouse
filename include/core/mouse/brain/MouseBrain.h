@@ -19,7 +19,7 @@ public:
 
     MouseMode getMode() const { return activeMode; }
 
-    Direction getNextMove(Position position, const SensorReadings &readings);
+    Direction getNextMove(Position currentPosition, const SensorReadings &readings);
 
     bool isDestinationReached(Position position) const;
 

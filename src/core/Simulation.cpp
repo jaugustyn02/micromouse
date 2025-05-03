@@ -1,6 +1,6 @@
 #include "../../include/core/Simulation.h"
 
-Simulation::Simulation() : mouse(Micromouse(MouseSensor(maze), GLOBAL::SIMULATION::START)) {
+Simulation::Simulation() : mouse(Micromouse(MouseSensor(maze), GLOBAL::SIMULATION::START_POSITION)) {
   maze.generate();
 }
 

@@ -26,7 +26,7 @@ public:
 private:
     const int width;
     const int height;
-	const Position start = GLOBAL::SIMULATION::START;
+	const Position start = GLOBAL::SIMULATION::START_POSITION;
     std::vector<std::vector<Cell> > grid;
 
     void initializeGrid();
