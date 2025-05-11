@@ -25,17 +25,7 @@ MoveStatus Micromouse::makeMove() {
 
 void Micromouse::onDestinationReached() const {
   std::cout << "[Micromouse]: Destination reached!" << std::endl;
-  switch (brain->getMode()) {
-    case EXPLORATION:
-      setMode(EXPLORATION_ON_RETURN);
-      break;
-    case EXPLORATION_ON_RETURN:
-      setMode(FASTEST_PATH);
-      break;
-    case FASTEST_PATH:
-    default:
-      setMode(EXPLORATION);
-  }
+  brain->nextMode();
 }
 
 void Micromouse::reset() {

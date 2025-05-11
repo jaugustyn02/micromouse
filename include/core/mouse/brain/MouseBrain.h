@@ -15,13 +15,15 @@ public:
     MouseBrain(std::unique_ptr<ExplorationStrategy> explorationStrategy,
                std::unique_ptr<FastestPathStrategy> pathfindingStrategy);
 
-    void setMode(MouseMode mode);
+    void setMode(MouseMode mode); // TODO: make private
 
-    MouseMode getMode() const { return activeMode; }
+    void nextMode();
+
+    [[nodiscard]] MouseMode getMode() const { return activeMode; }
 
     Direction getNextMove(Position currentPosition, const SensorReadings &readings);
 
-    bool isDestinationReached(Position position) const;
+    [[nodiscard]] bool isDestinationReached(Position position) const;
 
     void reset();
 
@@ -34,7 +36,9 @@ private:
 
     void validateMove(Position position, Direction move) const;
 
-    bool isMoveLegal(Position position, Direction move) const;
+    [[nodiscard]] bool isMoveLegal(Position position, Direction move) const;
+
+    [[nodiscard]] MouseMode getNextMode() const;
 };
 
 #endif //MICROMOUSE_INCLUDE_MODEL_MOUSEBRAIN_H_

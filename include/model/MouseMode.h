@@ -4,7 +4,8 @@
 enum MouseMode {
   EXPLORATION,
   EXPLORATION_ON_RETURN,
-  FASTEST_PATH
+  FASTEST_PATH,
+  RETURN,
 };
 
 inline std::string toString(const MouseMode mode) {
@@ -12,6 +13,7 @@ inline std::string toString(const MouseMode mode) {
     case EXPLORATION: return "Exploration";
     case EXPLORATION_ON_RETURN: return "Exploration on return";
     case FASTEST_PATH: return "Fastest Path";
+    case RETURN: return "Return";
     default: return std::to_string(mode);
   }
 }
