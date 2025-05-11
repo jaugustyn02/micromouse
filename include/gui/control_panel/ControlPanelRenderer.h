@@ -13,11 +13,10 @@ public:
 
     void update() const;
 
-    void updateStartStopToggleButton() const;
-
-    void updateChangeMouseModeButtons() const;
-
 private:
+    Position drawPosition{0, 0};
+    const int spacing = 10;
+    const int sectionSpacing = 20;
     SimulationController &simulationController;
     tgui::Gui &gui;
     ButtonsManager buttonsManager;
@@ -34,6 +33,18 @@ private:
     void addChangeMouseModeButtons();
 
     void addChangeMouseBrainButtons();
+
+    void updateStartStopToggleButton() const;
+
+    void updateChangeMouseModeButtons() const;
+
+    void addSectionLabel(const std::string &text);
+
+    void moveDrawPosition(int x, int y);
+
+    void addResetButton();
+
+    void addGenerateMazeButton();
 };
 
 #endif //MICROMOUSE_INCLUDE_GUI_CONTROLPANELRENDERER_H_

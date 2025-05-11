@@ -4,6 +4,7 @@
 #include "TGUI/Widgets/RadioButton.hpp"
 #include "TGUI/Widgets/ToggleButton.hpp"
 #include "../../../include/core/mouse/brain/MouseBrainProvider.h"
+#include "TGUI/Widgets/Label.hpp"
 
 ControlPanelRenderer::ControlPanelRenderer(
   SimulationController &simulationController,
@@ -13,21 +14,46 @@ ControlPanelRenderer::ControlPanelRenderer(
 }
 
 void ControlPanelRenderer::draw() {
+  drawPosition = Position(560, 5);
+
+  addSectionLabel("Maze");
+  moveDrawPosition(0, spacing);
+  addGenerateMazeButton();
+  moveDrawPosition(0, sectionSpacing);
+
+  addSectionLabel("Mouse");
+  moveDrawPosition(0, spacing);
+  addChangeMouseBrainButtons();
+  moveDrawPosition(0, spacing);
+  addChangeMouseModeButtons();
+  moveDrawPosition(0, sectionSpacing);
+
+  addSectionLabel("Simulation");
+  moveDrawPosition(0, spacing);
+  addStartStopToggleButton();
+  moveDrawPosition(0, spacing);
+  addResetButton();
+}
+
+void ControlPanelRenderer::addResetButton() {
   const std::function onResetButtonPress = [this]() {
     simulationController.reset();
     update();
   };
+  resetButton = buttonsManager.addButton(drawPosition, GLOBAL::TEXT::RESET_BUTTON, onResetButtonPress);
+
+  moveDrawPosition(0, static_cast<int>(resetButton->getSize().y));
+}
+
+void ControlPanelRenderer::addGenerateMazeButton() {
   const std::function onGenerateMazeButtonPress = [this]() {
     simulationController.generateMaze();
     update();
   };
-
-  resetButton = buttonsManager.addButton(Position(600, 110), GLOBAL::TEXT::RESET_BUTTON, onResetButtonPress);
-  generateMazeButton = buttonsManager.addButton(Position(600, 160), GLOBAL::TEXT::GENERATE_MAZE_BUTTON,
+  generateMazeButton = buttonsManager.addButton(drawPosition, GLOBAL::TEXT::GENERATE_MAZE_BUTTON,
                                                 onGenerateMazeButtonPress);
-  addStartStopToggleButton();
-  addChangeMouseBrainButtons();
-  addChangeMouseModeButtons();
+
+  moveDrawPosition(0, static_cast<int>(generateMazeButton->getSize().y));
 }
 
 void ControlPanelRenderer::addStartStopToggleButton() {
@@ -41,7 +67,9 @@ void ControlPanelRenderer::addStartStopToggleButton() {
     }
   });
 
-  startStopButton = buttonsManager.addToggleButton({600, 10}, GLOBAL::TEXT::START_BUTTON, onToggle);
+  startStopButton = buttonsManager.addToggleButton(drawPosition, GLOBAL::TEXT::START_BUTTON, onToggle);
+
+  moveDrawPosition(0, static_cast<int>(startStopButton->getSize().y));
 }
 
 void ControlPanelRenderer::addChangeMouseBrainButtons() {
@@ -52,10 +80,12 @@ void ControlPanelRenderer::addChangeMouseBrainButtons() {
     simulationController.setMouseBrain(ADVANCED);
   };
   auto [randomBrainButton, advancedBrainButton] = buttonsManager.addTwoStateToggleButtons(
-    {600, 210}, "Random", "Advanced",
+    drawPosition, "Random", "Advanced",
     onRandomBrainButtonPress, onAdvancedBrainButtonPress);
   mouseRandomBrainButton = randomBrainButton;
   mouseAdvancedBrainModeButton = advancedBrainButton;
+
+  moveDrawPosition(0, static_cast<int>(mouseRandomBrainButton->getSize().y));
 }
 
 void ControlPanelRenderer::addChangeMouseModeButtons() {
@@ -66,10 +96,28 @@ void ControlPanelRenderer::addChangeMouseModeButtons() {
     simulationController.setMouseMode(FASTEST_PATH);
   };
   auto [explorationModeButton, fastestPathModeButton] = buttonsManager.addTwoStateToggleButtons(
-    {600, 260}, "Exploration", "Fastest Path",
+    drawPosition, "Exploration", "Fastest Path",
     onExplorationModeButtonPress, onFastestPathModeButtonPress);
   mouseExplorationModeButton = explorationModeButton;
   mouseFastestPathModeButton = fastestPathModeButton;
+
+  moveDrawPosition(0, static_cast<int>(mouseExplorationModeButton->getSize().y));
+}
+
+void ControlPanelRenderer::addSectionLabel(const std::string &text) {
+  const auto label = tgui::Label::create(text);
+  label->setPosition(drawPosition.getX(), drawPosition.getY());
+  label->setTextSize(18);
+  label->getRenderer()->setTextColor(GLOBAL::COLORS::PRIMARY_DARK);
+  label->getRenderer()->setTextStyle(tgui::TextStyle::Bold);
+  gui.add(label);
+
+  moveDrawPosition(0, static_cast<int>(label->getSize().y));
+}
+
+void ControlPanelRenderer::moveDrawPosition(const int x, const int y) {
+  drawPosition = Position(drawPosition.getX() + x,
+                          drawPosition.getY() + y);
 }
 
 void ControlPanelRenderer::update() const {
@@ -93,3 +141,4 @@ void ControlPanelRenderer::updateChangeMouseModeButtons() const {
     mouseFastestPathModeButton->setDown(true);
   }
 }
+
