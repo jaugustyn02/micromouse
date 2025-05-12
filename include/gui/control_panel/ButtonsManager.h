@@ -8,13 +8,13 @@
 #include <string>
 #include "../../model/Position.h"
 #include "TGUI/Backend/SFML-Graphics.hpp"
-#include "../../model/Position.h"
 #include "TGUI/Widgets/Button.hpp"
+#include "TGUI/Widgets/Label.hpp"
 #include "TGUI/Widgets/ToggleButton.hpp"
 
 class ButtonsManager {
 public:
-    ButtonsManager(tgui::SFML_GRAPHICS::Gui &gui);
+    explicit ButtonsManager(tgui::SFML_GRAPHICS::Gui &gui);
 
     tgui::Button::Ptr addButton(Position position, const std::string &label,
                                 const std::function<void()> &onPress) const;
@@ -31,6 +31,13 @@ public:
         const std::string &label2,
         const std::function<void()> &onPress1,
         const std::function<void()> &onPress2) const;
+
+    [[nodiscard]] std::pair<tgui::Label::Ptr, tgui::Label::Ptr> addTwoStateDisplayLabels(
+        const Position &position,
+        const std::string &label1,
+        const std::string &label2) const;
+
+    static void setTwoStateDisplaySelection(const tgui::Label::Ptr &selected, const tgui::Label::Ptr &unselected);
 
 private:
     tgui::Gui &gui;

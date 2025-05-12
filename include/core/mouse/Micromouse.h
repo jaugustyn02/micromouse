@@ -19,15 +19,15 @@ public:
 
  void setMode(MouseMode mode) const;
 
- MouseMode getMode() const { return brain->getMode(); };
+ [[nodiscard]] MouseMode getMode() const { return brain->getMode(); };
 
  void setBrain(std::unique_ptr<MouseBrain> _brain);
 
  void reset();
 
- int getX() const;
+ [[nodiscard]] int getX() const;
 
- int getY() const;
+ [[nodiscard]] int getY() const;
 
 private:
  MouseSensor sensor;

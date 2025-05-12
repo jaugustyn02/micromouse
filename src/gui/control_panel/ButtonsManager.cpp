@@ -16,9 +16,8 @@ void ButtonsManager::createBaseButton() const {
     renderer->setTextColorHover(sf::Color::White);
     renderer->setTextColorDown(sf::Color::White);
     renderer->setBorderColor(GLOBAL::COLORS::DARK);
+    renderer->setTextSize(GLOBAL::TEXT::BUTTON_TEXT_SIZE);
     renderer->setBorders(0);
-    renderer->setRoundedBorderRadius(100);
-    renderer->setTextStyle(tgui::TextStyle::Bold);
 }
 
 void ButtonsManager::createBaseToggleButton() const {
@@ -32,10 +31,9 @@ void ButtonsManager::createBaseToggleButton() const {
     renderer->setTextColorDown(sf::Color::White);
     renderer->setBorderColor(GLOBAL::COLORS::PRIMARY);
     renderer->setBorders(0);
-    renderer->setRoundedBorderRadius(100);
-    renderer->setTextStyle(tgui::TextStyle::Bold);
     renderer->setBackgroundColorDisabled(GLOBAL::COLORS::PRIMARY_DARK);
     renderer->setTextColorDisabled(sf::Color::White);
+    renderer->setTextSize(GLOBAL::TEXT::BUTTON_TEXT_SIZE);
 }
 
 tgui::Button::Ptr ButtonsManager::addButton(const Position position,
@@ -105,3 +103,38 @@ std::pair<tgui::ToggleButton::Ptr, tgui::ToggleButton::Ptr> ButtonsManager::addT
     gui.add(button2);
     return {button1, button2};
 }
+
+std::pair<tgui::Label::Ptr, tgui::Label::Ptr> ButtonsManager::addTwoStateDisplayLabels(
+    const Position &position,
+    const std::string &label1,
+    const std::string &label2) const {
+    auto labelA = tgui::Label::create(label1);
+    auto labelB = tgui::Label::create(label2);
+
+    labelA->setPosition(position.getX(), position.getY());
+    labelB->setPosition(position.getX() + 145, position.getY());
+
+    for (auto &label: {labelA, labelB}) {
+        label->setSize(140, 40);
+        label->setTextSize(GLOBAL::TEXT::DISPLAY_TEXT_SIZE);
+        label->setHorizontalAlignment(tgui::HorizontalAlignment::Center);
+        label->setVerticalAlignment(tgui::VerticalAlignment::Center);
+
+        const auto renderer = label->getRenderer();
+        renderer->setBackgroundColor(GLOBAL::COLORS::SECONDARY);
+        renderer->setTextColor(sf::Color::White);
+        renderer->setBorders(0);
+    }
+
+    gui.add(labelA);
+    gui.add(labelB);
+    return {labelA, labelB};
+}
+
+void ButtonsManager::setTwoStateDisplaySelection(
+    const tgui::Label::Ptr &selected,
+    const tgui::Label::Ptr &unselected) {
+    selected->getRenderer()->setBackgroundColor(GLOBAL::COLORS::SECONDARY_DARK);
+    unselected->getRenderer()->setBackgroundColor(GLOBAL::COLORS::SECONDARY);
+}
+

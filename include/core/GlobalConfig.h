@@ -58,7 +58,21 @@ namespace GLOBAL {
         inline const std::string START_BUTTON = "Start";
         inline const std::string STOP_BUTTON = "Stop";
         inline const std::string RESET_BUTTON = "Reset";
-        inline const std::string GENERATE_MAZE_BUTTON = "Generate Maze";
+        inline const std::string GENERATE_MAZE_BUTTON = "Generate";
+        inline const std::string SIMULATION_SECTION = "Simulation";
+        inline const std::string MAZE_SECTION = "Maze";
+        inline const std::string ALGORITHM_SECTION = "Algorithm";
+        inline const std::string TARGET_SECTION = "Target";
+        inline const std::string MODE_SECTION = "Mode";
+        inline const std::string ADVANCED_BRAIN = "Flooding + BFS";
+        inline const std::string RANDOM_BRAIN = "Random";
+        inline const std::string EXPLORATION_MODE = "Exploration";
+        inline const std::string FASTEST_PATH_MODE = "Fastest Path";
+        inline const std::string START_TARGET = "Start";
+        inline const std::string GOAL_TARGET = "Goal";
+        inline constexpr int SECTION_TEXT_SIZE = 18;
+        inline constexpr int BUTTON_TEXT_SIZE = 12;
+        inline constexpr int DISPLAY_TEXT_SIZE = 12;
     }
 
     namespace RANDOM {

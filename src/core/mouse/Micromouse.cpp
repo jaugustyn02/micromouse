@@ -3,7 +3,7 @@
 #include <utility>
 
 Micromouse::Micromouse(const MouseSensor sensor, const Position startPosition) : sensor(sensor),
-  brain(std::make_unique<MouseBrain>(MouseBrainProvider::getMouseBrainInstance(RANDOM))),
+  brain(std::make_unique<MouseBrain>(MouseBrainProvider::getMouseBrainInstance(ADVANCED))),
   startPosition(startPosition),
   currentPosition(startPosition) {
   std::cout << "[Micromouse]: Initial position: " << currentPosition.toString() << std::endl;

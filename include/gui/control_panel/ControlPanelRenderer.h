@@ -15,28 +15,35 @@ public:
 
 private:
     Position drawPosition{0, 0};
-    const int spacing = 10;
-    const int sectionSpacing = 20;
+    const int ySpacing = 5;
+    const int xSpacing = 5;
+    const int sectionSpacing = 10;
     SimulationController &simulationController;
     tgui::Gui &gui;
     ButtonsManager buttonsManager;
     tgui::ToggleButton::Ptr startStopButton;
     tgui::Button::Ptr resetButton;
     tgui::Button::Ptr generateMazeButton;
-    tgui::ToggleButton::Ptr mouseExplorationModeButton;
-    tgui::ToggleButton::Ptr mouseFastestPathModeButton;
+    tgui::Label::Ptr modeExplorationLabel;
+    tgui::Label::Ptr modeFastestPathLabel;
+    tgui::Label::Ptr targetStartLabel;
+    tgui::Label::Ptr targetGoalLabel;
     tgui::ToggleButton::Ptr mouseRandomBrainButton;
     tgui::ToggleButton::Ptr mouseAdvancedBrainModeButton;
 
     void addStartStopToggleButton();
 
-    void addChangeMouseModeButtons();
+    void addMouseModeDisplay();
+
+    void addTargetDisplay();
 
     void addChangeMouseBrainButtons();
 
     void updateStartStopToggleButton() const;
 
-    void updateChangeMouseModeButtons() const;
+    void updateMouseModeDisplay() const;
+
+    void updateTargetDisplay() const;
 
     void addSectionLabel(const std::string &text);
 
