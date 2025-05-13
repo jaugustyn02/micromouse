@@ -1,15 +1,20 @@
 #ifndef MICROMOUSE_INCLUDE_GUI_CONTROLPANELRENDERER_H_
 #define MICROMOUSE_INCLUDE_GUI_CONTROLPANELRENDERER_H_
 
-#include "ButtonsManager.h"
+#include "UIControlsManager.h"
 #include "../../core/SimulationController.h"
 #include "TGUI/Backend/SFML-Graphics.hpp"
+#include "TGUI/Widgets/Slider.hpp"
 
 class ControlPanelRenderer {
 public:
     ControlPanelRenderer(SimulationController &simulationController, tgui::Gui &gui);
 
     void draw();
+
+    void addSimulationSection();
+
+    void addSimulationSpeedSlider();
 
     void update() const;
 
@@ -20,7 +25,7 @@ private:
     const int sectionSpacing = 10;
     SimulationController &simulationController;
     tgui::Gui &gui;
-    ButtonsManager buttonsManager;
+    UIControlsManager uiControlsManager;
     tgui::ToggleButton::Ptr startStopButton;
     tgui::Button::Ptr resetButton;
     tgui::Button::Ptr generateMazeButton;
@@ -30,6 +35,8 @@ private:
     tgui::Label::Ptr targetGoalLabel;
     tgui::ToggleButton::Ptr mouseRandomBrainButton;
     tgui::ToggleButton::Ptr mouseAdvancedBrainModeButton;
+    tgui::Slider::Ptr simulationSpeedSlider;
+    tgui::Label::Ptr simulationSpeedValueLabel;
 
     void addStartStopToggleButton();
 

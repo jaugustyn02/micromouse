@@ -1,12 +1,13 @@
-#include "../../../include/gui/control_panel/ButtonsManager.h"
+#include "../../../include/gui/control_panel/UIControlsManager.h"
 #include "../../../include/core/GlobalConfig.h"
+#include "TGUI/Widgets/Slider.hpp"
 
-ButtonsManager::ButtonsManager(tgui::Gui &gui): gui(gui) {
+UIControlsManager::UIControlsManager(tgui::Gui &gui): gui(gui) {
     createBaseButton();
     createBaseToggleButton();
 }
 
-void ButtonsManager::createBaseButton() const {
+void UIControlsManager::createBaseButton() const {
     baseButton->setSize(140, 40);
     const auto renderer = baseButton->getRenderer();
     renderer->setBackgroundColor(GLOBAL::COLORS::PRIMARY);
@@ -20,7 +21,7 @@ void ButtonsManager::createBaseButton() const {
     renderer->setBorders(0);
 }
 
-void ButtonsManager::createBaseToggleButton() const {
+void UIControlsManager::createBaseToggleButton() const {
     baseToggleButton->setSize(140, 40);
     const auto renderer = baseToggleButton->getRenderer();
     renderer->setBackgroundColor(GLOBAL::COLORS::PRIMARY);
@@ -36,9 +37,9 @@ void ButtonsManager::createBaseToggleButton() const {
     renderer->setTextSize(GLOBAL::TEXT::BUTTON_TEXT_SIZE);
 }
 
-tgui::Button::Ptr ButtonsManager::addButton(const Position position,
-                                            const std::string &label,
-                                            const std::function<void()> &onPress) const {
+tgui::Button::Ptr UIControlsManager::addButton(const Position position,
+                                               const std::string &label,
+                                               const std::function<void()> &onPress) const {
     const auto button = tgui::Button::copy(baseButton);
     button->setText(label);
     button->setPosition(position.getX(), position.getY());
@@ -48,11 +49,11 @@ tgui::Button::Ptr ButtonsManager::addButton(const Position position,
     return button;
 }
 
-tgui::ToggleButton::Ptr ButtonsManager::addToggleButton(const Position position,
-                                                        const std::string &label,
-                                                        const std::function<void(
-                                                            const tgui::ToggleButton::Ptr &button, bool checked)> &
-                                                        onToggle) const {
+tgui::ToggleButton::Ptr UIControlsManager::addToggleButton(const Position position,
+                                                           const std::string &label,
+                                                           const std::function<void(
+                                                               const tgui::ToggleButton::Ptr &button, bool checked)> &
+                                                           onToggle) const {
     const auto toggleButton = tgui::ToggleButton::copy(baseToggleButton);
     toggleButton->setText(label);
     toggleButton->setPosition(position.getX(), position.getY());
@@ -65,18 +66,22 @@ tgui::ToggleButton::Ptr ButtonsManager::addToggleButton(const Position position,
     return toggleButton;
 }
 
-std::pair<tgui::ToggleButton::Ptr, tgui::ToggleButton::Ptr> ButtonsManager::addTwoStateToggleButtons(
+std::pair<tgui::ToggleButton::Ptr, tgui::ToggleButton::Ptr> UIControlsManager::addTwoStateToggleButtons(
     const Position position,
     const std::string &label1,
     const std::string &label2,
     const std::function<void()> &onPress1,
-    const std::function<void()> &onPress2) const {
+    const std::function<void()> &onPress2,
+    const int buttonsGap) const {
     const auto button1 = tgui::ToggleButton::copy(baseToggleButton);
     const auto button2 = tgui::ToggleButton::copy(baseToggleButton);
+
     button1->setText(label1);
     button2->setText(label2);
+
     button1->setPosition(position.getX(), position.getY());
-    button2->setPosition(position.getX() + 145, position.getY());
+    const auto offsetX = static_cast<int>(button1->getSize().x) + buttonsGap;
+    button2->setPosition(position.getX() + offsetX, position.getY());
 
     button1->setDown(true);
     button2->setDown(false);
@@ -104,7 +109,7 @@ std::pair<tgui::ToggleButton::Ptr, tgui::ToggleButton::Ptr> ButtonsManager::addT
     return {button1, button2};
 }
 
-std::pair<tgui::Label::Ptr, tgui::Label::Ptr> ButtonsManager::addTwoStateDisplayLabels(
+std::pair<tgui::Label::Ptr, tgui::Label::Ptr> UIControlsManager::addTwoStateDisplayLabels(
     const Position &position,
     const std::string &label1,
     const std::string &label2) const {
@@ -131,10 +136,46 @@ std::pair<tgui::Label::Ptr, tgui::Label::Ptr> ButtonsManager::addTwoStateDisplay
     return {labelA, labelB};
 }
 
-void ButtonsManager::setTwoStateDisplaySelection(
+void UIControlsManager::setTwoStateDisplaySelection(
     const tgui::Label::Ptr &selected,
     const tgui::Label::Ptr &unselected) {
     selected->getRenderer()->setBackgroundColor(GLOBAL::COLORS::SECONDARY_DARK);
     unselected->getRenderer()->setBackgroundColor(GLOBAL::COLORS::SECONDARY);
+}
+
+std::pair<tgui::Slider::Ptr, tgui::Label::Ptr> UIControlsManager::addSliderWithValue(
+    const Position &position, const float minValue, const float maxValue,
+    const float defaultValue, const float step,
+    const std::function<void(float)> &onChange,
+    const int labelGap) const {
+    const auto slider = tgui::Slider::create(minValue, maxValue);
+    slider->setStep(step);
+    slider->setValue(defaultValue);
+    slider->setSize(285, 18);
+    slider->setPosition(position.getX(), position.getY());
+
+    const auto valueLabel = tgui::Label::create(std::to_string(static_cast<int>(defaultValue)));
+    valueLabel->setTextSize(GLOBAL::TEXT::SLIDER_VALUE_TEXT_SIZE);
+    valueLabel->setPosition(position.getX(), position.getY() + static_cast<int>(slider->getSize().y) + labelGap);
+    valueLabel->getRenderer()->setTextColor(GLOBAL::COLORS::PRIMARY_DARK);
+
+    slider->onValueChange([=](const float value) {
+        onChange(value);
+        valueLabel->setText(std::to_string(static_cast<int>(value)));
+    });
+
+    const auto sliderRenderer = slider->getRenderer();
+    sliderRenderer->setTrackColor(GLOBAL::COLORS::SECONDARY);
+    sliderRenderer->setThumbColor(GLOBAL::COLORS::PRIMARY);
+    sliderRenderer->setBorderColor(GLOBAL::COLORS::PRIMARY_DARK);
+    sliderRenderer->setTrackColorHover(GLOBAL::COLORS::SECONDARY);
+    sliderRenderer->setThumbColorHover(GLOBAL::COLORS::PRIMARY_DARK);
+    sliderRenderer->setBorderColorHover(GLOBAL::COLORS::PRIMARY_DARK);
+    sliderRenderer->setBorders(0);
+
+    gui.add(slider);
+    gui.add(valueLabel);
+
+    return {slider, valueLabel};
 }
 

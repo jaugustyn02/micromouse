@@ -10,7 +10,7 @@ ControlPanelRenderer::ControlPanelRenderer(
   SimulationController &simulationController,
   tgui::Gui &gui) : simulationController(simulationController),
                     gui(gui),
-                    buttonsManager(gui) {
+                    uiControlsManager(gui) {
 }
 
 void ControlPanelRenderer::draw() {
@@ -32,10 +32,35 @@ void ControlPanelRenderer::draw() {
   addChangeMouseBrainButtons();
   moveDrawPosition(0, sectionSpacing);
 
+  addSimulationSection();
+  moveDrawPosition(0, sectionSpacing);
+
+  addSectionLabel(GLOBAL::TEXT::SIMULATION_SPEED_SECTION);
+  addSimulationSpeedSlider();
+}
+
+void ControlPanelRenderer::addSimulationSection() {
   addSectionLabel(GLOBAL::TEXT::SIMULATION_SECTION);
   addStartStopToggleButton();
-  moveDrawPosition(0, ySpacing);
+  moveDrawPosition(static_cast<int>(startStopButton->getSize().x) + xSpacing, 0);
   addResetButton();
+  moveDrawPosition(-(static_cast<int>(startStopButton->getSize().x) + xSpacing),
+                   static_cast<int>(resetButton->getSize().y) + ySpacing);
+}
+
+void ControlPanelRenderer::addSimulationSpeedSlider() {
+  const auto onSpeedValueChange = [this](const float value) {
+    simulationController.setSpeed(static_cast<int>(value));
+  };
+
+  moveDrawPosition(0, 4);
+  auto [slider, valueLabel] = uiControlsManager.addSliderWithValue(drawPosition, 1, 15, 5, 1, onSpeedValueChange,
+                                                                   ySpacing);
+  simulationSpeedSlider = slider;
+  simulationSpeedValueLabel = valueLabel;
+
+  moveDrawPosition(0, static_cast<int>(simulationSpeedSlider->getSize().y) + ySpacing);
+  moveDrawPosition(0, static_cast<int>(simulationSpeedValueLabel->getSize().y) - 6);
 }
 
 void ControlPanelRenderer::addResetButton() {
@@ -43,9 +68,7 @@ void ControlPanelRenderer::addResetButton() {
     simulationController.reset();
     update();
   };
-  resetButton = buttonsManager.addButton(drawPosition, GLOBAL::TEXT::RESET_BUTTON, onResetButtonPress);
-
-  moveDrawPosition(0, static_cast<int>(resetButton->getSize().y));
+  resetButton = uiControlsManager.addButton(drawPosition, GLOBAL::TEXT::RESET_BUTTON, onResetButtonPress);
 }
 
 void ControlPanelRenderer::addGenerateMazeButton() {
@@ -53,8 +76,8 @@ void ControlPanelRenderer::addGenerateMazeButton() {
     simulationController.generateMaze();
     update();
   };
-  generateMazeButton = buttonsManager.addButton(drawPosition, GLOBAL::TEXT::GENERATE_MAZE_BUTTON,
-                                                onGenerateMazeButtonPress);
+  generateMazeButton = uiControlsManager.addButton(drawPosition, GLOBAL::TEXT::GENERATE_MAZE_BUTTON,
+                                                   onGenerateMazeButtonPress);
 
   moveDrawPosition(0, static_cast<int>(generateMazeButton->getSize().y));
 }
@@ -69,9 +92,7 @@ void ControlPanelRenderer::addStartStopToggleButton() {
       button->setText(GLOBAL::TEXT::START_BUTTON);
     }
   });
-  startStopButton = buttonsManager.addToggleButton(drawPosition, GLOBAL::TEXT::START_BUTTON, onToggle);
-
-  moveDrawPosition(0, static_cast<int>(startStopButton->getSize().y));
+  startStopButton = uiControlsManager.addToggleButton(drawPosition, GLOBAL::TEXT::START_BUTTON, onToggle);
 }
 
 void ControlPanelRenderer::addChangeMouseBrainButtons() {
@@ -82,9 +103,9 @@ void ControlPanelRenderer::addChangeMouseBrainButtons() {
     simulationController.setMouseBrain(ADVANCED);
   };
 
-  auto [advancedBrainButton, randomBrainButton] = buttonsManager.addTwoStateToggleButtons(
+  auto [advancedBrainButton, randomBrainButton] = uiControlsManager.addTwoStateToggleButtons(
     drawPosition, GLOBAL::TEXT::ADVANCED_BRAIN, GLOBAL::TEXT::RANDOM_BRAIN,
-    onAdvancedBrainButtonPress, onRandomBrainButtonPress);
+    onAdvancedBrainButtonPress, onRandomBrainButtonPress, xSpacing);
   mouseAdvancedBrainModeButton = advancedBrainButton;
   mouseRandomBrainButton = randomBrainButton;
 
@@ -92,7 +113,7 @@ void ControlPanelRenderer::addChangeMouseBrainButtons() {
 }
 
 void ControlPanelRenderer::addMouseModeDisplay() {
-  auto [exploration, fastestPath] = buttonsManager.
+  auto [exploration, fastestPath] = uiControlsManager.
       addTwoStateDisplayLabels(drawPosition, GLOBAL::TEXT::EXPLORATION_MODE, GLOBAL::TEXT::FASTEST_PATH_MODE);
   modeExplorationLabel = exploration;
   modeFastestPathLabel = fastestPath;
@@ -100,7 +121,7 @@ void ControlPanelRenderer::addMouseModeDisplay() {
 }
 
 void ControlPanelRenderer::addTargetDisplay() {
-  auto [goalLabel, startLabel] = buttonsManager.addTwoStateDisplayLabels(
+  auto [goalLabel, startLabel] = uiControlsManager.addTwoStateDisplayLabels(
     drawPosition, GLOBAL::TEXT::GOAL_TARGET, GLOBAL::TEXT::START_TARGET);
   targetGoalLabel = goalLabel;
   targetStartLabel = startLabel;
@@ -140,7 +161,7 @@ void ControlPanelRenderer::updateMouseModeDisplay() const {
   const auto mode = simulationController.getMouse().getMode();
   const bool isExploration = (mode == EXPLORATION || mode == EXPLORATION_ON_RETURN);
 
-  ButtonsManager::setTwoStateDisplaySelection(
+  UIControlsManager::setTwoStateDisplaySelection(
     isExploration ? modeExplorationLabel : modeFastestPathLabel,
     isExploration ? modeFastestPathLabel : modeExplorationLabel);
 }
@@ -149,7 +170,7 @@ void ControlPanelRenderer::updateTargetDisplay() const {
   const auto mode = simulationController.getMouse().getMode();
   const bool isGoal = (mode == EXPLORATION || mode == FASTEST_PATH);
 
-  ButtonsManager::setTwoStateDisplaySelection(
+  UIControlsManager::setTwoStateDisplaySelection(
     isGoal ? targetGoalLabel : targetStartLabel,
     isGoal ? targetStartLabel : targetGoalLabel);
 }
