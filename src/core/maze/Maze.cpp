@@ -8,6 +8,8 @@ Maze::Maze(const int width, const int height) : width(width), height(height) {
 }
 
 void Maze::generate() {
+    std::cout << "[Maze]: Generating new maze" << std::endl;
+
     resetGrid();
 
     std::stack<Position> stack;
@@ -34,7 +36,7 @@ void Maze::generate() {
         visited.insert(nextPosition);
     }
 
-    removeRandomWalls(GLOBAL::SIMULATION::REMOVED_WALLS);
+    removeRandomWalls(GLOBAL::MAZE::REMOVED_WALLS);
 }
 
 void Maze::resetGrid() {
@@ -112,10 +114,10 @@ void Maze::setStart() {
 }
 
 void Maze::setGoal(std::set<Position> &visited) {
-	Cell& northwestCell = getCell(GLOBAL::SIMULATION::NORTHWEST_GOAL);
-	Cell& southwestCell = getCell(GLOBAL::SIMULATION::SOUTHWEST_GOAL);
-	Cell& northeastCell = getCell(GLOBAL::SIMULATION::NORTHEAST_GOAL);
-	Cell& southeastCell = getCell(GLOBAL::SIMULATION::SOUTHEAST_GOAL);
+    Cell &northwestCell = getCell(GLOBAL::MAZE::NORTHWEST_GOAL);
+    Cell &southwestCell = getCell(GLOBAL::MAZE::SOUTHWEST_GOAL);
+    Cell &northeastCell = getCell(GLOBAL::MAZE::NORTHEAST_GOAL);
+    Cell &southeastCell = getCell(GLOBAL::MAZE::SOUTHEAST_GOAL);
     std::vector goalCells({&northwestCell, &southwestCell, &northeastCell, &southeastCell});
 
     for (const auto cell: goalCells) {
@@ -138,8 +140,8 @@ void Maze::setGoal(std::set<Position> &visited) {
     setRandomGoalEntrance(goalCells);
 }
 
-Cell& Maze::getCell(Position position) {
-	return grid[position.getY()][position.getX()];
+Cell &Maze::getCell(Position position) {
+    return grid[position.getY()][position.getX()];
 }
 
 void Maze::setRandomGoalEntrance(std::vector<Cell *> goalCells) {

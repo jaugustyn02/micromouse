@@ -12,7 +12,7 @@ class Position;
 
 namespace GLOBAL {
     namespace SCREEN {
-        inline constexpr const char *TITLE = "Micromouse Simulator";
+        inline constexpr auto TITLE = "Micromouse Simulator";
         inline constexpr int WIDTH = 900;
         inline constexpr int HEIGHT = 600;
         inline constexpr int FPS = 60;
@@ -20,16 +20,21 @@ namespace GLOBAL {
     }
 
     namespace SIMULATION {
-        inline constexpr int STEP_DURATION_MS = 200;
+        inline constexpr int DEFAULT_SPEED = 5;
+        inline constexpr int MAX_SPEED = 20;
+        inline constexpr int STEP_DURATION_MS = 200 * DEFAULT_SPEED;
         inline constexpr auto STEP_DURATION = std::chrono::microseconds(STEP_DURATION_MS * 1000);
+    }
+
+    namespace MAZE {
         inline constexpr int MAZE_WIDTH = 16;
         inline constexpr int MAZE_HEIGHT = 16;
+        inline constexpr int REMOVED_WALLS = (MAZE_WIDTH + MAZE_HEIGHT) / 2;
         const Position START_POSITION{0, 0};
         const Position NORTHWEST_GOAL = {MAZE_WIDTH / 2 - 1, MAZE_HEIGHT / 2 - 1};
         const Position SOUTHWEST_GOAL = {MAZE_WIDTH / 2 - 1, MAZE_HEIGHT / 2};
         const Position NORTHEAST_GOAL = {MAZE_WIDTH / 2, MAZE_HEIGHT / 2 - 1};
         const Position SOUTHEAST_GOAL = {MAZE_WIDTH / 2, MAZE_HEIGHT / 2};
-        inline constexpr int REMOVED_WALLS = 16;
     }
 
     namespace COLORS {
@@ -85,10 +90,10 @@ namespace GLOBAL {
     namespace CONSTANTS {
         constexpr std::array<Direction, 4> DIRECTIONS = {NORTH, EAST, SOUTH, WEST};
         const std::set GOAL_POSITIONS = {
-            SIMULATION::NORTHWEST_GOAL,
-            SIMULATION::SOUTHWEST_GOAL,
-            SIMULATION::NORTHEAST_GOAL,
-            SIMULATION::SOUTHEAST_GOAL
+            MAZE::NORTHWEST_GOAL,
+            MAZE::SOUTHWEST_GOAL,
+            MAZE::NORTHEAST_GOAL,
+            MAZE::SOUTHEAST_GOAL
         };
     }
 }

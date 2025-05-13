@@ -54,7 +54,9 @@ void ControlPanelRenderer::addSimulationSpeedSlider() {
   };
 
   moveDrawPosition(0, 4);
-  auto [slider, valueLabel] = uiControlsManager.addSliderWithValue(drawPosition, 1, 15, 5, 1, onSpeedValueChange,
+  auto [slider, valueLabel] = uiControlsManager.addSliderWithValue(drawPosition, 1, GLOBAL::SIMULATION::MAX_SPEED,
+                                                                   GLOBAL::SIMULATION::DEFAULT_SPEED, 1,
+                                                                   onSpeedValueChange,
                                                                    ySpacing);
   simulationSpeedSlider = slider;
   simulationSpeedValueLabel = valueLabel;

@@ -16,18 +16,20 @@ void GUIManager::mainLoop() {
   controlPanelRenderer.draw();
 
   window.setFramerateLimit(GLOBAL::SCREEN::FPS);
-  auto lastSimUpdate = std::chrono::high_resolution_clock::now();
+  auto lastSimulationUpdate = std::chrono::high_resolution_clock::now();
 
   while (window.isOpen()) {
     handleEvents();
 
     const auto now = std::chrono::high_resolution_clock::now();
-    const auto elapsed = std::chrono::duration_cast<std::chrono::microseconds>(now - lastSimUpdate);
+    const auto elapsed = std::chrono::duration_cast<std::chrono::microseconds>(now - lastSimulationUpdate);
 
-    if (elapsed >= GLOBAL::SIMULATION::STEP_DURATION) {
-      simulationController.nextStep();
-      controlPanelRenderer.update();
-      lastSimUpdate = now;
+    if (elapsed >= GLOBAL::SIMULATION::STEP_DURATION / simulationController.getSpeed()) {
+      if (simulationController.getIsRunning()) {
+        simulationController.nextStep();
+        controlPanelRenderer.update();
+        lastSimulationUpdate = now;
+      }
     }
 
     render();
@@ -48,7 +50,7 @@ void GUIManager::handleEvents() {
 void GUIManager::render() {
   window.clear(GLOBAL::RENDER::BACKGROUND_COLOR);
 
-  for (auto &drawable: drawables) {
+  for (const auto &drawable: drawables) {
     drawable->draw(window);
   }
 

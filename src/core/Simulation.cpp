@@ -1,30 +1,35 @@
 #include "../../include/core/Simulation.h"
 
-Simulation::Simulation() : mouse(Micromouse(MouseSensor(maze), GLOBAL::SIMULATION::START_POSITION)) {
+Simulation::Simulation() : mouse(Micromouse(MouseSensor(maze), GLOBAL::MAZE::START_POSITION)) {
   maze.generate();
 }
 
 void Simulation::start() {
-  std::cout << "[SIMULATION]: Simulation started" << std::endl;
+  std::cout << "[Simulation]: Simulation started" << std::endl;
   isRunning = true;
 }
 
 void Simulation::stop() {
-  std::cout << "[SIMULATION]: Simulation stopped" << std::endl;
+  std::cout << "[Simulation]: Simulation stopped" << std::endl;
   isRunning = false;
 }
 
 void Simulation::reset() {
-  std::cout << "[SIMULATION]: Simulation reset" << std::endl;
+  std::cout << "[Simulation]: Simulation reset" << std::endl;
   stop();
   mouse.reset();
 }
 
-void Simulation::setSpeed(int speed) {
+void Simulation::setSpeed(const int _speed) {
+  std::cout << "[Simulation]: Setting speed to " << _speed << std::endl;
+  speed = _speed;
+}
+
+int Simulation::getSpeed() {
+  return speed;
 }
 
 void Simulation::generateMaze() {
-  std::cout << "[SIMULATION]: Generate maze" << std::endl;
   reset();
   maze.generate();
 }
@@ -35,9 +40,7 @@ void Simulation::setMouseMode(const MouseMode mode) {
 }
 
 void Simulation::nextStep() {
-  if (isRunning) {
-    moveMouse();
-  }
+  moveMouse();
 }
 
 void Simulation::moveMouse() {
@@ -47,13 +50,13 @@ void Simulation::moveMouse() {
 }
 
 void Simulation::setMouseBrain(const MouseBrainType brainType) {
-  std::cout << "[SIMULATION]: Setting mouse brain to " << toString(brainType) << std::endl;
+  std::cout << "[Simulation]: Setting mouse brain to " << toString(brainType) << std::endl;
   stop();
   try {
     auto brain = std::make_unique<MouseBrain>(MouseBrainProvider::getMouseBrainInstance(brainType));
     mouse.setBrain(std::move(brain));
   } catch (const std::exception &e) {
-    std::cerr << "[SIMULATION]: Error setting mouse brain: " << e.what() << std::endl;
+    std::cerr << "[Simulation]: Error setting mouse brain: " << e.what() << std::endl;
     exit(1);
   }
 }

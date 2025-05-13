@@ -7,7 +7,7 @@
 #include "mouse/Micromouse.h"
 #include "SimulationController.h"
 
-class Simulation : public SimulationController {
+class Simulation final : public SimulationController {
 public:
  Simulation();
 
@@ -23,7 +23,9 @@ public:
 
  void setMouseBrain(MouseBrainType brainType) override;
 
- void setSpeed(int speed) override;
+ void setSpeed(int _speed) override;
+
+ int getSpeed() override;
 
  void generateMaze() override;
 
@@ -32,9 +34,10 @@ public:
  Maze &getMaze() override { return maze; }
 
 private:
- Maze maze{GLOBAL::SIMULATION::MAZE_WIDTH, GLOBAL::SIMULATION::MAZE_HEIGHT};
+ Maze maze{GLOBAL::MAZE::MAZE_WIDTH, GLOBAL::MAZE::MAZE_HEIGHT};
  Micromouse mouse;
  bool isRunning{false};
+ int speed{GLOBAL::SIMULATION::DEFAULT_SPEED};
 
  void moveMouse();
 };

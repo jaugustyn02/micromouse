@@ -26,6 +26,8 @@ public:
 
     virtual void setSpeed(int speed) = 0;
 
+    virtual int getSpeed() = 0;
+
     virtual bool getIsRunning() = 0;
 
     virtual Micromouse &getMouse() = 0;

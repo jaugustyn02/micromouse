@@ -17,7 +17,7 @@ void MouseBrain::setMode(const MouseMode mode) {
       break;
     case EXPLORATION_ON_RETURN:
       currentStrategy = explorationStrategy.get();
-      currentStrategy->setDestination({GLOBAL::SIMULATION::START_POSITION});
+      currentStrategy->setDestination({GLOBAL::MAZE::START_POSITION});
       break;
     case FASTEST_PATH: {
       currentStrategy = pathfindingStrategy.get();
@@ -27,7 +27,7 @@ void MouseBrain::setMode(const MouseMode mode) {
     }
     case RETURN: {
       currentStrategy = pathfindingStrategy.get();
-      currentStrategy->setDestination({GLOBAL::SIMULATION::START_POSITION});
+      currentStrategy->setDestination({GLOBAL::MAZE::START_POSITION});
       pathfindingStrategy->setMazeMap(mazeMap);
       break;
     }
@@ -59,7 +59,7 @@ Direction MouseBrain::getNextMove(const Position currentPosition, const SensorRe
 }
 
 void MouseBrain::validateMove(const Position position, const Direction move) const {
-  if (position.translated(move).isOutOfBounds(GLOBAL::SIMULATION::MAZE_WIDTH, GLOBAL::SIMULATION::MAZE_HEIGHT)) {
+  if (position.translated(move).isOutOfBounds(GLOBAL::MAZE::MAZE_WIDTH, GLOBAL::MAZE::MAZE_HEIGHT)) {
     throw std::runtime_error("[MouseBrain]: Invalid move: out of bounds");
   }
   if (!isMoveLegal(position, move)) {
