@@ -26,8 +26,8 @@ public:
     }
 
 protected:
-    const int mazeWidth = GLOBAL::MAZE::MAZE_WIDTH;
-    const int mazeHeight = GLOBAL::MAZE::MAZE_HEIGHT;
+    const int mazeWidth = GLOBAL::MAZE::COLUMNS;
+    const int mazeHeight = GLOBAL::MAZE::ROWS;
     std::set<Position> destination = GLOBAL::CONSTANTS::GOAL_POSITIONS;
 
     bool isDestination(const Position position) {

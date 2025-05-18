@@ -14,7 +14,7 @@ ControlPanelRenderer::ControlPanelRenderer(
 }
 
 void ControlPanelRenderer::draw() {
-  drawPosition = Position(560, 5);
+  drawPosition = Position(GLOBAL::RENDER::CONTROL_PANEL::START_X, GLOBAL::RENDER::CONTROL_PANEL::START_Y);
 
   addSectionLabel(GLOBAL::TEXT::MAZE_SECTION);
   addGenerateMazeButton();
@@ -56,8 +56,7 @@ void ControlPanelRenderer::addSimulationSpeedSlider() {
   moveDrawPosition(0, 4);
   auto [slider, valueLabel] = uiControlsManager.addSliderWithValue(drawPosition, 1, GLOBAL::SIMULATION::MAX_SPEED,
                                                                    GLOBAL::SIMULATION::DEFAULT_SPEED, 1,
-                                                                   onSpeedValueChange,
-                                                                   ySpacing);
+                                                                   onSpeedValueChange);
   simulationSpeedSlider = slider;
   simulationSpeedValueLabel = valueLabel;
 
@@ -107,7 +106,7 @@ void ControlPanelRenderer::addChangeMouseBrainButtons() {
 
   auto [advancedBrainButton, randomBrainButton] = uiControlsManager.addTwoStateToggleButtons(
     drawPosition, GLOBAL::TEXT::ADVANCED_BRAIN, GLOBAL::TEXT::RANDOM_BRAIN,
-    onAdvancedBrainButtonPress, onRandomBrainButtonPress, xSpacing);
+    onAdvancedBrainButtonPress, onRandomBrainButtonPress);
   mouseAdvancedBrainModeButton = advancedBrainButton;
   mouseRandomBrainButton = randomBrainButton;
 
@@ -132,7 +131,7 @@ void ControlPanelRenderer::addTargetDisplay() {
 
 void ControlPanelRenderer::addSectionLabel(const std::string &text) {
   const auto label = tgui::Label::create(text);
-  label->setPosition(drawPosition.getX() - 1, drawPosition.getY());
+  label->setPosition(drawPosition.getX() - 2, drawPosition.getY());
   label->setTextSize(GLOBAL::TEXT::SECTION_TEXT_SIZE);
   label->getRenderer()->setTextColor(GLOBAL::COLORS::PRIMARY_DARK);
   gui.add(label);

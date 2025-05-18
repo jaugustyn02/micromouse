@@ -7,6 +7,8 @@
 #include <complex.h>
 #include <functional>
 #include <string>
+
+#include "../../core/GlobalConfig.h"
 #include "../../model/Position.h"
 #include "TGUI/Backend/SFML-Graphics.hpp"
 #include "TGUI/Widgets/Button.hpp"
@@ -32,7 +34,7 @@ public:
         const std::string &label1,
         const std::string &label2,
         const std::function<void()> &onPress1,
-        const std::function<void()> &onPress2, int buttonsGap) const;
+        const std::function<void()> &onPress2) const;
 
     [[nodiscard]] std::pair<tgui::Label::Ptr, tgui::Label::Ptr> addTwoStateDisplayLabels(
         const Position &position,
@@ -45,13 +47,15 @@ public:
     std::pair<tgui::Slider::Ptr, tgui::Label::Ptr> addSliderWithValue(const Position &position, float minValue,
                                                                       float maxValue,
                                                                       float defaultValue, float step,
-                                                                      const std::function<void(float)> &onChange,
-                                                                      int labelGap) const;
+                                                                      const std::function<void(float)> &onChange) const;
 
 private:
     tgui::Gui &gui;
     tgui::Button::Ptr baseButton = tgui::Button::create();
     tgui::ToggleButton::Ptr baseToggleButton = tgui::ToggleButton::create();
+    const float buttonWidth{GLOBAL::RENDER::CONTROL_PANEL::BUTTON_WIDTH};
+    const float buttonHeight{GLOBAL::RENDER::CONTROL_PANEL::BUTTON_HEIGHT};
+    const float spaceBetweenButtons{GLOBAL::RENDER::CONTROL_PANEL::SPACE_BETWEEN_BUTTONS};
 
     void createBaseButton() const;
 

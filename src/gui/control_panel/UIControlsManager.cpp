@@ -8,7 +8,7 @@ UIControlsManager::UIControlsManager(tgui::Gui &gui): gui(gui) {
 }
 
 void UIControlsManager::createBaseButton() const {
-    baseButton->setSize(140, 40);
+    baseButton->setSize(buttonWidth, buttonHeight);
     const auto renderer = baseButton->getRenderer();
     renderer->setBackgroundColor(GLOBAL::COLORS::PRIMARY);
     renderer->setBackgroundColorHover(GLOBAL::COLORS::PRIMARY_DARK);
@@ -22,7 +22,7 @@ void UIControlsManager::createBaseButton() const {
 }
 
 void UIControlsManager::createBaseToggleButton() const {
-    baseToggleButton->setSize(140, 40);
+    baseToggleButton->setSize(buttonWidth, buttonHeight);
     const auto renderer = baseToggleButton->getRenderer();
     renderer->setBackgroundColor(GLOBAL::COLORS::PRIMARY);
     renderer->setBackgroundColorHover(GLOBAL::COLORS::PRIMARY_DARK);
@@ -71,8 +71,7 @@ std::pair<tgui::ToggleButton::Ptr, tgui::ToggleButton::Ptr> UIControlsManager::a
     const std::string &label1,
     const std::string &label2,
     const std::function<void()> &onPress1,
-    const std::function<void()> &onPress2,
-    const int buttonsGap) const {
+    const std::function<void()> &onPress2) const {
     const auto button1 = tgui::ToggleButton::copy(baseToggleButton);
     const auto button2 = tgui::ToggleButton::copy(baseToggleButton);
 
@@ -80,7 +79,7 @@ std::pair<tgui::ToggleButton::Ptr, tgui::ToggleButton::Ptr> UIControlsManager::a
     button2->setText(label2);
 
     button1->setPosition(position.getX(), position.getY());
-    const auto offsetX = static_cast<int>(button1->getSize().x) + buttonsGap;
+    const int offsetX = static_cast<int>(button1->getSize().x + spaceBetweenButtons);
     button2->setPosition(position.getX() + offsetX, position.getY());
 
     button1->setDown(true);
@@ -117,10 +116,11 @@ std::pair<tgui::Label::Ptr, tgui::Label::Ptr> UIControlsManager::addTwoStateDisp
     auto labelB = tgui::Label::create(label2);
 
     labelA->setPosition(position.getX(), position.getY());
-    labelB->setPosition(position.getX() + 145, position.getY());
+    const int offsetX = static_cast<int>(buttonWidth + spaceBetweenButtons);
+    labelB->setPosition(position.getX() + offsetX, position.getY());
 
     for (auto &label: {labelA, labelB}) {
-        label->setSize(140, 40);
+        label->setSize(buttonWidth, buttonHeight);
         label->setTextSize(GLOBAL::TEXT::DISPLAY_TEXT_SIZE);
         label->setHorizontalAlignment(tgui::HorizontalAlignment::Center);
         label->setVerticalAlignment(tgui::VerticalAlignment::Center);
@@ -146,17 +146,17 @@ void UIControlsManager::setTwoStateDisplaySelection(
 std::pair<tgui::Slider::Ptr, tgui::Label::Ptr> UIControlsManager::addSliderWithValue(
     const Position &position, const float minValue, const float maxValue,
     const float defaultValue, const float step,
-    const std::function<void(float)> &onChange,
-    const int labelGap) const {
+    const std::function<void(float)> &onChange) const {
     const auto slider = tgui::Slider::create(minValue, maxValue);
     slider->setStep(step);
     slider->setValue(defaultValue);
-    slider->setSize(285, 18);
+    slider->setSize(2 * buttonWidth + spaceBetweenButtons, 18);
     slider->setPosition(position.getX(), position.getY());
 
     const auto valueLabel = tgui::Label::create(std::to_string(static_cast<int>(defaultValue)));
     valueLabel->setTextSize(GLOBAL::TEXT::SLIDER_VALUE_TEXT_SIZE);
-    valueLabel->setPosition(position.getX(), position.getY() + static_cast<int>(slider->getSize().y) + labelGap);
+    valueLabel->setPosition(position.getX(),
+                            position.getY() + static_cast<int>(slider->getSize().y + spaceBetweenButtons));
     valueLabel->getRenderer()->setTextColor(GLOBAL::COLORS::PRIMARY_DARK);
 
     slider->onValueChange([=](const float value) {

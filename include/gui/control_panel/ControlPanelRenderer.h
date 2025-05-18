@@ -19,10 +19,10 @@ public:
     void update() const;
 
 private:
-    Position drawPosition{0, 0};
-    const int ySpacing = 5;
-    const int xSpacing = 5;
-    const int sectionSpacing = 10;
+    Position drawPosition = Position(GLOBAL::RENDER::CONTROL_PANEL::START_X, GLOBAL::RENDER::CONTROL_PANEL::START_Y);
+    const int ySpacing = GLOBAL::RENDER::CONTROL_PANEL::SPACE_BETWEEN_BUTTONS;
+    const int xSpacing = GLOBAL::RENDER::CONTROL_PANEL::SPACE_BETWEEN_BUTTONS;
+    const int sectionSpacing = GLOBAL::RENDER::CONTROL_PANEL::SPACE_BETWEEN_SECTIONS;
     SimulationController &simulationController;
     tgui::Gui &gui;
     UIControlsManager uiControlsManager;

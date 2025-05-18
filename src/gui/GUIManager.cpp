@@ -4,7 +4,7 @@
 #include "../../include/gui/GUIManager.h"
 
 GUIManager::GUIManager(Maze &maze, Micromouse &mouse, SimulationController &simulationController)
-  : window(sf::VideoMode(GLOBAL::SCREEN::WIDTH, GLOBAL::SCREEN::HEIGHT), GLOBAL::SCREEN::TITLE),
+  : window(sf::VideoMode(GLOBAL::SCREEN::WIDTH, GLOBAL::SCREEN::HEIGHT), GLOBAL::TEXT::TITLE),
     gui(window),
     simulationController(simulationController),
     controlPanelRenderer(simulationController, gui) {
@@ -48,7 +48,7 @@ void GUIManager::handleEvents() {
 }
 
 void GUIManager::render() {
-  window.clear(GLOBAL::RENDER::BACKGROUND_COLOR);
+  window.clear(GLOBAL::COLORS::BACKGROUND_COLOR);
 
   for (const auto &drawable: drawables) {
     drawable->draw(window);

@@ -5,11 +5,11 @@
 #include "../../include/core/GlobalConfig.h"
 
 MazeRenderer::MazeRenderer(MazeReader &maze) : maze(maze) {
-  const sf::Color wallColor = GLOBAL::RENDER::WALL_COLOR;
-  constexpr float wallThickness = GLOBAL::RENDER::WALL_THICKNESS;
-  constexpr float cellSize = GLOBAL::RENDER::CELL_SIZE;
-  constexpr float offsetX = GLOBAL::RENDER::OFFSET_X;
-  constexpr float offsetY = GLOBAL::RENDER::OFFSET_Y;
+  const sf::Color wallColor = GLOBAL::COLORS::WALL_COLOR;
+  constexpr float wallThickness = GLOBAL::RENDER::MAZE::WALL_THICKNESS;
+  constexpr float cellSize = GLOBAL::RENDER::MAZE::CELL_SIZE;
+  constexpr float offsetX = GLOBAL::RENDER::MAZE::MARGIN_LEFT;
+  constexpr float offsetY = GLOBAL::RENDER::MAZE::MARGIN_TOP;
 
   horizontalWallShape.setSize(sf::Vector2f(cellSize, wallThickness));
   horizontalWallShape.setFillColor(wallColor);
@@ -20,7 +20,7 @@ MazeRenderer::MazeRenderer(MazeReader &maze) : maze(maze) {
   verticalWallShape.setOrigin(-offsetX, -offsetY);
 
   cellShape.setSize(sf::Vector2f(cellSize, cellSize));
-  cellShape.setFillColor(GLOBAL::RENDER::START_COLOR);
+  cellShape.setFillColor(GLOBAL::COLORS::START_COLOR);
   cellShape.setOrigin(-offsetX, -offsetY);
 }
 
@@ -54,9 +54,9 @@ void MazeRenderer::drawCellBackground(sf::RenderWindow &window, const Position c
   cellShape.setPosition(topLeftCornerPosX, topLeftCornerPosY);
 
   if (cellType == CellType::START) {
-    cellShape.setFillColor(GLOBAL::RENDER::START_COLOR);
+    cellShape.setFillColor(GLOBAL::COLORS::START_COLOR);
   } else if (cellType == CellType::GOAL) {
-    cellShape.setFillColor(GLOBAL::RENDER::GOAL_COLOR);
+    cellShape.setFillColor(GLOBAL::COLORS::GOAL_COLOR);
   } else {
     return;
   }
@@ -64,9 +64,9 @@ void MazeRenderer::drawCellBackground(sf::RenderWindow &window, const Position c
   window.draw(cellShape);
 }
 
-void MazeRenderer::drawCellWalls(sf::RenderWindow &window, Position cellPosition) {
-  constexpr auto wallThickness = GLOBAL::RENDER::WALL_THICKNESS;
-  constexpr auto cellSize = GLOBAL::RENDER::CELL_SIZE;
+void MazeRenderer::drawCellWalls(sf::RenderWindow &window, const Position cellPosition) {
+  constexpr auto wallThickness = GLOBAL::RENDER::MAZE::WALL_THICKNESS;
+  constexpr auto cellSize = GLOBAL::RENDER::MAZE::CELL_SIZE;
 
   const auto topLeftCornerPosX = getTopLeftCornerPositionX(cellPosition);
   const auto topLeftCornerPosY = getTopLeftCornerPositionY(cellPosition);
@@ -90,9 +90,11 @@ void MazeRenderer::drawCellWalls(sf::RenderWindow &window, Position cellPosition
 }
 
 float MazeRenderer::getTopLeftCornerPositionX(const Position cellPosition) {
-  return static_cast<float>(cellPosition.getX()) * (GLOBAL::RENDER::CELL_SIZE - GLOBAL::RENDER::WALL_THICKNESS);
+  return static_cast<float>(cellPosition.getX()) * (
+           GLOBAL::RENDER::MAZE::CELL_SIZE - GLOBAL::RENDER::MAZE::WALL_THICKNESS);
 }
 
 float MazeRenderer::getTopLeftCornerPositionY(const Position cellPosition) {
-  return static_cast<float>(cellPosition.getY()) * (GLOBAL::RENDER::CELL_SIZE - GLOBAL::RENDER::WALL_THICKNESS);
+  return static_cast<float>(cellPosition.getY()) * (
+           GLOBAL::RENDER::MAZE::CELL_SIZE - GLOBAL::RENDER::MAZE::WALL_THICKNESS);
 }

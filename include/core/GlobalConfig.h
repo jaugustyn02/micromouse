@@ -11,14 +11,6 @@
 class Position;
 
 namespace GLOBAL {
-    namespace SCREEN {
-        inline constexpr auto TITLE = "Micromouse Simulator";
-        inline constexpr int WIDTH = 900;
-        inline constexpr int HEIGHT = 600;
-        inline constexpr int FPS = 60;
-        inline constexpr auto FRAME_DURATION = std::chrono::microseconds(1000000 / FPS);
-    }
-
     namespace SIMULATION {
         inline constexpr int DEFAULT_SPEED = 5;
         inline constexpr int MAX_SPEED = 20;
@@ -27,14 +19,15 @@ namespace GLOBAL {
     }
 
     namespace MAZE {
-        inline constexpr int MAZE_WIDTH = 16;
-        inline constexpr int MAZE_HEIGHT = 16;
-        inline constexpr int REMOVED_WALLS = (MAZE_WIDTH + MAZE_HEIGHT) / 2;
+        inline constexpr int ROWS = 26;
+        inline constexpr int COLUMNS = 35;
+        inline constexpr int REMOVED_WALLS = (COLUMNS + ROWS) / 2;
+
         const Position START_POSITION{0, 0};
-        const Position NORTHWEST_GOAL = {MAZE_WIDTH / 2 - 1, MAZE_HEIGHT / 2 - 1};
-        const Position SOUTHWEST_GOAL = {MAZE_WIDTH / 2 - 1, MAZE_HEIGHT / 2};
-        const Position NORTHEAST_GOAL = {MAZE_WIDTH / 2, MAZE_HEIGHT / 2 - 1};
-        const Position SOUTHEAST_GOAL = {MAZE_WIDTH / 2, MAZE_HEIGHT / 2};
+        const Position NORTHWEST_GOAL = {COLUMNS / 2 - 1, ROWS / 2 - 1};
+        const Position SOUTHWEST_GOAL = {COLUMNS / 2 - 1, ROWS / 2};
+        const Position NORTHEAST_GOAL = {COLUMNS / 2, ROWS / 2 - 1};
+        const Position SOUTHEAST_GOAL = {COLUMNS / 2, ROWS / 2};
     }
 
     namespace COLORS {
@@ -44,42 +37,90 @@ namespace GLOBAL {
         inline const auto PRIMARY = sf::Color{112, 145, 230};
         inline const auto PRIMARY_DARK = sf::Color{61, 82, 160};
         inline const auto DARK = sf::Color{24, 30, 41};
-    }
 
-    namespace RENDER {
-        inline constexpr float CELL_SIZE = 40.0f;
-        inline constexpr float WALL_THICKNESS = 8.0f; // 10
-        inline constexpr float MOUSE_SIZE = 16.0f;
-        inline constexpr float OFFSET_X = 20.0f;
-        inline constexpr float OFFSET_Y = 0.0f;
-        inline const sf::Color BACKGROUND_COLOR = COLORS::BACKGROUND;
-        inline const sf::Color WALL_COLOR = COLORS::DARK;
-        inline const sf::Color MOUSE_COLOR = COLORS::PRIMARY_DARK;
-        inline const sf::Color GOAL_COLOR = COLORS::PRIMARY;
-        inline const sf::Color START_COLOR = COLORS::BACKGROUND;
+        inline const sf::Color MOUSE_COLOR = PRIMARY_DARK;
+        inline const sf::Color WALL_COLOR = DARK;
+        inline const sf::Color GOAL_COLOR = PRIMARY;
+        inline const sf::Color START_COLOR = BACKGROUND;
+        inline const sf::Color BACKGROUND_COLOR = BACKGROUND;
     }
 
     namespace TEXT {
-        inline const std::string START_BUTTON = "Start";
-        inline const std::string STOP_BUTTON = "Stop";
-        inline const std::string RESET_BUTTON = "Reset";
-        inline const std::string GENERATE_MAZE_BUTTON = "Generate";
-        inline const std::string SIMULATION_SECTION = "Simulation";
-        inline const std::string SIMULATION_SPEED_SECTION = "Simulation Speed";
-        inline const std::string MAZE_SECTION = "Maze";
-        inline const std::string ALGORITHM_SECTION = "Algorithm";
-        inline const std::string TARGET_SECTION = "Target";
-        inline const std::string MODE_SECTION = "Mouse Mode";
-        inline const std::string ADVANCED_BRAIN = "Flooding + BFS";
-        inline const std::string RANDOM_BRAIN = "Random";
-        inline const std::string EXPLORATION_MODE = "Exploration";
-        inline const std::string FASTEST_PATH_MODE = "Fastest Path";
-        inline const std::string START_TARGET = "Start";
-        inline const std::string GOAL_TARGET = "Goal";
+        inline constexpr auto TITLE = "Micromouse Simulator";
+        inline const auto START_BUTTON = "Start";
+        inline const auto STOP_BUTTON = "Stop";
+        inline const auto RESET_BUTTON = "Reset";
+        inline const auto GENERATE_MAZE_BUTTON = "Generate";
+        inline const auto SIMULATION_SECTION = "Simulation";
+        inline const auto SIMULATION_SPEED_SECTION = "Simulation Speed";
+        inline const auto MAZE_SECTION = "Maze";
+        inline const auto ALGORITHM_SECTION = "Algorithm";
+        inline const auto TARGET_SECTION = "Target";
+        inline const auto MODE_SECTION = "Mouse Mode";
+        inline const auto ADVANCED_BRAIN = "Flooding + BFS";
+        inline const auto RANDOM_BRAIN = "Random";
+        inline const auto EXPLORATION_MODE = "Exploration";
+        inline const auto FASTEST_PATH_MODE = "Fastest Path";
+        inline const auto START_TARGET = "Start";
+        inline const auto GOAL_TARGET = "Goal";
+
         inline constexpr int SECTION_TEXT_SIZE = 18;
         inline constexpr int BUTTON_TEXT_SIZE = 12;
         inline constexpr int DISPLAY_TEXT_SIZE = 12;
         inline constexpr int SLIDER_VALUE_TEXT_SIZE = 16;
+    }
+
+    namespace RENDER {
+        namespace MOUSE {
+            inline constexpr float MOUSE_SIZE = 16.0f;
+        }
+
+        namespace MAZE {
+            inline constexpr float CELL_SIZE = 40.0f;
+            inline constexpr float WALL_THICKNESS = 8.0f;
+
+            inline constexpr float MARGIN_LEFT = 20.0f;
+            inline constexpr float MARGIN_RIGHT = 0.0f;
+            inline constexpr float MARGIN_TOP = 0.0f;
+            inline constexpr float MARGIN_BOTTOM = 20.0f;
+
+            inline constexpr float WIDTH = GLOBAL::MAZE::COLUMNS * (CELL_SIZE - WALL_THICKNESS) + WALL_THICKNESS;
+            inline constexpr float HEIGHT = GLOBAL::MAZE::ROWS * (CELL_SIZE - WALL_THICKNESS) + WALL_THICKNESS;
+            inline constexpr float END_X = MARGIN_LEFT + WIDTH + MARGIN_RIGHT;
+            inline constexpr float END_Y = MARGIN_TOP + HEIGHT + MARGIN_BOTTOM;
+        }
+
+        namespace CONTROL_PANEL {
+            inline constexpr float BUTTON_WIDTH = 140.0f;
+            inline constexpr float BUTTON_HEIGHT = 40.0f;
+            inline constexpr float SPACE_BETWEEN_BUTTONS = 5.0f;
+            inline constexpr float SPACE_BETWEEN_SECTIONS = 10.0f;
+
+            inline constexpr float MARGIN_LEFT = 20.0f;
+            inline constexpr float MARGIN_RIGHT = 20.0f;
+            inline constexpr float MARGIN_TOP = 5.0f;
+            inline constexpr float MARGIN_BOTTOM = 20.0f;
+
+            inline constexpr float START_X = MAZE::END_X + MARGIN_LEFT;
+            inline constexpr float START_Y = MARGIN_TOP;
+
+            inline constexpr float WIDTH = 2 * BUTTON_WIDTH + SPACE_BETWEEN_BUTTONS;
+            inline constexpr float SECTION_HEIGHT =
+                    BUTTON_HEIGHT + SPACE_BETWEEN_BUTTONS + SPACE_BETWEEN_SECTIONS + TEXT::SECTION_TEXT_SIZE + 3;
+            inline constexpr float HEIGHT = 6 * SECTION_HEIGHT + 10;
+            inline constexpr float END_X = START_X + WIDTH + MARGIN_RIGHT;
+            inline constexpr float END_Y = START_Y + HEIGHT + MARGIN_BOTTOM;
+        }
+    }
+
+    namespace SCREEN {
+        inline constexpr float MAX_WIDTH = 1148;
+        inline constexpr float MAX_HEIGHT = 860;
+        inline constexpr int WIDTH = std::min(RENDER::CONTROL_PANEL::END_X, MAX_WIDTH);
+        inline constexpr int HEIGHT = std::min(std::max(RENDER::MAZE::END_Y, RENDER::CONTROL_PANEL::END_Y), MAX_HEIGHT);
+
+        inline constexpr int FPS = 60;
+        inline constexpr auto FRAME_DURATION = std::chrono::microseconds(1000000 / FPS);
     }
 
     namespace RANDOM {

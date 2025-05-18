@@ -34,7 +34,7 @@ public:
  Maze &getMaze() override { return maze; }
 
 private:
- Maze maze{GLOBAL::MAZE::MAZE_WIDTH, GLOBAL::MAZE::MAZE_HEIGHT};
+ Maze maze{GLOBAL::MAZE::COLUMNS, GLOBAL::MAZE::ROWS};
  Micromouse mouse;
  bool isRunning{false};
  int speed{GLOBAL::SIMULATION::DEFAULT_SPEED};

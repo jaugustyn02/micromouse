@@ -59,7 +59,7 @@ Direction MouseBrain::getNextMove(const Position currentPosition, const SensorRe
 }
 
 void MouseBrain::validateMove(const Position position, const Direction move) const {
-  if (position.translated(move).isOutOfBounds(GLOBAL::MAZE::MAZE_WIDTH, GLOBAL::MAZE::MAZE_HEIGHT)) {
+  if (position.translated(move).isOutOfBounds(GLOBAL::MAZE::COLUMNS, GLOBAL::MAZE::ROWS)) {
     throw std::runtime_error("[MouseBrain]: Invalid move: out of bounds");
   }
   if (!isMoveLegal(position, move)) {
