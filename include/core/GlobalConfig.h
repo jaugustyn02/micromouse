@@ -19,8 +19,8 @@ namespace GLOBAL {
     }
 
     namespace MAZE {
-        inline constexpr int ROWS = 26;
-        inline constexpr int COLUMNS = 35;
+        inline constexpr int ROWS = 16;
+        inline constexpr int COLUMNS = 16;
         inline constexpr int REMOVED_WALLS = (COLUMNS + ROWS) / 2;
 
         const Position START_POSITION{0, 0};
@@ -114,10 +114,8 @@ namespace GLOBAL {
     }
 
     namespace SCREEN {
-        inline constexpr float MAX_WIDTH = 1148;
-        inline constexpr float MAX_HEIGHT = 860;
-        inline constexpr int WIDTH = std::min(RENDER::CONTROL_PANEL::END_X, MAX_WIDTH);
-        inline constexpr int HEIGHT = std::min(std::max(RENDER::MAZE::END_Y, RENDER::CONTROL_PANEL::END_Y), MAX_HEIGHT);
+        inline constexpr int WIDTH = RENDER::CONTROL_PANEL::END_X;
+        inline constexpr int HEIGHT = std::max(RENDER::MAZE::END_Y, RENDER::CONTROL_PANEL::END_Y);
 
         inline constexpr int FPS = 60;
         inline constexpr auto FRAME_DURATION = std::chrono::microseconds(1000000 / FPS);
