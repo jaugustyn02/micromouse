@@ -10,26 +10,12 @@
 
 class MouseBrainProvider {
  public:
-  static MouseBrain getMouseBrainInstance(const MouseBrainType type) {
-    switch (type) {
-      case RANDOM: return getRandomBrainInstance();
-      case ADVANCED: return getAdvancedBrainInstance();
-      default: throw std::invalid_argument("[MouseBrainProvider] Invalid brain type");
-    }
-  }
+  static MouseBrain getMouseBrainInstance(const MouseBrainType type);
 
  private:
-  static MouseBrain getRandomBrainInstance() {
-    auto randomExplorationStrategy = std::make_unique<RandomExplorationStrategy>();
-    auto randomFastestPathStrategy = std::make_unique<RandomFastestPathStrategy>();
-    return {std::move(randomExplorationStrategy), std::move(randomFastestPathStrategy)};
-  }
+  static MouseBrain getRandomBrainInstance();
 
-  static MouseBrain getAdvancedBrainInstance() {
-    auto floodingExplorationStrategy = std::make_unique<FloodingExplorationStrategy>();
-    auto bfsFastestPathStrategy = std::make_unique<BFSFastestPathStrategy>();
-    return {std::move(floodingExplorationStrategy), std::move(bfsFastestPathStrategy)};
-  }
+  static MouseBrain getAdvancedBrainInstance();
 };
 
 #endif //MICROMOUSE_INCLUDE_CORE_MOUSEBRAINPROVIDER_H_

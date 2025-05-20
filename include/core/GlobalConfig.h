@@ -122,7 +122,7 @@ inline constexpr auto FRAME_DURATION = std::chrono::microseconds(1000000 / FPS);
 }
 
 namespace RANDOM {
-inline constexpr bool USE_RANDOM_SEED = false;
+inline constexpr bool USE_RANDOM_SEED = true;
 inline constexpr long long SEED = 0;
 }
 
