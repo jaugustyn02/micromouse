@@ -6,7 +6,7 @@
 #include "TGUI/Backend/SFML-Graphics.hpp"
 #include "MazeRenderer.h"
 #include "MouseRenderer.h"
-#include "../core/SimulationController.h"
+#include "core/SimulationController.h"
 #include "control_panel/ControlPanelRenderer.h"
 
 class GUIManager {

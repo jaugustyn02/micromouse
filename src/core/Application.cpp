@@ -1,4 +1,4 @@
-#include "../../include/core/Application.h"
+#include "core/Application.h"
 
 void Application::run() {
   Simulation simulation;

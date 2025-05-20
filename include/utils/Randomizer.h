@@ -3,10 +3,10 @@
 
 #include <random>
 #include <vector>
-#include "../model/Direction.h"
+#include "model/Direction.h"
 
 class Randomizer {
-public:
+ public:
   template<typename T>
   static T GetRandom(T min, T max);
 
@@ -17,7 +17,7 @@ public:
 
   static Direction GetRandomDirection();
 
-private:
+ private:
   static std::mt19937 &GetEngine();
 };
 

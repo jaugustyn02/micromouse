@@ -1,11 +1,13 @@
-#include "../../../include/core/mouse/Micromouse.h"
+#include "core/mouse/Micromouse.h"
 
 #include <utility>
 
 Micromouse::Micromouse(const MouseSensor sensor, const Position startPosition) : sensor(sensor),
-  brain(std::make_unique<MouseBrain>(MouseBrainProvider::getMouseBrainInstance(ADVANCED))),
-  startPosition(startPosition),
-  currentPosition(startPosition) {
+                                                                                 brain(std::make_unique<MouseBrain>(
+                                                                                     MouseBrainProvider::getMouseBrainInstance(
+                                                                                         ADVANCED))),
+                                                                                 startPosition(startPosition),
+                                                                                 currentPosition(startPosition) {
   std::cout << "[Micromouse]: Initial position: " << currentPosition.toString() << std::endl;
   std::cout << "[Micromouse]: Initial mode: " << toString(brain->getMode()) << std::endl;
 }
@@ -34,22 +36,9 @@ void Micromouse::reset() {
   brain->reset();
 }
 
-void Micromouse::setMode(const MouseMode mode) const {
-  std::cout << "[Micromouse]: Mouse mode set to: " << toString(mode) << std::endl;
-  brain->setMode(mode);
-}
-
 void Micromouse::setBrain(std::unique_ptr<MouseBrain> _brain) {
   reset();
   std::cout << "[Micromouse]: Mouse brain changed" << std::endl;
   this->brain = std::move(_brain);
   std::cout << "[Micromouse]:Brain mode changed to: " << toString(brain->getMode()) << std::endl;
-}
-
-int Micromouse::getX() const {
-  return currentPosition.getX();
-}
-
-int Micromouse::getY() const {
-  return currentPosition.getY();
 }

@@ -1,43 +1,43 @@
 #ifndef MICROMOUSE_FLOODINGEXPLORATIONSTRATEGY_H_
 #define MICROMOUSE_FLOODINGEXPLORATIONSTRATEGY_H_
 
-#include "../../../../../model/Position.h"
-#include "../../../../../model/Direction.h"
+#include "model/Position.h"
+#include "model/Direction.h"
 #include "ExplorationStrategy.h"
 
 class FloodingExplorationStrategy final : public ExplorationStrategy {
-public:
-    FloodingExplorationStrategy();
+ public:
+  FloodingExplorationStrategy();
 
-    Direction decideMove(Position position, SensorReadings readings) override;
+  Direction decideMove(Position position, SensorReadings readings) override;
 
-    void reset() override {
-        mazeMap.clear();
-        clearDistance();
-    }
+  void reset() override {
+    mazeMap.clear();
+    clearDistance();
+  }
 
-private:
-    const int empty = -1;
-    std::map<Position, SensorReadings> mazeMap;
-    std::vector<std::vector<int> > cellDistance = std::vector(mazeHeight, std::vector(mazeWidth, empty));
+ private:
+  const int empty = -1;
+  std::map<Position, SensorReadings> mazeMap;
+  std::vector<std::vector<int> > cellDistance = std::vector(mazeHeight, std::vector(mazeWidth, empty));
 
-    void updateMazeMap(Position position, const SensorReadings &readings);
+  void updateMazeMap(Position position, const SensorReadings &readings);
 
-    void calculateDistances();
+  void calculateDistances();
 
-    Direction getBestMove(Position position) const;
+  Direction getBestMove(Position position) const;
 
-    bool isBestMoveLegal(Position position) const;
+  bool isBestMoveLegal(Position position) const;
 
-    bool isVisited(Position position) const;
+  bool isVisited(Position position) const;
 
-    bool isWallBetween(Position source, Position destination) const;
+  bool isWallBetween(Position source, Position destination) const;
 
-    int getDistance(Position position) const;
+  int getDistance(Position position) const;
 
-    void setDistance(Position position, int distance);
+  void setDistance(Position position, int distance);
 
-    void clearDistance();
+  void clearDistance();
 };
 
 #endif //MICROMOUSE_FLOODINGEXPLORATIONSTRATEGY_H_

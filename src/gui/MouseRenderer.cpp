@@ -1,7 +1,7 @@
-#include "../../include/core/mouse/Micromouse.h"
+#include "core/mouse/Micromouse.h"
 #include "SFML/Graphics/RenderWindow.hpp"
-#include "../../include/gui/MouseRenderer.h"
-#include "../../include/core/GlobalConfig.h"
+#include "gui/MouseRenderer.h"
+#include "core/GlobalConfig.h"
 
 MouseRenderer::MouseRenderer(Micromouse &mouse) : mouse(mouse) {
   float cellSize = GLOBAL::RENDER::MAZE::CELL_SIZE;
@@ -17,8 +17,9 @@ MouseRenderer::MouseRenderer(Micromouse &mouse) : mouse(mouse) {
 void MouseRenderer::draw(sf::RenderWindow &window) {
   constexpr float wallThickness = GLOBAL::RENDER::MAZE::WALL_THICKNESS;
   constexpr float cellSize = GLOBAL::RENDER::MAZE::CELL_SIZE;
-  const float posX = static_cast<float>(mouse.getX()) * (cellSize - wallThickness);
-  const float posY = static_cast<float>(mouse.getY()) * (cellSize - wallThickness);
+  const auto &mousePosition = mouse.getPosition();
+  const float posX = static_cast<float>(mousePosition.getX()) * (cellSize - wallThickness);
+  const float posY = static_cast<float>(mousePosition.getY()) * (cellSize - wallThickness);
 
   mouseShape.setPosition(posX, posY);
   window.draw(mouseShape);

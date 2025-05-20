@@ -1,4 +1,4 @@
-#include "../../include/model/Cell.h"
+#include "model/Cell.h"
 
 Cell::Cell(Position location, CellType type) : location(location), type(type) {}
 

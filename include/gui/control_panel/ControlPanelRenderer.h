@@ -2,63 +2,63 @@
 #define MICROMOUSE_INCLUDE_GUI_CONTROLPANELRENDERER_H_
 
 #include "UIControlsManager.h"
-#include "../../core/SimulationController.h"
+#include "core/SimulationController.h"
 #include "TGUI/Backend/SFML-Graphics.hpp"
 #include "TGUI/Widgets/Slider.hpp"
 
 class ControlPanelRenderer {
-public:
-    ControlPanelRenderer(SimulationController &simulationController, tgui::Gui &gui);
+ public:
+  ControlPanelRenderer(SimulationController &simulationController, tgui::Gui &gui);
 
-    void draw();
+  void draw();
 
-    void addSimulationSection();
+  void addSimulationSection();
 
-    void addSimulationSpeedSlider();
+  void addSimulationSpeedSlider();
 
-    void update() const;
+  void update() const;
 
-private:
-    Position drawPosition = Position(GLOBAL::RENDER::CONTROL_PANEL::START_X, GLOBAL::RENDER::CONTROL_PANEL::START_Y);
-    const int ySpacing = GLOBAL::RENDER::CONTROL_PANEL::SPACE_BETWEEN_BUTTONS;
-    const int xSpacing = GLOBAL::RENDER::CONTROL_PANEL::SPACE_BETWEEN_BUTTONS;
-    const int sectionSpacing = GLOBAL::RENDER::CONTROL_PANEL::SPACE_BETWEEN_SECTIONS;
-    SimulationController &simulationController;
-    tgui::Gui &gui;
-    UIControlsManager uiControlsManager;
-    tgui::ToggleButton::Ptr startStopButton;
-    tgui::Button::Ptr resetButton;
-    tgui::Button::Ptr generateMazeButton;
-    tgui::Label::Ptr modeExplorationLabel;
-    tgui::Label::Ptr modeFastestPathLabel;
-    tgui::Label::Ptr targetStartLabel;
-    tgui::Label::Ptr targetGoalLabel;
-    tgui::ToggleButton::Ptr mouseRandomBrainButton;
-    tgui::ToggleButton::Ptr mouseAdvancedBrainModeButton;
-    tgui::Slider::Ptr simulationSpeedSlider;
-    tgui::Label::Ptr simulationSpeedValueLabel;
+ private:
+  Position drawPosition = Position(GLOBAL::RENDER::CONTROL_PANEL::START_X, GLOBAL::RENDER::CONTROL_PANEL::START_Y);
+  const int ySpacing = GLOBAL::RENDER::CONTROL_PANEL::SPACE_BETWEEN_BUTTONS;
+  const int xSpacing = GLOBAL::RENDER::CONTROL_PANEL::SPACE_BETWEEN_BUTTONS;
+  const int sectionSpacing = GLOBAL::RENDER::CONTROL_PANEL::SPACE_BETWEEN_SECTIONS;
+  SimulationController &simulationController;
+  tgui::Gui &gui;
+  UIControlsManager uiControlsManager;
+  tgui::ToggleButton::Ptr startStopButton;
+  tgui::Button::Ptr resetButton;
+  tgui::Button::Ptr generateMazeButton;
+  tgui::Label::Ptr modeExplorationLabel;
+  tgui::Label::Ptr modeFastestPathLabel;
+  tgui::Label::Ptr targetStartLabel;
+  tgui::Label::Ptr targetGoalLabel;
+  tgui::ToggleButton::Ptr mouseRandomBrainButton;
+  tgui::ToggleButton::Ptr mouseAdvancedBrainModeButton;
+  tgui::Slider::Ptr simulationSpeedSlider;
+  tgui::Label::Ptr simulationSpeedValueLabel;
 
-    void addStartStopToggleButton();
+  void addStartStopToggleButton();
 
-    void addMouseModeDisplay();
+  void addMouseModeDisplay();
 
-    void addTargetDisplay();
+  void addTargetDisplay();
 
-    void addChangeMouseBrainButtons();
+  void addChangeMouseBrainButtons();
 
-    void updateStartStopToggleButton() const;
+  void updateStartStopToggleButton() const;
 
-    void updateMouseModeDisplay() const;
+  void updateMouseModeDisplay() const;
 
-    void updateTargetDisplay() const;
+  void updateTargetDisplay() const;
 
-    void addSectionLabel(const std::string &text);
+  void addSectionLabel(const std::string &text);
 
-    void moveDrawPosition(int x, int y);
+  void moveDrawPosition(int x, int y);
 
-    void addResetButton();
+  void addResetButton();
 
-    void addGenerateMazeButton();
+  void addGenerateMazeButton();
 };
 
 #endif //MICROMOUSE_INCLUDE_GUI_CONTROLPANELRENDERER_H_

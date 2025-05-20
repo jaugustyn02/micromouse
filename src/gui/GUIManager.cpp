@@ -1,13 +1,13 @@
 #include <thread>
 #include "SFML/Graphics/RenderWindow.hpp"
 #include "TGUI/Backend/SFML-Graphics.hpp"
-#include "../../include/gui/GUIManager.h"
+#include "gui/GUIManager.h"
 
 GUIManager::GUIManager(Maze &maze, Micromouse &mouse, SimulationController &simulationController)
-  : window(sf::VideoMode(GLOBAL::SCREEN::WIDTH, GLOBAL::SCREEN::HEIGHT), GLOBAL::TEXT::TITLE),
-    gui(window),
-    simulationController(simulationController),
-    controlPanelRenderer(simulationController, gui) {
+    : window(sf::VideoMode(GLOBAL::SCREEN::WIDTH, GLOBAL::SCREEN::HEIGHT), GLOBAL::TEXT::TITLE),
+      gui(window),
+      simulationController(simulationController),
+      controlPanelRenderer(simulationController, gui) {
   drawables.push_back(std::make_unique<MazeRenderer>(maze));
   drawables.push_back(std::make_unique<MouseRenderer>(mouse));
 }
@@ -50,7 +50,7 @@ void GUIManager::handleEvents() {
 void GUIManager::render() {
   window.clear(GLOBAL::COLORS::BACKGROUND_COLOR);
 
-  for (const auto &drawable: drawables) {
+  for (const auto &drawable : drawables) {
     drawable->draw(window);
   }
 

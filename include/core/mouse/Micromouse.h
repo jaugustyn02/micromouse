@@ -2,40 +2,36 @@
 #define MICROMOUSE_INCLUDE_GUI_MICROMOUSE_H_
 
 #include <map>
-#include "../maze/Maze.h"
+#include "core/maze/Maze.h"
 #include "MouseSensor.h"
-#include "../../model/Direction.h"
-#include "../../model/MouseMode.h"
-#include "../../model/Position.h"
+#include "model/Direction.h"
+#include "model/MouseMode.h"
+#include "model/Position.h"
 #include "brain/MouseBrain.h"
-#include "../../model/MoveStatus.h"
+#include "model/MoveStatus.h"
 #include "brain/MouseBrainProvider.h"
 
 class Micromouse {
-public:
- Micromouse(MouseSensor sensor, Position startPosition);
+ public:
+  Micromouse(MouseSensor sensor, Position startPosition);
 
- MoveStatus makeMove();
+  MoveStatus makeMove();
 
- void setMode(MouseMode mode) const;
+  void setBrain(std::unique_ptr<MouseBrain> _brain);
 
- [[nodiscard]] MouseMode getMode() const { return brain->getMode(); };
+  void reset();
 
- void setBrain(std::unique_ptr<MouseBrain> _brain);
+  [[nodiscard]] MouseMode getMode() const { return brain->getMode(); };
 
- void reset();
+  [[nodiscard]] Position getPosition() const { return currentPosition; }
 
- [[nodiscard]] int getX() const;
+ private:
+  MouseSensor sensor;
+  std::unique_ptr<MouseBrain> brain;
+  Position startPosition;
+  Position currentPosition;
 
- [[nodiscard]] int getY() const;
-
-private:
- MouseSensor sensor;
- std::unique_ptr<MouseBrain> brain;
- Position startPosition;
- Position currentPosition;
-
- void onDestinationReached() const;
+  void onDestinationReached() const;
 };
 
 #endif //MICROMOUSE_INCLUDE_GUI_MICROMOUSE_H_

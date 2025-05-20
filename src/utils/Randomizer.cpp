@@ -1,8 +1,8 @@
 #include <chrono>
 #include <random>
 
-#include "../../include/utils/Randomizer.h"
-#include "../../include/core/GlobalConfig.h"
+#include "utils/Randomizer.h"
+#include "core/GlobalConfig.h"
 
 bool Randomizer::GetRandomBool() {
   return GetRandom(0, 1);

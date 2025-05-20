@@ -1,4 +1,4 @@
-#include "../../../../../../include/core/mouse/brain/strategy/exploration/FloodingExplorationStrategy.h"
+#include "core/mouse/brain/strategy/exploration/FloodingExplorationStrategy.h"
 #include <queue>
 
 FloodingExplorationStrategy::FloodingExplorationStrategy() {
@@ -20,7 +20,7 @@ void FloodingExplorationStrategy::updateMazeMap(const Position position, const S
 bool FloodingExplorationStrategy::isBestMoveLegal(const Position position) const {
   const int desiredDistance = getDistance(position) - 1;
 
-  for (const auto neighbourCell: position.getNeighborCellPositions(mazeWidth, mazeHeight)) {
+  for (const auto neighbourCell : position.getNeighborCellPositions(mazeWidth, mazeHeight)) {
     if (!isWallBetween(position, neighbourCell) && getDistance(neighbourCell) == desiredDistance) {
       return true;
     }
@@ -31,7 +31,7 @@ bool FloodingExplorationStrategy::isBestMoveLegal(const Position position) const
 Direction FloodingExplorationStrategy::getBestMove(const Position position) const {
   const int desiredDistance = getDistance(position) - 1;
 
-  for (const auto &neighbour: position.getNeighborCellPositions(mazeWidth, mazeHeight)) {
+  for (const auto &neighbour : position.getNeighborCellPositions(mazeWidth, mazeHeight)) {
     if (!isWallBetween(position, neighbour) && getDistance(neighbour) == desiredDistance) {
       return position.getDirectionToNeighbourPosition(neighbour);
     }
@@ -44,7 +44,7 @@ void FloodingExplorationStrategy::calculateDistances() {
 
   std::queue<Position> queue;
 
-  for (auto position: destination) {
+  for (auto position : destination) {
     setDistance(position, 0);
     queue.emplace(position);
   }
@@ -54,7 +54,7 @@ void FloodingExplorationStrategy::calculateDistances() {
     const auto currentDistance = getDistance(currentPosition);
     queue.pop();
 
-    for (const auto neighbourCell: currentPosition.getNeighborCellPositions(mazeWidth, mazeHeight)) {
+    for (const auto neighbourCell : currentPosition.getNeighborCellPositions(mazeWidth, mazeHeight)) {
       if (!isVisited(neighbourCell) && !isWallBetween(currentPosition, neighbourCell)) {
         setDistance(neighbourCell, currentDistance + 1);
         queue.emplace(neighbourCell);
@@ -88,8 +88,8 @@ void FloodingExplorationStrategy::setDistance(const Position position, const int
 }
 
 void FloodingExplorationStrategy::clearDistance() {
-  for (auto &row: cellDistance) {
-    for (auto &x: row) {
+  for (auto &row : cellDistance) {
+    for (auto &x : row) {
       x = empty;
     }
   }

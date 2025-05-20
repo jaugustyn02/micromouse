@@ -1,4 +1,4 @@
-#include "../../include/core/Simulation.h"
+#include "core/Simulation.h"
 
 Simulation::Simulation() : mouse(Micromouse(MouseSensor(maze), GLOBAL::MAZE::START_POSITION)) {
   maze.generate();
@@ -32,11 +32,6 @@ int Simulation::getSpeed() {
 void Simulation::generateMaze() {
   reset();
   maze.generate();
-}
-
-void Simulation::setMouseMode(const MouseMode mode) {
-  stop();
-  mouse.setMode(mode);
 }
 
 void Simulation::nextStep() {

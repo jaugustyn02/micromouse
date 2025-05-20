@@ -1,4 +1,4 @@
-#include "../../../../../../include/core/mouse/brain/strategy/fastest_path/BFSFastestPathStrategy.h"
+#include "core/mouse/brain/strategy/fastest_path/BFSFastestPathStrategy.h"
 
 #include <queue>
 
@@ -24,7 +24,7 @@ void BFSFastestPathStrategy::findFastestPath(const Position start) {
 }
 
 Position BFSFastestPathStrategy::getReachedDestination(const std::map<Position, int> &distance) const {
-  for (const auto position: getDestination()) {
+  for (const auto position : getDestination()) {
     if (isVisited(distance, position)) {
       return position;
     }
@@ -35,7 +35,7 @@ Position BFSFastestPathStrategy::getReachedDestination(const std::map<Position, 
 Direction BFSFastestPathStrategy::getBestMove(std::map<Position, int> &distance, const Position position) const {
   const int desiredDistance = distance[position] - 1;
 
-  for (const auto &neighbour: position.getNeighborCellPositions(mazeWidth, mazeHeight)) {
+  for (const auto &neighbour : position.getNeighborCellPositions(mazeWidth, mazeHeight)) {
     if (!isWallBetween(position, neighbour) && distance[neighbour] == desiredDistance) {
       return position.getDirectionToNeighbourPosition(neighbour);
     }
@@ -54,7 +54,7 @@ std::map<Position, int> BFSFastestPathStrategy::getDistanceMap(const Position st
     const auto currentDistance = distance[currentPosition];
     queue.pop();
 
-    for (const auto neighbour: currentPosition.getNeighborCellPositions(mazeWidth, mazeHeight)) {
+    for (const auto neighbour : currentPosition.getNeighborCellPositions(mazeWidth, mazeHeight)) {
       if (!isVisited(distance, neighbour) && !isWallBetween(currentPosition, neighbour)) {
         distance[neighbour] = currentDistance + 1;
         queue.push(neighbour);

@@ -1,8 +1,8 @@
-#include "../../include/core/maze/Maze.h"
+#include "core/maze/Maze.h"
 #include "SFML/Graphics/RenderWindow.hpp"
-#include "../../include/gui/MazeRenderer.h"
+#include "gui/MazeRenderer.h"
 #include "SFML/Graphics/RectangleShape.hpp"
-#include "../../include/core/GlobalConfig.h"
+#include "core/GlobalConfig.h"
 
 MazeRenderer::MazeRenderer(MazeReader &maze) : maze(maze) {
   const sf::Color wallColor = GLOBAL::COLORS::WALL_COLOR;
@@ -30,8 +30,8 @@ void MazeRenderer::draw(sf::RenderWindow &window) {
 }
 
 void MazeRenderer::colorCells(sf::RenderWindow &window) {
-  for (int y = 0; y < maze.getHeight(); ++y) {
-    for (int x = 0; x < maze.getWidth(); ++x) {
+  for (int y = 0; y < maze.getNumOfRows(); ++y) {
+    for (int x = 0; x < maze.getNumOfColumns(); ++x) {
       const Position cellPosition(x, y);
       const CellType cellType = maze.getCellType(cellPosition);
       drawCellBackground(window, cellPosition, cellType);
@@ -40,8 +40,8 @@ void MazeRenderer::colorCells(sf::RenderWindow &window) {
 }
 
 void MazeRenderer::drawWalls(sf::RenderWindow &window) {
-  for (int y = 0; y < maze.getHeight(); ++y) {
-    for (int x = 0; x < maze.getWidth(); ++x) {
+  for (int y = 0; y < maze.getNumOfRows(); ++y) {
+    for (int x = 0; x < maze.getNumOfColumns(); ++x) {
       const Position cellPosition(x, y);
       drawCellWalls(window, cellPosition);
     }
@@ -91,10 +91,10 @@ void MazeRenderer::drawCellWalls(sf::RenderWindow &window, const Position cellPo
 
 float MazeRenderer::getTopLeftCornerPositionX(const Position cellPosition) {
   return static_cast<float>(cellPosition.getX()) * (
-           GLOBAL::RENDER::MAZE::CELL_SIZE - GLOBAL::RENDER::MAZE::WALL_THICKNESS);
+      GLOBAL::RENDER::MAZE::CELL_SIZE - GLOBAL::RENDER::MAZE::WALL_THICKNESS);
 }
 
 float MazeRenderer::getTopLeftCornerPositionY(const Position cellPosition) {
   return static_cast<float>(cellPosition.getY()) * (
-           GLOBAL::RENDER::MAZE::CELL_SIZE - GLOBAL::RENDER::MAZE::WALL_THICKNESS);
+      GLOBAL::RENDER::MAZE::CELL_SIZE - GLOBAL::RENDER::MAZE::WALL_THICKNESS);
 }

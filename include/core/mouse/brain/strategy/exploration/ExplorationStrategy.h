@@ -1,6 +1,6 @@
 #ifndef EXPLORATION_STRATEGY_H
 #define EXPLORATION_STRATEGY_H
-#include "../MouseMovementProvider.h"
+#include "core/mouse/brain/strategy//MouseMovementProvider.h"
 
 class ExplorationStrategy : public MouseMovementProvider {
 };

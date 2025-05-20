@@ -1,22 +1,20 @@
-#include "../../../../include/core/mouse/brain/MouseBrain.h"
+#include "core/mouse/brain/MouseBrain.h"
 
 MouseBrain::MouseBrain(
-  std::unique_ptr<ExplorationStrategy> explorationStrategy,
-  std::unique_ptr<FastestPathStrategy> pathfindingStrategy
+    std::unique_ptr<ExplorationStrategy> explorationStrategy,
+    std::unique_ptr<FastestPathStrategy> pathfindingStrategy
 ) : explorationStrategy(std::move(explorationStrategy)),
-    pathfindingStrategy(std::move(pathfindingStrategy)),
-    currentStrategy(this->explorationStrategy.get()) {
+    pathfindingStrategy(std::move(pathfindingStrategy)) {
+  setMode(EXPLORATION);
 }
 
 void MouseBrain::setMode(const MouseMode mode) {
   this->activeMode = mode;
   switch (mode) {
-    case EXPLORATION:
-      currentStrategy = explorationStrategy.get();
+    case EXPLORATION:currentStrategy = explorationStrategy.get();
       currentStrategy->setDestination(GLOBAL::CONSTANTS::GOAL_POSITIONS);
       break;
-    case EXPLORATION_ON_RETURN:
-      currentStrategy = explorationStrategy.get();
+    case EXPLORATION_ON_RETURN:currentStrategy = explorationStrategy.get();
       currentStrategy->setDestination({GLOBAL::MAZE::START_POSITION});
       break;
     case FASTEST_PATH: {
@@ -31,8 +29,6 @@ void MouseBrain::setMode(const MouseMode mode) {
       pathfindingStrategy->setMazeMap(mazeMap);
       break;
     }
-    default:
-      throw std::invalid_argument("[MouseBrain]: Unsupported mouse mode: " + toString(mode));
   }
   currentStrategy->reset();
 }
@@ -48,7 +44,6 @@ MouseMode MouseBrain::getNextMode() const {
     case FASTEST_PATH: return RETURN;
     case RETURN: return FASTEST_PATH;
   }
-  throw std::invalid_argument("[MouseBrain]: Unsupported mouse mode: " + toString(this->activeMode));
 }
 
 Direction MouseBrain::getNextMove(const Position currentPosition, const SensorReadings &readings) {

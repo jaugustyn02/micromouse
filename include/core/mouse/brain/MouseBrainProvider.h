@@ -6,10 +6,10 @@
 #include "strategy/fastest_path/BFSFastestPathStrategy.h"
 #include "strategy/exploration/FloodingExplorationStrategy.h"
 #include "strategy/fastest_path/RandomFastestPathStrategy.h"
-#include "../../../model/MouseBrainType.h"
+#include "model/MouseBrainType.h"
 
 class MouseBrainProvider {
-public:
+ public:
   static MouseBrain getMouseBrainInstance(const MouseBrainType type) {
     switch (type) {
       case RANDOM: return getRandomBrainInstance();
@@ -18,7 +18,7 @@ public:
     }
   }
 
-private:
+ private:
   static MouseBrain getRandomBrainInstance() {
     auto randomExplorationStrategy = std::make_unique<RandomExplorationStrategy>();
     auto randomFastestPathStrategy = std::make_unique<RandomFastestPathStrategy>();

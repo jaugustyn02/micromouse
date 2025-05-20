@@ -1,16 +1,14 @@
-#include "../../../include/gui/control_panel/ControlPanelRenderer.h"
-#include "TGUI/Widgets/Button.hpp"
+#include "gui/control_panel/ControlPanelRenderer.h"
 #include "TGUI/Backend/SFML-Graphics.hpp"
-#include "TGUI/Widgets/RadioButton.hpp"
 #include "TGUI/Widgets/ToggleButton.hpp"
-#include "../../../include/core/mouse/brain/MouseBrainProvider.h"
+#include "core/mouse/brain/MouseBrainProvider.h"
 #include "TGUI/Widgets/Label.hpp"
 
 ControlPanelRenderer::ControlPanelRenderer(
-  SimulationController &simulationController,
-  tgui::Gui &gui) : simulationController(simulationController),
-                    gui(gui),
-                    uiControlsManager(gui) {
+    SimulationController &simulationController,
+    tgui::Gui &gui) : simulationController(simulationController),
+                      gui(gui),
+                      uiControlsManager(gui) {
 }
 
 void ControlPanelRenderer::draw() {
@@ -37,6 +35,8 @@ void ControlPanelRenderer::draw() {
 
   addSectionLabel(GLOBAL::TEXT::SIMULATION_SPEED_SECTION);
   addSimulationSpeedSlider();
+
+  update();
 }
 
 void ControlPanelRenderer::addSimulationSection() {
@@ -54,9 +54,9 @@ void ControlPanelRenderer::addSimulationSpeedSlider() {
   };
 
   moveDrawPosition(0, 4);
-  auto [slider, valueLabel] = uiControlsManager.addSliderWithValue(drawPosition, 1, GLOBAL::SIMULATION::MAX_SPEED,
-                                                                   GLOBAL::SIMULATION::DEFAULT_SPEED, 1,
-                                                                   onSpeedValueChange);
+  auto[slider, valueLabel] = uiControlsManager.addSliderWithValue(drawPosition, 1, GLOBAL::SIMULATION::MAX_SPEED,
+                                                                  GLOBAL::SIMULATION::DEFAULT_SPEED, 1,
+                                                                  onSpeedValueChange);
   simulationSpeedSlider = slider;
   simulationSpeedValueLabel = valueLabel;
 
@@ -104,9 +104,9 @@ void ControlPanelRenderer::addChangeMouseBrainButtons() {
     simulationController.setMouseBrain(ADVANCED);
   };
 
-  auto [advancedBrainButton, randomBrainButton] = uiControlsManager.addTwoStateToggleButtons(
-    drawPosition, GLOBAL::TEXT::ADVANCED_BRAIN, GLOBAL::TEXT::RANDOM_BRAIN,
-    onAdvancedBrainButtonPress, onRandomBrainButtonPress);
+  auto[advancedBrainButton, randomBrainButton] = uiControlsManager.addTwoStateToggleButtons(
+      drawPosition, GLOBAL::TEXT::ADVANCED_BRAIN, GLOBAL::TEXT::RANDOM_BRAIN,
+      onAdvancedBrainButtonPress, onRandomBrainButtonPress);
   mouseAdvancedBrainModeButton = advancedBrainButton;
   mouseRandomBrainButton = randomBrainButton;
 
@@ -114,7 +114,7 @@ void ControlPanelRenderer::addChangeMouseBrainButtons() {
 }
 
 void ControlPanelRenderer::addMouseModeDisplay() {
-  auto [exploration, fastestPath] = uiControlsManager.
+  auto[exploration, fastestPath] = uiControlsManager.
       addTwoStateDisplayLabels(drawPosition, GLOBAL::TEXT::EXPLORATION_MODE, GLOBAL::TEXT::FASTEST_PATH_MODE);
   modeExplorationLabel = exploration;
   modeFastestPathLabel = fastestPath;
@@ -122,8 +122,8 @@ void ControlPanelRenderer::addMouseModeDisplay() {
 }
 
 void ControlPanelRenderer::addTargetDisplay() {
-  auto [goalLabel, startLabel] = uiControlsManager.addTwoStateDisplayLabels(
-    drawPosition, GLOBAL::TEXT::GOAL_TARGET, GLOBAL::TEXT::START_TARGET);
+  auto[goalLabel, startLabel] = uiControlsManager.addTwoStateDisplayLabels(
+      drawPosition, GLOBAL::TEXT::GOAL_TARGET, GLOBAL::TEXT::START_TARGET);
   targetGoalLabel = goalLabel;
   targetStartLabel = startLabel;
   moveDrawPosition(0, static_cast<int>(startLabel->getSize().y));
@@ -163,8 +163,8 @@ void ControlPanelRenderer::updateMouseModeDisplay() const {
   const bool isExploration = (mode == EXPLORATION || mode == EXPLORATION_ON_RETURN);
 
   UIControlsManager::setTwoStateDisplaySelection(
-    isExploration ? modeExplorationLabel : modeFastestPathLabel,
-    isExploration ? modeFastestPathLabel : modeExplorationLabel);
+      isExploration ? modeExplorationLabel : modeFastestPathLabel,
+      isExploration ? modeFastestPathLabel : modeExplorationLabel);
 }
 
 void ControlPanelRenderer::updateTargetDisplay() const {
@@ -172,8 +172,8 @@ void ControlPanelRenderer::updateTargetDisplay() const {
   const bool isGoal = (mode == EXPLORATION || mode == FASTEST_PATH);
 
   UIControlsManager::setTwoStateDisplaySelection(
-    isGoal ? targetGoalLabel : targetStartLabel,
-    isGoal ? targetStartLabel : targetGoalLabel);
+      isGoal ? targetGoalLabel : targetStartLabel,
+      isGoal ? targetStartLabel : targetGoalLabel);
 }
 
 

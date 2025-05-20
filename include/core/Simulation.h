@@ -7,39 +7,100 @@
 #include "mouse/Micromouse.h"
 #include "SimulationController.h"
 
+/**
+ * @class Simulation
+ * @brief Concrete implementation of the SimulationController interface.
+ *
+ * Manages the Micromouse simulation, including maze generation, mouse movement,
+ * speed control, and step-by-step execution.
+ */
 class Simulation final : public SimulationController {
-public:
- Simulation();
+ public:
+  /**
+   * @brief Constructs a Simulation instance with initialized maze and mouse.
+   */
+  Simulation();
 
- void start() override;
+  /**
+   * @copydoc SimulationController::stop
+   */
+  void start() override;
 
- void stop() override;
+  /**
+   * @copydoc SimulationController::start
+   */
+  void stop() override;
 
- void reset() override;
+  /**
+   * @copydoc SimulationController::reset
+   */
+  void reset() override;
 
- void nextStep() override;
+  /**
+   * @copydoc SimulationController::nextStep
+   */
+  void nextStep() override;
 
- void setMouseMode(MouseMode mode) override;
+  /**
+   * @copydoc SimulationController::setMouseBrain
+   */
+  void setMouseBrain(MouseBrainType brainType) override;
 
- void setMouseBrain(MouseBrainType brainType) override;
+  /**
+   * @copydoc SimulationController::setSpeed
+   */
+  void setSpeed(int _speed) override;
 
- void setSpeed(int _speed) override;
+  /**
+   * @copydoc SimulationController::getSpeed
+   */
+  int getSpeed() override;
 
- int getSpeed() override;
+  /**
+   * @copydoc SimulationController::generateMaze
+   */
+  void generateMaze() override;
 
- void generateMaze() override;
+  /**
+   * @copydoc SimulationController::getIsRunning
+   */
+  bool getIsRunning() override { return isRunning; };
 
- bool getIsRunning() override { return isRunning; };
- Micromouse &getMouse() override { return mouse; }
- Maze &getMaze() override { return maze; }
+  /**
+   * @copydoc SimulationController::getMouse
+   */
+  Micromouse &getMouse() override { return mouse; }
 
-private:
- Maze maze{GLOBAL::MAZE::COLUMNS, GLOBAL::MAZE::ROWS};
- Micromouse mouse;
- bool isRunning{false};
- int speed{GLOBAL::SIMULATION::DEFAULT_SPEED};
+  /**
+   * @copydoc SimulationController::getMaze
+   */
+  Maze &getMaze() override { return maze; }
 
- void moveMouse();
+ private:
+  /**
+   * @brief The maze used in the simulation.
+   */
+  Maze maze{GLOBAL::MAZE::COLUMNS, GLOBAL::MAZE::ROWS};
+
+  /**
+   * @brief The micromouse navigating the maze.
+   */
+  Micromouse mouse;
+
+  /**
+   * @brief Indicates whether the simulation is currently running.
+   */
+  bool isRunning{false};
+
+  /**
+   * @brief The speed of the simulation.
+   */
+  int speed{GLOBAL::SIMULATION::DEFAULT_SPEED};
+
+  /**
+   * @brief Executes a move operation for the mouse.
+   */
+  void moveMouse();
 };
 
 #endif //MICROMOUSE_INCLUDE_CORE_SIMULATION_H_

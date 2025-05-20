@@ -1,7 +1,7 @@
 #ifndef MICROMOUSE_INCLUDE_MODEL_MOUSERENDERER_H_
 #define MICROMOUSE_INCLUDE_MODEL_MOUSERENDERER_H_
 
-#include "../core/mouse/Micromouse.h"
+#include "core/mouse/Micromouse.h"
 #include "SFML/Graphics/RenderWindow.hpp"
 #include "SFML/Graphics/CircleShape.hpp"
 #include "Drawable.h"
