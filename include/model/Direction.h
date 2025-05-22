@@ -4,6 +4,10 @@
 #include <stdexcept>
 #include <string>
 
+/**
+ * @brief The Direction enum class represents the four cardinal directions.
+ * It is used to indicate the direction of movement in the maze.
+ */
 enum Direction {
   NORTH,
   EAST,
@@ -11,6 +15,11 @@ enum Direction {
   WEST
 };
 
+/**
+ * @brief Converts a Direction enum value to its string representation.
+ * @param direction The direction to convert.
+ * @return The string representation of the direction.
+ */
 inline std::string toString(Direction direction) {
   switch (direction) {
     case NORTH: return "NORTH";
@@ -21,6 +30,11 @@ inline std::string toString(Direction direction) {
   }
 }
 
+/**
+ * @brief Gets the opposite direction of the given direction.
+ * @param direction The direction to get the opposite of.
+ * @return The opposite direction.
+ */
 inline Direction opposite(Direction direction) {
   switch (direction) {
     case NORTH: return SOUTH;

@@ -8,8 +8,14 @@
 #include "model/Direction.h"
 #include "model/Position.h"
 
-class Position;
-
+/**
+ * @file GlobalConfig.h
+ * @brief Global configuration file for the Micromouse simulator.
+ *
+ * This file contains various constants and configurations used throughout the simulator.
+ * It includes settings for simulation speed, maze dimensions, colors, text labels, rendering parameters,
+ * and screen dimensions.
+ */
 namespace GLOBAL {
 namespace SIMULATION {
 inline constexpr int DEFAULT_SPEED = 5;

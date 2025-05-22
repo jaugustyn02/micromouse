@@ -6,16 +6,26 @@
 #include "TGUI/Backend/SFML-Graphics.hpp"
 #include "TGUI/Widgets/Slider.hpp"
 
+/**
+ * @brief The ControlPanelRenderer class is responsible for rendering the control panel of the simulation.
+ */
 class ControlPanelRenderer {
  public:
+  /**
+   * @brief Constructor for ControlPanelRenderer.
+   * @param simulationController Reference to the SimulationController object.
+   * @param gui Reference to the TGUI GUI object.
+   */
   ControlPanelRenderer(SimulationController &simulationController, tgui::Gui &gui);
 
+  /**
+   * @brief Destructor for ControlPanelRenderer.
+   */
   void draw();
 
-  void addSimulationSection();
-
-  void addSimulationSpeedSlider();
-
+  /**
+   * @brief Updates the control panel based on the current state of the simulation.
+   */
   void update() const;
 
  private:
@@ -59,6 +69,10 @@ class ControlPanelRenderer {
   void addResetButton();
 
   void addGenerateMazeButton();
+
+  void addSimulationSection();
+
+  void addSimulationSpeedSlider();
 };
 
 #endif //MICROMOUSE_INCLUDE_GUI_CONTROLPANELRENDERER_H_

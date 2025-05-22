@@ -8,9 +8,21 @@
 #include "strategy/fastest_path/RandomFastestPathStrategy.h"
 #include "model/MouseBrainType.h"
 
+/**
+ * @class MouseBrainProvider
+ * @brief Factory class for creating different types of MouseBrain instances.
+ *
+ * This class provides a static method to create instances of MouseBrain based on the specified type.
+ * It encapsulates the logic for creating different strategies and configurations for the mouse brain.
+ */
 class MouseBrainProvider {
  public:
-  static MouseBrain getMouseBrainInstance(const MouseBrainType type);
+  /**
+   * @brief Creates a MouseBrain instance based on the specified type.
+   * @param type The type of MouseBrain to create.
+   * @return A MouseBrain instance of the specified type.
+   */
+  static MouseBrain getMouseBrainInstance(MouseBrainType type);
 
  private:
   static MouseBrain getRandomBrainInstance();

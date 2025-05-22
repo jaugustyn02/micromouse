@@ -5,12 +5,26 @@
 #include "model/Direction.h"
 #include "ExplorationStrategy.h"
 
+/**
+ * @class FloodingExplorationStrategy
+ * @brief Maze exploration using a flooding/distance propagation algorithm.
+ *
+ * Keeps track of sensor readings and distances from the current position to goal cells.
+ * Chooses the best move based on a dynamically updated distance map.
+ */
 class FloodingExplorationStrategy final : public ExplorationStrategy {
  public:
+  /**
+   * @brief Constructor for FloodingExplorationStrategy.
+   *
+   * Initializes the maze map and distance map.
+   */
   FloodingExplorationStrategy();
 
+  /// @copydoc MouseMovementProvider::decideMove
   Direction decideMove(Position position, SensorReadings readings) override;
 
+  /// @copydoc MouseMovementProvider::reset
   void reset() override {
     mazeMap.clear();
     clearDistance();

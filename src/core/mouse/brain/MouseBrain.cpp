@@ -2,9 +2,9 @@
 
 MouseBrain::MouseBrain(
     std::unique_ptr<ExplorationStrategy> explorationStrategy,
-    std::unique_ptr<FastestPathStrategy> pathfindingStrategy
+    std::unique_ptr<FastestPathStrategy> fastestPathStrategy
 ) : explorationStrategy(std::move(explorationStrategy)),
-    pathfindingStrategy(std::move(pathfindingStrategy)) {
+    fastestPathStrategy(std::move(fastestPathStrategy)) {
   setMode(EXPLORATION);
 }
 
@@ -18,15 +18,15 @@ void MouseBrain::setMode(const MouseMode mode) {
       currentStrategy->setDestination({GLOBAL::MAZE::START_POSITION});
       break;
     case FASTEST_PATH: {
-      currentStrategy = pathfindingStrategy.get();
+      currentStrategy = fastestPathStrategy.get();
       currentStrategy->setDestination(GLOBAL::CONSTANTS::GOAL_POSITIONS);
-      pathfindingStrategy->setMazeMap(mazeMap);
+      fastestPathStrategy->setMazeMap(mazeMap);
       break;
     }
     case RETURN: {
-      currentStrategy = pathfindingStrategy.get();
+      currentStrategy = fastestPathStrategy.get();
       currentStrategy->setDestination({GLOBAL::MAZE::START_POSITION});
-      pathfindingStrategy->setMazeMap(mazeMap);
+      fastestPathStrategy->setMazeMap(mazeMap);
       break;
     }
   }

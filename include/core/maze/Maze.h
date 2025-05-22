@@ -45,94 +45,35 @@ class Maze final : public MazeReader {
   [[nodiscard]] int getNumOfRows() const override { return rows; };
 
  private:
-  const int columns; ///< Number of columns in the maze.
-  const int rows; ///< Number of rows in the maze.
-  const Position start = GLOBAL::MAZE::START_POSITION; ///< Starting position of the maze.
-  std::vector<std::vector<Cell> > grid; ///< 2D vector representing the maze grid.
+  const int columns;
+  const int rows;
+  const Position start = GLOBAL::MAZE::START_POSITION;
+  std::vector<std::vector<Cell> > grid;
 
-  /**
-   * @brief Initializes the grid with default cell types and walls.
-   */
   void initializeGrid();
 
-  /**
-   * @brief Resets all walls in the grid to the default state (all walls present).
-   */
   void resetGrid();
 
-  /**
-   * @brief Removes random walls from the maze.
-   * @param numOfWalls Number of walls to remove.
-   */
   void removeRandomWalls(int numOfWalls);
 
-  /**
-   * @brief Returns the removable wall directions for a given cell.
-   * @param cell The cell to evaluate.
-   * @return A list of removable directions.
-   */
   [[nodiscard]] std::vector<Direction> getCellRemovableWalls(const Cell &cell) const;
 
-  /**
-   * @brief Checks if the specified wall is a goal wall.
-   * @param position The cell position.
-   * @param direction The wall direction.
-   * @return true if it is part of a goal cell boundary.
-   */
   [[nodiscard]] bool isGoalWall(Position position, Direction direction) const;
 
-  /**
-   * @brief Checks if the specified wall is on the maze edge.
-   * @param position The cell position.
-   * @param direction The wall direction.
-   * @return true if it is on the edge of the maze.
-   */
   [[nodiscard]] bool isEdgeWall(Position position, Direction direction) const;
 
-  /**
-   * @brief Returns a reference to a randomly selected cell.
-   * @return Reference to a random Cell object.
-   */
   Cell &getRandomCell();
 
-  /**
-   * @brief Finds all unvisited neighbor positions from a given cell.
-   * @param position The cell position.
-   * @param visited A set of already visited positions.
-   * @return A list of unvisited neighboring positions.
-   */
   [[nodiscard]] std::vector<Position> getUnvisitedNeighbors(const Position &position,
                                                             const std::set<Position> &visited) const;
-
-  /**
-   * @brief Removes walls between two neighboring cells.
-   * @param firstPosition First cell position.
-   * @param secondPosition Second cell position.
-   */
   void removeWallsBetweenNeighbourCells(const Position &firstPosition, const Position &secondPosition);
 
-  /**
-   * @brief Sets goal area in the maze.
-   * @param visited A set of already visited positions.
-   */
   void setGoal(std::set<Position> &visited);
 
-  /**
-   * @brief Removes random wall to create an entrance to the goal area.
-   * @param goalCells A list of pointers to goal cell objects.
-   */
   void setRandomGoalEntrance(std::vector<Cell *> goalCells);
 
-  /**
-   * @brief Marks the start cell in the maze.
-   */
   void setStart();
 
-  /**
-   * @brief Returns a reference to the cell at the given position.
-   * @param position The target position.
-   * @return Reference to the corresponding Cell.
-   */
   Cell &getCell(Position position);
 };
 

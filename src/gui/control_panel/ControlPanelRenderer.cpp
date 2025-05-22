@@ -99,9 +99,11 @@ void ControlPanelRenderer::addStartStopToggleButton() {
 void ControlPanelRenderer::addChangeMouseBrainButtons() {
   const std::function onRandomBrainButtonPress = [this]() {
     simulationController.setMouseBrain(RANDOM);
+    update();
   };
   const std::function onAdvancedBrainButtonPress = [this]() {
     simulationController.setMouseBrain(ADVANCED);
+    update();
   };
 
   auto[advancedBrainButton, randomBrainButton] = uiControlsManager.addTwoStateToggleButtons(

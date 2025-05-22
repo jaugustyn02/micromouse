@@ -1,6 +1,10 @@
 #ifndef MICROMOUSE_INCLUDE_MODEL_MOUSEMODE_H_
 #define MICROMOUSE_INCLUDE_MODEL_MOUSEMODE_H_
 
+/**
+ * @brief The MouseMode enum class represents the different modes of operation for the micromouse.
+ * It is used to identify the current mode of the micromouse during its operation.
+ */
 enum MouseMode {
   EXPLORATION,
   EXPLORATION_ON_RETURN,
@@ -8,6 +12,11 @@ enum MouseMode {
   RETURN,
 };
 
+/**
+ * @brief Converts a MouseMode enum value to its string representation.
+ * @param mode The mouse mode to convert.
+ * @return The string representation of the mouse mode.
+ */
 inline std::string toString(const MouseMode mode) {
   switch (mode) {
     case EXPLORATION: return "Exploration";

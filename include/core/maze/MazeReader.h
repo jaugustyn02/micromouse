@@ -12,6 +12,9 @@
  */
 class MazeReader {
  public:
+  /**
+   * @brief Default constructor.
+   */
   virtual ~MazeReader() = default;
 
   /**
