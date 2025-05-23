@@ -1,0 +1,198 @@
+\doxysection{UIControls\+Manager Class Reference}
+\hypertarget{class_u_i_controls_manager}{}\label{class_u_i_controls_manager}\index{UIControlsManager@{UIControlsManager}}
+
+
+The \doxylink{class_u_i_controls_manager}{UIControls\+Manager} class is responsible for managing the UI controls in the GUI. It provides methods to create and add buttons, toggle buttons, and sliders to the GUI.  
+
+
+
+
+{\ttfamily \#include $<$UIControls\+Manager.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_u_i_controls_manager_a6ba2cf47106f3f482489998dc0e34900}{UIControls\+Manager}} (tgui\+::\+SFML\+\_\+\+GRAPHICS\+::\+Gui \&gui)
+\begin{DoxyCompactList}\small\item\em Constructor for \doxylink{class_u_i_controls_manager}{UIControls\+Manager}. \end{DoxyCompactList}\item 
+tgui\+::\+Button\+::\+Ptr \mbox{\hyperlink{class_u_i_controls_manager_a6dc227c628cde226b08ff2006a167372}{add\+Button}} (\mbox{\hyperlink{class_position}{Position}} position, const std\+::string \&label, const std\+::function$<$ void()$>$ \&on\+Press) const
+\begin{DoxyCompactList}\small\item\em Adds a styled button with specified attributes to the GUI. \end{DoxyCompactList}\item 
+tgui\+::\+Toggle\+Button\+::\+Ptr \mbox{\hyperlink{class_u_i_controls_manager_ab4371aed613ae6896d207a0bc8f0d6b3}{add\+Toggle\+Button}} (\mbox{\hyperlink{class_position}{Position}} position, const std\+::string \&label, const std\+::function$<$ void(const tgui\+::\+Toggle\+Button\+::\+Ptr \&button, bool checked)$>$ \&on\+Toggle) const
+\begin{DoxyCompactList}\small\item\em Adds a styled toggle button with specified attributes to the GUI. \end{DoxyCompactList}\item 
+std\+::pair$<$ tgui\+::\+Toggle\+Button\+::\+Ptr, tgui\+::\+Toggle\+Button\+::\+Ptr $>$ \mbox{\hyperlink{class_u_i_controls_manager_a2fd220de8a585879d5c3e87cea18caaf}{add\+Two\+State\+Toggle\+Buttons}} (\mbox{\hyperlink{class_position}{Position}} position, const std\+::string \&label1, const std\+::string \&label2, const std\+::function$<$ void()$>$ \&on\+Press1, const std\+::function$<$ void()$>$ \&on\+Press2) const
+\begin{DoxyCompactList}\small\item\em Adds two toggle buttons with specified attributes to the GUI. This function creates two toggle buttons that can be used to represent a switch. \end{DoxyCompactList}\item 
+std\+::pair$<$ tgui\+::\+Label\+::\+Ptr, tgui\+::\+Label\+::\+Ptr $>$ \mbox{\hyperlink{class_u_i_controls_manager_a8de27343a21132701a3e8dd5412beac0}{add\+Two\+State\+Display\+Labels}} (const \mbox{\hyperlink{class_position}{Position}} \&position, const std\+::string \&label1, const std\+::string \&label2) const
+\begin{DoxyCompactList}\small\item\em Adds two toggle labels with specified attributes to the GUI. This function creates two labels that can be used to represent a read-\/only switch. \end{DoxyCompactList}\item 
+std\+::pair$<$ tgui\+::\+Slider\+::\+Ptr, tgui\+::\+Label\+::\+Ptr $>$ \mbox{\hyperlink{class_u_i_controls_manager_a9fc67091eb008429303604e19881c722}{add\+Slider\+With\+Value}} (const \mbox{\hyperlink{class_position}{Position}} \&position, float min\+Value, float max\+Value, float default\+Value, float step, const std\+::function$<$ void(float)$>$ \&on\+Change) const
+\begin{DoxyCompactList}\small\item\em Adds a slider with a label and a value display to the GUI. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{class_u_i_controls_manager_ad409b7a8a8d6374f972b69a9c4d9fd64}{set\+Two\+State\+Display\+Selection}} (const tgui\+::\+Label\+::\+Ptr \&selected, const tgui\+::\+Label\+::\+Ptr \&unselected)
+\begin{DoxyCompactList}\small\item\em Sets one of the toggle labels as selected and the other as unselected. This function is used to update state of the labels. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The \doxylink{class_u_i_controls_manager}{UIControls\+Manager} class is responsible for managing the UI controls in the GUI. It provides methods to create and add buttons, toggle buttons, and sliders to the GUI. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_u_i_controls_manager_a6ba2cf47106f3f482489998dc0e34900}\index{UIControlsManager@{UIControlsManager}!UIControlsManager@{UIControlsManager}}
+\index{UIControlsManager@{UIControlsManager}!UIControlsManager@{UIControlsManager}}
+\doxysubsubsection{\texorpdfstring{UIControlsManager()}{UIControlsManager()}}
+{\footnotesize\ttfamily \label{class_u_i_controls_manager_a6ba2cf47106f3f482489998dc0e34900} 
+UIControls\+Manager\+::\+UIControls\+Manager (\begin{DoxyParamCaption}\item[{tgui\+::\+SFML\+\_\+\+GRAPHICS\+::\+Gui \&}]{gui}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Constructor for \doxylink{class_u_i_controls_manager}{UIControls\+Manager}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em gui} & Reference to the TGUI GUI object. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_u_i_controls_manager_a6dc227c628cde226b08ff2006a167372}\index{UIControlsManager@{UIControlsManager}!addButton@{addButton}}
+\index{addButton@{addButton}!UIControlsManager@{UIControlsManager}}
+\doxysubsubsection{\texorpdfstring{addButton()}{addButton()}}
+{\footnotesize\ttfamily \label{class_u_i_controls_manager_a6dc227c628cde226b08ff2006a167372} 
+tgui\+::\+Button\+::\+Ptr UIControls\+Manager\+::add\+Button (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_position}{Position}}}]{position}{, }\item[{const std\+::string \&}]{label}{, }\item[{const std\+::function$<$ void()$>$ \&}]{on\+Press}{}\end{DoxyParamCaption}) const}
+
+
+
+Adds a styled button with specified attributes to the GUI. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & The position of the button. \\
+\hline
+{\em label} & The label of the button. \\
+\hline
+{\em on\+Press} & The callback function to be called when the button is pressed. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the created button. 
+\end{DoxyReturn}
+\Hypertarget{class_u_i_controls_manager_a9fc67091eb008429303604e19881c722}\index{UIControlsManager@{UIControlsManager}!addSliderWithValue@{addSliderWithValue}}
+\index{addSliderWithValue@{addSliderWithValue}!UIControlsManager@{UIControlsManager}}
+\doxysubsubsection{\texorpdfstring{addSliderWithValue()}{addSliderWithValue()}}
+{\footnotesize\ttfamily \label{class_u_i_controls_manager_a9fc67091eb008429303604e19881c722} 
+std\+::pair$<$ tgui\+::\+Slider\+::\+Ptr, tgui\+::\+Label\+::\+Ptr $>$ UIControls\+Manager\+::add\+Slider\+With\+Value (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_position}{Position}} \&}]{position}{, }\item[{float}]{min\+Value}{, }\item[{float}]{max\+Value}{, }\item[{float}]{default\+Value}{, }\item[{float}]{step}{, }\item[{const std\+::function$<$ void(float)$>$ \&}]{on\+Change}{}\end{DoxyParamCaption}) const}
+
+
+
+Adds a slider with a label and a value display to the GUI. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & The position of the slider. \\
+\hline
+{\em min\+Value} & The minimum value of the slider. \\
+\hline
+{\em max\+Value} & The maximum value of the slider. \\
+\hline
+{\em default\+Value} & The default value of the slider. \\
+\hline
+{\em step} & The step size of the slider. \\
+\hline
+{\em on\+Change} & The callback function to be called when the slider value changes. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\Hypertarget{class_u_i_controls_manager_ab4371aed613ae6896d207a0bc8f0d6b3}\index{UIControlsManager@{UIControlsManager}!addToggleButton@{addToggleButton}}
+\index{addToggleButton@{addToggleButton}!UIControlsManager@{UIControlsManager}}
+\doxysubsubsection{\texorpdfstring{addToggleButton()}{addToggleButton()}}
+{\footnotesize\ttfamily \label{class_u_i_controls_manager_ab4371aed613ae6896d207a0bc8f0d6b3} 
+tgui\+::\+Toggle\+Button\+::\+Ptr UIControls\+Manager\+::add\+Toggle\+Button (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_position}{Position}}}]{position}{, }\item[{const std\+::string \&}]{label}{, }\item[{const std\+::function$<$ void(const tgui\+::\+Toggle\+Button\+::\+Ptr \&button, bool checked)$>$ \&}]{on\+Toggle}{}\end{DoxyParamCaption}) const}
+
+
+
+Adds a styled toggle button with specified attributes to the GUI. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & The position of the toggle button. \\
+\hline
+{\em label} & The label of the toggle button. \\
+\hline
+{\em on\+Toggle} & The callback function to be called when the toggle button is toggled. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the created toggle button. 
+\end{DoxyReturn}
+\Hypertarget{class_u_i_controls_manager_a8de27343a21132701a3e8dd5412beac0}\index{UIControlsManager@{UIControlsManager}!addTwoStateDisplayLabels@{addTwoStateDisplayLabels}}
+\index{addTwoStateDisplayLabels@{addTwoStateDisplayLabels}!UIControlsManager@{UIControlsManager}}
+\doxysubsubsection{\texorpdfstring{addTwoStateDisplayLabels()}{addTwoStateDisplayLabels()}}
+{\footnotesize\ttfamily \label{class_u_i_controls_manager_a8de27343a21132701a3e8dd5412beac0} 
+std\+::pair$<$ tgui\+::\+Label\+::\+Ptr, tgui\+::\+Label\+::\+Ptr $>$ UIControls\+Manager\+::add\+Two\+State\+Display\+Labels (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_position}{Position}} \&}]{position}{, }\item[{const std\+::string \&}]{label1}{, }\item[{const std\+::string \&}]{label2}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}}
+
+
+
+Adds two toggle labels with specified attributes to the GUI. This function creates two labels that can be used to represent a read-\/only switch. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & The position of the label. \\
+\hline
+{\em label1} & The label of the first label. \\
+\hline
+{\em label2} & The label of the second label. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pair of pointers to the created labels. 
+\end{DoxyReturn}
+\Hypertarget{class_u_i_controls_manager_a2fd220de8a585879d5c3e87cea18caaf}\index{UIControlsManager@{UIControlsManager}!addTwoStateToggleButtons@{addTwoStateToggleButtons}}
+\index{addTwoStateToggleButtons@{addTwoStateToggleButtons}!UIControlsManager@{UIControlsManager}}
+\doxysubsubsection{\texorpdfstring{addTwoStateToggleButtons()}{addTwoStateToggleButtons()}}
+{\footnotesize\ttfamily \label{class_u_i_controls_manager_a2fd220de8a585879d5c3e87cea18caaf} 
+std\+::pair$<$ tgui\+::\+Toggle\+Button\+::\+Ptr, tgui\+::\+Toggle\+Button\+::\+Ptr $>$ UIControls\+Manager\+::add\+Two\+State\+Toggle\+Buttons (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_position}{Position}}}]{position}{, }\item[{const std\+::string \&}]{label1}{, }\item[{const std\+::string \&}]{label2}{, }\item[{const std\+::function$<$ void()$>$ \&}]{on\+Press1}{, }\item[{const std\+::function$<$ void()$>$ \&}]{on\+Press2}{}\end{DoxyParamCaption}) const}
+
+
+
+Adds two toggle buttons with specified attributes to the GUI. This function creates two toggle buttons that can be used to represent a switch. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & The position of the toggle button. \\
+\hline
+{\em label1} & The label of the first toggle button. \\
+\hline
+{\em label2} & The label of the second toggle button. \\
+\hline
+{\em on\+Press1} & The callback function to be called when the first toggle button is pressed. \\
+\hline
+{\em on\+Press2} & The callback function to be called when the second toggle button is pressed. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pair of pointers to the created toggle buttons. 
+\end{DoxyReturn}
+\Hypertarget{class_u_i_controls_manager_ad409b7a8a8d6374f972b69a9c4d9fd64}\index{UIControlsManager@{UIControlsManager}!setTwoStateDisplaySelection@{setTwoStateDisplaySelection}}
+\index{setTwoStateDisplaySelection@{setTwoStateDisplaySelection}!UIControlsManager@{UIControlsManager}}
+\doxysubsubsection{\texorpdfstring{setTwoStateDisplaySelection()}{setTwoStateDisplaySelection()}}
+{\footnotesize\ttfamily \label{class_u_i_controls_manager_ad409b7a8a8d6374f972b69a9c4d9fd64} 
+void UIControls\+Manager\+::set\+Two\+State\+Display\+Selection (\begin{DoxyParamCaption}\item[{const tgui\+::\+Label\+::\+Ptr \&}]{selected}{, }\item[{const tgui\+::\+Label\+::\+Ptr \&}]{unselected}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Sets one of the toggle labels as selected and the other as unselected. This function is used to update state of the labels. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em selected} & The label to be displayed when selected. \\
+\hline
+{\em unselected} & The label to be displayed when unselected. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/gui/control\+\_\+panel/UIControls\+Manager.\+h\item 
+src/gui/control\+\_\+panel/UIControls\+Manager.\+cpp\end{DoxyCompactItemize}

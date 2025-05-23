@@ -1,0 +1,50 @@
+\doxysection{GUIManager Class Reference}
+\hypertarget{class_g_u_i_manager}{}\label{class_g_u_i_manager}\index{GUIManager@{GUIManager}}
+
+
+The \doxylink{class_g_u_i_manager}{GUIManager} class is responsible for managing the graphical user interface of the simulation. It handles the rendering of the maze and the micromouse, as well as user interactions through the GUI.  
+
+
+
+
+{\ttfamily \#include $<$GUIManager.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_g_u_i_manager_ae14fd4e15545d080e2dc64c6f5732f0b}{GUIManager}} (\mbox{\hyperlink{class_maze}{Maze}} \&maze, \mbox{\hyperlink{class_micromouse}{Micromouse}} \&mouse, \mbox{\hyperlink{class_simulation_controller}{Simulation\+Controller}} \&simulation\+Controller)
+\begin{DoxyCompactList}\small\item\em Constructor for the \doxylink{class_g_u_i_manager}{GUIManager} class. \end{DoxyCompactList}\item 
+\Hypertarget{class_g_u_i_manager_a561fbc5949e64a863c23626457e9fdc7}\label{class_g_u_i_manager_a561fbc5949e64a863c23626457e9fdc7} 
+void {\bfseries main\+Loop} ()
+\begin{DoxyCompactList}\small\item\em Enters the main loop of the \doxylink{class_g_u_i_manager}{GUIManager}. This function handles events, updates the GUI, renders the window and invokes successive simulation steps in a given time interval. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The \doxylink{class_g_u_i_manager}{GUIManager} class is responsible for managing the graphical user interface of the simulation. It handles the rendering of the maze and the micromouse, as well as user interactions through the GUI. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_g_u_i_manager_ae14fd4e15545d080e2dc64c6f5732f0b}\index{GUIManager@{GUIManager}!GUIManager@{GUIManager}}
+\index{GUIManager@{GUIManager}!GUIManager@{GUIManager}}
+\doxysubsubsection{\texorpdfstring{GUIManager()}{GUIManager()}}
+{\footnotesize\ttfamily \label{class_g_u_i_manager_ae14fd4e15545d080e2dc64c6f5732f0b} 
+GUIManager\+::\+GUIManager (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_maze}{Maze}} \&}]{maze}{, }\item[{\mbox{\hyperlink{class_micromouse}{Micromouse}} \&}]{mouse}{, }\item[{\mbox{\hyperlink{class_simulation_controller}{Simulation\+Controller}} \&}]{simulation\+Controller}{}\end{DoxyParamCaption})}
+
+
+
+Constructor for the \doxylink{class_g_u_i_manager}{GUIManager} class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em maze} & Reference to the \doxylink{class_maze}{Maze} object. \\
+\hline
+{\em mouse} & Reference to the \doxylink{class_micromouse}{Micromouse} object. \\
+\hline
+{\em simulation\+Controller} & Reference to the \doxylink{class_simulation_controller}{Simulation\+Controller} object. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/gui/GUIManager.\+h\item 
+src/gui/GUIManager.\+cpp\end{DoxyCompactItemize}

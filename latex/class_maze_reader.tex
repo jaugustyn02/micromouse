@@ -1,0 +1,124 @@
+\doxysection{Maze\+Reader Class Reference}
+\hypertarget{class_maze_reader}{}\label{class_maze_reader}\index{MazeReader@{MazeReader}}
+
+
+Interface for reading maze cell and wall data.  
+
+
+
+
+{\ttfamily \#include $<$Maze\+Reader.\+h$>$}
+
+Inheritance diagram for Maze\+Reader\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_maze_reader}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_maze_reader_af171868cd569156af93ae575ff0017ac}\label{class_maze_reader_af171868cd569156af93ae575ff0017ac} 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Maze\+Reader} ()=default
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{class_maze_reader_aca78531eaeb4377873aac610d8d21800}{is\+Wall}} (\mbox{\hyperlink{class_position}{Position}} position, Direction direction) const =0
+\begin{DoxyCompactList}\small\item\em Checks if there is a wall in the given direction from a specific position. \end{DoxyCompactList}\item 
+virtual Cell\+Type \mbox{\hyperlink{class_maze_reader_ab75dd242ad125441a17ea646798f864e}{get\+Cell\+Type}} (\mbox{\hyperlink{class_position}{Position}} position) const =0
+\begin{DoxyCompactList}\small\item\em Returns the type of cell at the specified position. \end{DoxyCompactList}\item 
+virtual int \mbox{\hyperlink{class_maze_reader_ad4fef5bb87e651559d8568d8e93065f0}{get\+Num\+Of\+Columns}} () const =0
+\begin{DoxyCompactList}\small\item\em Returns the number of columns of the maze. \end{DoxyCompactList}\item 
+virtual int \mbox{\hyperlink{class_maze_reader_ab346b88f89539b1184b7913837d433b1}{get\+Num\+Of\+Rows}} () const =0
+\begin{DoxyCompactList}\small\item\em Returns the number of rows of the maze. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Interface for reading maze cell and wall data. 
+
+This abstract class defines a contract for accessing the structure of a maze, including wall presence, cell types, and maze dimensions. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_maze_reader_ab75dd242ad125441a17ea646798f864e}\index{MazeReader@{MazeReader}!getCellType@{getCellType}}
+\index{getCellType@{getCellType}!MazeReader@{MazeReader}}
+\doxysubsubsection{\texorpdfstring{getCellType()}{getCellType()}}
+{\footnotesize\ttfamily \label{class_maze_reader_ab75dd242ad125441a17ea646798f864e} 
+virtual Cell\+Type Maze\+Reader\+::get\+Cell\+Type (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_position}{Position}}}]{position}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Returns the type of cell at the specified position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & The position of the cell. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The cell type (e.\+g., START, GOAL, PATH). 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{class_maze_a66d9db28120040f84eb34fa6ab8f58c8}{Maze}}.
+
+\Hypertarget{class_maze_reader_ad4fef5bb87e651559d8568d8e93065f0}\index{MazeReader@{MazeReader}!getNumOfColumns@{getNumOfColumns}}
+\index{getNumOfColumns@{getNumOfColumns}!MazeReader@{MazeReader}}
+\doxysubsubsection{\texorpdfstring{getNumOfColumns()}{getNumOfColumns()}}
+{\footnotesize\ttfamily \label{class_maze_reader_ad4fef5bb87e651559d8568d8e93065f0} 
+virtual int Maze\+Reader\+::get\+Num\+Of\+Columns (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Returns the number of columns of the maze. 
+
+\begin{DoxyReturn}{Returns}
+The number of columns. 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{class_maze_ad8f4e877740905bfea2b3110770f76fc}{Maze}}.
+
+\Hypertarget{class_maze_reader_ab346b88f89539b1184b7913837d433b1}\index{MazeReader@{MazeReader}!getNumOfRows@{getNumOfRows}}
+\index{getNumOfRows@{getNumOfRows}!MazeReader@{MazeReader}}
+\doxysubsubsection{\texorpdfstring{getNumOfRows()}{getNumOfRows()}}
+{\footnotesize\ttfamily \label{class_maze_reader_ab346b88f89539b1184b7913837d433b1} 
+virtual int Maze\+Reader\+::get\+Num\+Of\+Rows (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Returns the number of rows of the maze. 
+
+\begin{DoxyReturn}{Returns}
+The number of rows. 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{class_maze_ae0b8b711eb435e294d94b21582fc4eb9}{Maze}}.
+
+\Hypertarget{class_maze_reader_aca78531eaeb4377873aac610d8d21800}\index{MazeReader@{MazeReader}!isWall@{isWall}}
+\index{isWall@{isWall}!MazeReader@{MazeReader}}
+\doxysubsubsection{\texorpdfstring{isWall()}{isWall()}}
+{\footnotesize\ttfamily \label{class_maze_reader_aca78531eaeb4377873aac610d8d21800} 
+virtual bool Maze\+Reader\+::is\+Wall (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_position}{Position}}}]{position}{, }\item[{Direction}]{direction}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Checks if there is a wall in the given direction from a specific position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & The position in the maze. \\
+\hline
+{\em direction} & The direction from the given position. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if a wall exists, false otherwise. 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{class_maze_a952a4f6544634415c3b983295bdc2c8f}{Maze}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/core/maze/Maze\+Reader.\+h\end{DoxyCompactItemize}

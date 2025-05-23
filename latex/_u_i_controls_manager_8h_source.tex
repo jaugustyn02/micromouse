@@ -1,0 +1,69 @@
+\doxysection{UIControls\+Manager.\+h}
+\hypertarget{_u_i_controls_manager_8h_source}{}\label{_u_i_controls_manager_8h_source}\index{include/gui/control\_panel/UIControlsManager.h@{include/gui/control\_panel/UIControlsManager.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ BUTTONSPROVIDER\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ BUTTONSPROVIDER\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <complex.h>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <functional>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}core/GlobalConfig.h"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}model/Position.h"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}TGUI/Backend/SFML-\/Graphics.hpp"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}TGUI/Widgets/Button.hpp"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}TGUI/Widgets/Label.hpp"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}TGUI/Widgets/Slider.hpp"{}}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}TGUI/Widgets/ToggleButton.hpp"{}}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_u_i_controls_manager_a6ba2cf47106f3f482489998dc0e34900}{UIControlsManager}}\ \{}
+\DoxyCodeLine{00021\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00026\ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{class_u_i_controls_manager_a6ba2cf47106f3f482489998dc0e34900}{UIControlsManager}}(tgui::SFML\_GRAPHICS::Gui\ \&gui);}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00035\ \ \ tgui::Button::Ptr\ \mbox{\hyperlink{class_u_i_controls_manager_a6dc227c628cde226b08ff2006a167372}{addButton}}(\mbox{\hyperlink{class_position}{Position}}\ position,\ \textcolor{keyword}{const}\ std::string\ \&label,}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::function<\textcolor{keywordtype}{void}()>\ \&onPress)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00045\ \ \ tgui::ToggleButton::Ptr\ \mbox{\hyperlink{class_u_i_controls_manager_ab4371aed613ae6896d207a0bc8f0d6b3}{addToggleButton}}(}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \mbox{\hyperlink{class_position}{Position}}\ position,}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ \&label,}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::function<\textcolor{keywordtype}{void}(}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ tgui::ToggleButton::Ptr\ \&button,}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ checked)>\ \&onToggle)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00062\ \ \ std::pair<tgui::ToggleButton::Ptr,\ tgui::ToggleButton::Ptr>\ \mbox{\hyperlink{class_u_i_controls_manager_a2fd220de8a585879d5c3e87cea18caaf}{addTwoStateToggleButtons}}(\mbox{\hyperlink{class_position}{Position}}\ position,}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ \&label1,}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ \&label2,}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::function<\textcolor{keywordtype}{void}()>\ \&onPress1,}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::function<\textcolor{keywordtype}{void}()>\ \&onPress2)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00076\ \ \ [[nodiscard]]}
+\DoxyCodeLine{00077\ \ \ std::pair<tgui::Label::Ptr,\ tgui::Label::Ptr>\ \mbox{\hyperlink{class_u_i_controls_manager_a8de27343a21132701a3e8dd5412beac0}{addTwoStateDisplayLabels}}(}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_position}{Position}}\ \&position,}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ \&label1,}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ \&label2)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00088\ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_u_i_controls_manager_ad409b7a8a8d6374f972b69a9c4d9fd64}{setTwoStateDisplaySelection}}(}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \textcolor{keyword}{const}\ tgui::Label::Ptr\ \&selected,\ \textcolor{keyword}{const}\ tgui::Label::Ptr\ \&unselected);}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00101\ \ \ std::pair<tgui::Slider::Ptr,\ tgui::Label::Ptr>\ \mbox{\hyperlink{class_u_i_controls_manager_a9fc67091eb008429303604e19881c722}{addSliderWithValue}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_position}{Position}}\ \&position,\ \textcolor{keywordtype}{float}\ minValue,}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ maxValue,}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ defaultValue,\ \textcolor{keywordtype}{float}\ step,}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::function<\textcolor{keywordtype}{void}(\textcolor{keywordtype}{float})>\ \&onChange)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00106\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00107\ \ \ tgui::Gui\ \&gui;}
+\DoxyCodeLine{00108\ \ \ tgui::Button::Ptr\ baseButton\ =\ tgui::Button::create();}
+\DoxyCodeLine{00109\ \ \ tgui::ToggleButton::Ptr\ baseToggleButton\ =\ tgui::ToggleButton::create();}
+\DoxyCodeLine{00110\ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ buttonWidth\{GLOBAL::RENDER::CONTROL\_PANEL::BUTTON\_WIDTH\};}
+\DoxyCodeLine{00111\ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ buttonHeight\{GLOBAL::RENDER::CONTROL\_PANEL::BUTTON\_HEIGHT\};}
+\DoxyCodeLine{00112\ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ spaceBetweenButtons\{GLOBAL::RENDER::CONTROL\_PANEL::SPACE\_BETWEEN\_BUTTONS\};}
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00114\ \ \ \textcolor{keywordtype}{void}\ createBaseButton()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00115\ }
+\DoxyCodeLine{00116\ \ \ \textcolor{keywordtype}{void}\ createBaseToggleButton()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00117\ \};}
+\DoxyCodeLine{00118\ }
+\DoxyCodeLine{00119\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//BUTTONSPROVIDER\_H}}
+
+\end{DoxyCode}

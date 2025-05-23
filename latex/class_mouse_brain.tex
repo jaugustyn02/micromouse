@@ -1,0 +1,113 @@
+\doxysection{Mouse\+Brain Class Reference}
+\hypertarget{class_mouse_brain}{}\label{class_mouse_brain}\index{MouseBrain@{MouseBrain}}
+
+
+Controls the decision-\/making logic of the virtual micromouse.  
+
+
+
+
+{\ttfamily \#include $<$Mouse\+Brain.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_mouse_brain_a249429a3fda61baf2b13c706bc6bf25a}{Mouse\+Brain}} (std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_exploration_strategy}{Exploration\+Strategy}} $>$ exploration\+Strategy, std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_fastest_path_strategy}{Fastest\+Path\+Strategy}} $>$ fastest\+Path\+Strategy)
+\begin{DoxyCompactList}\small\item\em Constructs the \doxylink{class_mouse_brain}{Mouse\+Brain} with given exploration and pathfinding strategies. \end{DoxyCompactList}\item 
+\Hypertarget{class_mouse_brain_aa8a127540e0bcabe3ade32616ed242c4}\label{class_mouse_brain_aa8a127540e0bcabe3ade32616ed242c4} 
+void {\bfseries next\+Mode} ()
+\begin{DoxyCompactList}\small\item\em Switches to the next operation mode (exploration -\/\texorpdfstring{$>$}{>} return -\/\texorpdfstring{$>$}{>} fastest path -\/\texorpdfstring{$>$}{>} ...). \end{DoxyCompactList}\item 
+Mouse\+Mode \mbox{\hyperlink{class_mouse_brain_a988092267b06b2075feb9faf1afc527c}{get\+Mode}} () const
+\begin{DoxyCompactList}\small\item\em Gets the current operating mode of the mouse. \end{DoxyCompactList}\item 
+Direction \mbox{\hyperlink{class_mouse_brain_a207cc714765251f03ff01a0c277248d8}{get\+Next\+Move}} (\mbox{\hyperlink{class_position}{Position}} current\+Position, const \mbox{\hyperlink{class_sensor_readings}{Sensor\+Readings}} \&readings)
+\begin{DoxyCompactList}\small\item\em Determines the next movement direction based on the current position and sensor data. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_mouse_brain_a7edb2c09067558f23507612c1e2bde15}{is\+Destination\+Reached}} (\mbox{\hyperlink{class_position}{Position}} position) const
+\begin{DoxyCompactList}\small\item\em Checks whether the given position matches any destination goals. \end{DoxyCompactList}\item 
+\Hypertarget{class_mouse_brain_ad5345a2a913dc35d5a431e388d719de5}\label{class_mouse_brain_ad5345a2a913dc35d5a431e388d719de5} 
+void {\bfseries reset} ()
+\begin{DoxyCompactList}\small\item\em Resets the brain state, clearing the map and resetting the current mode. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Controls the decision-\/making logic of the virtual micromouse. 
+
+\doxylink{class_mouse_brain}{Mouse\+Brain} orchestrates the switching between different operational modes (exploration, return, fastest path) and delegates movement decisions to the appropriate strategy. It also maintains an internal map of sensor readings. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_mouse_brain_a249429a3fda61baf2b13c706bc6bf25a}\index{MouseBrain@{MouseBrain}!MouseBrain@{MouseBrain}}
+\index{MouseBrain@{MouseBrain}!MouseBrain@{MouseBrain}}
+\doxysubsubsection{\texorpdfstring{MouseBrain()}{MouseBrain()}}
+{\footnotesize\ttfamily \label{class_mouse_brain_a249429a3fda61baf2b13c706bc6bf25a} 
+Mouse\+Brain\+::\+Mouse\+Brain (\begin{DoxyParamCaption}\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_exploration_strategy}{Exploration\+Strategy}} $>$}]{exploration\+Strategy}{, }\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_fastest_path_strategy}{Fastest\+Path\+Strategy}} $>$}]{fastest\+Path\+Strategy}{}\end{DoxyParamCaption})}
+
+
+
+Constructs the \doxylink{class_mouse_brain}{Mouse\+Brain} with given exploration and pathfinding strategies. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em exploration\+Strategy} & Pointer to the exploration strategy implementation. \\
+\hline
+{\em fastest\+Path\+Strategy} & Pointer to the fastest path strategy implementation. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_mouse_brain_a988092267b06b2075feb9faf1afc527c}\index{MouseBrain@{MouseBrain}!getMode@{getMode}}
+\index{getMode@{getMode}!MouseBrain@{MouseBrain}}
+\doxysubsubsection{\texorpdfstring{getMode()}{getMode()}}
+{\footnotesize\ttfamily \label{class_mouse_brain_a988092267b06b2075feb9faf1afc527c} 
+Mouse\+Mode Mouse\+Brain\+::get\+Mode (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}}
+
+
+
+Gets the current operating mode of the mouse. 
+
+\begin{DoxyReturn}{Returns}
+Current Mouse\+Mode (e.\+g., EXPLORATION, FASTEST\+\_\+\+PATH). 
+\end{DoxyReturn}
+\Hypertarget{class_mouse_brain_a207cc714765251f03ff01a0c277248d8}\index{MouseBrain@{MouseBrain}!getNextMove@{getNextMove}}
+\index{getNextMove@{getNextMove}!MouseBrain@{MouseBrain}}
+\doxysubsubsection{\texorpdfstring{getNextMove()}{getNextMove()}}
+{\footnotesize\ttfamily \label{class_mouse_brain_a207cc714765251f03ff01a0c277248d8} 
+Direction Mouse\+Brain\+::get\+Next\+Move (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_position}{Position}}}]{current\+Position}{, }\item[{const \mbox{\hyperlink{class_sensor_readings}{Sensor\+Readings}} \&}]{readings}{}\end{DoxyParamCaption})}
+
+
+
+Determines the next movement direction based on the current position and sensor data. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em current\+Position} & The current position of the mouse. \\
+\hline
+{\em readings} & Sensor data at the current position. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The direction in which the mouse should move next. 
+\end{DoxyReturn}
+\Hypertarget{class_mouse_brain_a7edb2c09067558f23507612c1e2bde15}\index{MouseBrain@{MouseBrain}!isDestinationReached@{isDestinationReached}}
+\index{isDestinationReached@{isDestinationReached}!MouseBrain@{MouseBrain}}
+\doxysubsubsection{\texorpdfstring{isDestinationReached()}{isDestinationReached()}}
+{\footnotesize\ttfamily \label{class_mouse_brain_a7edb2c09067558f23507612c1e2bde15} 
+bool Mouse\+Brain\+::is\+Destination\+Reached (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_position}{Position}}}]{position}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}}
+
+
+
+Checks whether the given position matches any destination goals. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & The position to check. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the destination is reached, false otherwise. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/core/mouse/brain/Mouse\+Brain.\+h\item 
+src/core/mouse/brain/Mouse\+Brain.\+cpp\end{DoxyCompactItemize}

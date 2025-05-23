@@ -1,0 +1,40 @@
+\doxysection{Direction.\+h}
+\hypertarget{_direction_8h_source}{}\label{_direction_8h_source}\index{include/model/Direction.h@{include/model/Direction.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ MICROMOUSE\_INCLUDE\_MODEL\_DIRECTION\_H\_}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ MICROMOUSE\_INCLUDE\_MODEL\_DIRECTION\_H\_}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <stdexcept>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{enum}\ Direction\ \{}
+\DoxyCodeLine{00012\ \ \ NORTH,}
+\DoxyCodeLine{00013\ \ \ EAST,}
+\DoxyCodeLine{00014\ \ \ SOUTH,}
+\DoxyCodeLine{00015\ \ \ WEST}
+\DoxyCodeLine{00016\ \};}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00023\ \textcolor{keyword}{inline}\ std::string\ toString(Direction\ direction)\ \{}
+\DoxyCodeLine{00024\ \ \ \textcolor{keywordflow}{switch}\ (direction)\ \{}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordflow}{case}\ NORTH:\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}NORTH"{}};}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordflow}{case}\ EAST:\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}EAST"{}};}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordflow}{case}\ SOUTH:\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}SOUTH"{}};}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordflow}{case}\ WEST:\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}WEST"{}};}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordflow}{default}:\ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}Invalid\ direction"{}});}
+\DoxyCodeLine{00030\ \ \ \}}
+\DoxyCodeLine{00031\ \}}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00038\ \textcolor{keyword}{inline}\ Direction\ opposite(Direction\ direction)\ \{}
+\DoxyCodeLine{00039\ \ \ \textcolor{keywordflow}{switch}\ (direction)\ \{}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordflow}{case}\ NORTH:\ \textcolor{keywordflow}{return}\ SOUTH;}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordflow}{case}\ EAST:\ \textcolor{keywordflow}{return}\ WEST;}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordflow}{case}\ SOUTH:\ \textcolor{keywordflow}{return}\ NORTH;}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordflow}{case}\ WEST:\ \textcolor{keywordflow}{return}\ EAST;}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordflow}{default}:\ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}Invalid\ direction"{}});}
+\DoxyCodeLine{00045\ \ \ \}}
+\DoxyCodeLine{00046\ \}}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//MICROMOUSE\_INCLUDE\_MODEL\_DIRECTION\_H\_}}
+
+\end{DoxyCode}

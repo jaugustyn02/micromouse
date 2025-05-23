@@ -1,0 +1,25 @@
+\doxysection{Maze\+Reader.\+h}
+\hypertarget{_maze_reader_8h_source}{}\label{_maze_reader_8h_source}\index{include/core/maze/MazeReader.h@{include/core/maze/MazeReader.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ MICROMOUSE\_INCLUDE\_CORE\_MAZEREADER\_H\_}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ MICROMOUSE\_INCLUDE\_CORE\_MAZEREADER\_H\_}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}model/Cell.h"{}}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_maze_reader}{MazeReader}}\ \{}
+\DoxyCodeLine{00014\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00018\ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_maze_reader_af171868cd569156af93ae575ff0017ac}{\string~MazeReader}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00026\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_maze_reader_aca78531eaeb4377873aac610d8d21800}{isWall}}(\mbox{\hyperlink{class_position}{Position}}\ position,\ Direction\ direction)\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00033\ \ \ \textcolor{keyword}{virtual}\ CellType\ \mbox{\hyperlink{class_maze_reader_ab75dd242ad125441a17ea646798f864e}{getCellType}}(\mbox{\hyperlink{class_position}{Position}}\ position)\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00039\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_maze_reader_ad4fef5bb87e651559d8568d8e93065f0}{getNumOfColumns}}()\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00045\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_maze_reader_ab346b88f89539b1184b7913837d433b1}{getNumOfRows}}()\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00046\ \};}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//MICROMOUSE\_INCLUDE\_CORE\_MAZEREADER\_H\_}}
+
+\end{DoxyCode}

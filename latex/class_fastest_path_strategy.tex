@@ -1,0 +1,78 @@
+\doxysection{Fastest\+Path\+Strategy Class Reference}
+\hypertarget{class_fastest_path_strategy}{}\label{class_fastest_path_strategy}\index{FastestPathStrategy@{FastestPathStrategy}}
+
+
+Abstract base class for pathfinding algorithms to reach destination by the fastest route.  
+
+
+
+
+{\ttfamily \#include $<$Fastest\+Path\+Strategy.\+h$>$}
+
+Inheritance diagram for Fastest\+Path\+Strategy\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_fastest_path_strategy}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_fastest_path_strategy_a159fe031db9884de98cb2a27943c8462}{set\+Maze\+Map}} (const std\+::map$<$ \mbox{\hyperlink{class_position}{Position}}, \mbox{\hyperlink{class_sensor_readings}{Sensor\+Readings}} $>$ \&map)
+\begin{DoxyCompactList}\small\item\em Sets the maze map. This method allows the strategy to use a predefined map of the maze for pathfinding. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_mouse_movement_provider}{Mouse\+Movement\+Provider}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Mouse\+Movement\+Provider} ()=default
+\begin{DoxyCompactList}\small\item\em Default destructor for \doxylink{class_mouse_movement_provider}{Mouse\+Movement\+Provider}. \end{DoxyCompactList}\item 
+virtual Direction \mbox{\hyperlink{class_mouse_movement_provider_af4a52ff34b14daa5d1348a9c35cc05aa}{decide\+Move}} (\mbox{\hyperlink{class_position}{Position}} position, \mbox{\hyperlink{class_sensor_readings}{Sensor\+Readings}} readings)=0
+\begin{DoxyCompactList}\small\item\em Decides the next move based on the current position and sensor readings. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_mouse_movement_provider_a20816bd7d69bb5663d0a503f882d5f2e}{reset}} ()
+\begin{DoxyCompactList}\small\item\em Resets the state of the movement provider. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_mouse_movement_provider_a379dc121275a605a1f09ca9b277e4c03}{set\+Destination}} (const std\+::set$<$ \mbox{\hyperlink{class_position}{Position}} $>$ \&\+\_\+destination)
+\begin{DoxyCompactList}\small\item\em Sets the destination positions for the mouse. \end{DoxyCompactList}\item 
+std\+::set$<$ \mbox{\hyperlink{class_position}{Position}} $>$ \mbox{\hyperlink{class_mouse_movement_provider_a2c96f468dd39ca5b5860f17079f79294}{get\+Destination}} () const
+\begin{DoxyCompactList}\small\item\em Gets the destination positions for the mouse. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_fastest_path_strategy_abee6330416eb45d00be20f6cf8b2f367}\label{class_fastest_path_strategy_abee6330416eb45d00be20f6cf8b2f367} 
+std\+::map$<$ \mbox{\hyperlink{class_position}{Position}}, \mbox{\hyperlink{class_sensor_readings}{Sensor\+Readings}} $>$ {\bfseries maze\+Map}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_mouse_movement_provider}{Mouse\+Movement\+Provider}}}
+\begin{DoxyCompactItemize}
+\item 
+const int {\bfseries maze\+Width} = GLOBAL\+::\+MAZE\+::\+COLUMNS
+\item 
+const int {\bfseries maze\+Height} = GLOBAL\+::\+MAZE\+::\+ROWS
+\item 
+std\+::set$<$ \mbox{\hyperlink{class_position}{Position}} $>$ {\bfseries destination} = GLOBAL\+::\+CONSTANTS\+::\+GOAL\+\_\+\+POSITIONS
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Abstract base class for pathfinding algorithms to reach destination by the fastest route. 
+
+Maintains a known map of the maze and is used after exploration to reach destinations efficiently. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_fastest_path_strategy_a159fe031db9884de98cb2a27943c8462}\index{FastestPathStrategy@{FastestPathStrategy}!setMazeMap@{setMazeMap}}
+\index{setMazeMap@{setMazeMap}!FastestPathStrategy@{FastestPathStrategy}}
+\doxysubsubsection{\texorpdfstring{setMazeMap()}{setMazeMap()}}
+{\footnotesize\ttfamily \label{class_fastest_path_strategy_a159fe031db9884de98cb2a27943c8462} 
+void Fastest\+Path\+Strategy\+::set\+Maze\+Map (\begin{DoxyParamCaption}\item[{const std\+::map$<$ \mbox{\hyperlink{class_position}{Position}}, \mbox{\hyperlink{class_sensor_readings}{Sensor\+Readings}} $>$ \&}]{map}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Sets the maze map. This method allows the strategy to use a predefined map of the maze for pathfinding. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em map} & A map where keys are positions in the maze and values are sensor readings at those positions. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/core/mouse/brain/strategy/fastest\+\_\+path/Fastest\+Path\+Strategy.\+h\end{DoxyCompactItemize}

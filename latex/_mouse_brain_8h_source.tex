@@ -1,0 +1,56 @@
+\doxysection{Mouse\+Brain.\+h}
+\hypertarget{_mouse_brain_8h_source}{}\label{_mouse_brain_8h_source}\index{include/core/mouse/brain/MouseBrain.h@{include/core/mouse/brain/MouseBrain.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ MICROMOUSE\_INCLUDE\_MODEL\_MOUSEBRAIN\_H\_}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ MICROMOUSE\_INCLUDE\_MODEL\_MOUSEBRAIN\_H\_}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}strategy/MouseMovementProvider.h"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}core/GlobalConfig.h"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}model/MouseMode.h"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}core/mouse/MouseSensor.h"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <utility>}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}strategy/exploration/ExplorationStrategy.h"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}strategy/fastest\_path/FastestPathStrategy.h"{}}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00021\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_mouse_brain_a249429a3fda61baf2b13c706bc6bf25a}{MouseBrain}}\ \{}
+\DoxyCodeLine{00022\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00028\ \ \ \mbox{\hyperlink{class_mouse_brain_a249429a3fda61baf2b13c706bc6bf25a}{MouseBrain}}(std::unique\_ptr<ExplorationStrategy>\ explorationStrategy,}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ \ std::unique\_ptr<FastestPathStrategy>\ fastestPathStrategy);}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00034\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_mouse_brain_aa8a127540e0bcabe3ade32616ed242c4}{nextMode}}();}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00040\ \ \ [[nodiscard]]}
+\DoxyCodeLine{00041\ \ \ MouseMode\ \mbox{\hyperlink{class_mouse_brain_a988092267b06b2075feb9faf1afc527c}{getMode}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ activeMode;\ \}}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00049\ \ \ Direction\ \mbox{\hyperlink{class_mouse_brain_a207cc714765251f03ff01a0c277248d8}{getNextMove}}(\mbox{\hyperlink{class_position}{Position}}\ currentPosition,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_sensor_readings}{SensorReadings}}\ \&readings);}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00056\ \ \ [[nodiscard]]}
+\DoxyCodeLine{00057\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_mouse_brain_a7edb2c09067558f23507612c1e2bde15}{isDestinationReached}}(\mbox{\hyperlink{class_position}{Position}}\ position)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00062\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_mouse_brain_ad5345a2a913dc35d5a431e388d719de5}{reset}}();}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00065\ \ \ std::unique\_ptr<ExplorationStrategy>\ explorationStrategy;}
+\DoxyCodeLine{00066\ \ \ std::unique\_ptr<FastestPathStrategy>\ fastestPathStrategy;}
+\DoxyCodeLine{00067\ \ \ \mbox{\hyperlink{class_mouse_movement_provider}{MouseMovementProvider}}\ *currentStrategy\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ \ \ MouseMode\ activeMode\{EXPLORATION\};}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ \ \ std::map<Position,\ SensorReadings>\ mazeMap;}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \ \ \textcolor{keywordtype}{void}\ validateMove(Position\ position,\ Direction\ move)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \ \ [[nodiscard]]}
+\DoxyCodeLine{00076\ \ \ \textcolor{keywordtype}{bool}\ isMoveLegal(Position\ position,\ Direction\ move)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ \ \ [[nodiscard]]}
+\DoxyCodeLine{00079\ \ \ MouseMode\ getNextMode()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ \ \ \textcolor{keywordtype}{void}\ setMode(MouseMode\ mode);}
+\DoxyCodeLine{00082\ \};}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//MICROMOUSE\_INCLUDE\_MODEL\_MOUSEBRAIN\_H\_}}
+
+\end{DoxyCode}

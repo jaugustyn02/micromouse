@@ -1,0 +1,121 @@
+\doxysection{Cell Class Reference}
+\hypertarget{class_cell}{}\label{class_cell}\index{Cell@{Cell}}
+
+
+The \doxylink{class_cell}{Cell} class represents a cell in the maze. It contains information about the cell\textquotesingle{}s location, type, and walls.  
+
+
+
+
+{\ttfamily \#include $<$Cell.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_cell_af87f121b32a8d2a0d26c4295d04504b3}{Cell}} (\mbox{\hyperlink{class_position}{Position}} location, Cell\+Type type)
+\begin{DoxyCompactList}\small\item\em Constructor for the \doxylink{class_cell}{Cell} class. \end{DoxyCompactList}\item 
+\Hypertarget{class_cell_afd7098b09d1e31e5325d3dfc59e107b6}\label{class_cell_afd7098b09d1e31e5325d3dfc59e107b6} 
+void {\bfseries add\+Wall} (Direction direction)
+\begin{DoxyCompactList}\small\item\em Destructor for the \doxylink{class_cell}{Cell} class. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_cell_ae0870050865f6dc5547211f64d3df6d0}{remove\+Wall}} (Direction direction)
+\begin{DoxyCompactList}\small\item\em Removes a wall in the specified direction. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_cell_a9b4056b3ddac275b1473d4ff5b3c34ad}{has\+Wall}} (Direction direction) const
+\begin{DoxyCompactList}\small\item\em Checks if there is a wall in the specified direction. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_position}{Position}} \mbox{\hyperlink{class_cell_af1cbcdcefe983187b2c35fb7ccebedbb}{get\+Location}} () const
+\begin{DoxyCompactList}\small\item\em Checks if the cell is a wall. \end{DoxyCompactList}\item 
+Cell\+Type \mbox{\hyperlink{class_cell_a53cdbd744bf60c95f304aa1cbe7ed49a}{get\+Type}} () const
+\begin{DoxyCompactList}\small\item\em Gets the type of the cell. \end{DoxyCompactList}\item 
+\Hypertarget{class_cell_a04f014b4a1568daeade9a1d7b59e2939}\label{class_cell_a04f014b4a1568daeade9a1d7b59e2939} 
+void {\bfseries set\+Type} (Cell\+Type type)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The \doxylink{class_cell}{Cell} class represents a cell in the maze. It contains information about the cell\textquotesingle{}s location, type, and walls. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_cell_af87f121b32a8d2a0d26c4295d04504b3}\index{Cell@{Cell}!Cell@{Cell}}
+\index{Cell@{Cell}!Cell@{Cell}}
+\doxysubsubsection{\texorpdfstring{Cell()}{Cell()}}
+{\footnotesize\ttfamily \label{class_cell_af87f121b32a8d2a0d26c4295d04504b3} 
+Cell\+::\+Cell (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_position}{Position}}}]{location}{, }\item[{Cell\+Type}]{type}{}\end{DoxyParamCaption})}
+
+
+
+Constructor for the \doxylink{class_cell}{Cell} class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em location} & The position of the cell in the maze. \\
+\hline
+{\em type} & The type of the cell (e.\+g., empty, wall, etc.). \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_cell_af1cbcdcefe983187b2c35fb7ccebedbb}\index{Cell@{Cell}!getLocation@{getLocation}}
+\index{getLocation@{getLocation}!Cell@{Cell}}
+\doxysubsubsection{\texorpdfstring{getLocation()}{getLocation()}}
+{\footnotesize\ttfamily \label{class_cell_af1cbcdcefe983187b2c35fb7ccebedbb} 
+\mbox{\hyperlink{class_position}{Position}} Cell\+::get\+Location (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}}
+
+
+
+Checks if the cell is a wall. 
+
+\begin{DoxyReturn}{Returns}
+True if the cell is a wall, false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{class_cell_a53cdbd744bf60c95f304aa1cbe7ed49a}\index{Cell@{Cell}!getType@{getType}}
+\index{getType@{getType}!Cell@{Cell}}
+\doxysubsubsection{\texorpdfstring{getType()}{getType()}}
+{\footnotesize\ttfamily \label{class_cell_a53cdbd744bf60c95f304aa1cbe7ed49a} 
+Cell\+Type Cell\+::get\+Type (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}}
+
+
+
+Gets the type of the cell. 
+
+\begin{DoxyReturn}{Returns}
+The type of the cell. 
+\end{DoxyReturn}
+\Hypertarget{class_cell_a9b4056b3ddac275b1473d4ff5b3c34ad}\index{Cell@{Cell}!hasWall@{hasWall}}
+\index{hasWall@{hasWall}!Cell@{Cell}}
+\doxysubsubsection{\texorpdfstring{hasWall()}{hasWall()}}
+{\footnotesize\ttfamily \label{class_cell_a9b4056b3ddac275b1473d4ff5b3c34ad} 
+bool Cell\+::has\+Wall (\begin{DoxyParamCaption}\item[{Direction}]{direction}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}}
+
+
+
+Checks if there is a wall in the specified direction. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em direction} & The direction to check for a wall. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if there is a wall, false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{class_cell_ae0870050865f6dc5547211f64d3df6d0}\index{Cell@{Cell}!removeWall@{removeWall}}
+\index{removeWall@{removeWall}!Cell@{Cell}}
+\doxysubsubsection{\texorpdfstring{removeWall()}{removeWall()}}
+{\footnotesize\ttfamily \label{class_cell_ae0870050865f6dc5547211f64d3df6d0} 
+void Cell\+::remove\+Wall (\begin{DoxyParamCaption}\item[{Direction}]{direction}{}\end{DoxyParamCaption})}
+
+
+
+Removes a wall in the specified direction. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em direction} & The direction to remove the wall. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/model/Cell.\+h\item 
+src/model/Cell.\+cpp\end{DoxyCompactItemize}

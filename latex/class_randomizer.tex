@@ -1,0 +1,80 @@
+\doxysection{Randomizer Class Reference}
+\hypertarget{class_randomizer}{}\label{class_randomizer}\index{Randomizer@{Randomizer}}
+
+
+The \doxylink{class_randomizer}{Randomizer} class provides utility functions for generating random numbers and selecting random elements. It uses the Mersenne Twister engine for random number generation.  
+
+
+
+
+{\ttfamily \#include $<$Randomizer.\+h$>$}
+
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename T$>$ }\\static T \mbox{\hyperlink{class_randomizer_a1e0d2d55c01361b0607cfa081fd14df2}{Get\+Random}} (T min, T max)
+\begin{DoxyCompactList}\small\item\em Generates a random number between min and max (inclusive). \end{DoxyCompactList}\item 
+{\footnotesize template$<$class T$>$ }\\static T \& \mbox{\hyperlink{class_randomizer_ae00747212de2cb49771b90b9e6f24999}{Get\+Random\+Element}} (std\+::vector$<$ T $>$ \&elements)
+\begin{DoxyCompactList}\small\item\em Selects a random element from a vector of elements. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The \doxylink{class_randomizer}{Randomizer} class provides utility functions for generating random numbers and selecting random elements. It uses the Mersenne Twister engine for random number generation. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_randomizer_a1e0d2d55c01361b0607cfa081fd14df2}\index{Randomizer@{Randomizer}!GetRandom@{GetRandom}}
+\index{GetRandom@{GetRandom}!Randomizer@{Randomizer}}
+\doxysubsubsection{\texorpdfstring{GetRandom()}{GetRandom()}}
+{\footnotesize\ttfamily \label{class_randomizer_a1e0d2d55c01361b0607cfa081fd14df2} 
+template$<$typename T$>$ \\
+T Randomizer\+::\+Get\+Random (\begin{DoxyParamCaption}\item[{T}]{min}{, }\item[{T}]{max}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Generates a random number between min and max (inclusive). 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The type of the random number (integral or floating-\/point). \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em min} & The minimum value (inclusive). \\
+\hline
+{\em max} & The maximum value (inclusive). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A random number between min and max. 
+\end{DoxyReturn}
+\Hypertarget{class_randomizer_ae00747212de2cb49771b90b9e6f24999}\index{Randomizer@{Randomizer}!GetRandomElement@{GetRandomElement}}
+\index{GetRandomElement@{GetRandomElement}!Randomizer@{Randomizer}}
+\doxysubsubsection{\texorpdfstring{GetRandomElement()}{GetRandomElement()}}
+{\footnotesize\ttfamily \label{class_randomizer_ae00747212de2cb49771b90b9e6f24999} 
+template$<$typename T$>$ \\
+T \& Randomizer\+::\+Get\+Random\+Element (\begin{DoxyParamCaption}\item[{std\+::vector$<$ T $>$ \&}]{elements}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Selects a random element from a vector of elements. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The type of the elements in the vector. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em elements} & The vector of elements to select from. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A reference to a random element from the vector. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/utils/Randomizer.\+h\item 
+src/utils/Randomizer.\+cpp\end{DoxyCompactItemize}

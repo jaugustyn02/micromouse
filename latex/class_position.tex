@@ -1,0 +1,271 @@
+\doxysection{Position Class Reference}
+\hypertarget{class_position}{}\label{class_position}\index{Position@{Position}}
+
+
+The \doxylink{class_position}{Position} class represents a position in a 2D grid. It is used to indicate the position of the micromouse in the maze.  
+
+
+
+
+{\ttfamily \#include $<$Position.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_position_a8ec2fb21251eb9cd336530543ffd530f}{Position}} (const int x, const int y)
+\begin{DoxyCompactList}\small\item\em Default constructor for \doxylink{class_position}{Position}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_position_a336a63085406011560b780f63d33270a}{Position}} (const \mbox{\hyperlink{class_position}{Position}} \&position)=default
+\begin{DoxyCompactList}\small\item\em Default copy constructor for \doxylink{class_position}{Position}. Initializes the position to the same values as the given position. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_position_a653186f7d590ae25fc11a72fb83fa6d9}{translate}} (Direction direction)
+\begin{DoxyCompactList}\small\item\em Translates the position in the given direction. This modifies the current position. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_position}{Position}} \mbox{\hyperlink{class_position_a2e1ed986d28836142967f2c4e6987d08}{translated}} (Direction direction) const
+\begin{DoxyCompactList}\small\item\em Gets a new position translated in the given direction. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{class_position}{Position}} $>$ \mbox{\hyperlink{class_position_adca0fea54b10291dc70282933c799694}{get\+Neighbor\+Cell\+Positions}} (int grid\+Width, int grid\+Height) const
+\begin{DoxyCompactList}\small\item\em Gets the neighboring cell positions based on the current position and grid bounds. \end{DoxyCompactList}\item 
+Direction \mbox{\hyperlink{class_position_a96785a77dd11a20377a92f4dc0990a94}{get\+Direction\+To\+Neighbour\+Position}} (\mbox{\hyperlink{class_position}{Position}} destination) const
+\begin{DoxyCompactList}\small\item\em Gets the direction to the neighboring position. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_position_a9ec6b49c2f17c87eaf17c0b57e5bbb1a}{operator$<$}} (const \mbox{\hyperlink{class_position}{Position}} \&other) const
+\begin{DoxyCompactList}\small\item\em Less than operator for comparing two positions. Necessary for using \doxylink{class_position}{Position} in STL containers. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_position_acf13e7e45c7c07a67c2adf2f7e1dcc5f}{operator==}} (const \mbox{\hyperlink{class_position}{Position}} \&other) const
+\begin{DoxyCompactList}\small\item\em Equality operator for comparing two positions. Necessary for using \doxylink{class_position}{Position} in STL containers. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_position_aa752b83aecbec227a38754ca92a89809}{operator!=}} (const \mbox{\hyperlink{class_position}{Position}} \&start) const
+\begin{DoxyCompactList}\small\item\em Inequality operator for comparing two positions. Necessary for using \doxylink{class_position}{Position} in STL containers. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_position_aec07bdc14874f47cd1dc675d864f49a2}{getX}} () const
+\begin{DoxyCompactList}\small\item\em Gets the x-\/coordinate of the position. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_position_aecedcf0af53e559ccde18432f20d1a37}{getY}} () const
+\begin{DoxyCompactList}\small\item\em Gets the y-\/coordinate of the position. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_position_ace21deb36d784ba31740c4bba0c18969}{is\+Out\+Of\+Bounds}} (const int grid\+Width, const int grid\+Height) const
+\begin{DoxyCompactList}\small\item\em Checks if the position is out of bounds based on the grid dimensions. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_position_a60b87a1543cf16ea87dfe7885e5dbdef}{to\+String}} () const
+\begin{DoxyCompactList}\small\item\em Converts the position to a string representation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The \doxylink{class_position}{Position} class represents a position in a 2D grid. It is used to indicate the position of the micromouse in the maze. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_position_a8ec2fb21251eb9cd336530543ffd530f}\index{Position@{Position}!Position@{Position}}
+\index{Position@{Position}!Position@{Position}}
+\doxysubsubsection{\texorpdfstring{Position()}{Position()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_position_a8ec2fb21251eb9cd336530543ffd530f} 
+Position\+::\+Position (\begin{DoxyParamCaption}\item[{const int}]{x}{, }\item[{const int}]{y}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Default constructor for \doxylink{class_position}{Position}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The x-\/coordinate of the position. \\
+\hline
+{\em y} & The y-\/coordinate of the position. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_position_a336a63085406011560b780f63d33270a}\index{Position@{Position}!Position@{Position}}
+\index{Position@{Position}!Position@{Position}}
+\doxysubsubsection{\texorpdfstring{Position()}{Position()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_position_a336a63085406011560b780f63d33270a} 
+Position\+::\+Position (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_position}{Position}} \&}]{position}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+Default copy constructor for \doxylink{class_position}{Position}. Initializes the position to the same values as the given position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & The position to copy. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_position_a96785a77dd11a20377a92f4dc0990a94}\index{Position@{Position}!getDirectionToNeighbourPosition@{getDirectionToNeighbourPosition}}
+\index{getDirectionToNeighbourPosition@{getDirectionToNeighbourPosition}!Position@{Position}}
+\doxysubsubsection{\texorpdfstring{getDirectionToNeighbourPosition()}{getDirectionToNeighbourPosition()}}
+{\footnotesize\ttfamily \label{class_position_a96785a77dd11a20377a92f4dc0990a94} 
+Direction Position\+::get\+Direction\+To\+Neighbour\+Position (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_position}{Position}}}]{destination}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}}
+
+
+
+Gets the direction to the neighboring position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em destination} & The destination position. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The direction to the neighboring position. 
+\end{DoxyReturn}
+\Hypertarget{class_position_adca0fea54b10291dc70282933c799694}\index{Position@{Position}!getNeighborCellPositions@{getNeighborCellPositions}}
+\index{getNeighborCellPositions@{getNeighborCellPositions}!Position@{Position}}
+\doxysubsubsection{\texorpdfstring{getNeighborCellPositions()}{getNeighborCellPositions()}}
+{\footnotesize\ttfamily \label{class_position_adca0fea54b10291dc70282933c799694} 
+std\+::vector$<$ \mbox{\hyperlink{class_position}{Position}} $>$ Position\+::get\+Neighbor\+Cell\+Positions (\begin{DoxyParamCaption}\item[{int}]{grid\+Width}{, }\item[{int}]{grid\+Height}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}}
+
+
+
+Gets the neighboring cell positions based on the current position and grid bounds. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em grid\+Width} & The width of the grid. \\
+\hline
+{\em grid\+Height} & The height of the grid. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A vector of \doxylink{class_position}{Position} objects representing the neighboring cell positions. 
+\end{DoxyReturn}
+\Hypertarget{class_position_aec07bdc14874f47cd1dc675d864f49a2}\index{Position@{Position}!getX@{getX}}
+\index{getX@{getX}!Position@{Position}}
+\doxysubsubsection{\texorpdfstring{getX()}{getX()}}
+{\footnotesize\ttfamily \label{class_position_aec07bdc14874f47cd1dc675d864f49a2} 
+int Position\+::getX (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}}
+
+
+
+Gets the x-\/coordinate of the position. 
+
+\begin{DoxyReturn}{Returns}
+The x-\/coordinate of the position. 
+\end{DoxyReturn}
+\Hypertarget{class_position_aecedcf0af53e559ccde18432f20d1a37}\index{Position@{Position}!getY@{getY}}
+\index{getY@{getY}!Position@{Position}}
+\doxysubsubsection{\texorpdfstring{getY()}{getY()}}
+{\footnotesize\ttfamily \label{class_position_aecedcf0af53e559ccde18432f20d1a37} 
+int Position\+::getY (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}}
+
+
+
+Gets the y-\/coordinate of the position. 
+
+\begin{DoxyReturn}{Returns}
+The y-\/coordinate of the position. 
+\end{DoxyReturn}
+\Hypertarget{class_position_ace21deb36d784ba31740c4bba0c18969}\index{Position@{Position}!isOutOfBounds@{isOutOfBounds}}
+\index{isOutOfBounds@{isOutOfBounds}!Position@{Position}}
+\doxysubsubsection{\texorpdfstring{isOutOfBounds()}{isOutOfBounds()}}
+{\footnotesize\ttfamily \label{class_position_ace21deb36d784ba31740c4bba0c18969} 
+bool Position\+::is\+Out\+Of\+Bounds (\begin{DoxyParamCaption}\item[{const int}]{grid\+Width}{, }\item[{const int}]{grid\+Height}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}}
+
+
+
+Checks if the position is out of bounds based on the grid dimensions. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em grid\+Width} & The width of the grid. \\
+\hline
+{\em grid\+Height} & The height of the grid. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the position is out of bounds, false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{class_position_aa752b83aecbec227a38754ca92a89809}\index{Position@{Position}!operator"!=@{operator"!=}}
+\index{operator"!=@{operator"!=}!Position@{Position}}
+\doxysubsubsection{\texorpdfstring{operator"!=()}{operator!=()}}
+{\footnotesize\ttfamily \label{class_position_aa752b83aecbec227a38754ca92a89809} 
+bool Position\+::operator!= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_position}{Position}} \&}]{start}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}}
+
+
+
+Inequality operator for comparing two positions. Necessary for using \doxylink{class_position}{Position} in STL containers. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & The other position to compare with. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the current position is not equal to the other position, false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{class_position_a9ec6b49c2f17c87eaf17c0b57e5bbb1a}\index{Position@{Position}!operator$<$@{operator$<$}}
+\index{operator$<$@{operator$<$}!Position@{Position}}
+\doxysubsubsection{\texorpdfstring{operator$<$()}{operator<()}}
+{\footnotesize\ttfamily \label{class_position_a9ec6b49c2f17c87eaf17c0b57e5bbb1a} 
+bool Position\+::operator$<$ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_position}{Position}} \&}]{other}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Less than operator for comparing two positions. Necessary for using \doxylink{class_position}{Position} in STL containers. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & The other position to compare with. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the current position is less than the other position, false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{class_position_acf13e7e45c7c07a67c2adf2f7e1dcc5f}\index{Position@{Position}!operator==@{operator==}}
+\index{operator==@{operator==}!Position@{Position}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily \label{class_position_acf13e7e45c7c07a67c2adf2f7e1dcc5f} 
+bool Position\+::operator== (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_position}{Position}} \&}]{other}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}}
+
+
+
+Equality operator for comparing two positions. Necessary for using \doxylink{class_position}{Position} in STL containers. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & The other position to compare with. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the current position is equal to the other position, false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{class_position_a60b87a1543cf16ea87dfe7885e5dbdef}\index{Position@{Position}!toString@{toString}}
+\index{toString@{toString}!Position@{Position}}
+\doxysubsubsection{\texorpdfstring{toString()}{toString()}}
+{\footnotesize\ttfamily \label{class_position_a60b87a1543cf16ea87dfe7885e5dbdef} 
+std\+::string Position\+::to\+String (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}}
+
+
+
+Converts the position to a string representation. 
+
+\begin{DoxyReturn}{Returns}
+A string representation of the position. 
+\end{DoxyReturn}
+\Hypertarget{class_position_a653186f7d590ae25fc11a72fb83fa6d9}\index{Position@{Position}!translate@{translate}}
+\index{translate@{translate}!Position@{Position}}
+\doxysubsubsection{\texorpdfstring{translate()}{translate()}}
+{\footnotesize\ttfamily \label{class_position_a653186f7d590ae25fc11a72fb83fa6d9} 
+void Position\+::translate (\begin{DoxyParamCaption}\item[{Direction}]{direction}{}\end{DoxyParamCaption})}
+
+
+
+Translates the position in the given direction. This modifies the current position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em direction} & The direction to translate the position. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_position_a2e1ed986d28836142967f2c4e6987d08}\index{Position@{Position}!translated@{translated}}
+\index{translated@{translated}!Position@{Position}}
+\doxysubsubsection{\texorpdfstring{translated()}{translated()}}
+{\footnotesize\ttfamily \label{class_position_a2e1ed986d28836142967f2c4e6987d08} 
+\mbox{\hyperlink{class_position}{Position}} Position\+::translated (\begin{DoxyParamCaption}\item[{Direction}]{direction}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}}
+
+
+
+Gets a new position translated in the given direction. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em direction} & The direction to translate the position. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A new \doxylink{class_position}{Position} object representing the translated position. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/model/Position.\+h\item 
+src/model/Position.\+cpp\end{DoxyCompactItemize}

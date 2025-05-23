@@ -1,0 +1,257 @@
+\doxysection{Simulation Class Reference}
+\hypertarget{class_simulation}{}\label{class_simulation}\index{Simulation@{Simulation}}
+
+
+Concrete implementation of the \doxylink{class_simulation_controller}{Simulation\+Controller} interface.  
+
+
+
+
+{\ttfamily \#include $<$Simulation.\+h$>$}
+
+Inheritance diagram for Simulation\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_simulation}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_simulation_a5b224cc5b36bcc8eb29689aff223de41}{Simulation}} ()
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{class_simulation}{Simulation} instance with initialized maze and mouse. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_simulation_a11247eeb60f44cc0bb7db592427d59e4}{start}} () override
+\begin{DoxyCompactList}\small\item\em Starts the simulation.    \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_simulation_a654ad6749ff84b5dc1b5e98043796af2}{stop}} () override
+\begin{DoxyCompactList}\small\item\em Resets the simulation by resetting the position and state of the mouse.    \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_simulation_ac64643a35985fcec40c96423d3073f1c}{reset}} () override
+\begin{DoxyCompactList}\small\item\em Executes the next step in the simulation.    \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_simulation_a424177ecee6a5a88c8668235edd4a174}{next\+Step}} () override
+\begin{DoxyCompactList}\small\item\em Assigns a brain of given type to the mouse.    \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_simulation_a3400b6c8ae2dc2d8afb340b02b8487ca}{set\+Mouse\+Brain}} (Mouse\+Brain\+Type brain\+Type) override
+\begin{DoxyCompactList}\small\item\em Sets the simulation speed.    \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_simulation_add7cf039ecd2ce010927c6eb47d5193a}{set\+Speed}} (int \+\_\+speed) override
+\begin{DoxyCompactList}\small\item\em Retrieves the current simulation speed.    \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_simulation_a57f65535cdaebe528a629109876276a8}{get\+Speed}} () override
+\begin{DoxyCompactList}\small\item\em Invokes maze generation.    \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_simulation_a09200f334cedec0dd8f6aef86742d687}{generate\+Maze}} () override
+\begin{DoxyCompactList}\small\item\em Checks if the simulation is currently running.    \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_simulation_a6b1f968bb375718b32af283e9b88ec24}{get\+Is\+Running}} () override
+\begin{DoxyCompactList}\small\item\em Checks if the simulation is currently running. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_micromouse}{Micromouse}} \& \mbox{\hyperlink{class_simulation_add3a0ab5b9d54bfacc428ab4ebebad1c}{get\+Mouse}} () override
+\begin{DoxyCompactList}\small\item\em Retrieves the current mouse instance.    \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_maze}{Maze}} \& \mbox{\hyperlink{class_simulation_a1f9cfa6a85114a1a3cb7e930498016f0}{get\+Maze}} () override
+\begin{DoxyCompactList}\small\item\em Retrieves the current maze instance. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_simulation_controller}{Simulation\+Controller}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Simulation\+Controller} ()=default
+\begin{DoxyCompactList}\small\item\em Virtual destructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Concrete implementation of the \doxylink{class_simulation_controller}{Simulation\+Controller} interface. 
+
+Manages the \doxylink{class_micromouse}{Micromouse} simulation, including maze generation, mouse movement, speed control, and step-\/by-\/step execution. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_simulation_a5b224cc5b36bcc8eb29689aff223de41}\index{Simulation@{Simulation}!Simulation@{Simulation}}
+\index{Simulation@{Simulation}!Simulation@{Simulation}}
+\doxysubsubsection{\texorpdfstring{Simulation()}{Simulation()}}
+{\footnotesize\ttfamily \label{class_simulation_a5b224cc5b36bcc8eb29689aff223de41} 
+Simulation\+::\+Simulation (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Constructs a \doxylink{class_simulation}{Simulation} instance with initialized maze and mouse. 
+
+Stops the simulation.   
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_simulation_a09200f334cedec0dd8f6aef86742d687}\index{Simulation@{Simulation}!generateMaze@{generateMaze}}
+\index{generateMaze@{generateMaze}!Simulation@{Simulation}}
+\doxysubsubsection{\texorpdfstring{generateMaze()}{generateMaze()}}
+{\footnotesize\ttfamily \label{class_simulation_a09200f334cedec0dd8f6aef86742d687} 
+void Simulation\+::generate\+Maze (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Checks if the simulation is currently running.    
+
+\begin{DoxyReturn}{Returns}
+True if the simulation is running, false otherwise.    
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_simulation_controller_a1e78970474eb6f2f4b9ae1ca152ca701}{Simulation\+Controller}}.
+
+\Hypertarget{class_simulation_a6b1f968bb375718b32af283e9b88ec24}\index{Simulation@{Simulation}!getIsRunning@{getIsRunning}}
+\index{getIsRunning@{getIsRunning}!Simulation@{Simulation}}
+\doxysubsubsection{\texorpdfstring{getIsRunning()}{getIsRunning()}}
+{\footnotesize\ttfamily \label{class_simulation_a6b1f968bb375718b32af283e9b88ec24} 
+bool Simulation\+::get\+Is\+Running (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Checks if the simulation is currently running. 
+
+\begin{DoxyReturn}{Returns}
+True if the simulation is running, false otherwise. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_simulation_controller_aa9bf608124365238b09ff55c616ce3c3}{Simulation\+Controller}}.
+
+\Hypertarget{class_simulation_a1f9cfa6a85114a1a3cb7e930498016f0}\index{Simulation@{Simulation}!getMaze@{getMaze}}
+\index{getMaze@{getMaze}!Simulation@{Simulation}}
+\doxysubsubsection{\texorpdfstring{getMaze()}{getMaze()}}
+{\footnotesize\ttfamily \label{class_simulation_a1f9cfa6a85114a1a3cb7e930498016f0} 
+\mbox{\hyperlink{class_maze}{Maze}} \& Simulation\+::get\+Maze (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Retrieves the current maze instance. 
+
+\begin{DoxyReturn}{Returns}
+A reference to the \doxylink{class_maze}{Maze} instance. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_simulation_controller_a8cf18ac4049d014b63fe805e876c0053}{Simulation\+Controller}}.
+
+\Hypertarget{class_simulation_add3a0ab5b9d54bfacc428ab4ebebad1c}\index{Simulation@{Simulation}!getMouse@{getMouse}}
+\index{getMouse@{getMouse}!Simulation@{Simulation}}
+\doxysubsubsection{\texorpdfstring{getMouse()}{getMouse()}}
+{\footnotesize\ttfamily \label{class_simulation_add3a0ab5b9d54bfacc428ab4ebebad1c} 
+\mbox{\hyperlink{class_micromouse}{Micromouse}} \& Simulation\+::get\+Mouse (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Retrieves the current mouse instance.    
+
+\begin{DoxyReturn}{Returns}
+A reference to the \doxylink{class_micromouse}{Micromouse} instance.      Retrieves the current maze instance.   
+
+A reference to the \doxylink{class_maze}{Maze} instance.    
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_simulation_controller_aafa33c062fd78a52371d8ac77dc8c5d3}{Simulation\+Controller}}.
+
+\Hypertarget{class_simulation_a57f65535cdaebe528a629109876276a8}\index{Simulation@{Simulation}!getSpeed@{getSpeed}}
+\index{getSpeed@{getSpeed}!Simulation@{Simulation}}
+\doxysubsubsection{\texorpdfstring{getSpeed()}{getSpeed()}}
+{\footnotesize\ttfamily \label{class_simulation_a57f65535cdaebe528a629109876276a8} 
+int Simulation\+::get\+Speed (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Invokes maze generation.    
+
+
+
+Implements \mbox{\hyperlink{class_simulation_controller_a98a3836cc09724a6f0aa2be7ff97ce86}{Simulation\+Controller}}.
+
+\Hypertarget{class_simulation_a424177ecee6a5a88c8668235edd4a174}\index{Simulation@{Simulation}!nextStep@{nextStep}}
+\index{nextStep@{nextStep}!Simulation@{Simulation}}
+\doxysubsubsection{\texorpdfstring{nextStep()}{nextStep()}}
+{\footnotesize\ttfamily \label{class_simulation_a424177ecee6a5a88c8668235edd4a174} 
+void Simulation\+::next\+Step (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Assigns a brain of given type to the mouse.    
+
+
+\begin{DoxyParams}{Parameters}
+{\em brain\+Type} & The brain implementation to use.    \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_simulation_controller_a637ff2a160dcb47311352fa5029c1711}{Simulation\+Controller}}.
+
+\Hypertarget{class_simulation_ac64643a35985fcec40c96423d3073f1c}\index{Simulation@{Simulation}!reset@{reset}}
+\index{reset@{reset}!Simulation@{Simulation}}
+\doxysubsubsection{\texorpdfstring{reset()}{reset()}}
+{\footnotesize\ttfamily \label{class_simulation_ac64643a35985fcec40c96423d3073f1c} 
+void Simulation\+::reset (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Executes the next step in the simulation.    
+
+
+
+Implements \mbox{\hyperlink{class_simulation_controller_ac0fb1e4466f2617b6662134ed1605f23}{Simulation\+Controller}}.
+
+\Hypertarget{class_simulation_a3400b6c8ae2dc2d8afb340b02b8487ca}\index{Simulation@{Simulation}!setMouseBrain@{setMouseBrain}}
+\index{setMouseBrain@{setMouseBrain}!Simulation@{Simulation}}
+\doxysubsubsection{\texorpdfstring{setMouseBrain()}{setMouseBrain()}}
+{\footnotesize\ttfamily \label{class_simulation_a3400b6c8ae2dc2d8afb340b02b8487ca} 
+void Simulation\+::set\+Mouse\+Brain (\begin{DoxyParamCaption}\item[{Mouse\+Brain\+Type}]{brain\+Type}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Sets the simulation speed.    
+
+
+\begin{DoxyParams}{Parameters}
+{\em speed} & The new speed value.    \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_simulation_controller_ac3a3e9d44541fd45fde8b946ffffd56c}{Simulation\+Controller}}.
+
+\Hypertarget{class_simulation_add7cf039ecd2ce010927c6eb47d5193a}\index{Simulation@{Simulation}!setSpeed@{setSpeed}}
+\index{setSpeed@{setSpeed}!Simulation@{Simulation}}
+\doxysubsubsection{\texorpdfstring{setSpeed()}{setSpeed()}}
+{\footnotesize\ttfamily \label{class_simulation_add7cf039ecd2ce010927c6eb47d5193a} 
+void Simulation\+::set\+Speed (\begin{DoxyParamCaption}\item[{int}]{\+\_\+speed}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Retrieves the current simulation speed.    
+
+\begin{DoxyReturn}{Returns}
+The speed value.    
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_simulation_controller_a8f5da4c8b89c0e22cc76d09be3aa29e9}{Simulation\+Controller}}.
+
+\Hypertarget{class_simulation_a11247eeb60f44cc0bb7db592427d59e4}\index{Simulation@{Simulation}!start@{start}}
+\index{start@{start}!Simulation@{Simulation}}
+\doxysubsubsection{\texorpdfstring{start()}{start()}}
+{\footnotesize\ttfamily \label{class_simulation_a11247eeb60f44cc0bb7db592427d59e4} 
+void Simulation\+::start (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Starts the simulation.    
+
+
+
+Implements \mbox{\hyperlink{class_simulation_controller_a0b9ad615b0476195180069b09c179fb8}{Simulation\+Controller}}.
+
+\Hypertarget{class_simulation_a654ad6749ff84b5dc1b5e98043796af2}\index{Simulation@{Simulation}!stop@{stop}}
+\index{stop@{stop}!Simulation@{Simulation}}
+\doxysubsubsection{\texorpdfstring{stop()}{stop()}}
+{\footnotesize\ttfamily \label{class_simulation_a654ad6749ff84b5dc1b5e98043796af2} 
+void Simulation\+::stop (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Resets the simulation by resetting the position and state of the mouse.    
+
+
+
+Implements \mbox{\hyperlink{class_simulation_controller_aa0e27ac0f4fa716ee1f1185f29f790f3}{Simulation\+Controller}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/core/Simulation.\+h\item 
+src/core/Simulation.\+cpp\end{DoxyCompactItemize}

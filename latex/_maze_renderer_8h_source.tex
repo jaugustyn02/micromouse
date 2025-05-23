@@ -1,0 +1,41 @@
+\doxysection{Maze\+Renderer.\+h}
+\hypertarget{_maze_renderer_8h_source}{}\label{_maze_renderer_8h_source}\index{include/gui/MazeRenderer.h@{include/gui/MazeRenderer.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ MICROMOUSE\_INCLUDE\_MODEL\_MAZERENDERER\_H\_}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ MICROMOUSE\_INCLUDE\_MODEL\_MAZERENDERER\_H\_}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}core/maze/Maze.h"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}SFML/Graphics/RenderWindow.hpp"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}SFML/Graphics/RectangleShape.hpp"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}Drawable.h"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}TGUI/Backend/SFML-\/Graphics.hpp"{}}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_maze_renderer_a229ae605fe9e6c20bc0405283807e162}{MazeRenderer}}\ final\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_drawable}{Drawable}}\ \{}
+\DoxyCodeLine{00015\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00020\ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{class_maze_renderer_a229ae605fe9e6c20bc0405283807e162}{MazeRenderer}}(\mbox{\hyperlink{class_maze_reader}{MazeReader}}\ \&maze);}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00026\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_maze_renderer_a74cf884c5180c91c39ad025f857a764f}{draw}}(sf::RenderWindow\ \&window)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00032\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_maze_renderer_a45a35d949663a7201a27b43420707d13}{colorCells}}(sf::RenderWindow\ \&window);}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00038\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_maze_renderer_aa9f1c74a0e9eb6faf1bfa1b0d9ff4b5e}{drawWalls}}(sf::RenderWindow\ \&window);}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00041\ \ \ \mbox{\hyperlink{class_maze_reader}{MazeReader}}\ \&maze;}
+\DoxyCodeLine{00042\ \ \ sf::RectangleShape\ horizontalWallShape;}
+\DoxyCodeLine{00043\ \ \ sf::RectangleShape\ verticalWallShape;}
+\DoxyCodeLine{00044\ \ \ sf::RectangleShape\ cellShape;}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \textcolor{keywordtype}{void}\ drawCellWalls(sf::RenderWindow\ \&window,\ \mbox{\hyperlink{class_position}{Position}}\ cellPosition);}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \ \ \textcolor{keywordtype}{void}\ drawCellBackground(sf::RenderWindow\ \&window,\ \mbox{\hyperlink{class_position}{Position}}\ cellPosition,\ CellType\ cellType);}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{float}\ getTopLeftCornerPositionX(\mbox{\hyperlink{class_position}{Position}}\ cellPosition);}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{float}\ getTopLeftCornerPositionY(\mbox{\hyperlink{class_position}{Position}}\ cellPosition);}
+\DoxyCodeLine{00053\ \};}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//MICROMOUSE\_INCLUDE\_MODEL\_MAZERENDERER\_H\_}}
+
+\end{DoxyCode}

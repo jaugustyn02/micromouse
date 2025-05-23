@@ -1,0 +1,47 @@
+\doxysection{Randomizer.\+h}
+\hypertarget{_randomizer_8h_source}{}\label{_randomizer_8h_source}\index{include/utils/Randomizer.h@{include/utils/Randomizer.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ MICROMOUSE\_INCLUDE\_UTILS\_RANDOMIZER\_H\_}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ MICROMOUSE\_INCLUDE\_UTILS\_RANDOMIZER\_H\_}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <random>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}model/Direction.h"{}}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_randomizer}{Randomizer}}\ \{}
+\DoxyCodeLine{00013\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00021\ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00022\ \ \ \textcolor{keyword}{static}\ T\ \mbox{\hyperlink{class_randomizer_a1e0d2d55c01361b0607cfa081fd14df2}{GetRandom}}(T\ min,\ T\ max);}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00030\ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ T>}
+\DoxyCodeLine{00031\ \ \ \textcolor{keyword}{static}\ T\ \&\mbox{\hyperlink{class_randomizer_ae00747212de2cb49771b90b9e6f24999}{GetRandomElement}}(std::vector<T>\ \&elements);}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00034\ \ \ \textcolor{keyword}{static}\ std::mt19937\ \&GetEngine();}
+\DoxyCodeLine{00035\ \};}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00038\ T\ \mbox{\hyperlink{class_randomizer_a1e0d2d55c01361b0607cfa081fd14df2}{Randomizer::GetRandom}}(T\ min,\ T\ max)\ \{}
+\DoxyCodeLine{00039\ \ \ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (std::is\_integral\_v<T>)\ \{}
+\DoxyCodeLine{00040\ \ \ \ \ std::uniform\_int\_distribution<T>\ distribution(min,\ max);}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordflow}{return}\ distribution(GetEngine());}
+\DoxyCodeLine{00042\ \ \ \}}
+\DoxyCodeLine{00043\ \ \ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (std::is\_floating\_point\_v<T>)\ \{}
+\DoxyCodeLine{00044\ \ \ \ \ std::uniform\_real\_distribution<T>\ distribution(min,\ max);}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordflow}{return}\ distribution(GetEngine());}
+\DoxyCodeLine{00046\ \ \ \}}
+\DoxyCodeLine{00047\ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}GetRandom\ supports\ only\ integral\ and\ floating-\/point\ types."{}});}
+\DoxyCodeLine{00048\ \}}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00051\ T\ \&\mbox{\hyperlink{class_randomizer_ae00747212de2cb49771b90b9e6f24999}{Randomizer::GetRandomElement}}(std::vector<T>\ \&elements)\ \{}
+\DoxyCodeLine{00052\ \ \ \textcolor{keywordflow}{if}\ (elements.empty())\ \{}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}GetRandomElement:\ elements\ vector\ is\ empty."{}});}
+\DoxyCodeLine{00054\ \ \ \}}
+\DoxyCodeLine{00055\ \ \ \textcolor{keywordflow}{return}\ elements[\mbox{\hyperlink{class_randomizer_a1e0d2d55c01361b0607cfa081fd14df2}{GetRandom}}(0,\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(elements.size())\ -\/\ 1)];}
+\DoxyCodeLine{00056\ \}}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//MICROMOUSE\_INCLUDE\_UTILS\_RANDOMIZER\_H\_}}
+
+\end{DoxyCode}

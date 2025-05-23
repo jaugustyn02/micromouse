@@ -1,0 +1,25 @@
+\doxysection{Mouse\+Brain\+Type.\+h}
+\hypertarget{_mouse_brain_type_8h_source}{}\label{_mouse_brain_type_8h_source}\index{include/model/MouseBrainType.h@{include/model/MouseBrainType.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ MICROMOUSE\_INCLUDE\_MODEL\_MOUSEBRAINTYPE\_H\_}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ MICROMOUSE\_INCLUDE\_MODEL\_MOUSEBRAINTYPE\_H\_}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00010\ \textcolor{keyword}{enum}\ MouseBrainType\ \{}
+\DoxyCodeLine{00011\ \ \ RANDOM,}
+\DoxyCodeLine{00012\ \ \ ADVANCED}
+\DoxyCodeLine{00013\ \};}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{inline}\ std::string\ toString(MouseBrainType\ type)\ \{}
+\DoxyCodeLine{00021\ \ \ \textcolor{keywordflow}{switch}\ (type)\ \{}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordflow}{case}\ RANDOM:\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}RANDOM"{}};}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordflow}{case}\ ADVANCED:\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}ADVANCED"{}};}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordflow}{default}:\ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}Invalid\ mouse\ brain\ type"{}});}
+\DoxyCodeLine{00025\ \ \ \}}
+\DoxyCodeLine{00026\ \}}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//MICROMOUSE\_INCLUDE\_MODEL\_MOUSEBRAINTYPE\_H\_}}
+
+\end{DoxyCode}

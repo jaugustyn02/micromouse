@@ -1,0 +1,27 @@
+\doxysection{Mouse\+Brain\+Provider.\+h}
+\hypertarget{_mouse_brain_provider_8h_source}{}\label{_mouse_brain_provider_8h_source}\index{include/core/mouse/brain/MouseBrainProvider.h@{include/core/mouse/brain/MouseBrainProvider.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ MICROMOUSE\_INCLUDE\_CORE\_MOUSEBRAINPROVIDER\_H\_}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ MICROMOUSE\_INCLUDE\_CORE\_MOUSEBRAINPROVIDER\_H\_}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}MouseBrain.h"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}strategy/exploration/RandomExplorationStrategy.h"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}strategy/fastest\_path/BFSFastestPathStrategy.h"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}strategy/exploration/FloodingExplorationStrategy.h"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}strategy/fastest\_path/RandomFastestPathStrategy.h"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}model/MouseBrainType.h"{}}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_mouse_brain_provider}{MouseBrainProvider}}\ \{}
+\DoxyCodeLine{00019\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00025\ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_mouse_brain}{MouseBrain}}\ \mbox{\hyperlink{class_mouse_brain_provider_ae366df2fdce728545f9b64039a721e13}{getMouseBrainInstance}}(MouseBrainType\ type);}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00028\ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_mouse_brain}{MouseBrain}}\ getRandomBrainInstance();}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_mouse_brain}{MouseBrain}}\ getAdvancedBrainInstance();}
+\DoxyCodeLine{00031\ \};}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//MICROMOUSE\_INCLUDE\_CORE\_MOUSEBRAINPROVIDER\_H\_}}
+
+\end{DoxyCode}

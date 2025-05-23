@@ -1,0 +1,41 @@
+\doxysection{Mouse\+Movement\+Provider.\+h}
+\hypertarget{_mouse_movement_provider_8h_source}{}\label{_mouse_movement_provider_8h_source}\index{include/core/mouse/brain/strategy/MouseMovementProvider.h@{include/core/mouse/brain/strategy/MouseMovementProvider.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ MICROMOUSE\_INCLUDE\_MODEL\_MOUSE\_MOVEMENT\_PROVIDER\_H\_}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ MICROMOUSE\_INCLUDE\_MODEL\_MOUSE\_MOVEMENT\_PROVIDER\_H\_}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}core/GlobalConfig.h"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}model/Direction.h"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}model/Position.h"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}model/SensorReadings.h"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <utility>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_mouse_movement_provider}{MouseMovementProvider}}\ \{}
+\DoxyCodeLine{00012\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00016\ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_mouse_movement_provider_ac2affe0c91a51696d7a488f74a855e59}{\string~MouseMovementProvider}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00025\ \ \ \textcolor{keyword}{virtual}\ Direction\ \mbox{\hyperlink{class_mouse_movement_provider_af4a52ff34b14daa5d1348a9c35cc05aa}{decideMove}}(\mbox{\hyperlink{class_position}{Position}}\ position,\ \mbox{\hyperlink{class_sensor_readings}{SensorReadings}}\ readings)\ =\ 0;}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00032\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_mouse_movement_provider_a20816bd7d69bb5663d0a503f882d5f2e}{reset}}()\ \{}
+\DoxyCodeLine{00033\ \ \ \};}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00040\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_mouse_movement_provider_a379dc121275a605a1f09ca9b277e4c03}{setDestination}}(\textcolor{keyword}{const}\ std::set<Position>\ \&\_destination)\ \{}
+\DoxyCodeLine{00041\ \ \ \ \ destination\ =\ \_destination;}
+\DoxyCodeLine{00042\ \ \ \}}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00049\ \ \ [[nodiscard]]}
+\DoxyCodeLine{00050\ \ \ std::set<Position>\ \mbox{\hyperlink{class_mouse_movement_provider_a2c96f468dd39ca5b5860f17079f79294}{getDestination}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordflow}{return}\ destination;}
+\DoxyCodeLine{00052\ \ \ \}}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00055\ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ mazeWidth\ =\ GLOBAL::MAZE::COLUMNS;}
+\DoxyCodeLine{00056\ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ mazeHeight\ =\ GLOBAL::MAZE::ROWS;}
+\DoxyCodeLine{00057\ \ \ std::set<Position>\ destination\ =\ GLOBAL::CONSTANTS::GOAL\_POSITIONS;}
+\DoxyCodeLine{00058\ \};}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//MICROMOUSE\_INCLUDE\_MODEL\_MOUSE\_MOVEMENT\_PROVIDER\_H\_}}
+
+\end{DoxyCode}

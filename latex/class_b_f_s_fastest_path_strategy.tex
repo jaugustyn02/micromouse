@@ -1,0 +1,105 @@
+\doxysection{BFSFastest\+Path\+Strategy Class Reference}
+\hypertarget{class_b_f_s_fastest_path_strategy}{}\label{class_b_f_s_fastest_path_strategy}\index{BFSFastestPathStrategy@{BFSFastestPathStrategy}}
+
+
+Pathfinding strategy that uses BFS to find the fastest path to the destination.  
+
+
+
+
+{\ttfamily \#include $<$BFSFastest\+Path\+Strategy.\+h$>$}
+
+Inheritance diagram for BFSFastest\+Path\+Strategy\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_b_f_s_fastest_path_strategy}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+Direction \mbox{\hyperlink{class_b_f_s_fastest_path_strategy_ae0a32729fb6c851598a24f3897c36ac2}{decide\+Move}} (\mbox{\hyperlink{class_position}{Position}} current\+Position, \mbox{\hyperlink{class_sensor_readings}{Sensor\+Readings}} readings) override
+\begin{DoxyCompactList}\small\item\em Decides the next move based on the current position and sensor readings.    \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_b_f_s_fastest_path_strategy_ac68d11cdc92ae9d44ca9858dbce54232}{reset}} () override
+\begin{DoxyCompactList}\small\item\em Resets the state of the movement provider.    \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_fastest_path_strategy}{Fastest\+Path\+Strategy}}}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_fastest_path_strategy_a159fe031db9884de98cb2a27943c8462}{set\+Maze\+Map}} (const std\+::map$<$ \mbox{\hyperlink{class_position}{Position}}, \mbox{\hyperlink{class_sensor_readings}{Sensor\+Readings}} $>$ \&map)
+\begin{DoxyCompactList}\small\item\em Sets the maze map. This method allows the strategy to use a predefined map of the maze for pathfinding. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_mouse_movement_provider}{Mouse\+Movement\+Provider}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Mouse\+Movement\+Provider} ()=default
+\begin{DoxyCompactList}\small\item\em Default destructor for \doxylink{class_mouse_movement_provider}{Mouse\+Movement\+Provider}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_mouse_movement_provider_a379dc121275a605a1f09ca9b277e4c03}{set\+Destination}} (const std\+::set$<$ \mbox{\hyperlink{class_position}{Position}} $>$ \&\+\_\+destination)
+\begin{DoxyCompactList}\small\item\em Sets the destination positions for the mouse. \end{DoxyCompactList}\item 
+std\+::set$<$ \mbox{\hyperlink{class_position}{Position}} $>$ \mbox{\hyperlink{class_mouse_movement_provider_a2c96f468dd39ca5b5860f17079f79294}{get\+Destination}} () const
+\begin{DoxyCompactList}\small\item\em Gets the destination positions for the mouse. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_fastest_path_strategy}{Fastest\+Path\+Strategy}}}
+\begin{DoxyCompactItemize}
+\item 
+std\+::map$<$ \mbox{\hyperlink{class_position}{Position}}, \mbox{\hyperlink{class_sensor_readings}{Sensor\+Readings}} $>$ {\bfseries maze\+Map}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_mouse_movement_provider}{Mouse\+Movement\+Provider}}}
+\begin{DoxyCompactItemize}
+\item 
+const int {\bfseries maze\+Width} = GLOBAL\+::\+MAZE\+::\+COLUMNS
+\item 
+const int {\bfseries maze\+Height} = GLOBAL\+::\+MAZE\+::\+ROWS
+\item 
+std\+::set$<$ \mbox{\hyperlink{class_position}{Position}} $>$ {\bfseries destination} = GLOBAL\+::\+CONSTANTS\+::\+GOAL\+\_\+\+POSITIONS
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Pathfinding strategy that uses BFS to find the fastest path to the destination. 
+
+This strategy maintains a known map of the maze and is used after exploration to reach destinations efficiently. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_b_f_s_fastest_path_strategy_ae0a32729fb6c851598a24f3897c36ac2}\index{BFSFastestPathStrategy@{BFSFastestPathStrategy}!decideMove@{decideMove}}
+\index{decideMove@{decideMove}!BFSFastestPathStrategy@{BFSFastestPathStrategy}}
+\doxysubsubsection{\texorpdfstring{decideMove()}{decideMove()}}
+{\footnotesize\ttfamily \label{class_b_f_s_fastest_path_strategy_ae0a32729fb6c851598a24f3897c36ac2} 
+Direction BFSFastest\+Path\+Strategy\+::decide\+Move (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_position}{Position}}}]{current\+Position}{, }\item[{\mbox{\hyperlink{class_sensor_readings}{Sensor\+Readings}}}]{readings}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Decides the next move based on the current position and sensor readings.    
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & The current position of the mouse. \\
+\hline
+{\em readings} & The sensor readings from the mouse. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The direction to move in.    
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_mouse_movement_provider_af4a52ff34b14daa5d1348a9c35cc05aa}{Mouse\+Movement\+Provider}}.
+
+\Hypertarget{class_b_f_s_fastest_path_strategy_ac68d11cdc92ae9d44ca9858dbce54232}\index{BFSFastestPathStrategy@{BFSFastestPathStrategy}!reset@{reset}}
+\index{reset@{reset}!BFSFastestPathStrategy@{BFSFastestPathStrategy}}
+\doxysubsubsection{\texorpdfstring{reset()}{reset()}}
+{\footnotesize\ttfamily \label{class_b_f_s_fastest_path_strategy_ac68d11cdc92ae9d44ca9858dbce54232} 
+void BFSFastest\+Path\+Strategy\+::reset (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Resets the state of the movement provider.    
+
+This function can be overridden by derived classes to implement specific reset logic.    
+
+Reimplemented from \mbox{\hyperlink{class_mouse_movement_provider_a20816bd7d69bb5663d0a503f882d5f2e}{Mouse\+Movement\+Provider}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/core/mouse/brain/strategy/fastest\+\_\+path/BFSFastest\+Path\+Strategy.\+h\item 
+src/core/mouse/brain/strategy/fastest\+\_\+path/BFSFastest\+Path\+Strategy.\+cpp\end{DoxyCompactItemize}

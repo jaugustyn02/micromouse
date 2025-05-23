@@ -1,0 +1,110 @@
+\doxysection{Flooding\+Exploration\+Strategy Class Reference}
+\hypertarget{class_flooding_exploration_strategy}{}\label{class_flooding_exploration_strategy}\index{FloodingExplorationStrategy@{FloodingExplorationStrategy}}
+
+
+\doxylink{class_maze}{Maze} exploration using a flooding/distance propagation algorithm.  
+
+
+
+
+{\ttfamily \#include $<$Flooding\+Exploration\+Strategy.\+h$>$}
+
+Inheritance diagram for Flooding\+Exploration\+Strategy\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_flooding_exploration_strategy}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_flooding_exploration_strategy_a516fa079590b9fbc1d2ce9ddb806987b}{Flooding\+Exploration\+Strategy}} ()
+\begin{DoxyCompactList}\small\item\em Constructor for \doxylink{class_flooding_exploration_strategy}{Flooding\+Exploration\+Strategy}. \end{DoxyCompactList}\item 
+Direction \mbox{\hyperlink{class_flooding_exploration_strategy_ad431c11375af3e9c365cd863b2389c22}{decide\+Move}} (\mbox{\hyperlink{class_position}{Position}} position, \mbox{\hyperlink{class_sensor_readings}{Sensor\+Readings}} readings) override
+\begin{DoxyCompactList}\small\item\em Decides the next move based on the current position and sensor readings.    \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_flooding_exploration_strategy_ae86c3d19b5ef0023f8ab304cd4d7e9bd}{reset}} () override
+\begin{DoxyCompactList}\small\item\em Resets the state of the movement provider.    \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_mouse_movement_provider}{Mouse\+Movement\+Provider}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Mouse\+Movement\+Provider} ()=default
+\begin{DoxyCompactList}\small\item\em Default destructor for \doxylink{class_mouse_movement_provider}{Mouse\+Movement\+Provider}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_mouse_movement_provider_a379dc121275a605a1f09ca9b277e4c03}{set\+Destination}} (const std\+::set$<$ \mbox{\hyperlink{class_position}{Position}} $>$ \&\+\_\+destination)
+\begin{DoxyCompactList}\small\item\em Sets the destination positions for the mouse. \end{DoxyCompactList}\item 
+std\+::set$<$ \mbox{\hyperlink{class_position}{Position}} $>$ \mbox{\hyperlink{class_mouse_movement_provider_a2c96f468dd39ca5b5860f17079f79294}{get\+Destination}} () const
+\begin{DoxyCompactList}\small\item\em Gets the destination positions for the mouse. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_mouse_movement_provider}{Mouse\+Movement\+Provider}}}
+\begin{DoxyCompactItemize}
+\item 
+const int {\bfseries maze\+Width} = GLOBAL\+::\+MAZE\+::\+COLUMNS
+\item 
+const int {\bfseries maze\+Height} = GLOBAL\+::\+MAZE\+::\+ROWS
+\item 
+std\+::set$<$ \mbox{\hyperlink{class_position}{Position}} $>$ {\bfseries destination} = GLOBAL\+::\+CONSTANTS\+::\+GOAL\+\_\+\+POSITIONS
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{class_maze}{Maze} exploration using a flooding/distance propagation algorithm. 
+
+Keeps track of sensor readings and distances from the current position to goal cells. Chooses the best move based on a dynamically updated distance map. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_flooding_exploration_strategy_a516fa079590b9fbc1d2ce9ddb806987b}\index{FloodingExplorationStrategy@{FloodingExplorationStrategy}!FloodingExplorationStrategy@{FloodingExplorationStrategy}}
+\index{FloodingExplorationStrategy@{FloodingExplorationStrategy}!FloodingExplorationStrategy@{FloodingExplorationStrategy}}
+\doxysubsubsection{\texorpdfstring{FloodingExplorationStrategy()}{FloodingExplorationStrategy()}}
+{\footnotesize\ttfamily \label{class_flooding_exploration_strategy_a516fa079590b9fbc1d2ce9ddb806987b} 
+Flooding\+Exploration\+Strategy\+::\+Flooding\+Exploration\+Strategy (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Constructor for \doxylink{class_flooding_exploration_strategy}{Flooding\+Exploration\+Strategy}. 
+
+Initializes the maze map and distance map. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_flooding_exploration_strategy_ad431c11375af3e9c365cd863b2389c22}\index{FloodingExplorationStrategy@{FloodingExplorationStrategy}!decideMove@{decideMove}}
+\index{decideMove@{decideMove}!FloodingExplorationStrategy@{FloodingExplorationStrategy}}
+\doxysubsubsection{\texorpdfstring{decideMove()}{decideMove()}}
+{\footnotesize\ttfamily \label{class_flooding_exploration_strategy_ad431c11375af3e9c365cd863b2389c22} 
+Direction Flooding\+Exploration\+Strategy\+::decide\+Move (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_position}{Position}}}]{position}{, }\item[{\mbox{\hyperlink{class_sensor_readings}{Sensor\+Readings}}}]{readings}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Decides the next move based on the current position and sensor readings.    
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & The current position of the mouse. \\
+\hline
+{\em readings} & The sensor readings from the mouse. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The direction to move in.    
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_mouse_movement_provider_af4a52ff34b14daa5d1348a9c35cc05aa}{Mouse\+Movement\+Provider}}.
+
+\Hypertarget{class_flooding_exploration_strategy_ae86c3d19b5ef0023f8ab304cd4d7e9bd}\index{FloodingExplorationStrategy@{FloodingExplorationStrategy}!reset@{reset}}
+\index{reset@{reset}!FloodingExplorationStrategy@{FloodingExplorationStrategy}}
+\doxysubsubsection{\texorpdfstring{reset()}{reset()}}
+{\footnotesize\ttfamily \label{class_flooding_exploration_strategy_ae86c3d19b5ef0023f8ab304cd4d7e9bd} 
+void Flooding\+Exploration\+Strategy\+::reset (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Resets the state of the movement provider.    
+
+This function can be overridden by derived classes to implement specific reset logic.    
+
+Reimplemented from \mbox{\hyperlink{class_mouse_movement_provider_a20816bd7d69bb5663d0a503f882d5f2e}{Mouse\+Movement\+Provider}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/core/mouse/brain/strategy/exploration/Flooding\+Exploration\+Strategy.\+h\item 
+src/core/mouse/brain/strategy/exploration/Flooding\+Exploration\+Strategy.\+cpp\end{DoxyCompactItemize}

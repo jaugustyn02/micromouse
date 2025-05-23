@@ -1,0 +1,22 @@
+\doxysection{Fastest\+Path\+Strategy.\+h}
+\hypertarget{_fastest_path_strategy_8h_source}{}\label{_fastest_path_strategy_8h_source}\index{include/core/mouse/brain/strategy/fastest\_path/FastestPathStrategy.h@{include/core/mouse/brain/strategy/fastest\_path/FastestPathStrategy.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ FASTESTPATHSTRATEGY\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ FASTESTPATHSTRATEGY\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}core/mouse/brain/strategy/MouseMovementProvider.h"{}}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_fastest_path_strategy}{FastestPathStrategy}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_mouse_movement_provider}{MouseMovementProvider}}\ \{}
+\DoxyCodeLine{00013\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00019\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_fastest_path_strategy_a159fe031db9884de98cb2a27943c8462}{setMazeMap}}(\textcolor{keyword}{const}\ std::map<Position,\ SensorReadings>\ \&map)\ \{}
+\DoxyCodeLine{00020\ \ \ \ \ mazeMap\ =\ map;}
+\DoxyCodeLine{00021\ \ \ \}}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00024\ \ \ std::map<Position,\ SensorReadings>\ mazeMap;}
+\DoxyCodeLine{00025\ \};}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//FASTESTPATHSTRATEGY\_H}}
+
+\end{DoxyCode}

@@ -1,0 +1,108 @@
+\doxysection{Mouse\+Movement\+Provider Class Reference}
+\hypertarget{class_mouse_movement_provider}{}\label{class_mouse_movement_provider}\index{MouseMovementProvider@{MouseMovementProvider}}
+Inheritance diagram for Mouse\+Movement\+Provider\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.346369cm]{class_mouse_movement_provider}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_mouse_movement_provider_ac2affe0c91a51696d7a488f74a855e59}\label{class_mouse_movement_provider_ac2affe0c91a51696d7a488f74a855e59} 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Mouse\+Movement\+Provider} ()=default
+\begin{DoxyCompactList}\small\item\em Default destructor for \doxylink{class_mouse_movement_provider}{Mouse\+Movement\+Provider}. \end{DoxyCompactList}\item 
+virtual Direction \mbox{\hyperlink{class_mouse_movement_provider_af4a52ff34b14daa5d1348a9c35cc05aa}{decide\+Move}} (\mbox{\hyperlink{class_position}{Position}} position, \mbox{\hyperlink{class_sensor_readings}{Sensor\+Readings}} readings)=0
+\begin{DoxyCompactList}\small\item\em Decides the next move based on the current position and sensor readings. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_mouse_movement_provider_a20816bd7d69bb5663d0a503f882d5f2e}{reset}} ()
+\begin{DoxyCompactList}\small\item\em Resets the state of the movement provider. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_mouse_movement_provider_a379dc121275a605a1f09ca9b277e4c03}{set\+Destination}} (const std\+::set$<$ \mbox{\hyperlink{class_position}{Position}} $>$ \&\+\_\+destination)
+\begin{DoxyCompactList}\small\item\em Sets the destination positions for the mouse. \end{DoxyCompactList}\item 
+std\+::set$<$ \mbox{\hyperlink{class_position}{Position}} $>$ \mbox{\hyperlink{class_mouse_movement_provider_a2c96f468dd39ca5b5860f17079f79294}{get\+Destination}} () const
+\begin{DoxyCompactList}\small\item\em Gets the destination positions for the mouse. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_mouse_movement_provider_a8e976b6eeeb4b076b7fcfaf2740c628f}\label{class_mouse_movement_provider_a8e976b6eeeb4b076b7fcfaf2740c628f} 
+const int {\bfseries maze\+Width} = GLOBAL\+::\+MAZE\+::\+COLUMNS
+\item 
+\Hypertarget{class_mouse_movement_provider_a57d96f353c01fb3be355dbdb0c11d63f}\label{class_mouse_movement_provider_a57d96f353c01fb3be355dbdb0c11d63f} 
+const int {\bfseries maze\+Height} = GLOBAL\+::\+MAZE\+::\+ROWS
+\item 
+\Hypertarget{class_mouse_movement_provider_ae44b5ff4a8e021adda73ab765876bcd4}\label{class_mouse_movement_provider_ae44b5ff4a8e021adda73ab765876bcd4} 
+std\+::set$<$ \mbox{\hyperlink{class_position}{Position}} $>$ {\bfseries destination} = GLOBAL\+::\+CONSTANTS\+::\+GOAL\+\_\+\+POSITIONS
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_mouse_movement_provider_af4a52ff34b14daa5d1348a9c35cc05aa}\index{MouseMovementProvider@{MouseMovementProvider}!decideMove@{decideMove}}
+\index{decideMove@{decideMove}!MouseMovementProvider@{MouseMovementProvider}}
+\doxysubsubsection{\texorpdfstring{decideMove()}{decideMove()}}
+{\footnotesize\ttfamily \label{class_mouse_movement_provider_af4a52ff34b14daa5d1348a9c35cc05aa} 
+virtual Direction Mouse\+Movement\+Provider\+::decide\+Move (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_position}{Position}}}]{position}{, }\item[{\mbox{\hyperlink{class_sensor_readings}{Sensor\+Readings}}}]{readings}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Decides the next move based on the current position and sensor readings. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & The current position of the mouse. \\
+\hline
+{\em readings} & The sensor readings from the mouse. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The direction to move in. 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{class_b_f_s_fastest_path_strategy_ae0a32729fb6c851598a24f3897c36ac2}{BFSFastest\+Path\+Strategy}}, \mbox{\hyperlink{class_flooding_exploration_strategy_ad431c11375af3e9c365cd863b2389c22}{Flooding\+Exploration\+Strategy}}, \mbox{\hyperlink{class_random_exploration_strategy_a7c2435cd4bbfd9fa159444088abb4eb1}{Random\+Exploration\+Strategy}}, and \mbox{\hyperlink{class_random_fastest_path_strategy_a8ad908afeda84e9ac25596ab82f1d9a3}{Random\+Fastest\+Path\+Strategy}}.
+
+\Hypertarget{class_mouse_movement_provider_a2c96f468dd39ca5b5860f17079f79294}\index{MouseMovementProvider@{MouseMovementProvider}!getDestination@{getDestination}}
+\index{getDestination@{getDestination}!MouseMovementProvider@{MouseMovementProvider}}
+\doxysubsubsection{\texorpdfstring{getDestination()}{getDestination()}}
+{\footnotesize\ttfamily \label{class_mouse_movement_provider_a2c96f468dd39ca5b5860f17079f79294} 
+std\+::set$<$ \mbox{\hyperlink{class_position}{Position}} $>$ Mouse\+Movement\+Provider\+::get\+Destination (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}}
+
+
+
+Gets the destination positions for the mouse. 
+
+\begin{DoxyReturn}{Returns}
+A set of positions representing the destination. 
+\end{DoxyReturn}
+\Hypertarget{class_mouse_movement_provider_a20816bd7d69bb5663d0a503f882d5f2e}\index{MouseMovementProvider@{MouseMovementProvider}!reset@{reset}}
+\index{reset@{reset}!MouseMovementProvider@{MouseMovementProvider}}
+\doxysubsubsection{\texorpdfstring{reset()}{reset()}}
+{\footnotesize\ttfamily \label{class_mouse_movement_provider_a20816bd7d69bb5663d0a503f882d5f2e} 
+virtual void Mouse\+Movement\+Provider\+::reset (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Resets the state of the movement provider. 
+
+This function can be overridden by derived classes to implement specific reset logic. 
+
+Reimplemented in \mbox{\hyperlink{class_b_f_s_fastest_path_strategy_ac68d11cdc92ae9d44ca9858dbce54232}{BFSFastest\+Path\+Strategy}}, \mbox{\hyperlink{class_flooding_exploration_strategy_ae86c3d19b5ef0023f8ab304cd4d7e9bd}{Flooding\+Exploration\+Strategy}}, \mbox{\hyperlink{class_random_exploration_strategy_ae3cab19a7a8380c001dc156e6fc6ad32}{Random\+Exploration\+Strategy}}, and \mbox{\hyperlink{class_random_fastest_path_strategy_aba3579d11faf8f33fef706efb3e7912d}{Random\+Fastest\+Path\+Strategy}}.
+
+\Hypertarget{class_mouse_movement_provider_a379dc121275a605a1f09ca9b277e4c03}\index{MouseMovementProvider@{MouseMovementProvider}!setDestination@{setDestination}}
+\index{setDestination@{setDestination}!MouseMovementProvider@{MouseMovementProvider}}
+\doxysubsubsection{\texorpdfstring{setDestination()}{setDestination()}}
+{\footnotesize\ttfamily \label{class_mouse_movement_provider_a379dc121275a605a1f09ca9b277e4c03} 
+void Mouse\+Movement\+Provider\+::set\+Destination (\begin{DoxyParamCaption}\item[{const std\+::set$<$ \mbox{\hyperlink{class_position}{Position}} $>$ \&}]{\+\_\+destination}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Sets the destination positions for the mouse. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+destination} & A set of positions representing the destination. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/core/mouse/brain/strategy/Mouse\+Movement\+Provider.\+h\end{DoxyCompactItemize}

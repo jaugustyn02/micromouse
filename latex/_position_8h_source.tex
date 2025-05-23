@@ -1,0 +1,64 @@
+\doxysection{Position.\+h}
+\hypertarget{_position_8h_source}{}\label{_position_8h_source}\index{include/model/Position.h@{include/model/Position.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ MICROMOUSE\_INCLUDE\_MODEL\_POSITION\_H\_}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ MICROMOUSE\_INCLUDE\_MODEL\_POSITION\_H\_}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}Direction.h"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_position_a8ec2fb21251eb9cd336530543ffd530f}{Position}}\ \{}
+\DoxyCodeLine{00013\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00019\ \ \ \mbox{\hyperlink{class_position_a8ec2fb21251eb9cd336530543ffd530f}{Position}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ x,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ y)\ :\ x(x),\ y(y)\ \{}
+\DoxyCodeLine{00020\ \ \ \}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00027\ \ \ \mbox{\hyperlink{class_position_a336a63085406011560b780f63d33270a}{Position}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_position_a8ec2fb21251eb9cd336530543ffd530f}{Position}}\ \&position)\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00034\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_position_a653186f7d590ae25fc11a72fb83fa6d9}{translate}}(Direction\ direction);}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00041\ \ \ [[nodiscard]]}
+\DoxyCodeLine{00042\ \ \ \mbox{\hyperlink{class_position_a8ec2fb21251eb9cd336530543ffd530f}{Position}}\ \mbox{\hyperlink{class_position_a2e1ed986d28836142967f2c4e6987d08}{translated}}(Direction\ direction)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00050\ \ \ [[nodiscard]]\ std::vector<Position>\ \mbox{\hyperlink{class_position_adca0fea54b10291dc70282933c799694}{getNeighborCellPositions}}(\textcolor{keywordtype}{int}\ gridWidth,\ \textcolor{keywordtype}{int}\ gridHeight)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00057\ \ \ [[nodiscard]]\ Direction\ \mbox{\hyperlink{class_position_a96785a77dd11a20377a92f4dc0990a94}{getDirectionToNeighbourPosition}}(\mbox{\hyperlink{class_position_a8ec2fb21251eb9cd336530543ffd530f}{Position}}\ destination)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00065\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_position_a9ec6b49c2f17c87eaf17c0b57e5bbb1a}{operator<}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_position_a8ec2fb21251eb9cd336530543ffd530f}{Position}}\ \&other)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keywordflow}{return}\ (x\ ==\ other.x)\ ?\ (y\ <\ other.y)\ :\ (x\ <\ other.x);}
+\DoxyCodeLine{00067\ \ \ \}}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00075\ \ \ [[nodiscard]]}
+\DoxyCodeLine{00076\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_position_acf13e7e45c7c07a67c2adf2f7e1dcc5f}{operator==}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_position_a8ec2fb21251eb9cd336530543ffd530f}{Position}}\ \&other)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keywordflow}{return}\ x\ ==\ other.x\ \&\&\ y\ ==\ other.y;}
+\DoxyCodeLine{00078\ \ \ \}}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00086\ \ \ [[nodiscard]]}
+\DoxyCodeLine{00087\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_position_aa752b83aecbec227a38754ca92a89809}{operator!=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_position_a8ec2fb21251eb9cd336530543ffd530f}{Position}}\ \&start)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00088\ \ \ \ \ \textcolor{keywordflow}{return}\ !(*\textcolor{keyword}{this}\ ==\ start);}
+\DoxyCodeLine{00089\ \ \ \}}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00095\ \ \ [[nodiscard]]}
+\DoxyCodeLine{00096\ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_position_aec07bdc14874f47cd1dc675d864f49a2}{getX}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ x;\ \}}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00102\ \ \ [[nodiscard]]}
+\DoxyCodeLine{00103\ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_position_aecedcf0af53e559ccde18432f20d1a37}{getY}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ y;\ \}}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00111\ \ \ [[nodiscard]]}
+\DoxyCodeLine{00112\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_position_ace21deb36d784ba31740c4bba0c18969}{isOutOfBounds}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ gridWidth,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ gridHeight)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00113\ \ \ \ \ \textcolor{keywordflow}{return}\ x\ <\ 0\ ||\ x\ >=\ gridWidth\ ||\ y\ <\ 0\ ||\ y\ >=\ gridHeight;}
+\DoxyCodeLine{00114\ \ \ \}}
+\DoxyCodeLine{00115\ }
+\DoxyCodeLine{00120\ \ \ [[nodiscard]]}
+\DoxyCodeLine{00121\ \ \ std::string\ \mbox{\hyperlink{class_position_a60b87a1543cf16ea87dfe7885e5dbdef}{toString}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00122\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}("{}}\ +\ std::to\_string(x)\ +\ \textcolor{stringliteral}{"{},\ "{}}\ +\ std::to\_string(y)\ +\ \textcolor{stringliteral}{"{})"{}};}
+\DoxyCodeLine{00123\ \ \ \}}
+\DoxyCodeLine{00124\ }
+\DoxyCodeLine{00125\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00126\ \ \ \textcolor{keywordtype}{int}\ x,\ y;}
+\DoxyCodeLine{00127\ \};}
+\DoxyCodeLine{00128\ }
+\DoxyCodeLine{00129\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ MICROMOUSE\_INCLUDE\_MODEL\_POSITION\_H\_}}
+
+\end{DoxyCode}

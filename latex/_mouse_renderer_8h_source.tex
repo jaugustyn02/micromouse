@@ -1,0 +1,27 @@
+\doxysection{Mouse\+Renderer.\+h}
+\hypertarget{_mouse_renderer_8h_source}{}\label{_mouse_renderer_8h_source}\index{include/gui/MouseRenderer.h@{include/gui/MouseRenderer.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ MICROMOUSE\_INCLUDE\_MODEL\_MOUSERENDERER\_H\_}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ MICROMOUSE\_INCLUDE\_MODEL\_MOUSERENDERER\_H\_}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}core/mouse/Micromouse.h"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}SFML/Graphics/RenderWindow.hpp"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}SFML/Graphics/CircleShape.hpp"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}Drawable.h"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}TGUI/Backend/SFML-\/Graphics.hpp"{}}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_mouse_renderer_a331921344edcfccf9ab57238656add1f}{MouseRenderer}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_drawable}{Drawable}}\ \{}
+\DoxyCodeLine{00015\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00020\ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{class_mouse_renderer_a331921344edcfccf9ab57238656add1f}{MouseRenderer}}(\mbox{\hyperlink{class_micromouse}{Micromouse}}\ \&mouse);}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00026\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_mouse_renderer_a968a5cb310a47107b05c7ecb7be03faf}{draw}}(sf::RenderWindow\ \&window)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00029\ \ \ \mbox{\hyperlink{class_micromouse}{Micromouse}}\ \&mouse;}
+\DoxyCodeLine{00030\ \ \ sf::CircleShape\ mouseShape;}
+\DoxyCodeLine{00031\ \};}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//MICROMOUSE\_INCLUDE\_MODEL\_MOUSERENDERER\_H\_}}
+
+\end{DoxyCode}

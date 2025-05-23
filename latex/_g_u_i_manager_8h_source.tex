@@ -1,0 +1,34 @@
+\doxysection{GUIManager.\+h}
+\hypertarget{_g_u_i_manager_8h_source}{}\label{_g_u_i_manager_8h_source}\index{include/gui/GUIManager.h@{include/gui/GUIManager.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ MICROMOUSE\_INCLUDE\_MODEL\_GUIMANAGER\_H\_}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ MICROMOUSE\_INCLUDE\_MODEL\_GUIMANAGER\_H\_}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <SFML/Graphics.hpp>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <TGUI/TGUI.hpp>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}TGUI/Backend/SFML-\/Graphics.hpp"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}MazeRenderer.h"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}MouseRenderer.h"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}core/SimulationController.h"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}control\_panel/ControlPanelRenderer.h"{}}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_g_u_i_manager_ae14fd4e15545d080e2dc64c6f5732f0b}{GUIManager}}\ \{}
+\DoxyCodeLine{00017\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00024\ \ \ \mbox{\hyperlink{class_g_u_i_manager_ae14fd4e15545d080e2dc64c6f5732f0b}{GUIManager}}(\mbox{\hyperlink{class_maze}{Maze}}\ \&maze,\ \mbox{\hyperlink{class_micromouse}{Micromouse}}\ \&mouse,\ \mbox{\hyperlink{class_simulation_controller}{SimulationController}}\ \&simulationController);}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00031\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_g_u_i_manager_a561fbc5949e64a863c23626457e9fdc7}{mainLoop}}();}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00034\ \ \ sf::RenderWindow\ window;}
+\DoxyCodeLine{00035\ \ \ tgui::Gui\ gui;}
+\DoxyCodeLine{00036\ \ \ std::vector<std::unique\_ptr<Drawable>>\ drawables;}
+\DoxyCodeLine{00037\ \ \ \mbox{\hyperlink{class_simulation_controller}{SimulationController}}\ \&simulationController;}
+\DoxyCodeLine{00038\ \ \ \mbox{\hyperlink{class_control_panel_renderer}{ControlPanelRenderer}}\ controlPanelRenderer;}
+\DoxyCodeLine{00039\ \ \ \textcolor{keywordtype}{void}\ handleEvents();}
+\DoxyCodeLine{00040\ \ \ \textcolor{keywordtype}{void}\ render();}
+\DoxyCodeLine{00041\ \};}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//MICROMOUSE\_INCLUDE\_MODEL\_GUIMANAGER\_H\_}}
+
+\end{DoxyCode}

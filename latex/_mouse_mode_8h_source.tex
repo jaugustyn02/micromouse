@@ -1,0 +1,27 @@
+\doxysection{Mouse\+Mode.\+h}
+\hypertarget{_mouse_mode_8h_source}{}\label{_mouse_mode_8h_source}\index{include/model/MouseMode.h@{include/model/MouseMode.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ MICROMOUSE\_INCLUDE\_MODEL\_MOUSEMODE\_H\_}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ MICROMOUSE\_INCLUDE\_MODEL\_MOUSEMODE\_H\_}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00008\ \textcolor{keyword}{enum}\ MouseMode\ \{}
+\DoxyCodeLine{00009\ \ \ EXPLORATION,}
+\DoxyCodeLine{00010\ \ \ EXPLORATION\_ON\_RETURN,}
+\DoxyCodeLine{00011\ \ \ FASTEST\_PATH,}
+\DoxyCodeLine{00012\ \ \ RETURN,}
+\DoxyCodeLine{00013\ \};}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{inline}\ std::string\ toString(\textcolor{keyword}{const}\ MouseMode\ mode)\ \{}
+\DoxyCodeLine{00021\ \ \ \textcolor{keywordflow}{switch}\ (mode)\ \{}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordflow}{case}\ EXPLORATION:\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Exploration"{}};}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordflow}{case}\ EXPLORATION\_ON\_RETURN:\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Exploration\ on\ return"{}};}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordflow}{case}\ FASTEST\_PATH:\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Fastest\ Path"{}};}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordflow}{case}\ RETURN:\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Return"{}};}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordflow}{default}:\ \textcolor{keywordflow}{return}\ std::to\_string(mode);}
+\DoxyCodeLine{00027\ \ \ \}}
+\DoxyCodeLine{00028\ \}}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//MICROMOUSE\_INCLUDE\_MODEL\_MOUSEMODE\_H\_}}
+
+\end{DoxyCode}

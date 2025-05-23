@@ -1,0 +1,78 @@
+\doxysection{Mouse\+Renderer Class Reference}
+\hypertarget{class_mouse_renderer}{}\label{class_mouse_renderer}\index{MouseRenderer@{MouseRenderer}}
+
+
+The \doxylink{class_mouse_renderer}{Mouse\+Renderer} class is responsible for rendering the micromouse on the screen. It uses SFML to draw the micromouse as a circle.  
+
+
+
+
+{\ttfamily \#include $<$Mouse\+Renderer.\+h$>$}
+
+Inheritance diagram for Mouse\+Renderer\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_mouse_renderer}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_mouse_renderer_a331921344edcfccf9ab57238656add1f}{Mouse\+Renderer}} (\mbox{\hyperlink{class_micromouse}{Micromouse}} \&mouse)
+\begin{DoxyCompactList}\small\item\em Constructor for the \doxylink{class_mouse_renderer}{Mouse\+Renderer} class. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_mouse_renderer_a968a5cb310a47107b05c7ecb7be03faf}{draw}} (sf\+::\+Render\+Window \&window) override
+\begin{DoxyCompactList}\small\item\em Draws the micromouse on the given window. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_drawable}{Drawable}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Drawable} ()=default
+\begin{DoxyCompactList}\small\item\em Destructor for the \doxylink{class_drawable}{Drawable} class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The \doxylink{class_mouse_renderer}{Mouse\+Renderer} class is responsible for rendering the micromouse on the screen. It uses SFML to draw the micromouse as a circle. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_mouse_renderer_a331921344edcfccf9ab57238656add1f}\index{MouseRenderer@{MouseRenderer}!MouseRenderer@{MouseRenderer}}
+\index{MouseRenderer@{MouseRenderer}!MouseRenderer@{MouseRenderer}}
+\doxysubsubsection{\texorpdfstring{MouseRenderer()}{MouseRenderer()}}
+{\footnotesize\ttfamily \label{class_mouse_renderer_a331921344edcfccf9ab57238656add1f} 
+Mouse\+Renderer\+::\+Mouse\+Renderer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_micromouse}{Micromouse}} \&}]{mouse}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Constructor for the \doxylink{class_mouse_renderer}{Mouse\+Renderer} class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mouse} & Reference to the \doxylink{class_micromouse}{Micromouse} object. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_mouse_renderer_a968a5cb310a47107b05c7ecb7be03faf}\index{MouseRenderer@{MouseRenderer}!draw@{draw}}
+\index{draw@{draw}!MouseRenderer@{MouseRenderer}}
+\doxysubsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily \label{class_mouse_renderer_a968a5cb310a47107b05c7ecb7be03faf} 
+void Mouse\+Renderer\+::draw (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Draws the micromouse on the given window. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em window} & The window to draw on. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_drawable_a9c19882c3b57a9ccb2b2f9eeefc32db9}{Drawable}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/gui/Mouse\+Renderer.\+h\item 
+src/gui/Mouse\+Renderer.\+cpp\end{DoxyCompactItemize}

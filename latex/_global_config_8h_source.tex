@@ -1,0 +1,145 @@
+\doxysection{Global\+Config.\+h}
+\hypertarget{_global_config_8h_source}{}\label{_global_config_8h_source}\index{include/core/GlobalConfig.h@{include/core/GlobalConfig.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ MICROMOUSE\_INCLUDE\_CORE\_GLOBALCONFIG\_H\_}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ MICROMOUSE\_INCLUDE\_CORE\_GLOBALCONFIG\_H\_}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <chrono>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <set>}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}TGUI/Color.hpp"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}model/Direction.h"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}model/Position.h"{}}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_g_l_o_b_a_l}{GLOBAL}}\ \{}
+\DoxyCodeLine{00019\ \textcolor{keyword}{namespace\ }SIMULATION\ \{}
+\DoxyCodeLine{00020\ \textcolor{keyword}{inline}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ DEFAULT\_SPEED\ =\ 8;}
+\DoxyCodeLine{00021\ \textcolor{keyword}{inline}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ MAX\_SPEED\ =\ 25;}
+\DoxyCodeLine{00022\ \textcolor{keyword}{inline}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ MAX\_STEP\_DURATION\_MS\ =\ 1000;}
+\DoxyCodeLine{00023\ \textcolor{keyword}{inline}\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ MAX\_STEP\_DURATION\ =\ std::chrono::microseconds(MAX\_STEP\_DURATION\_MS\ *\ 1000);}
+\DoxyCodeLine{00024\ \}}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \textcolor{keyword}{namespace\ }MAZE\ \{}
+\DoxyCodeLine{00027\ \textcolor{keyword}{inline}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ ROWS\ =\ 16;}
+\DoxyCodeLine{00028\ \textcolor{keyword}{inline}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ COLUMNS\ =\ 16;}
+\DoxyCodeLine{00029\ \textcolor{keyword}{inline}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ REMOVED\_WALLS\ =\ (COLUMNS\ *\ ROWS)\ /\ 16;}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_position}{Position}}\ START\_POSITION\{0,\ 0\};}
+\DoxyCodeLine{00032\ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_position}{Position}}\ NORTHWEST\_GOAL\ =\ \{COLUMNS\ /\ 2\ -\/\ 1,\ ROWS\ /\ 2\ -\/\ 1\};}
+\DoxyCodeLine{00033\ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_position}{Position}}\ SOUTHWEST\_GOAL\ =\ \{COLUMNS\ /\ 2\ -\/\ 1,\ ROWS\ /\ 2\};}
+\DoxyCodeLine{00034\ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_position}{Position}}\ NORTHEAST\_GOAL\ =\ \{COLUMNS\ /\ 2,\ ROWS\ /\ 2\ -\/\ 1\};}
+\DoxyCodeLine{00035\ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_position}{Position}}\ SOUTHEAST\_GOAL\ =\ \{COLUMNS\ /\ 2,\ ROWS\ /\ 2\};}
+\DoxyCodeLine{00036\ \}}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \textcolor{keyword}{namespace\ }COLORS\ \{}
+\DoxyCodeLine{00039\ \textcolor{keyword}{inline}\ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ BACKGROUND\ =\ sf::Color\{237,\ 232,\ 245\};}
+\DoxyCodeLine{00040\ \textcolor{keyword}{inline}\ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ SECONDARY\ =\ sf::Color\{173,\ 187,\ 218\};}
+\DoxyCodeLine{00041\ \textcolor{keyword}{inline}\ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ SECONDARY\_DARK\ =\ sf::Color\{134,\ 151,\ 196\};}
+\DoxyCodeLine{00042\ \textcolor{keyword}{inline}\ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ PRIMARY\ =\ sf::Color\{112,\ 145,\ 230\};}
+\DoxyCodeLine{00043\ \textcolor{keyword}{inline}\ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ PRIMARY\_DARK\ =\ sf::Color\{61,\ 82,\ 160\};}
+\DoxyCodeLine{00044\ \textcolor{keyword}{inline}\ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ DARK\ =\ sf::Color\{24,\ 30,\ 41\};}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \textcolor{keyword}{inline}\ \textcolor{keyword}{const}\ sf::Color\ MOUSE\_COLOR\ =\ PRIMARY\_DARK;}
+\DoxyCodeLine{00047\ \textcolor{keyword}{inline}\ \textcolor{keyword}{const}\ sf::Color\ WALL\_COLOR\ =\ DARK;}
+\DoxyCodeLine{00048\ \textcolor{keyword}{inline}\ \textcolor{keyword}{const}\ sf::Color\ GOAL\_COLOR\ =\ PRIMARY;}
+\DoxyCodeLine{00049\ \textcolor{keyword}{inline}\ \textcolor{keyword}{const}\ sf::Color\ START\_COLOR\ =\ BACKGROUND;}
+\DoxyCodeLine{00050\ \textcolor{keyword}{inline}\ \textcolor{keyword}{const}\ sf::Color\ BACKGROUND\_COLOR\ =\ BACKGROUND;}
+\DoxyCodeLine{00051\ \}}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \textcolor{keyword}{namespace\ }TEXT\ \{}
+\DoxyCodeLine{00054\ \textcolor{keyword}{inline}\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ TITLE\ =\ \textcolor{stringliteral}{"{}Micromouse\ Simulator"{}};}
+\DoxyCodeLine{00055\ \textcolor{keyword}{inline}\ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ START\_BUTTON\ =\ \textcolor{stringliteral}{"{}Start"{}};}
+\DoxyCodeLine{00056\ \textcolor{keyword}{inline}\ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ STOP\_BUTTON\ =\ \textcolor{stringliteral}{"{}Stop"{}};}
+\DoxyCodeLine{00057\ \textcolor{keyword}{inline}\ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ RESET\_BUTTON\ =\ \textcolor{stringliteral}{"{}Reset"{}};}
+\DoxyCodeLine{00058\ \textcolor{keyword}{inline}\ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ GENERATE\_MAZE\_BUTTON\ =\ \textcolor{stringliteral}{"{}Generate"{}};}
+\DoxyCodeLine{00059\ \textcolor{keyword}{inline}\ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ SIMULATION\_SECTION\ =\ \textcolor{stringliteral}{"{}Simulation"{}};}
+\DoxyCodeLine{00060\ \textcolor{keyword}{inline}\ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ SIMULATION\_SPEED\_SECTION\ =\ \textcolor{stringliteral}{"{}Simulation\ Speed"{}};}
+\DoxyCodeLine{00061\ \textcolor{keyword}{inline}\ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ MAZE\_SECTION\ =\ \textcolor{stringliteral}{"{}Maze"{}};}
+\DoxyCodeLine{00062\ \textcolor{keyword}{inline}\ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ ALGORITHM\_SECTION\ =\ \textcolor{stringliteral}{"{}Algorithm"{}};}
+\DoxyCodeLine{00063\ \textcolor{keyword}{inline}\ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ TARGET\_SECTION\ =\ \textcolor{stringliteral}{"{}Target"{}};}
+\DoxyCodeLine{00064\ \textcolor{keyword}{inline}\ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ MODE\_SECTION\ =\ \textcolor{stringliteral}{"{}Mouse\ Mode"{}};}
+\DoxyCodeLine{00065\ \textcolor{keyword}{inline}\ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ ADVANCED\_BRAIN\ =\ \textcolor{stringliteral}{"{}Flooding\ +\ BFS"{}};}
+\DoxyCodeLine{00066\ \textcolor{keyword}{inline}\ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ RANDOM\_BRAIN\ =\ \textcolor{stringliteral}{"{}Random"{}};}
+\DoxyCodeLine{00067\ \textcolor{keyword}{inline}\ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ EXPLORATION\_MODE\ =\ \textcolor{stringliteral}{"{}Exploration"{}};}
+\DoxyCodeLine{00068\ \textcolor{keyword}{inline}\ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ FASTEST\_PATH\_MODE\ =\ \textcolor{stringliteral}{"{}Fastest\ Path"{}};}
+\DoxyCodeLine{00069\ \textcolor{keyword}{inline}\ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ START\_TARGET\ =\ \textcolor{stringliteral}{"{}Start"{}};}
+\DoxyCodeLine{00070\ \textcolor{keyword}{inline}\ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ GOAL\_TARGET\ =\ \textcolor{stringliteral}{"{}Goal"{}};}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00072\ \textcolor{keyword}{inline}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ SECTION\_TEXT\_SIZE\ =\ 18;}
+\DoxyCodeLine{00073\ \textcolor{keyword}{inline}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ BUTTON\_TEXT\_SIZE\ =\ 12;}
+\DoxyCodeLine{00074\ \textcolor{keyword}{inline}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ DISPLAY\_TEXT\_SIZE\ =\ 12;}
+\DoxyCodeLine{00075\ \textcolor{keyword}{inline}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ SLIDER\_VALUE\_TEXT\_SIZE\ =\ 16;}
+\DoxyCodeLine{00076\ \}}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ \textcolor{keyword}{namespace\ }RENDER\ \{}
+\DoxyCodeLine{00079\ \textcolor{keyword}{namespace\ }MOUSE\ \{}
+\DoxyCodeLine{00080\ \textcolor{keyword}{inline}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{float}\ MOUSE\_SIZE\ =\ 16.0f;}
+\DoxyCodeLine{00081\ \}}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00083\ \textcolor{keyword}{namespace\ }MAZE\ \{}
+\DoxyCodeLine{00084\ \textcolor{keyword}{inline}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{float}\ CELL\_SIZE\ =\ 40.0f;}
+\DoxyCodeLine{00085\ \textcolor{keyword}{inline}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{float}\ WALL\_THICKNESS\ =\ 8.0f;}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00087\ \textcolor{keyword}{inline}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{float}\ MARGIN\_LEFT\ =\ 20.0f;}
+\DoxyCodeLine{00088\ \textcolor{keyword}{inline}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{float}\ MARGIN\_RIGHT\ =\ 0.0f;}
+\DoxyCodeLine{00089\ \textcolor{keyword}{inline}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{float}\ MARGIN\_TOP\ =\ 0.0f;}
+\DoxyCodeLine{00090\ \textcolor{keyword}{inline}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{float}\ MARGIN\_BOTTOM\ =\ 20.0f;}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00092\ \textcolor{keyword}{inline}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{float}\ WIDTH\ =\ GLOBAL::MAZE::COLUMNS\ *\ (CELL\_SIZE\ -\/\ WALL\_THICKNESS)\ +\ WALL\_THICKNESS;}
+\DoxyCodeLine{00093\ \textcolor{keyword}{inline}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{float}\ HEIGHT\ =\ GLOBAL::MAZE::ROWS\ *\ (CELL\_SIZE\ -\/\ WALL\_THICKNESS)\ +\ WALL\_THICKNESS;}
+\DoxyCodeLine{00094\ \textcolor{keyword}{inline}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{float}\ END\_X\ =\ MARGIN\_LEFT\ +\ WIDTH\ +\ MARGIN\_RIGHT;}
+\DoxyCodeLine{00095\ \textcolor{keyword}{inline}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{float}\ END\_Y\ =\ MARGIN\_TOP\ +\ HEIGHT\ +\ MARGIN\_BOTTOM;}
+\DoxyCodeLine{00096\ \}}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00098\ \textcolor{keyword}{namespace\ }CONTROL\_PANEL\ \{}
+\DoxyCodeLine{00099\ \textcolor{keyword}{inline}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{float}\ BUTTON\_WIDTH\ =\ 140.0f;}
+\DoxyCodeLine{00100\ \textcolor{keyword}{inline}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{float}\ BUTTON\_HEIGHT\ =\ 40.0f;}
+\DoxyCodeLine{00101\ \textcolor{keyword}{inline}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{float}\ SPACE\_BETWEEN\_SECTIONS\ =\ 15.0f;}
+\DoxyCodeLine{00102\ \textcolor{keyword}{inline}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{float}\ SPACE\_AFTER\_SECTION\_NAME\ =\ 5.0f;}
+\DoxyCodeLine{00103\ \textcolor{keyword}{inline}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{float}\ SPACE\_BETWEEN\_BUTTONS\ =\ 10.0f;}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00105\ \textcolor{keyword}{inline}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{float}\ MARGIN\_LEFT\ =\ 20.0f;}
+\DoxyCodeLine{00106\ \textcolor{keyword}{inline}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{float}\ MARGIN\_RIGHT\ =\ 20.0f;}
+\DoxyCodeLine{00107\ \textcolor{keyword}{inline}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{float}\ MARGIN\_TOP\ =\ 5.0f;}
+\DoxyCodeLine{00108\ \textcolor{keyword}{inline}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{float}\ MARGIN\_BOTTOM\ =\ 20.0f;}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00110\ \textcolor{keyword}{inline}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{float}\ START\_X\ =\ MAZE::END\_X\ +\ MARGIN\_LEFT;}
+\DoxyCodeLine{00111\ \textcolor{keyword}{inline}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{float}\ START\_Y\ =\ MARGIN\_TOP;}
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00113\ \textcolor{keyword}{inline}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{float}\ WIDTH\ =\ 2\ *\ BUTTON\_WIDTH\ +\ SPACE\_BETWEEN\_BUTTONS;}
+\DoxyCodeLine{00114\ \textcolor{keyword}{inline}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{float}\ SECTION\_HEIGHT\ =}
+\DoxyCodeLine{00115\ \ \ \ \ BUTTON\_HEIGHT\ +\ SPACE\_BETWEEN\_BUTTONS\ +\ SPACE\_BETWEEN\_SECTIONS\ +\ TEXT::SECTION\_TEXT\_SIZE\ +\ 3;}
+\DoxyCodeLine{00116\ \textcolor{keyword}{inline}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{float}\ HEIGHT\ =\ 6\ *\ SECTION\_HEIGHT\ +\ 10;}
+\DoxyCodeLine{00117\ \textcolor{keyword}{inline}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{float}\ END\_X\ =\ START\_X\ +\ WIDTH\ +\ MARGIN\_RIGHT;}
+\DoxyCodeLine{00118\ \textcolor{keyword}{inline}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{float}\ END\_Y\ =\ START\_Y\ +\ HEIGHT\ +\ MARGIN\_BOTTOM;}
+\DoxyCodeLine{00119\ \}}
+\DoxyCodeLine{00120\ \}}
+\DoxyCodeLine{00121\ }
+\DoxyCodeLine{00122\ \textcolor{keyword}{namespace\ }SCREEN\ \{}
+\DoxyCodeLine{00123\ \textcolor{keyword}{inline}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ WIDTH\ =\ RENDER::CONTROL\_PANEL::END\_X;}
+\DoxyCodeLine{00124\ \textcolor{keyword}{inline}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ HEIGHT\ =\ std::max(RENDER::MAZE::END\_Y,\ RENDER::CONTROL\_PANEL::END\_Y);}
+\DoxyCodeLine{00125\ }
+\DoxyCodeLine{00126\ \textcolor{keyword}{inline}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ FPS\ =\ 60;}
+\DoxyCodeLine{00127\ \textcolor{keyword}{inline}\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{auto}\ FRAME\_DURATION\ =\ std::chrono::microseconds(1000000\ /\ FPS);}
+\DoxyCodeLine{00128\ \}}
+\DoxyCodeLine{00129\ }
+\DoxyCodeLine{00130\ \textcolor{keyword}{namespace\ }RANDOM\ \{}
+\DoxyCodeLine{00131\ \textcolor{keyword}{inline}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{bool}\ USE\_RANDOM\_SEED\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00132\ \textcolor{keyword}{inline}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{long}\ \textcolor{keywordtype}{long}\ SEED\ =\ 0;}
+\DoxyCodeLine{00133\ \}}
+\DoxyCodeLine{00134\ }
+\DoxyCodeLine{00135\ \textcolor{keyword}{namespace\ }CONSTANTS\ \{}
+\DoxyCodeLine{00136\ \textcolor{keyword}{constexpr}\ std::array<Direction,\ 4>\ DIRECTIONS\ =\ \{NORTH,\ EAST,\ SOUTH,\ WEST\};}
+\DoxyCodeLine{00137\ \textcolor{keyword}{const}\ std::set\ GOAL\_POSITIONS\ =\ \{}
+\DoxyCodeLine{00138\ \ \ \ \ MAZE::NORTHWEST\_GOAL,}
+\DoxyCodeLine{00139\ \ \ \ \ MAZE::SOUTHWEST\_GOAL,}
+\DoxyCodeLine{00140\ \ \ \ \ MAZE::NORTHEAST\_GOAL,}
+\DoxyCodeLine{00141\ \ \ \ \ MAZE::SOUTHEAST\_GOAL}
+\DoxyCodeLine{00142\ \};}
+\DoxyCodeLine{00143\ \}}
+\DoxyCodeLine{00144\ \}}
+\DoxyCodeLine{00145\ }
+\DoxyCodeLine{00146\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//MICROMOUSE\_INCLUDE\_CORE\_GLOBALCONFIG\_H\_}}
+
+\end{DoxyCode}

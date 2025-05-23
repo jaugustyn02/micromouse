@@ -1,0 +1,54 @@
+\doxysection{Mouse\+Sensor Class Reference}
+\hypertarget{class_mouse_sensor}{}\label{class_mouse_sensor}\index{MouseSensor@{MouseSensor}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_mouse_sensor_a5d5f51a27d112994b2113a3d8fd707a6}{Mouse\+Sensor}} (\mbox{\hyperlink{class_maze_reader}{Maze\+Reader}} \&maze\+Reader)
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{class_mouse_sensor}{Mouse\+Sensor} instance with the specified maze reader. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_sensor_readings}{Sensor\+Readings}} \mbox{\hyperlink{class_mouse_sensor_aac04ac9f8e0d9afc0e3e6197b9bedd5b}{get\+Sensor\+Readings}} (const \mbox{\hyperlink{class_position}{Position}} \&position) const
+\begin{DoxyCompactList}\small\item\em Retrieves the sensor readings for the specified position. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_mouse_sensor_a5d5f51a27d112994b2113a3d8fd707a6}\index{MouseSensor@{MouseSensor}!MouseSensor@{MouseSensor}}
+\index{MouseSensor@{MouseSensor}!MouseSensor@{MouseSensor}}
+\doxysubsubsection{\texorpdfstring{MouseSensor()}{MouseSensor()}}
+{\footnotesize\ttfamily \label{class_mouse_sensor_a5d5f51a27d112994b2113a3d8fd707a6} 
+Mouse\+Sensor\+::\+Mouse\+Sensor (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_maze_reader}{Maze\+Reader}} \&}]{maze\+Reader}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructs a \doxylink{class_mouse_sensor}{Mouse\+Sensor} instance with the specified maze reader. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em maze\+Reader} & The \doxylink{class_maze_reader}{Maze\+Reader} used to access the maze data. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_mouse_sensor_aac04ac9f8e0d9afc0e3e6197b9bedd5b}\index{MouseSensor@{MouseSensor}!getSensorReadings@{getSensorReadings}}
+\index{getSensorReadings@{getSensorReadings}!MouseSensor@{MouseSensor}}
+\doxysubsubsection{\texorpdfstring{getSensorReadings()}{getSensorReadings()}}
+{\footnotesize\ttfamily \label{class_mouse_sensor_aac04ac9f8e0d9afc0e3e6197b9bedd5b} 
+\mbox{\hyperlink{class_sensor_readings}{Sensor\+Readings}} Mouse\+Sensor\+::get\+Sensor\+Readings (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_position}{Position}} \&}]{position}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}}
+
+
+
+Retrieves the sensor readings for the specified position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & The position of the \doxylink{class_micromouse}{Micromouse} in the maze. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The sensor readings for the specified position. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/core/mouse/Mouse\+Sensor.\+h\item 
+src/core/mouse/Mouse\+Sensor.\+cpp\end{DoxyCompactItemize}

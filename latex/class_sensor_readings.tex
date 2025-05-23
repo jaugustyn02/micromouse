@@ -1,0 +1,103 @@
+\doxysection{Sensor\+Readings Class Reference}
+\hypertarget{class_sensor_readings}{}\label{class_sensor_readings}\index{SensorReadings@{SensorReadings}}
+
+
+The \doxylink{class_sensor_readings}{Sensor\+Readings} class represents the sensor readings of the micromouse. It is used to store the information about walls and cell types in the maze.  
+
+
+
+
+{\ttfamily \#include $<$Sensor\+Readings.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_sensor_readings_af80fc32a12d9183ac07d57d3bd708fd9}{Sensor\+Readings}} (Cell\+Type cell\+Type)
+\begin{DoxyCompactList}\small\item\em Constructor for the \doxylink{class_sensor_readings}{Sensor\+Readings} class. \end{DoxyCompactList}\item 
+\Hypertarget{class_sensor_readings_aef7b37058ae6d738250c253309031878}\label{class_sensor_readings_aef7b37058ae6d738250c253309031878} 
+{\bfseries Sensor\+Readings} ()=default
+\begin{DoxyCompactList}\small\item\em Default constructor for the \doxylink{class_sensor_readings}{Sensor\+Readings} class. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_sensor_readings_acac2a0a5a7d1e0a019a476b7bc952077}{set\+Wall}} (Direction direction, bool \mbox{\hyperlink{class_sensor_readings_a0164edc8339169e06ace12ccf4a7daec}{is\+Wall}})
+\begin{DoxyCompactList}\small\item\em Sets the wall status in the specified direction. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_sensor_readings_a0164edc8339169e06ace12ccf4a7daec}{is\+Wall}} (Direction direction) const
+\begin{DoxyCompactList}\small\item\em Checks if there is a wall in the specified direction. \end{DoxyCompactList}\item 
+Cell\+Type \mbox{\hyperlink{class_sensor_readings_afd44b755b7f2a59e99d754f6dee01bec}{get\+Cell\+Type}} () const
+\begin{DoxyCompactList}\small\item\em Gets the cell type. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The \doxylink{class_sensor_readings}{Sensor\+Readings} class represents the sensor readings of the micromouse. It is used to store the information about walls and cell types in the maze. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_sensor_readings_af80fc32a12d9183ac07d57d3bd708fd9}\index{SensorReadings@{SensorReadings}!SensorReadings@{SensorReadings}}
+\index{SensorReadings@{SensorReadings}!SensorReadings@{SensorReadings}}
+\doxysubsubsection{\texorpdfstring{SensorReadings()}{SensorReadings()}}
+{\footnotesize\ttfamily \label{class_sensor_readings_af80fc32a12d9183ac07d57d3bd708fd9} 
+Sensor\+Readings\+::\+Sensor\+Readings (\begin{DoxyParamCaption}\item[{Cell\+Type}]{cell\+Type}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+
+
+Constructor for the \doxylink{class_sensor_readings}{Sensor\+Readings} class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cell\+Type} & The type of the cell (e.\+g., empty, wall, etc.). \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_sensor_readings_afd44b755b7f2a59e99d754f6dee01bec}\index{SensorReadings@{SensorReadings}!getCellType@{getCellType}}
+\index{getCellType@{getCellType}!SensorReadings@{SensorReadings}}
+\doxysubsubsection{\texorpdfstring{getCellType()}{getCellType()}}
+{\footnotesize\ttfamily \label{class_sensor_readings_afd44b755b7f2a59e99d754f6dee01bec} 
+Cell\+Type Sensor\+Readings\+::get\+Cell\+Type (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Gets the cell type. 
+
+\begin{DoxyReturn}{Returns}
+The type of the cell. 
+\end{DoxyReturn}
+\Hypertarget{class_sensor_readings_a0164edc8339169e06ace12ccf4a7daec}\index{SensorReadings@{SensorReadings}!isWall@{isWall}}
+\index{isWall@{isWall}!SensorReadings@{SensorReadings}}
+\doxysubsubsection{\texorpdfstring{isWall()}{isWall()}}
+{\footnotesize\ttfamily \label{class_sensor_readings_a0164edc8339169e06ace12ccf4a7daec} 
+bool Sensor\+Readings\+::is\+Wall (\begin{DoxyParamCaption}\item[{Direction}]{direction}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}}
+
+
+
+Checks if there is a wall in the specified direction. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em direction} & The direction to check for a wall. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if there is a wall, false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{class_sensor_readings_acac2a0a5a7d1e0a019a476b7bc952077}\index{SensorReadings@{SensorReadings}!setWall@{setWall}}
+\index{setWall@{setWall}!SensorReadings@{SensorReadings}}
+\doxysubsubsection{\texorpdfstring{setWall()}{setWall()}}
+{\footnotesize\ttfamily \label{class_sensor_readings_acac2a0a5a7d1e0a019a476b7bc952077} 
+void Sensor\+Readings\+::set\+Wall (\begin{DoxyParamCaption}\item[{Direction}]{direction}{, }\item[{bool}]{is\+Wall}{}\end{DoxyParamCaption})}
+
+
+
+Sets the wall status in the specified direction. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em direction} & The direction to set the wall status. \\
+\hline
+{\em is\+Wall} & True if there is a wall, false otherwise. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/model/Sensor\+Readings.\+h\item 
+src/model/Sensor\+Readings.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,43 @@
+\doxysection{BFSFastest\+Path\+Strategy.\+h}
+\hypertarget{_b_f_s_fastest_path_strategy_8h_source}{}\label{_b_f_s_fastest_path_strategy_8h_source}\index{include/core/mouse/brain/strategy/fastest\_path/BFSFastestPathStrategy.h@{include/core/mouse/brain/strategy/fastest\_path/BFSFastestPathStrategy.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ MICROMOUSE\_DFS\_FASTEST\_PATH\_STRATEGY\_H\_}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ MICROMOUSE\_DFS\_FASTEST\_PATH\_STRATEGY\_H\_}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <optional>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <deque>}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}FastestPathStrategy.h"{}}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_b_f_s_fastest_path_strategy}{BFSFastestPathStrategy}}\ final\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_fastest_path_strategy}{FastestPathStrategy}}\ \{}
+\DoxyCodeLine{00017\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00019\ \ \ Direction\ \mbox{\hyperlink{class_b_f_s_fastest_path_strategy_ae0a32729fb6c851598a24f3897c36ac2}{decideMove}}(\mbox{\hyperlink{class_position}{Position}}\ currentPosition,\ \mbox{\hyperlink{class_sensor_readings}{SensorReadings}}\ readings)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00022\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_b_f_s_fastest_path_strategy_ac68d11cdc92ae9d44ca9858dbce54232}{reset}}()\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00023\ \ \ \ \ path.reset();}
+\DoxyCodeLine{00024\ \ \ \};}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00027\ \ \ std::optional<std::deque<Direction>>\ path;}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \textcolor{keywordtype}{void}\ findFastestPath(\mbox{\hyperlink{class_position}{Position}}\ start);}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ [[nodiscard]]}
+\DoxyCodeLine{00032\ \ \ \mbox{\hyperlink{class_position}{Position}}\ getReachedDestination(\textcolor{keyword}{const}\ std::map<Position,\ int>\ \&distance)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ Direction\ getBestMove(std::map<Position,\ int>\ \&distance,\ \mbox{\hyperlink{class_position}{Position}}\ position)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ [[nodiscard]]}
+\DoxyCodeLine{00037\ \ \ std::map<Position,\ int>\ getDistanceMap(\mbox{\hyperlink{class_position}{Position}}\ start)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ isVisited(std::map<Position,\ int>\ distance,\ \mbox{\hyperlink{class_position}{Position}}\ position);}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \ \ [[nodiscard]]}
+\DoxyCodeLine{00042\ \ \ \textcolor{keywordtype}{bool}\ isWallBetween(\mbox{\hyperlink{class_position}{Position}}\ source,\ \mbox{\hyperlink{class_position}{Position}}\ destination)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00043\ \};}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//MICROMOUSE\_DFS\_FASTEST\_PATH\_STRATEGY\_H\_}}
+
+\end{DoxyCode}

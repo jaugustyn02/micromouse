@@ -1,0 +1,49 @@
+\doxysection{Flooding\+Exploration\+Strategy.\+h}
+\hypertarget{_flooding_exploration_strategy_8h_source}{}\label{_flooding_exploration_strategy_8h_source}\index{include/core/mouse/brain/strategy/exploration/FloodingExplorationStrategy.h@{include/core/mouse/brain/strategy/exploration/FloodingExplorationStrategy.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ MICROMOUSE\_FLOODINGEXPLORATIONSTRATEGY\_H\_}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ MICROMOUSE\_FLOODINGEXPLORATIONSTRATEGY\_H\_}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}model/Position.h"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}model/Direction.h"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}ExplorationStrategy.h"{}}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_flooding_exploration_strategy_a516fa079590b9fbc1d2ce9ddb806987b}{FloodingExplorationStrategy}}\ final\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_exploration_strategy}{ExplorationStrategy}}\ \{}
+\DoxyCodeLine{00016\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00022\ \ \ \mbox{\hyperlink{class_flooding_exploration_strategy_a516fa079590b9fbc1d2ce9ddb806987b}{FloodingExplorationStrategy}}();}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00025\ \ \ Direction\ \mbox{\hyperlink{class_flooding_exploration_strategy_ad431c11375af3e9c365cd863b2389c22}{decideMove}}(\mbox{\hyperlink{class_position}{Position}}\ position,\ \mbox{\hyperlink{class_sensor_readings}{SensorReadings}}\ readings)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00028\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_flooding_exploration_strategy_ae86c3d19b5ef0023f8ab304cd4d7e9bd}{reset}}()\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00029\ \ \ \ \ mazeMap.clear();}
+\DoxyCodeLine{00030\ \ \ \ \ clearDistance();}
+\DoxyCodeLine{00031\ \ \ \}}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00034\ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ empty\ =\ -\/1;}
+\DoxyCodeLine{00035\ \ \ std::map<Position,\ SensorReadings>\ mazeMap;}
+\DoxyCodeLine{00036\ \ \ std::vector<std::vector<int>\ >\ cellDistance\ =\ std::vector(mazeHeight,\ std::vector(mazeWidth,\ empty));}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \textcolor{keywordtype}{void}\ updateMazeMap(\mbox{\hyperlink{class_position}{Position}}\ position,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{class_sensor_readings}{SensorReadings}}\ \&readings);}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \textcolor{keywordtype}{void}\ calculateDistances();}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ Direction\ getBestMove(\mbox{\hyperlink{class_position}{Position}}\ position)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \textcolor{keywordtype}{bool}\ isBestMoveLegal(\mbox{\hyperlink{class_position}{Position}}\ position)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \textcolor{keywordtype}{bool}\ isVisited(\mbox{\hyperlink{class_position}{Position}}\ position)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \ \ \textcolor{keywordtype}{bool}\ isWallBetween(\mbox{\hyperlink{class_position}{Position}}\ source,\ \mbox{\hyperlink{class_position}{Position}}\ destination)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \ \ \textcolor{keywordtype}{int}\ getDistance(\mbox{\hyperlink{class_position}{Position}}\ position)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \textcolor{keywordtype}{void}\ setDistance(\mbox{\hyperlink{class_position}{Position}}\ position,\ \textcolor{keywordtype}{int}\ distance);}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \ \ \textcolor{keywordtype}{void}\ clearDistance();}
+\DoxyCodeLine{00055\ \};}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//MICROMOUSE\_FLOODINGEXPLORATIONSTRATEGY\_H\_}}
+
+\end{DoxyCode}

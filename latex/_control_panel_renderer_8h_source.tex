@@ -1,0 +1,70 @@
+\doxysection{Control\+Panel\+Renderer.\+h}
+\hypertarget{_control_panel_renderer_8h_source}{}\label{_control_panel_renderer_8h_source}\index{include/gui/control\_panel/ControlPanelRenderer.h@{include/gui/control\_panel/ControlPanelRenderer.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ MICROMOUSE\_INCLUDE\_GUI\_CONTROLPANELRENDERER\_H\_}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ MICROMOUSE\_INCLUDE\_GUI\_CONTROLPANELRENDERER\_H\_}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}UIControlsManager.h"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}core/SimulationController.h"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}TGUI/Backend/SFML-\/Graphics.hpp"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}TGUI/Widgets/Slider.hpp"{}}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_control_panel_renderer_a0b7a1a963b69f3b60952ac21b7d173f2}{ControlPanelRenderer}}\ \{}
+\DoxyCodeLine{00013\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00019\ \ \ \mbox{\hyperlink{class_control_panel_renderer_a0b7a1a963b69f3b60952ac21b7d173f2}{ControlPanelRenderer}}(\mbox{\hyperlink{class_simulation_controller}{SimulationController}}\ \&simulationController,\ tgui::Gui\ \&gui);}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00024\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_control_panel_renderer_adb83a075abcc099d0e950be9c4a59af8}{draw}}();}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00029\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_control_panel_renderer_af0ac1494f44bf709f75130dd31df65b0}{update}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00032\ \ \ \mbox{\hyperlink{class_position}{Position}}\ drawPosition\ =\ \mbox{\hyperlink{class_position}{Position}}(GLOBAL::RENDER::CONTROL\_PANEL::START\_X,\ GLOBAL::RENDER::CONTROL\_PANEL::START\_Y);}
+\DoxyCodeLine{00033\ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ buttonSpacing\ =\ GLOBAL::RENDER::CONTROL\_PANEL::SPACE\_BETWEEN\_BUTTONS;}
+\DoxyCodeLine{00034\ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ sectionSpacing\ =\ GLOBAL::RENDER::CONTROL\_PANEL::SPACE\_BETWEEN\_SECTIONS;}
+\DoxyCodeLine{00035\ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ spaceAfterSectionName\ =\ GLOBAL::RENDER::CONTROL\_PANEL::SPACE\_AFTER\_SECTION\_NAME;}
+\DoxyCodeLine{00036\ \ \ \mbox{\hyperlink{class_simulation_controller}{SimulationController}}\ \&simulationController;}
+\DoxyCodeLine{00037\ \ \ tgui::Gui\ \&gui;}
+\DoxyCodeLine{00038\ \ \ \mbox{\hyperlink{class_u_i_controls_manager}{UIControlsManager}}\ uiControlsManager;}
+\DoxyCodeLine{00039\ \ \ tgui::ToggleButton::Ptr\ startStopButton;}
+\DoxyCodeLine{00040\ \ \ tgui::Button::Ptr\ resetButton;}
+\DoxyCodeLine{00041\ \ \ tgui::Button::Ptr\ generateMazeButton;}
+\DoxyCodeLine{00042\ \ \ tgui::Label::Ptr\ modeExplorationLabel;}
+\DoxyCodeLine{00043\ \ \ tgui::Label::Ptr\ modeFastestPathLabel;}
+\DoxyCodeLine{00044\ \ \ tgui::Label::Ptr\ targetStartLabel;}
+\DoxyCodeLine{00045\ \ \ tgui::Label::Ptr\ targetGoalLabel;}
+\DoxyCodeLine{00046\ \ \ tgui::ToggleButton::Ptr\ mouseRandomBrainButton;}
+\DoxyCodeLine{00047\ \ \ tgui::ToggleButton::Ptr\ mouseAdvancedBrainModeButton;}
+\DoxyCodeLine{00048\ \ \ tgui::Slider::Ptr\ simulationSpeedSlider;}
+\DoxyCodeLine{00049\ \ \ tgui::Label::Ptr\ simulationSpeedValueLabel;}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \ \ \textcolor{keywordtype}{void}\ addStartStopToggleButton();}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \ \ \textcolor{keywordtype}{void}\ addMouseModeDisplay();}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \ \ \textcolor{keywordtype}{void}\ addTargetDisplay();}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \ \ \textcolor{keywordtype}{void}\ addChangeMouseBrainButtons();}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \ \ \textcolor{keywordtype}{void}\ updateStartStopToggleButton()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \ \ \textcolor{keywordtype}{void}\ updateMouseModeDisplay()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \ \ \textcolor{keywordtype}{void}\ updateTargetDisplay()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \ \ \textcolor{keywordtype}{void}\ addSectionLabel(\textcolor{keyword}{const}\ std::string\ \&text);}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \ \ \textcolor{keywordtype}{void}\ moveDrawPosition(\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y);}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ \ \ \textcolor{keywordtype}{void}\ addResetButton();}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ \ \ \textcolor{keywordtype}{void}\ addGenerateMazeButton();}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \ \ \textcolor{keywordtype}{void}\ addSimulationSection();}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \ \ \textcolor{keywordtype}{void}\ addSimulationSpeedSlider();}
+\DoxyCodeLine{00076\ \};}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//MICROMOUSE\_INCLUDE\_GUI\_CONTROLPANELRENDERER\_H\_}}
+
+\end{DoxyCode}

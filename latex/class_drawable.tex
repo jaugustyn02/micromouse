@@ -1,0 +1,55 @@
+\doxysection{Drawable Class Reference}
+\hypertarget{class_drawable}{}\label{class_drawable}\index{Drawable@{Drawable}}
+
+
+The \doxylink{class_drawable}{Drawable} class is an abstract base class for all drawable objects in the GUI. It defines a common interface for rendering objects on the screen.  
+
+
+
+
+{\ttfamily \#include $<$Drawable.\+h$>$}
+
+Inheritance diagram for Drawable\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_drawable}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_drawable_a489905d7db51e37ceee8fc7eaff6a762}\label{class_drawable_a489905d7db51e37ceee8fc7eaff6a762} 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Drawable} ()=default
+\begin{DoxyCompactList}\small\item\em Destructor for the \doxylink{class_drawable}{Drawable} class. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_drawable_a9c19882c3b57a9ccb2b2f9eeefc32db9}{draw}} (sf\+::\+Render\+Window \&window)=0
+\begin{DoxyCompactList}\small\item\em Performs the drawing operation on the given window. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The \doxylink{class_drawable}{Drawable} class is an abstract base class for all drawable objects in the GUI. It defines a common interface for rendering objects on the screen. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_drawable_a9c19882c3b57a9ccb2b2f9eeefc32db9}\index{Drawable@{Drawable}!draw@{draw}}
+\index{draw@{draw}!Drawable@{Drawable}}
+\doxysubsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily \label{class_drawable_a9c19882c3b57a9ccb2b2f9eeefc32db9} 
+virtual void Drawable\+::draw (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Performs the drawing operation on the given window. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em window} & The window to draw on. \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{class_maze_renderer_a74cf884c5180c91c39ad025f857a764f}{Maze\+Renderer}}, and \mbox{\hyperlink{class_mouse_renderer_a968a5cb310a47107b05c7ecb7be03faf}{Mouse\+Renderer}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/gui/Drawable.\+h\end{DoxyCompactItemize}

@@ -1,0 +1,112 @@
+\doxysection{Maze\+Renderer Class Reference}
+\hypertarget{class_maze_renderer}{}\label{class_maze_renderer}\index{MazeRenderer@{MazeRenderer}}
+
+
+The \doxylink{class_maze_renderer}{Maze\+Renderer} class is responsible for rendering the maze on the screen. It uses SFML to draw the maze walls and cells.  
+
+
+
+
+{\ttfamily \#include $<$Maze\+Renderer.\+h$>$}
+
+Inheritance diagram for Maze\+Renderer\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_maze_renderer}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_maze_renderer_a229ae605fe9e6c20bc0405283807e162}{Maze\+Renderer}} (\mbox{\hyperlink{class_maze_reader}{Maze\+Reader}} \&maze)
+\begin{DoxyCompactList}\small\item\em Constructor for the \doxylink{class_maze_renderer}{Maze\+Renderer} class. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_maze_renderer_a74cf884c5180c91c39ad025f857a764f}{draw}} (sf\+::\+Render\+Window \&window) override
+\begin{DoxyCompactList}\small\item\em draws the maze on the given window. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_maze_renderer_a45a35d949663a7201a27b43420707d13}{color\+Cells}} (sf\+::\+Render\+Window \&window)
+\begin{DoxyCompactList}\small\item\em Draws the maze on the given window with a specific color for each cell. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_maze_renderer_aa9f1c74a0e9eb6faf1bfa1b0d9ff4b5e}{draw\+Walls}} (sf\+::\+Render\+Window \&window)
+\begin{DoxyCompactList}\small\item\em Draws the walls of the maze on the given window. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_drawable}{Drawable}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Drawable} ()=default
+\begin{DoxyCompactList}\small\item\em Destructor for the \doxylink{class_drawable}{Drawable} class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The \doxylink{class_maze_renderer}{Maze\+Renderer} class is responsible for rendering the maze on the screen. It uses SFML to draw the maze walls and cells. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_maze_renderer_a229ae605fe9e6c20bc0405283807e162}\index{MazeRenderer@{MazeRenderer}!MazeRenderer@{MazeRenderer}}
+\index{MazeRenderer@{MazeRenderer}!MazeRenderer@{MazeRenderer}}
+\doxysubsubsection{\texorpdfstring{MazeRenderer()}{MazeRenderer()}}
+{\footnotesize\ttfamily \label{class_maze_renderer_a229ae605fe9e6c20bc0405283807e162} 
+Maze\+Renderer\+::\+Maze\+Renderer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_maze_reader}{Maze\+Reader}} \&}]{maze}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Constructor for the \doxylink{class_maze_renderer}{Maze\+Renderer} class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em maze} & Reference to the \doxylink{class_maze}{Maze} object. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_maze_renderer_a45a35d949663a7201a27b43420707d13}\index{MazeRenderer@{MazeRenderer}!colorCells@{colorCells}}
+\index{colorCells@{colorCells}!MazeRenderer@{MazeRenderer}}
+\doxysubsubsection{\texorpdfstring{colorCells()}{colorCells()}}
+{\footnotesize\ttfamily \label{class_maze_renderer_a45a35d949663a7201a27b43420707d13} 
+void Maze\+Renderer\+::color\+Cells (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window}{}\end{DoxyParamCaption})}
+
+
+
+Draws the maze on the given window with a specific color for each cell. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em window} & The window to draw on. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_maze_renderer_a74cf884c5180c91c39ad025f857a764f}\index{MazeRenderer@{MazeRenderer}!draw@{draw}}
+\index{draw@{draw}!MazeRenderer@{MazeRenderer}}
+\doxysubsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily \label{class_maze_renderer_a74cf884c5180c91c39ad025f857a764f} 
+void Maze\+Renderer\+::draw (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+draws the maze on the given window. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em window} & The window to draw on. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_drawable_a9c19882c3b57a9ccb2b2f9eeefc32db9}{Drawable}}.
+
+\Hypertarget{class_maze_renderer_aa9f1c74a0e9eb6faf1bfa1b0d9ff4b5e}\index{MazeRenderer@{MazeRenderer}!drawWalls@{drawWalls}}
+\index{drawWalls@{drawWalls}!MazeRenderer@{MazeRenderer}}
+\doxysubsubsection{\texorpdfstring{drawWalls()}{drawWalls()}}
+{\footnotesize\ttfamily \label{class_maze_renderer_aa9f1c74a0e9eb6faf1bfa1b0d9ff4b5e} 
+void Maze\+Renderer\+::draw\+Walls (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window}{}\end{DoxyParamCaption})}
+
+
+
+Draws the walls of the maze on the given window. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em window} & The window to draw on. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/gui/Maze\+Renderer.\+h\item 
+src/gui/Maze\+Renderer.\+cpp\end{DoxyCompactItemize}

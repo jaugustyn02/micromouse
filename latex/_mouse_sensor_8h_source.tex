@@ -1,0 +1,33 @@
+\doxysection{Mouse\+Sensor.\+h}
+\hypertarget{_mouse_sensor_8h_source}{}\label{_mouse_sensor_8h_source}\index{include/core/mouse/MouseSensor.h@{include/core/mouse/MouseSensor.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ MICROMOUSE\_INCLUDE\_GUI\_SENSOR\_H\_}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ MICROMOUSE\_INCLUDE\_GUI\_SENSOR\_H\_}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}core/maze/Maze.h"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}model/Position.h"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}model/Direction.h"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}model/SensorReadings.h"{}}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00010\ \textcolor{comment}{\ *\ @class\ MouseSensor}}
+\DoxyCodeLine{00011\ \textcolor{comment}{\ *\ @brief\ Represents\ the\ sensors\ of\ the\ Micromouse\ robot.}}
+\DoxyCodeLine{00012\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00013\ \textcolor{comment}{\ *\ This\ class\ provides\ methods\ to\ retrieve\ sensor\ readings\ based\ on\ the\ current\ position\ of\ the}}
+\DoxyCodeLine{00014\ \textcolor{comment}{\ *\ Micromouse\ in\ the\ maze.\ It\ uses\ a\ MazeReader\ to\ access\ the\ maze\ data.}}
+\DoxyCodeLine{00015\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00016\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_mouse_sensor_a5d5f51a27d112994b2113a3d8fd707a6}{MouseSensor}}\ \{}
+\DoxyCodeLine{00017\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00022\ \ \ \mbox{\hyperlink{class_mouse_sensor_a5d5f51a27d112994b2113a3d8fd707a6}{MouseSensor}}(\mbox{\hyperlink{class_maze_reader}{MazeReader}}\ \&mazeReader)\ :\ maze(mazeReader)\ \{\};}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00029\ \ \ [[nodiscard]]}
+\DoxyCodeLine{00030\ \ \ \mbox{\hyperlink{class_sensor_readings}{SensorReadings}}\ \mbox{\hyperlink{class_mouse_sensor_aac04ac9f8e0d9afc0e3e6197b9bedd5b}{getSensorReadings}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_position}{Position}}\ \&position)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00033\ \ \ \mbox{\hyperlink{class_maze_reader}{MazeReader}}\ \&maze;}
+\DoxyCodeLine{00034\ \};}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//MICROMOUSE\_INCLUDE\_GUI\_SENSOR\_H\_}}
+
+\end{DoxyCode}
