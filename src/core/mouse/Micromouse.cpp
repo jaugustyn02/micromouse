@@ -20,9 +20,14 @@ MoveStatus Micromouse::makeMove() {
     return GOAL_REACHED;
   }
 
-  const auto direction = brain->getNextMove(currentPosition, sensorReadings);
-  currentPosition.translate(direction);
-  return SUCCESS;
+  try {
+    const auto direction = brain->getNextMove(currentPosition, sensorReadings);
+    currentPosition.translate(direction);
+    return SUCCESS;
+  } catch (const std::runtime_error &e) {
+    std::cerr << e.what() << std::endl;
+    return FAILURE;
+  }
 }
 
 void Micromouse::onDestinationReached() const {
