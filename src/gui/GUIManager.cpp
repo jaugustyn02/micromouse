@@ -24,7 +24,7 @@ void GUIManager::mainLoop() {
     const auto now = std::chrono::high_resolution_clock::now();
     const auto elapsed = std::chrono::duration_cast<std::chrono::microseconds>(now - lastSimulationUpdate);
 
-    if (elapsed >= GLOBAL::SIMULATION::STEP_DURATION / simulationController.getSpeed()) {
+    if (elapsed >= GLOBAL::SIMULATION::MAX_STEP_DURATION / simulationController.getSpeed()) {
       if (simulationController.getIsRunning()) {
         simulationController.nextStep();
         controlPanelRenderer.update();

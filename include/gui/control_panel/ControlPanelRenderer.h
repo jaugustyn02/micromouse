@@ -30,9 +30,9 @@ class ControlPanelRenderer {
 
  private:
   Position drawPosition = Position(GLOBAL::RENDER::CONTROL_PANEL::START_X, GLOBAL::RENDER::CONTROL_PANEL::START_Y);
-  const int ySpacing = GLOBAL::RENDER::CONTROL_PANEL::SPACE_BETWEEN_BUTTONS;
-  const int xSpacing = GLOBAL::RENDER::CONTROL_PANEL::SPACE_BETWEEN_BUTTONS;
+  const int buttonSpacing = GLOBAL::RENDER::CONTROL_PANEL::SPACE_BETWEEN_BUTTONS;
   const int sectionSpacing = GLOBAL::RENDER::CONTROL_PANEL::SPACE_BETWEEN_SECTIONS;
+  const int spaceAfterSectionName = GLOBAL::RENDER::CONTROL_PANEL::SPACE_AFTER_SECTION_NAME;
   SimulationController &simulationController;
   tgui::Gui &gui;
   UIControlsManager uiControlsManager;

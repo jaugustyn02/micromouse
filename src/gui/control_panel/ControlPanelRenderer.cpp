@@ -42,10 +42,10 @@ void ControlPanelRenderer::draw() {
 void ControlPanelRenderer::addSimulationSection() {
   addSectionLabel(GLOBAL::TEXT::SIMULATION_SECTION);
   addStartStopToggleButton();
-  moveDrawPosition(static_cast<int>(startStopButton->getSize().x) + xSpacing, 0);
+  moveDrawPosition(static_cast<int>(startStopButton->getSize().x) + buttonSpacing, 0);
   addResetButton();
-  moveDrawPosition(-(static_cast<int>(startStopButton->getSize().x) + xSpacing),
-                   static_cast<int>(resetButton->getSize().y) + ySpacing);
+  moveDrawPosition(-(static_cast<int>(startStopButton->getSize().x) + buttonSpacing),
+                   static_cast<int>(resetButton->getSize().y) + buttonSpacing);
 }
 
 void ControlPanelRenderer::addSimulationSpeedSlider() {
@@ -60,7 +60,7 @@ void ControlPanelRenderer::addSimulationSpeedSlider() {
   simulationSpeedSlider = slider;
   simulationSpeedValueLabel = valueLabel;
 
-  moveDrawPosition(0, static_cast<int>(simulationSpeedSlider->getSize().y) + ySpacing);
+  moveDrawPosition(0, static_cast<int>(simulationSpeedSlider->getSize().y) + buttonSpacing);
   moveDrawPosition(0, static_cast<int>(simulationSpeedValueLabel->getSize().y) - 6);
 }
 
@@ -138,7 +138,7 @@ void ControlPanelRenderer::addSectionLabel(const std::string &text) {
   label->getRenderer()->setTextColor(GLOBAL::COLORS::PRIMARY_DARK);
   gui.add(label);
 
-  moveDrawPosition(0, static_cast<int>(label->getSize().y) + ySpacing);
+  moveDrawPosition(0, static_cast<int>(label->getSize().y) + spaceAfterSectionName);
 }
 
 void ControlPanelRenderer::moveDrawPosition(const int x, const int y) {

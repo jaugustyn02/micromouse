@@ -9,7 +9,6 @@
 #include "model/Position.h"
 
 /**
- * @file GlobalConfig.h
  * @brief Global configuration file for the Micromouse simulator.
  *
  * This file contains various constants and configurations used throughout the simulator.
@@ -18,16 +17,16 @@
  */
 namespace GLOBAL {
 namespace SIMULATION {
-inline constexpr int DEFAULT_SPEED = 5;
-inline constexpr int MAX_SPEED = 20;
-inline constexpr int STEP_DURATION_MS = 200 * DEFAULT_SPEED;
-inline constexpr auto STEP_DURATION = std::chrono::microseconds(STEP_DURATION_MS * 1000);
+inline constexpr int DEFAULT_SPEED = 8;
+inline constexpr int MAX_SPEED = 25;
+inline constexpr int MAX_STEP_DURATION_MS = 1000;
+inline constexpr auto MAX_STEP_DURATION = std::chrono::microseconds(MAX_STEP_DURATION_MS * 1000);
 }
 
 namespace MAZE {
 inline constexpr int ROWS = 16;
 inline constexpr int COLUMNS = 16;
-inline constexpr int REMOVED_WALLS = (COLUMNS + ROWS) / 2;
+inline constexpr int REMOVED_WALLS = (COLUMNS * ROWS) / 16;
 
 const Position START_POSITION{0, 0};
 const Position NORTHWEST_GOAL = {COLUMNS / 2 - 1, ROWS / 2 - 1};
@@ -99,8 +98,9 @@ inline constexpr float END_Y = MARGIN_TOP + HEIGHT + MARGIN_BOTTOM;
 namespace CONTROL_PANEL {
 inline constexpr float BUTTON_WIDTH = 140.0f;
 inline constexpr float BUTTON_HEIGHT = 40.0f;
-inline constexpr float SPACE_BETWEEN_BUTTONS = 5.0f;
-inline constexpr float SPACE_BETWEEN_SECTIONS = 10.0f;
+inline constexpr float SPACE_BETWEEN_SECTIONS = 15.0f;
+inline constexpr float SPACE_AFTER_SECTION_NAME = 5.0f;
+inline constexpr float SPACE_BETWEEN_BUTTONS = 10.0f;
 
 inline constexpr float MARGIN_LEFT = 20.0f;
 inline constexpr float MARGIN_RIGHT = 20.0f;
