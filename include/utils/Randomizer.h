@@ -30,18 +30,6 @@ class Randomizer {
   template<class T>
   static T &GetRandomElement(std::vector<T> &elements);
 
-  /**
-   * @brief Generates a random boolean value.
-   * @return A random boolean value (true or false).
-   */
-  static bool GetRandomBool();
-
-  /**
-   * @brief Generates a random direction (NORTH, EAST, SOUTH, WEST).
-   * @return A random direction.
-   */
-  static Direction GetRandomDirection();
-
  private:
   static std::mt19937 &GetEngine();
 };
