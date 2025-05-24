@@ -66,6 +66,7 @@ class MouseRenderer {
     + draw(sf::RenderWindow&)
 }
 
+
 class ControlPanelRenderer {
     - UIControlsManager& uiManager
     + draw()
@@ -74,7 +75,6 @@ class ControlPanelRenderer {
 ControlPanelRenderer --> UIControlsManager
 
 class UIControlsManager {
-    - tgui::Panel panel
     + addButton()
     + addToggleButton()
     + addTwoStateToggleButtons()
