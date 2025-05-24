@@ -1,95 +1,121 @@
 @startuml
-' ========== CORE ==========
+
+' ===== CORE =====
 class Application {
     + run()
 }
+Application --> Simulation
+Application --> GUIManager
 
-Application --> GUIManager: use
-
-abstract class SimulationController {
+interface SimulationController {
     + start()
     + stop()
     + reset()
     + nextStep()
-    + generateMaze()
     + setMouseMode(MouseMode)
-    + setMouseBrain(MouseBrain&)
+    + setMouseBrain(MouseBrainType)
+    + setSpeed(int)
+    + getSpeed(): int
+    + generateMaze()
+    + getIsRunning(): bool
+    + getMouse(): Micromouse&
+    + getMaze(): Maze&
 }
 
 class Simulation {
-    - Maze& maze
-    - Micromouse& mouse
+    - Maze maze
+    - Micromouse mouse
     + start()
     + stop()
     + reset()
     + nextStep()
-    + generateMaze()
     + setMouseMode(MouseMode)
-    + setMouseBrain(MouseBrain&)
+    + setMouseBrain(MouseBrainType)
+    + setSpeed(int)
+    + getSpeed(): int
+    + generateMaze()
+    + getIsRunning(): bool
+    + getMouse(): Micromouse&
+    + getMaze(): Maze&
 }
-
 Simulation -|> SimulationController
 Simulation --> Maze
-Simulation --> Micromouse
+Simulation ---> Micromouse
 
-' ========== GUI ==========
+' ===== GUI =====
 class GUIManager {
-    - sf::RenderWindow window
-    - tgui::Gui gui
-    - SimulationController& simulationController
+    - SimulationController &simulationController
     - std::vector<Drawable*> drawables
+    - ControlPanelRenderer controlPanelRenderer
     + mainLoop()
     + switchMouseMode(MouseMode)
 }
+GUIManager --> SimulationController
 
-class Drawable {
-    + draw(window: sf::RenderWindow)
+abstract class Drawable {
+    + draw(sf::RenderWindow&)
 }
-
-abstract class Drawable
-
 Drawable <|-- MazeRenderer
 Drawable <|-- MouseRenderer
 
 class MazeRenderer {
     - Maze& maze
-    + draw(window: sf::RenderWindow)
+    + draw(sf::RenderWindow&)
 }
-
 class MouseRenderer {
     - Micromouse& mouse
-    + draw(window: sf::RenderWindow)
+    + draw(sf::RenderWindow&)
 }
 
-GUIManager ---> SimulationController
-GUIManager --> Drawable
+class ControlPanelRenderer {
+    - UIControlsManager& uiManager
+    + draw(sf::RenderWindow&)
+}
+ControlPanelRenderer --> UIControlsManager
 
-' ========== MAZE ==========
+class UIControlsManager {
+    - tgui::Panel panel
+    + addButton()
+    + addToggleButton()
+    + addTwoStateToggleButtons()
+    + addTwoStateDisplayLabels()
+    + setTwoStateDisplaySelection()
+    + addSliderWithValue()
+}
+
+GUIManager --> Drawable
+GUIManager --> ControlPanelRenderer
+
+' ===== MAZE =====
+
+class MazeReader {
+    + isWall(Position, Direction): bool
+    + getCellType(Position): CellType
+    + getNumOfRows(): int
+    + getNumOfColumns(): int
+}
+
 class Maze {
-    - int width
-    - int height
     - std::vector<std::vector<Cell>> grid
     + generate()
-    + getCell(x: int, y: int): Cell&
-    + getWidth(): int
-    + getHeight(): int
+    + isWall(Position, Direction): bool
+    + getCellType(Position): CellType
+    + getNumOfRows(): int
+    + getNumOfColumns(): int
 }
 
-enum CellType {
-    PATH
-    START
-    GOAL
+MazeReader <|-- Maze
+Maze *-- Cell
+
+class Cell {
+    - Position location
+    - CellType type
+    - std::map<Direction, bool> walls
+    + hasWall(Direction): bool
+    + getType(): CellType
+    + setType(CellType)
+    + getLocation(): Position
 }
-
-struct Cell {
-    + std::map<Direction, bool> walls
-    + Position location
-    + CellType type
-}
-
-Maze --> Randomizer: use
-
-Maze "1" *-- Cell
 
 enum Direction {
     NORTH
@@ -97,103 +123,107 @@ enum Direction {
     SOUTH
     WEST
 }
-
-' ========== MOUSE ==========
-class Micromouse {
-    - Position& position
-    - MouseSensors& sensor
-    - MouseBrain& brain
-    - Direction direction
-    + makeMove()
-    + reset()
-    + setMode(MouseMode)
-    + setBrain(MouseBrain&)
+enum CellType {
+    PATH
+    START
+    GOAL
 }
 
-class SensorsReading {
+' ===== MOUSE =====
+class Micromouse {
+    - Position position
+    - MouseSensor sensor
+    - std::unique_ptr<MouseBrain> brain
+    + makeMove(): MoveStatus
+    + reset()
+    + setMode(MouseMode)
+    + setBrain(std::unique_ptr<MouseBrain>)
+}
+
+class MouseSensor {
+    - MazeReader &maze
+    + getSensorReadings(): SensorReadings
+}
+
+class SensorReadings {
     - std::map<Direction, bool> readings
     + isWall(Direction): bool
 }
 
-class MouseSensors {
-    - Maze& maze
-    + getSensorsReading(Position): SensorsReading
-}
-
-class Position {
-    - int x
-    - int y
-    + getX(): int
-    + getY(): int
-}
-
 enum MouseMode {
     EXPLORATION
+    EXPLORATION_ON_RETURN
     FASTEST_PATH
+    RETURN
 }
 
-Micromouse --> MouseSensors
+Micromouse --> MouseSensor
 Micromouse --> MouseBrain
+MouseSensor --> MazeReader
 
-MouseSensors --> Maze
-
-' ========== MOUSE BRAIN ==========
+' ===== MOUSE BRAIN =====
 class MouseBrain {
-    - std::vector<std::vector<SensorsReading>> map
-    - ExplorationStrategy& explorationStrategy
-    - PathfindingStrategy& pathfindingStrategy
-    - MouseMode mode
-    - std::vector<Position> fastestPath
-    + setMode(MouseMode)
-    + getNextMove(SensorsReading): Direction
+    - std::unique_ptr<ExplorationStrategy> explorationStrategy
+    - std::unique_ptr<FastestPathStrategy> pathfindingStrategy
+    - MouseMovementProvider* currentStrategy
+    - MouseMode activeMode
+    - std::map<Position, SensorReadings> mazeMap
+    + getNextMove(Position, SensorReadings): Direction
+    + isDestinationReached(Position): bool
     + reset()
+    + nextMode()
+    + getMode(): MouseMode
 }
 
+MouseBrain --> MouseMovementProvider
 MouseBrain --> ExplorationStrategy
-MouseBrain --> PathfindingStrategy
+MouseBrain --> FastestPathStrategy
 
-' ========== STRATEGIES ==========
-abstract class ExplorationStrategy {
-    + decideMove(Position, std::vector<std::vector<Cell>>): Direction
+' ===== STRATEGIES =====
+abstract class MouseMovementProvider {
+    + decideMove(Position, SensorReadings): Direction
+    + reset()
+    + setDestination(set<Position>)
+    + getDestination(): set<Position>
+}
+abstract class ExplorationStrategy
+abstract class FastestPathStrategy {
+    - std::map<Position, SensorReadings> mazeMap
+    + setMazeMap(map<Position, SensorReadings>)
 }
 
-abstract class PathfindingStrategy {
-    + decideMove(Position, std::vector<std::vector<Cell>>): Direction
-    + findFastestPath(Position start, Position goal, std::vector<std::vector<Cell>> map): std::vector<Position>
-}
-
-ExplorationStrategy <|-- RandomExplorationStrategy
-ExplorationStrategy <|-- BFSExplorationStrategy
-
-PathfindingStrategy <|-- RandomFastestPathStrategy
-PathfindingStrategy <|-- DijkstraPathfindingStrategy
+ExplorationStrategy --|> MouseMovementProvider
+FastestPathStrategy --|> MouseMovementProvider
 
 class RandomExplorationStrategy {
-    + decideMove(Position, std::vector<std::vector<Cell>>): Direction
+    + decideMove(Position, SensorReadings): Direction
+    + reset()
 }
+ExplorationStrategy <|-- RandomExplorationStrategy
 
-class BFSExplorationStrategy {
-    + decideMove(Position, std::vector<std::vector<Cell>>): Direction
+class FloodingExplorationStrategy {
+    + decideMove(Position, SensorReadings): Direction
+    + reset()
 }
+ExplorationStrategy <|-- FloodingExplorationStrategy
+
+class BFSFastestPathStrategy {
+    + decideMove(Position, SensorReadings): Direction
+    + reset()
+}
+FastestPathStrategy <|-- RandomFastestPathStrategy
 
 class RandomFastestPathStrategy {
-    + decideMove(Position, std::vector<std::vector<Cell>>): Direction
-    + findFastestPath(Position start, Position goal, std::vector<std::vector<Cell>> map): std::vector<Position>
+    + decideMove(Position, SensorReadings): Direction
+    + reset()
 }
+FastestPathStrategy <|-- BFSFastestPathStrategy
 
-class DijkstraPathfindingStrategy {
-    + decideMove(Position, std::vector<std::vector<Cell>>): Direction
-    + findFastestPath(Position start, Position goal, std::vector<std::vector<Cell>> map): std::vector<Position>
-}
-
-' ========== UTILS ==========
+' ===== UTILS =====
 class Randomizer {
-    + GetRandom<T>(min: T, max: T): T
-    + GetRandomDirection(): Direction
+    + GetRandom<T>(T min, T max): T
+    + GetRandomElement<T>(vector<T>&): T&
     - GetEngine(): std::mt19937&
 }
-
-RandomExplorationStrategy --> Randomizer: use
-RandomFastestPathStrategy --> Randomizer: use
 
 @enduml
