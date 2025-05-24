@@ -40,7 +40,7 @@ class Simulation {
 }
 Simulation -|> SimulationController
 Simulation --> Maze
-Simulation ---> Micromouse
+Simulation --> Micromouse
 
 ' ===== GUI =====
 class GUIManager {
@@ -48,7 +48,6 @@ class GUIManager {
     - std::vector<Drawable*> drawables
     - ControlPanelRenderer controlPanelRenderer
     + mainLoop()
-    + switchMouseMode(MouseMode)
 }
 GUIManager --> SimulationController
 
@@ -59,7 +58,7 @@ Drawable <|-- MazeRenderer
 Drawable <|-- MouseRenderer
 
 class MazeRenderer {
-    - Maze& maze
+    - MazeReader& maze
     + draw(sf::RenderWindow&)
 }
 class MouseRenderer {
@@ -69,7 +68,8 @@ class MouseRenderer {
 
 class ControlPanelRenderer {
     - UIControlsManager& uiManager
-    + draw(sf::RenderWindow&)
+    + draw()
+    + update()
 }
 ControlPanelRenderer --> UIControlsManager
 
@@ -85,6 +85,12 @@ class UIControlsManager {
 
 GUIManager --> Drawable
 GUIManager --> ControlPanelRenderer
+
+class MouseBrainProvider {
+    + getMouseBrainInstance(MouseBrainType): std::unique_ptr<MouseBrain>
+}
+
+Simulation --> MouseBrainProvider
 
 ' ===== MAZE =====
 
@@ -129,6 +135,17 @@ enum CellType {
     GOAL
 }
 
+enum MouseBrainType {
+  RANDOM
+  ADVANCED
+}
+
+enum MoveStatus {
+  SUCCESS
+  GOAL_REACHED
+  FAILURE
+}
+
 ' ===== MOUSE =====
 class Micromouse {
     - Position position
@@ -157,8 +174,24 @@ enum MouseMode {
     RETURN
 }
 
+class Position {
+    - int x
+    - int y
+    + getX(): int
+    + getY(): int
+    + operator<(Position&): bool
+    + operator==(Position&): bool
+    + operator!=(Position&): bool
+    + translate(Direction)
+    + translated(Direction): Position
+    + getNeighborCellPositions(int gridWidth, int gridHeight): std::vector<Position>
+    + getDirectionToNeighbourPosition(Position)
+    + toString(): std::string
+}
+
 Micromouse --> MouseSensor
 Micromouse --> MouseBrain
+Micromouse --> Position
 MouseSensor --> MazeReader
 
 ' ===== MOUSE BRAIN =====
